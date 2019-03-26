@@ -1,0 +1,38 @@
+.about-us{
+    .title1{
+        font-size: 42px;
+    }
+    .content{
+        font-size: 18px;
+        color: rgba(149, 149, 149, 1);
+    }
+    .caption{
+        color: rgba(0, 0, 0, 1);
+        .icon{
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+        }
+        .title2{
+            text-align: center;
+            padding-top: 15px;
+            .txt1{
+                font-size: 21px;
+            }
+            .txt2{
+                color: rgba(149, 149, 149, 1);
+            }
+            .txt3{
+                color: rgba(28, 187, 180, 1);
+            }
+        }
+     }
+     .caption:hover{
+         .icon{
+             color: rgba(57, 92, 156, 1);
+         }
+         .txt1{
+             color: rgba(57, 92, 156, 1);
+         }
+     }
+}
