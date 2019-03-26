@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BookingRoutingModule } from './booking.routing';
+import { BookingComponent } from './booking.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [BookingComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    BookingRoutingModule
   ]
 })
 export class BookingModule { }
