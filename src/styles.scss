@@ -2,13 +2,26 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import 'assets/fontawesome/css/all.css';
 
+html {
+  font-size: 16px;
+}
+
+li {
+  list-style: none;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
 .text-primary {
   color: $primary !important;
 }
 
 .pbt-navbar-light {
   background: transparent !important;
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   z-index: 3;
