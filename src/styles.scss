@@ -4,18 +4,31 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 
+html {
+  font-size: 16px;
+}
+
+li {
+  list-style: none;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
 .text-primary {
   color: $primary !important;
 }
 
 .pbt-navbar-light {
-  background: transparent !important;
-  position: absolute;
+  background: white !important;
+  position: relative;
   left: 0;
   right: 0;
   z-index: 3;
 
-
+  
   @include media-breakpoint-down(md) {
     // background: $black !important;
     top: 0;

@@ -1,0 +1,16 @@
+<div class="row filter m-0">
+  <div class="col-sm-4 col-md-2">
+    <label class="lable">Bay từ:</label>
+    <div (click)="city_select()" class="select">{{vl_city_from}} <i class="far fa-chevron-down"></i></div>
+    <ul [ngStyle]="{'display':active_city_from ? 'block' : 'none'}" class="list">
+      <li *ngFor="let city of list_city; let i = index" (click)="change_city_from(i)" class="item">{{city.name}}</li>
+    </ul>
+  </div>
+  <div class="col-sm-4 col-md-2">
+    <label class="lable">Đến:</label>
+    <div (click)="city_select_to()" class="select">{{vl_city_to}} <i class="far fa-chevron-down"></i></div>
+    <ul [ngStyle]="{'display':active_city_to ? 'block' : 'none'}" class="list">
+      <li *ngFor="let city of list_city; let i = index" (click)="change_city_to(i)" class="item">{{city.name}}</li>
+    </ul>
+  </div>
+</div>

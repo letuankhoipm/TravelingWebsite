@@ -1,0 +1,247 @@
+* {
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+}
+
+// TOP
+
+.top{
+
+  background-color: rgb(37, 37, 37);
+  color: rgb(149, 149, 149);
+  padding-top: 35px;
+  padding-bottom: 45px;
+  border-top: 5px solid #00A99D;
+
+  &__logo {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__btn {
+    color: rgb(137, 137, 137);
+    text-decoration: none;
+    padding-right: 13px;
+
+    &:hover {
+      color: rgb(28, 187, 180);
+      &::after {
+        border-left: 5px solid rgb(28, 187, 180);
+      }
+    }
+
+  }
+
+  &__title{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  & li a{
+    display: block;
+    border-bottom: 1px solid rgb(54, 54, 54);
+    padding: 10px 20px 10px 0;
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(149, 149, 149);
+
+    &:hover{
+      color: rgb(28, 187, 180);
+      &::after{
+        border-left: 5px solid rgb(28, 187, 180);
+      }
+    }
+  }
+
+  &__social{
+
+    &__item{
+      display: inline-block;
+
+      a{
+        display: inline-block;
+        width: 39px;
+        height: 39px;
+        margin-right: 3px;
+        transition: all 0.4s;
+
+        &:hover{
+          background-position: bottom !important;
+        }
+
+        &.--fb{
+          background: url('../../../assets/icon/social/social_ic1.png') no-repeat top;
+        }
+
+        &.--gg{
+          background: url('../../../assets/icon/social/social_ic2.png') no-repeat top;
+        }
+
+        &.--in{
+          background: url('../../../assets/icon/social/social_ic3.png') no-repeat top;
+        }
+
+        &.--aa{
+          background: url('../../../assets/icon/social/social_ic4.png') no-repeat top;
+        }
+
+        &.--tw{
+          background: url('../../../assets/icon/social/social_ic5.png') no-repeat top;
+        }
+
+        &.--ytb{
+          background: url('../../../assets/icon/social/social_ic6.png') no-repeat top;
+        }
+      }
+    }
+  }
+
+  &__twiter {
+
+    &__item {
+      padding: 8px 0;
+
+      a{
+        color: rgb(109, 207, 246);
+        text-decoration: none;
+        margin-right: 3px;
+      }
+
+      .time {
+        font-size: 12px;
+        color: rgb(70, 70, 70);
+      }
+    }
+
+    &__item:first-child {
+      border-bottom: 1px solid rgb(54, 54, 54);
+    }
+  }
+
+  &__lable {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  &__input {
+    width: 100%;
+    font-size: 14px;
+    background-color: rgb(16, 16, 16);
+    color: rgb(85, 85, 85);
+    border: 1px solid rgb(52, 52, 52);
+    padding: 10px 50px 10px 10px;
+
+    &:focus {
+      outline: unset;
+    }
+
+  }
+
+  &__btn-submit {
+    display: inline-block;
+    background-color: rgb(251, 0, 13);
+    color: rgb(255, 255, 255);
+    padding: 6px 20px;
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 700;
+
+    &:hover {
+      background-color: rgb(0, 169, 157);
+      text-decoration: none;
+    }
+
+  }
+
+  &__phone{
+    font-size: 30px;
+    color: #1cbbb4;
+    padding-top: 5px;
+  }
+
+  &__support {
+    color: rgb(85, 85, 85);
+    text-decoration: underline;
+
+    &:hover{
+      text-decoration: none;
+    }
+
+  }
+
+  ::selection {
+    background: rgb(0, 169, 157);
+    color: rgb(255, 255, 255);
+  }
+
+}
+
+.-triangle {
+  position: relative;
+
+  &::after{
+    position: absolute;
+    content: "";
+    top: 40%;
+    right: 0;
+    // left: 99%;
+    border-left: 5px solid #898989;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+}
+
+// bottom
+
+.bottom {
+  background-color: #00A99D;
+  padding: 29px 0;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__left {
+    ul {
+      display: flex;
+      color: #fff;
+      margin: auto 0;
+      font-size: 13px;
+
+      a {
+        color: #fff;
+        font-size: 13px;
+        padding: 0 6px;
+        border-left: 1.5px solid #fff;
+      }
+
+      .bold {
+        font-weight: bold;
+        border-left: unset;
+      }
+
+    }
+  }
+
+  &__right {
+    color: #fff;
+    font-size: 13px;
+
+    a {
+      font-size: 13px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+  }
+
+}
