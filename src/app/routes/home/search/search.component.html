@@ -1,7 +1,125 @@
 <div class="container-fluid">
   <div class="container">
     <div class="tab-list">
-      <ul class="tab-navs"></ul>
+      <ul class="tab-navs w-100">
+        <li [class.active]="navTabs.flights" (click)="toggleTab('flights')" class="tab flights d-md-inline-block">
+          <i class="fas fa-plane"></i>
+          <a class="">Flights</a>
+
+        </li>
+        <li [class.active]="navTabs.hotels" (click)="toggleTab('hotels')" class="tab hotels d-md-inline-block">
+          <i class="fas fa-hotel"></i>
+
+          <a class="">Hotels</a>
+
+        </li>
+        <li [class.active]="navTabs.cars" (click)="toggleTab('cars')" class="tab cars d-md-inline-block">
+          <i class="fas fa-car"></i>
+          <a class="">Cars</a>
+
+        </li>
+        <li [class.active]="navTabs.cruises" (click)="toggleTab('cruises')" class="tab cruises d-md-inline-block">
+          <i class="fas fa-ship"></i>
+          <a class="">Cruises</a>
+        </li>
+      </ul>
     </div>
+
+
+
+    <!-- form -->
+    <form>
+        <div class="row">
+          <div class="col-12 col-md-4 col-lg-2">
+            <div class="select1_wrapper">
+              <label>Flying from:</label>
+              <div class="select1_inner">
+                <select class="form-control-sm w-100" style="width: 100%" tabindex="-1" aria-hidden="true">
+                  <option value="1">City or Airport</option>
+                  <option value="2">Alaska</option>
+                  <option value="3">Bahamas</option>
+                  <option value="4">Bermuda</option>
+                  <option value="5">Canada</option>
+                  <option value="6">Caribbean</option>
+                  <option value="7">Europe</option>
+                  <option value="8">Hawaii</option>
+                </select>              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2">
+            <div class="select1_wrapper">
+              <label>To:</label>
+              <div class="select1_inner">
+                <select class="form-control-sm w-100" style="width: 100%" tabindex="-1" aria-hidden="true">
+                  <option value="1">City or Airport</option>
+                  <option value="2">Alaska</option>
+                  <option value="3">Bahamas</option>
+                  <option value="4">Bermuda</option>
+                  <option value="5">Canada</option>
+                  <option value="6">Caribbean</option>
+                  <option value="7">Europe</option>
+                  <option value="8">Hawaii</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2">
+            <div class="input1_wrapper">
+              <label>Departing:</label>
+              <div class="input1_inner">
+                <input type="text" class="form-control-sm w-100" value="Mm/Dd/Yy" id="dp1553602130104">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2">
+            <div class="input1_wrapper">
+              <label>Returning:</label>
+              <div class="input1_inner">
+                <input type="text" class="form-control-sm w-100" value="Mm/Dd/Yy" id="dp1553602130105">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-1">
+            <div class="select1_wrapper">
+              <label>Adult:</label>
+              <div class="select1_inner">
+                <select class="form-control-sm w-100" style="width: 100%" tabindex="-1" aria-hidden="true">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-1">
+            <div class="select1_wrapper">
+              <label>Child:</label>
+              <div class="select1_inner">
+                <select class="form-control-sm w-100" style="width: 100%" tabindex="-1" aria-hidden="true">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2">
+            <div class="button1_wrapper">
+              <button type="submit" class="btn-default btn-form1-submit">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
   </div>
 </div>
