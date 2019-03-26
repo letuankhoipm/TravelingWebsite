@@ -20,13 +20,13 @@ ul{
 }
 
 .pbt-navbar-light {
-  background: transparent !important;
+  background: white !important;
   position: relative;
   left: 0;
   right: 0;
   z-index: 3;
 
-
+  
   @include media-breakpoint-down(md) {
     // background: $black !important;
     top: 0;
