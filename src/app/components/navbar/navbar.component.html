@@ -15,18 +15,20 @@
 
     <div class="navbar-collapse" id="pbt-nav" [class.collapse]="collapsed">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link">Home</a></li>
+        <li class="nav-item"><a [routerLink]="['/']" class="nav-link">Home</a></li>
         <li class="nav-item"><a class="nav-link">About us</a></li>
-        <li class="nav-item"><a class="nav-link">Gallery</a></li>
+        <li class="nav-item"><a [routerLink]="['/booking']" class="nav-link">Booking</a></li>
         <li class="nav-item dropdown c-pointer"ngbDropdown>
           <a class="nav-link dropdown-toggle" ngbDropdownToggle>Pages</a>
-          <div class="dropdown-menu" ngbDropdownMenu>
-            <span class="dropdown-item">Portfolio</span>
-            <span class="dropdown-item">Portfolio Single</span>
+          <div class="dropdown-menu p-3" ngbDropdownMenu>
+            <span id="normalItem" class="dropdown-item pb-2">Flight</span>
+            <span id="normalItem" class="dropdown-item pb-2 pt-2">Hotel</span>
+            <span id="normalItem" class="dropdown-item pb-2 pt-2">Car</span>
+            <span id="lastItem" class="dropdown-item pt-2">Cruises</span>
           </div>
         </li>
         <li class="nav-item"><a class="nav-link">Blog</a></li>
-        <li class="nav-item"><a class="nav-link">Contact</a></li>
+        <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </div>
