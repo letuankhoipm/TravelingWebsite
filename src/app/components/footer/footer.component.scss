@@ -69,7 +69,7 @@ ul{
         display: inline-block;
         width: 39px;
         height: 39px;
-        margin-right: 4px;
+        margin-right: 3px;
         transition: all 0.4s;
 
         &:hover{
@@ -202,18 +202,17 @@ ul{
 
 .bottom {
   background-color: #00A99D;
-
+  padding: 29px 0;
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 29px 0;
+
   }
 
   &__left {
     ul {
       display: flex;
-      align-items: center;
       color: #fff;
       margin: auto 0;
       font-size: 13px;
