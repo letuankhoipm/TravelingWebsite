@@ -14,3 +14,51 @@
     </ul>
   </div>
 </div>
+
+<div class="main row p-0">
+  <div class="col-3 p-0">
+    <ul class="main-menu">
+      <a *ngFor="let menu of list_menu" href="{{menu.link}}">
+        <li class="main-menu-item">{{menu.name}} <i class="fas fa-chevron-circle-right"></i></li>
+      </a>
+    </ul>
+
+    <div class="star">
+      <div class="star-title">Star Raiting <i class="fas fa-chevron-circle-down"></i></div>
+      <ul class="star-list">
+        <li *ngFor="let star of list_star" class="star-list-item">
+          <input class="star-check" type="checkbox" name="star" value="{{star.star}}">
+          <i class="fas fa-star"></i>
+          <i [ngClass]="{'fas':star.star2,'fal':!star.star2}" class="fa-star"></i>
+          <i [ngClass]="{'fas':star.star3,'fal':!star.star3}" class="fa-star"></i>
+          <i [ngClass]="{'fas':star.star4,'fal':!star.star4}" class="fa-star"></i>
+          <i [ngClass]="{'fas':star.star5,'fal':!star.star5}" class="fa-star"></i>
+          <span class="star-text">{{star.star}} Sao</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="review">
+      <owl-carousel #owlElement [options]="customOptions">
+        <div *ngFor="let review of list_review" class="review-item">
+          <div class="review-item-icon"><i class="fas fa-quote-left"></i></div>
+          <div class="review-item-des">{{review.des}}</div>
+          <div class="review-item-name">{{review.name}}</div>
+        </div>
+      </owl-carousel>
+      <div class="control">
+        <i (click)="prev()" class="fal fa-arrow-circle-left"></i>
+        <i (click)="next()" class="fal fa-arrow-circle-right"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-9 py-0 right-col px-0">
+    <div class="m-0 row">
+      <div *ngFor="let data of list_data | paginate: { itemsPerPage: 9, currentPage: p }" class="col-4 fix-list_data">
+        <card-flight [data]="data"></card-flight>
+      </div>
+    </div>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
