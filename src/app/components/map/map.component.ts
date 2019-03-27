@@ -16,8 +16,8 @@ export interface marker {
 export class MapComponent implements OnInit {
 
   local;
-  lat: number = 10.880319;
-  lng: number = 106.794486;
+  lat: number = 10.012525;
+  lng: number = 105.744823;
   icon = {
     url: '../../../assets/icon/logo.png',
     scaledSize: {

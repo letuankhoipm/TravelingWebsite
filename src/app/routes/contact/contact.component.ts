@@ -7,7 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  public infor = 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist';
+  public phuongbinh = {
+    infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist',
+    address: '112/52/9, Hoàng Quốc VIệt, phường An BÌnh, quận Ninh Kiều, thành phố Cần Thơ.',
+    office: 'Khuôn viên Bình Phó A, phường Long Tuyền, quận Bình Thuỷ, thành phố Cần Thơ.',
+    phone: '0909 372 319'
+  }
+
+  public feedback = {
+    fullname: '',
+    email: '',
+    message: ''
+  }
+
+
   constructor() { }
 
   ngOnInit() {
