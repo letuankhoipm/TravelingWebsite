@@ -297,3 +297,19 @@ ul.ngx-pagination {
     padding: 0px 0px 0px 30px;
   }
 }
+
+// Happy in home
+
+.happy {
+
+  .happy_content {
+    @include lg {
+      flex-direction: unset !important;
+    }
+
+    @include sm {
+      flex-direction: column-reverse;
+    }
+  }
+
+}
