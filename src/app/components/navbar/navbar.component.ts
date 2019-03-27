@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   scrolled: boolean = false;
   awake: boolean = false;
+  display: boolean = false;
   logo: string = '/assets/images/logo.png';
 
   @HostListener("window:scroll", [])
@@ -20,11 +21,21 @@ export class NavbarComponent implements OnInit {
           this.scrolled = window.scrollY > 60;
           this.awake = window.scrollY > 100;
           if (window.scrollY > 100) {
-              this.logo = "/assets/images/logo.png";
+              this.logo = '/assets/images/logo.png';
+              this.display = true;
           } else {
               this.logo = '/assets/images/logo.png';
+              this.display = false;
           }
       }
+  }
+
+  scrollTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   collapsed = true;

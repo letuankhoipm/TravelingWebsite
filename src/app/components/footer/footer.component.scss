@@ -16,11 +16,15 @@ ul{
   color: rgb(149, 149, 149);
   padding-top: 35px;
   padding-bottom: 45px;
-  border-top: 5px solid #00A99D;
+  border-top: 5px solid rgba(57, 92, 156, 1);
 
   &__logo {
     max-width: 100%;
     margin-bottom: 10px;
+
+    img {
+      width: 250px;
+    }
   }
 
   &__btn {
@@ -29,9 +33,9 @@ ul{
     padding-right: 13px;
 
     &:hover {
-      color: rgb(28, 187, 180);
+      color: rgba(57, 92, 156, 1);
       &::after {
-        border-left: 5px solid rgb(28, 187, 180);
+        border-left: 5px solid rgba(57, 92, 156, 1);
       }
     }
 
@@ -53,9 +57,9 @@ ul{
     color: rgb(149, 149, 149);
 
     &:hover{
-      color: rgb(28, 187, 180);
+      color: rgba(57, 92, 156, 1);
       &::after{
-        border-left: 5px solid rgb(28, 187, 180);
+        border-left: 5px solid rgba(57, 92, 156, 1);
       }
     }
   }
@@ -109,7 +113,7 @@ ul{
       padding: 8px 0;
 
       a{
-        color: rgb(109, 207, 246);
+        color: rgba(57, 92, 156, 1);
         text-decoration: none;
         margin-right: 3px;
       }
@@ -154,7 +158,7 @@ ul{
     font-weight: 700;
 
     &:hover {
-      background-color: rgb(0, 169, 157);
+      background-color: rgba(57, 92, 156, 1);
       text-decoration: none;
     }
 
@@ -162,7 +166,7 @@ ul{
 
   &__phone{
     font-size: 30px;
-    color: #1cbbb4;
+    color: rgba(57, 92, 156, 1);
     padding-top: 5px;
   }
 
@@ -177,7 +181,7 @@ ul{
   }
 
   ::selection {
-    background: rgb(0, 169, 157);
+    background: rgba(57, 92, 156, 1);
     color: rgb(255, 255, 255);
   }
 
@@ -201,7 +205,7 @@ ul{
 // bottom
 
 .bottom {
-  background-color: #00A99D;
+  background-color: rgba(57, 92, 156, 1);
   padding: 29px 0;
   &__content {
     display: flex;

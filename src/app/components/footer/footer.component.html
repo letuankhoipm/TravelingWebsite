@@ -5,27 +5,23 @@
       <div class="col-lg-3">
         <div class="top__logo">
           <a href="#">
-            <img src="https://demo.gridgum.com/templates/Travel-agency/images/logo2.png" alt="">
+            <img [src]="logo" alt="">
           </a>
         </div>
-        <p>Nam liber tempor cum soluta nobis option congue nihil imperdiet doming id quod mazim. Lorem ipsum dolor sit
-          amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-        <a href="#" class="top__btn -triangle">Read More</a>
+        <p class="pt-4">{{phuongbinh.infor}}</p>
+        <a href="#" class="top__btn -triangle">Xem thêm</a>
       </div>
 
       <div class="col-lg-3 col-sm-12">
         <h1 class="top__title">
-          Travel Specialists
+          Chuyên gia du lịch
         </h1>
         <ul>
           <li>
-            <a href="#" class="-triangle">First Class Flights</a>
+            <a href="#" class="-triangle">Vé máy bay hạng nhất</a>
           </li>
           <li>
-            <a href="#" class="-triangle">Accessible Travel</a>
-          </li>
-          <li>
-            <a href="#" class="-triangle">Amazing Cruises</a>
+            <a href="#" class="-triangle">Tour hiện có</a>
           </li>
         </ul>
         <div class="top__social">
@@ -52,7 +48,7 @@
 
       <div class="col-lg-3 col-sm-12">
         <h1 class="top__title">
-          Our Twitter
+          Đánh giá
         </h1>
         <div class="top__twiter">
           <div class="top__twiter__item twiter-1">
@@ -70,16 +66,16 @@
 
       <div class="col-lg-3 col-sm-12">
         <h1 class="top__title">
-          Newsletter
+          Bảng tin
         </h1>
         <div class="top__lable">
-          Inspiration, ideas, news and your feedback.
+          Cảm hứng, ý tưởng, tin tức và phản hồi của bạn.
         </div>
         <div class="input">
           <input type="email" placeholder="Email Address" class="top__input -triangle">
           <a href="#" class="top__btn-submit">SUBMIT</a>
         </div>
-        <h1 class="top__phone">1-917-338-6831</h1>
+        <h1 class="top__phone">{{phuongbinh.phone}}</h1>
         <div class="support">
           <a href="#" class="top__support">support@templates-support.com</a>
         </div>
@@ -96,10 +92,10 @@
     <div class="bottom__left">
       <ul>
         <li>
-          Copyright © 2017
+          Copyright © 2019
         </li>
         <li>
-          <a href="#" class="bold">MECOVACHE</a>
+          <a href="#" class="bold">GoCodee</a>
         </li>
         <li>
           <a href="#"> Privacy Policy</a>
@@ -117,7 +113,7 @@
     </div>
 
     <div class="bottom__right">
-      <span>Designed by <a href="#">MECOVACHE</a></span>
+      <span>Developed by <a href="#">GoCodee</a></span>
     </div>
 
   </div>

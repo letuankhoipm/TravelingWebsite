@@ -116,3 +116,27 @@ nav:not(.scrolled) {
 .navbar-toggler.collapsed .icon-bar:nth-of-type(3) {
   transform: rotate(0);
 }
+
+
+#backToTopBtn {
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  opacity: 0;
+  max-height: 40px;
+  bottom: 10px;
+  right: 10px;
+  z-index: 99;
+  outline: none;
+  background: #8c8c8c;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+.display {
+  opacity: 1 !important;
+  transition-duration: 1s;
+}
