@@ -266,26 +266,6 @@ $screen-xl-min: 1200px;
 
 // Carousel Place in home
 
-.tour-card {
-  margin: 10px 100px 30px;
-
-  @include sm {
-    margin: 10px 20px 30px;
-  }
-
-  @include smm {
-    margin: 10px 10% 30px;
-  }
-
-  @include smmm {
-    margin: 10px 20px 30px;
-  }
-
-  @include md {
-    margin: 10px 30px 30px;
-  }
-}
-
 
 
 .container-booking {
