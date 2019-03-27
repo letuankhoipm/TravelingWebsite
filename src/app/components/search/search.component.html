@@ -9,9 +9,7 @@
         </li>
         <li [class.active]="navTabs.hotels" (click)="toggleTab('hotels')" class="tab hotels d-md-inline-block">
           <i class="fas fa-hotel"></i>
-
           <a class="">Hotels</a>
-
         </li>
         <li [class.active]="navTabs.cars" (click)="toggleTab('cars')" class="tab cars d-md-inline-block">
           <i class="fas fa-car"></i>
@@ -25,10 +23,10 @@
       </ul>
     </div>
 
-
+    <app-flights-form></app-flights-form>
 
     <!-- form -->
-    <form>
+    <!-- <form>
         <div class="row">
           <div class="col-12 col-md-4 col-lg-2">
             <div class="select1_wrapper">
@@ -119,7 +117,7 @@
             </div>
           </div>
         </div>
-      </form>
+      </form> -->
 
   </div>
 </div>
