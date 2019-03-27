@@ -67,4 +67,11 @@
   </div>
 </div>
 
-<app-tour-card></app-tour-card>
+<div class="tour-card">
+  <h2 class="tour-card-title">POPULAR CRUISES</h2>
+  <div class="tour-card-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+      tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+  <owl-carousel #owlElement [options]="customOptions">
+    <tour-card *ngFor="let place of places" [place]="place"></tour-card>
+  </owl-carousel>
+</div>

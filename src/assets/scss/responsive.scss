@@ -1,6 +1,10 @@
 // Small tablets and large smartphones (landscape view)
 $screen-sm-min: 374px;
 
+$screen-smm-min: 450px;
+
+$screen-smmm-min: 660px;
+
 // Small tablets (portrait view)
 $screen-md-min: 768px;
 
@@ -13,6 +17,18 @@ $screen-xl-min: 1200px;
 // Small devices
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin smm {
+  @media (min-width: #{$screen-smm-min}) {
+    @content;
+  }
+}
+
+@mixin smmm {
+  @media (min-width: #{$screen-smmm-min}) {
     @content;
   }
 }
@@ -240,3 +256,35 @@ $screen-xl-min: 1200px;
   text-transform: uppercase;
 }
 
+// Carousel Place in home
+
+.tour-card {
+  margin: 10px 100px 30px;
+
+  @include sm {
+    margin: 10px 20px 30px;
+  }
+
+  @include smm {
+    margin: 10px 10% 30px;
+  }
+
+  @include smmm {
+    margin: 10px 20px 30px;
+  }
+
+  @include md {
+    margin: 10px 30px 30px;
+  }
+}
+
+
+
+.container-booking {
+  padding: 0px;
+  margin: 10px 20px;
+
+  @include xl {
+    margin: 10px 100px;
+  }
+}

@@ -7,7 +7,7 @@ import { NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [TourCardComponent],
   imports: [
     CommonModule,
-    NgbRatingModule
+    NgbRatingModule,
   ],
   exports: [TourCardComponent]
 })

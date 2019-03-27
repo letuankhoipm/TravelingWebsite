@@ -16,7 +16,7 @@
 </div>
 
 <div class="main row p-0">
-  <div class="col-3 p-0">
+  <div class="col-12 col-sm-4 col-md-3 p-0">
     <ul class="main-menu">
       <a *ngFor="let menu of list_menu" href="{{menu.link}}">
         <li class="main-menu-item">{{menu.name}} <i class="fas fa-chevron-circle-right"></i></li>
@@ -52,9 +52,9 @@
       </div>
     </div>
   </div>
-  <div class="col-9 py-0 right-col px-0">
+  <div class="col-12 col-sm-8 col-md-9 py-0 right-col px-0">
     <div class="m-0 row">
-      <div *ngFor="let data of list_data | paginate: { itemsPerPage: 9, currentPage: p }" class="col-4 fix-list_data">
+      <div *ngFor="let data of list_data | paginate: { itemsPerPage: 9, currentPage: p }" class="col-12 col-md-6 col-lg-4 fix-list_data">
         <card-flight [data]="data"></card-flight>
       </div>
     </div>

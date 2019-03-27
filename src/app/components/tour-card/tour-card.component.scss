@@ -16,8 +16,6 @@
   }
 
   &__caption {
-    position: relative;
-    top: -60px;
 
     h5 {
       cursor: pointer;
@@ -62,8 +60,8 @@
 
 
 .hover {
-  position: relative;
-  top: -70px;
+  position: absolute;
+  bottom: 0px;
   background: rgba(57, 92, 156, .7);
   width: 100%;
   opacity: 0;
@@ -83,4 +81,8 @@
     color: #fef697;
     font-size: 14px;
   }
+}
+
+.tour__card__img {
+  position: relative;
 }
