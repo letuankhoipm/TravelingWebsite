@@ -211,7 +211,7 @@ ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    flex-wrap: wrap;
   }
 
   &__left {
@@ -220,6 +220,7 @@ ul{
       color: #fff;
       margin: auto 0;
       font-size: 13px;
+      flex-wrap: wrap;
 
       a {
         color: #fff;
