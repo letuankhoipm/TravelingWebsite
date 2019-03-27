@@ -3,6 +3,8 @@ $screen-sm-min: 374px;
 
 $screen-smm-min: 450px;
 
+$screen-smmb-min: 576px;
+
 $screen-smmm-min: 660px;
 
 // Small tablets (portrait view)
@@ -23,6 +25,12 @@ $screen-xl-min: 1200px;
 
 @mixin smm {
   @media (min-width: #{$screen-smm-min}) {
+    @content;
+  }
+}
+
+@mixin smmb {
+  @media (min-width: #{$screen-smmb-min}) {
     @content;
   }
 }
@@ -286,5 +294,26 @@ $screen-xl-min: 1200px;
 
   @include xl {
     margin: 10px 100px;
+  }
+}
+
+// Fix Mar, Pad in flight
+
+ul.ngx-pagination {
+  margin: 0px 0px 0px 30px !important;
+  display: block;
+  align-items: center;
+  justify-content: center;
+
+  @include smm {
+    display: flex;
+  }
+}
+
+.fix-list_data {
+  padding: 0px;
+
+  @include smmb {
+    padding: 0px 0px 0px 30px;
   }
 }
