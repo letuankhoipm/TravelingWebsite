@@ -1,0 +1,86 @@
+.tour__card {
+  background: #fafafa;
+
+  .card {
+    border-bottom: 4px solid rgba(57, 92, 156, 1);
+    border-radius: 0 !important;
+  }
+
+  &__img {
+    &:hover {
+      .hover {
+        transition-duration: .5s;
+        opacity: 1 !important;
+      }
+    }
+  }
+
+  &__caption {
+    position: relative;
+    top: -60px;
+
+    h5 {
+      cursor: pointer;
+      font-size: 21px;
+      color: #636363;
+
+      &:hover {
+        color: rgba(57, 92, 156, 1);
+      }
+    }
+
+    span {
+      font-size: 12px;
+      color: #fb000d;
+    }
+
+    p {
+      font-size: 14px;
+      color: #959595;
+    }
+  }
+
+  &__rating {
+    ngb-rating {
+      font-size: 20px;
+      outline: none;
+      color: goldenrod;
+    }
+
+    span {
+      cursor: ss;
+      color: #959595
+    }
+
+    button {
+      color: white;
+      background: rgba(57, 92, 156, 1);
+      border-radius: 0;
+    }
+  }
+}
+
+
+.hover {
+  position: relative;
+  top: -70px;
+  background: rgba(57, 92, 156, .7);
+  width: 100%;
+  opacity: 0;
+
+  h4 {
+    font-size: 21px;
+    color: white;
+    font-weight: 500;
+  }
+
+  p {
+    color: white;
+    font-size: 14px;
+  }
+
+  span {
+    color: #fef697;
+    font-size: 14px;
+  }
+}
