@@ -1,3 +1,8 @@
+
+<div class="container-background" style="width: 100%;">
+</div>
+<div class="app-search"><app-search></app-search></div>
+
 <div style="height: auto; width: 100%; background: whitesmoke;">
   <div class="about-us">
     <div class="why">
@@ -69,7 +74,7 @@
 
 <div class="tour-card container">
   <h2 class="tour-card-title">POPULAR CRUISES</h2>
-  <div class="tour-card-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+  <div class="tour-card-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
       tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
   <owl-carousel #owlElement [options]="customOptions">
     <tour-card *ngFor="let place of places" [place]="place"></tour-card>

@@ -1,3 +1,39 @@
+@import "breakpoints";
+
+
+
+
+
+
+
+
+.container-background {
+  height: 300px;
+  // background: no-repeat center url(/assets/images/home-background.jpg);
+  background: no-repeat center url(/assets/images/home-background.jpg);
+  margin-bottom: 0px;
+  background-size: cover;
+
+  @include md {
+    height: 80vh;
+  }
+  @include lg {
+    height: 100vh;
+    // background-size: 200%;
+  }
+}
+.app-search {
+
+  @include md {
+    margin-top: -45px;
+  }
+
+  @include lg {
+    margin-top: -300px;
+  }
+}
+
+
 .about-us{
     .title1{
         font-size: 42px;
@@ -34,7 +70,7 @@
             }
         }
      }
-     
+
 }
 
 .tour-card-des {
@@ -70,7 +106,7 @@ button.owl-dot {
 }
 
 button.owl-dot.active {
-    background: white !important; 
+    background: white !important;
     border: 2px solid #395c9c !important;
 }
 
