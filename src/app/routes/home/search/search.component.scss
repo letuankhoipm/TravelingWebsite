@@ -1,0 +1,172 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+@mixin sm {
+  @media only screen and (min-width: $screen-sm-min) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media only screen and (min-width: $screen-md-min) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media only screen and (min-width: $screen-lg-min) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media only screen and (min-width: $screen-xl-min) {
+    @content;
+  }
+}
+
+@mixin rwd($breakpoint) {
+  @media only screen and (min-width: #{$breakpoint}) {
+    @content;
+  }
+}
+
+$colorBlueBase: #395c9c;
+
+$palettes: (thisBlue: (base: $colorBlueBase,
+light: lighten($colorBlueBase, 5%),
+lighter: lighten($colorBlueBase, 8%),
+dark: darken($colorBlueBase, 5%),
+darker: darken($colorBlueBase, 10%)
+));
+
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}
+
+;
+
+
+
+// tab list
+.tab-list {
+  margin: 0;
+  width: 100%;
+
+  @include md {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .tab-navs {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'Raleway';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: none;
+    border: none;
+    border-radius: 0;
+    background-color: $colorBlueBase;
+  }
+
+  .tab {
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    margin: 0;
+    border: none;
+    background: none;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 13px 30px 14px 60px;
+    background: #00a99d;
+    cursor: pointer;
+
+    // siblings
+    &+.tab {
+      margin-left: 0px;
+      margin-bottom: 1px;
+
+      @include md {
+        margin-left: 1px;
+        margin-bottom: 0px;
+      }
+    }
+
+    &.active {
+      color: palette(thisBlue);
+      background-color: #fafafa !important;
+    }
+
+    &.flights {
+      background-color: palette(thisBlue, 'dark');
+    }
+
+    &.hotels {
+      background-color: palette(thisBlue);
+    }
+
+    &.cars {
+      background-color: palette(thisBlue, 'light');
+    }
+
+    &.cruises {
+      background-color: palette(thisBlue, 'lighter');
+    }
+
+    // icons
+    .fas {
+      position: absolute;
+      left: 20px;
+      top: 13px;
+      font-size: 18px;
+    }
+
+    .fa-plane {
+      transform: rotate(-45deg);
+    }
+
+    .fa-car {
+      font-size: 20px;
+    }
+  }
+}
+
+// ~ tab list
+
+
+// form
+
+form {
+  padding: 30px;
+  select {
+    option {
+      padding: 10px 5px 10px 15px;
+      background: $colorBlueBase;
+      font-size: 14px;
+      line-height: 20px;
+      color: #fff;
+      border-top: 1px solid palette(thisBlue, darker);
+      &:checked, &:focus, &:hover {
+        color: $colorBlueBase;
+        background: #fafafa;
+      }
+
+    }
+  }
+}
+
+// ~form
