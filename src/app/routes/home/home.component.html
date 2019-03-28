@@ -80,3 +80,31 @@
     <tour-card *ngFor="let place of places" [place]="place"></tour-card>
   </owl-carousel>
 </div>
+
+<div class="happy">
+  <div class="container">
+    <div class="row happy_content">
+      <div class="col-lg-6 col-sm-12 happy_left">
+        <img src="../../../assets/images/travel.png" alt="">
+      </div>
+
+      <div class="col-lg-6 col-sm-12 happy_right">
+        <h1 class="pb-4">XÁCH BA LÔ LÊN VÀ ĐI</h1>
+        <p class="text-justify describe">{{ happyDescribe }}</p>
+        <div class="distance" *ngFor="let palce of happyPlace">
+          <div class="txt">
+            {{ palce.name }}
+          </div>
+          <div class="distance_percent">
+            <div class="percent" [ngStyle]="{
+              'width' : palce.percent + '%'
+            }">
+              <span>{{ palce.percent }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
