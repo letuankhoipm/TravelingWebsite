@@ -1,0 +1,45 @@
+@import "breakpoints";
+
+
+$inputColor : #c2c2c2;
+
+.filter {
+  background: #fafafa;
+  padding: 20px 10px 15px;
+  border-bottom: 4px solid #819dcf;
+  .btn {
+    width: 100%;
+    color: #fff;
+    border-radius: 0;
+    background-color: #395c9c;
+  }
+  .group-wrapper {
+    margin-bottom: 20px;
+  }
+}
+
+
+// form-detail
+.form-control {
+  border-radius: 0;
+  color: $inputColor;
+
+  &::-webkit-input-placeholder {
+    color: $inputColor;
+  }
+}
+
+.data-picker-group {
+  position: relative;
+
+  .icon-custom {
+    position: absolute;
+    z-index: 3;
+    top: 13px;
+    right: 10px;
+    color: $inputColor;
+    @include min-and-max(992, 1200) {
+      right: 5px;
+    }
+  }
+}
