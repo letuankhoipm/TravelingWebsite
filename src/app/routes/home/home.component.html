@@ -9,7 +9,7 @@
     <div class="why">
       <div class="container">
         <h2 class="tour-card-title mt-0 text-uppercase">dịch vụ tốt nhất</h2>
-        <div class="tour-card-des">{{contentTemp}}
+        <div class="tour-card-des d-none d-sm-block">{{contentTemp}}
         </div>
         <div class="row">
           <div class="col-sm-3">
@@ -68,7 +68,7 @@
 
 <div class="tour-card container">
   <h2 class="tour-card-title text-uppercase">địa điểm nổi tiếng</h2>
-  <div class="tour-card-des">{{contentTemp}}</div>
+  <div class="tour-card-des d-none d-sm-block">{{contentTemp}}</div>
   <owl-carousel #owlElement [options]="customOptions">
     <tour-card *ngFor="let place of places" [place]="place"></tour-card>
   </owl-carousel>
