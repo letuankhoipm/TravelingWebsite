@@ -179,3 +179,37 @@ button.owl-dot.active {
     }
   }
 }
+
+// partner
+
+.partners {
+
+  padding: 50px 0;
+
+  .partners-item{
+    a {
+
+      transition: all 4s;
+      .original {
+        margin: 20px 0;
+      }
+
+      .hover {
+        display: none;
+        margin: 20px 0;
+      }
+
+      &:hover {
+        .original {
+          display: none;
+        }
+
+        .hover {
+          display: block;
+        }
+      }
+
+    }
+
+  }
+}
