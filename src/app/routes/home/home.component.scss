@@ -9,8 +9,7 @@
 
 .container-background {
   height: 300px;
-  // background: no-repeat center url(/assets/images/home-background.jpg);
-  background: no-repeat center url(/assets/images/home-background.jpg);
+  background: no-repeat center url(/assets/images/background-beach.jpg);
   margin-bottom: 0px;
   background-size: cover;
 
@@ -19,7 +18,6 @@
   }
   @include lg {
     height: 100vh;
-    // background-size: 200%;
   }
 }
 .app-search {
