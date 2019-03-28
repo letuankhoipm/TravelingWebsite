@@ -31,28 +31,25 @@
           <h3 class="text-uppercase">gửi phản hồi</h3>
           <form action="" class="submit-form text-white" #formSubmit="ngForm">
             <div class="form-group  mb-4">
-              <input type="text" class="form-control pl-2 pr-2" id="fullname" placeholder="Fullname"
+              <input type="text" class="form-control pl-2 pr-2" id="fullname" placeholder="Họ và Tên"
                 [(ngModel)]="feedback.fullname" required #fullnameText="ngModel" name="fullname">
               <p class="form-validation m-0 pl-2"
-                *ngIf="fullnameText?.invalid && (fullnameText?.dirty || fullnameText?.touched)">Fullname
-                is required!</p>
+                *ngIf="fullnameText?.invalid && (fullnameText?.dirty || fullnameText?.touched)">Vui lòng nhập đầy đủ họ tên!</p>
             </div>
             <div class="form-group mb-4">
-              <input type="text" class="form-control pl-2 pr-2" id="email" placeholder="Email" [(ngModel)]="feedback.email"
+              <input type="text" class="form-control pl-2 pr-2" id="email" placeholder="Địa chỉ email" [(ngModel)]="feedback.email"
                 required #emailText="ngModel" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
               <p class="form-validation m-0 pl-2"
-                *ngIf="emailText?.errors && emailText?.errors?.required && (emailText?.dirty || emailText?.touched)">
-                Email
-                is required</p>
+                *ngIf="emailText?.errors && emailText?.errors?.required && (emailText?.dirty || emailText?.touched)">Vui lòng nhập địa chỉ email!</p>
               <p class="form-validation m-0 pl-2" *ngIf="emailText?.errors && emailText?.errors?.pattern">Email is
                 invalid</p>
             </div>
             <div class="form-group mb-4">
-              <textarea class="form-control pl-2 pr-2" id="exampleFormControlTextarea1" placeholder="Message" rows="3"
+              <textarea class="form-control pl-2 pr-2" id="exampleFormControlTextarea1" placeholder="Thông điệp" rows="3"
                 [(ngModel)]="feedback.message" #messageText="ngModel" name="message" appForbiddenName="fuck"></textarea>
-              <p class="form-validation m-0 pl-2" *ngIf="messageText?.errors?.forbiddenName">Text is invalid</p>
+              <p class="form-validation m-0 pl-2" *ngIf="messageText?.errors?.forbiddenName">Văn bản không hợp lệ!</p>
             </div>
-            <button type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold">Submit!</button>
+            <button type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold">Gửi phản hồi!</button>
           </form>
         </div>
       </div>
