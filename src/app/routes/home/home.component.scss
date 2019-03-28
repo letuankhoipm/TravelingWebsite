@@ -28,7 +28,6 @@
 }
 
 .app-search {
-
   @include md {
     margin-top: -45px;
   }
@@ -97,7 +96,65 @@
       }
     }
   }
-
+}
+.parallax {
+  padding: 80px 0px;
+  height: 100%;
+  position: relative;
+  .bg-parallax {
+    position: absolute;
+    background-image: url("https://demo.gridgum.com/templates/Travel-agency/images/parallax1.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: repeat-y;
+    height: 100%;
+    width: 100%;
+    top: 0;
+  }
+  .parallax-content {
+    color: rgba(255, 255, 255, 1);
+    a.btn-detail {
+      display: block;
+      color: rgba(255, 255, 255, 1);
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 15px 10px;
+      text-decoration: none;
+      border-radius: 0px;
+      -moz-border-radius: 0px;
+      -webkit-border-radius: 0px;
+      margin-bottom: 0px;
+      text-transform: uppercase;
+      background: rgba(251, 0, 13, 1);
+      position: relative;
+      text-align: center;
+      width: 100%;
+      box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset;
+      -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset;
+      margin-top: 50px;
+      &:hover {
+        background: rgba(57, 92, 156, 1);
+      }
+    }
+    h3.txt1 {
+      font-size: 38px;
+      font-weight: 800;
+      color: rgba(255, 247, 153, 1);
+    }
+    .txt3 {
+      color: rgba(255, 247, 153, 1);
+      font-size: 18px;
+      > strong {
+        color: rgba(255, 255, 255, 1);
+        font-size: 30px;
+      }
+      > span{
+        color: rgba(255, 255, 255, 1);
+        font-size: 14px;
+      }
+    }
+  }
 }
 
 .tour-card-des {
@@ -163,15 +220,15 @@ button.owl-dot.active {
   }
 
   .happy_right {
-    >h1 {
+    > h1 {
       font-size: 42px;
     }
 
-    >.describe {
+    > .describe {
       font-size: 18px;
     }
 
-    >.distance {
+    > .distance {
       padding-bottom: 20px;
 
       >.txt {
@@ -179,11 +236,11 @@ button.owl-dot.active {
         padding-bottom: 4px;
       }
 
-      >.distance_percent {
+      > .distance_percent {
         height: 15px;
         background-color: #fff;
 
-        >.percent {
+        > .percent {
           position: relative;
           height: 100%;
           background-color: #910000;
@@ -195,7 +252,6 @@ button.owl-dot.active {
             font-weight: 700;
           }
         }
-
       }
     }
   }
