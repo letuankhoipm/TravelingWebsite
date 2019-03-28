@@ -1,49 +1,4 @@
-// Small tablets and large smartphones (landscape view)
-$screen-sm-min: 374px;
-
-// Small tablets (portrait view)
-$screen-md-min: 768px;
-
-// Tablets and small desktops
-$screen-lg-min: 990px;
-
-// Large tablets and desktops
-$screen-xl-min: 1200px;
-
-// Small devices
-@mixin sm {
-  @media (min-width: #{$screen-sm-min}) {
-    @content;
-  }
-}
-
-// Medium devices
-@mixin md {
-  @media (min-width: #{$screen-md-min}) {
-    @content;
-  }
-}
-
-// Large devices
-@mixin lg {
-  @media (min-width: #{$screen-lg-min}) {
-    @content;
-  }
-}
-
-// Extra large devices
-@mixin xl {
-  @media (min-width: #{$screen-xl-min}) {
-    @content;
-  }
-}
-
-// Custom devices
-@mixin rwd($screen) {
-  @media (min-width: $screen+"px") {
-    @content;
-  }
-}
+@import "./_breakpoints.scss";
 
 
 //Navbar
@@ -240,3 +195,52 @@ $screen-xl-min: 1200px;
   text-transform: uppercase;
 }
 
+// Carousel Place in home
+
+
+
+.container-booking {
+  padding: 0px;
+  margin: 10px 20px;
+
+  @include xl {
+    margin: 10px 100px;
+  }
+}
+
+// Fix Mar, Pad in flight
+
+ul.ngx-pagination {
+  margin: 0px 0px 0px 30px !important;
+  display: block;
+  align-items: center;
+  justify-content: center;
+
+  @include smm {
+    display: flex;
+  }
+}
+
+.fix-list_data {
+  padding: 0px;
+
+  @include smmb {
+    padding: 0px 0px 0px 30px;
+  }
+}
+
+// Happy in home
+
+.happy {
+
+  .happy_content {
+    @include lg {
+      flex-direction: unset !important;
+    }
+
+    @include sm {
+      flex-direction: column-reverse;
+    }
+  }
+
+}
