@@ -23,6 +23,7 @@ ul{
     margin-bottom: 10px;
 
     img {
+      cursor: pointer;
       width: 250px;
     }
   }
@@ -49,6 +50,7 @@ ul{
   }
 
   & li a{
+    cursor: pointer;
     display: block;
     border-bottom: 1px solid rgb(54, 54, 54);
     padding: 10px 20px 10px 0;
@@ -70,6 +72,7 @@ ul{
       display: inline-block;
 
       a{
+        cursor: pointer;
         display: inline-block;
         width: 39px;
         height: 39px;
@@ -113,6 +116,7 @@ ul{
       padding: 8px 0;
 
       a{
+        cursor: pointer;
         color: rgba(57, 92, 156, 1);
         text-decoration: none;
         margin-right: 3px;
@@ -149,6 +153,7 @@ ul{
   }
 
   &__btn-submit {
+    cursor: pointer;
     display: inline-block;
     background-color: rgb(251, 0, 13);
     color: rgb(255, 255, 255);
@@ -188,6 +193,7 @@ ul{
 }
 
 .-triangle {
+  cursor: pointer;
   position: relative;
 
   &::after{
@@ -216,6 +222,7 @@ ul{
 
   &__left {
     ul {
+      cursor: pointer;
       display: flex;
       color: #fff;
       margin: auto 0;

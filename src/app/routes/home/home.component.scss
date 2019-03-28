@@ -1,20 +1,32 @@
 @import "breakpoints";
 
+
+
+
+
+
+.home-page {
+  height: auto;
+  width: 100%;
+  background: whitesmoke;
+}
+
+
 .container-background {
   height: 300px;
-  // background: no-repeat center url(/assets/images/home-background.jpg);
-  background: no-repeat center url(/assets/images/home-background.jpg);
+  background: no-repeat center url(/assets/images/background-beach.jpg);
   margin-bottom: 0px;
   background-size: cover;
 
   @include md {
     height: 80vh;
   }
+
   @include lg {
     height: 100vh;
-    // background-size: 200%;
   }
 }
+
 .app-search {
   @include md {
     margin-top: -45px;
@@ -25,47 +37,59 @@
   }
 }
 
-.why {
-  padding-bottom: 20px;
+
+.about-us {
   .title1 {
     font-size: 42px;
   }
+
   .title2 {
     text-align: center;
     padding-top: 15px;
+
     .txt1 {
       font-size: 21px;
     }
+
     .txt2 {
       color: rgba(149, 149, 149, 1);
     }
+
     .txt3 {
       color: rgba(57, 92, 156, 1);
     }
   }
+
   .caption {
     padding-bottom: 15px;
     color: rgba(0, 0, 0, 1);
+
     .icon {
       font-size: 50px;
       display: flex;
       justify-content: center;
     }
+
     .title2 {
       text-align: center;
       padding-top: 15px;
+
       .txt1 {
         font-size: 21px;
       }
+
       .txt2 {
         color: rgba(149, 149, 149, 1);
       }
+
       .txt3 {
         color: rgba(57, 92, 156, 1);
       }
     }
+
     &:hover {
       cursor: pointer;
+
       .icon,
       .txt1 {
         color: rgba(57, 92, 156, 1);
@@ -148,7 +172,7 @@
   color: #464646;
   background: none;
   line-height: 1.1;
-  padding: 20px 0 20px;
+  padding: 50px 0 20px;
   margin: 10px 0 10px 0;
   position: relative;
   text-align: center;
@@ -183,6 +207,7 @@ button.owl-dot.active {
   background: url("../../../assets/images/happy.png") no-repeat center center;
   background-size: cover;
   padding-top: 50px;
+  margin-top: 50px;
   font-size: 14px;
   color: #fff;
 
@@ -205,7 +230,8 @@ button.owl-dot.active {
 
     > .distance {
       padding-bottom: 20px;
-      > .txt {
+
+      >.txt {
         font-weight: bold;
         padding-bottom: 4px;
       }
@@ -218,6 +244,7 @@ button.owl-dot.active {
           position: relative;
           height: 100%;
           background-color: #910000;
+
           span {
             position: absolute;
             top: -25px;
@@ -227,5 +254,39 @@ button.owl-dot.active {
         }
       }
     }
+  }
+}
+
+// partner
+
+.partners {
+
+  padding: 50px 0;
+
+  .partners-item{
+    a {
+
+      transition: all 4s;
+      .original {
+        margin: 20px 0;
+      }
+
+      .hover {
+        display: none;
+        margin: 20px 0;
+      }
+
+      &:hover {
+        .original {
+          display: none;
+        }
+
+        .hover {
+          display: block;
+        }
+      }
+
+    }
+
   }
 }

@@ -238,9 +238,10 @@ ul.ngx-pagination {
       flex-direction: unset !important;
     }
 
-    @include sm {
+    @include min-and-max(320, 991){
       flex-direction: column-reverse;
     }
+
   }
 
 }

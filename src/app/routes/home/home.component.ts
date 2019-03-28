@@ -9,6 +9,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListen
 export class HomeComponent implements OnInit {
   
   public happyDescribe = `Bạn biết đấy, tuổi trẻ và sự tự do không thể kéo dài mãi mãi, chính vì thế, độ tuổi 20 chính là thời điểm lý tưởng để dấn thân vào những cuộc phiêu lưu và những chuyến đi tới các vùng đất xa xôi. Bạn sẽ đúc kết được vô số kinh nghiệm và những trải nghiệm đáng nhớ tại nhiều nơi hoang dã mà suốt đời bạn sẽ không thể quên. Hãy xem những gợi ý điểm đến trước khi tuổi 30 tới nhé!`;
+  public contentTemp = 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.';
 
   public happyPlace = [
     { name: 'Paris', percent: 93 },
@@ -19,23 +20,23 @@ export class HomeComponent implements OnInit {
 
   public places = [
     {
-      destination: 'Bahamas', duration: '7 Night tour', review: '168 Reviews', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
-      describe: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat'
-    }, {
-      destination: 'Bahamas', duration: '7 Night tour', review: '168 Reviews', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
-      describe: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat'
-    }, {
-      destination: 'Bahamas', duration: '7 Night tour', review: '168 Reviews', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
-      describe: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat'
-    }, {
-      destination: 'Bahamas', duration: '7 Night tour', review: '168 Reviews', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
-      describe: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat'
-    }, {
-      destination: 'Bahamas', duration: '7 Night tour', review: '168 Reviews', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
-      describe: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat'
-    }, {
-      destination: 'Bahamas', duration: '7 Night tour', review: '168 Reviews', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
-      describe: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat'
+      destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
+      describe: this.contentTemp
+    },{
+      destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
+      describe: this.contentTemp
+    },{
+      destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
+      describe: this.contentTemp
+    },{
+      destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
+      describe: this.contentTemp
+    },{
+      destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
+      describe: this.contentTemp
+    },{
+      destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
+      describe: this.contentTemp
     },
   ]
 

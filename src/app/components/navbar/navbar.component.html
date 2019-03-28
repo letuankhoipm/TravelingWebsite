@@ -1,8 +1,8 @@
 <!-- START nav -->
-<nav class="navbar navbar-expand-lg navbar-dark pbt_navbar bg-dark pbt-navbar-light" id="pbt-navbar"
+<nav class="navbar navbar-expand-lg navbar-dark pbt_navbar bg-dark pbt-navbar-light p-0" id="pbt-navbar"
   [class.scrolled]="scrolled" [class.awake]="awake">
   <div class="container">
-    <a class="navbar-brand"><img class="logo" [src]="logo" width="250px"></a>
+    <a class="navbar-brand" [routerLink]="['/']" style="cursor: pointer"><img class="logo" [src]="logo" width="250px"></a>
     <button class="navbar-toggler" [class.collapsed]="collapsed" type="button" data-toggle="collapse"
       data-target="#pbt-nav" aria-controls="pbt-nav" aria-expanded="false" aria-label="Toggle navigation"
       (click)="toggleCollapsed()">
@@ -15,20 +15,20 @@
 
     <div class="navbar-collapse" id="pbt-nav" [class.collapse]="collapsed">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a [routerLink]="['/']" class="nav-link">Home</a></li>
-        <li class="nav-item"><a class="nav-link">About us</a></li>
-        <li class="nav-item"><a [routerLink]="['/booking']" class="nav-link">Booking</a></li>
+        <li class="nav-item"><a [routerLink]="['/']" class="nav-link">Trang Chủ</a></li>
+        <!-- <li class="nav-item"><a class="nav-link">About us</a></li> -->
+        <li class="nav-item"><a [routerLink]="['/booking']" class="nav-link">Đặt Vé</a></li>
         <li class="nav-item dropdown c-pointer"ngbDropdown>
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle>Pages</a>
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle>Điểm đến</a>
           <div class="dropdown-menu p-3" ngbDropdownMenu>
-            <span id="normalItem" class="dropdown-item pb-2">Flight</span>
-            <span id="normalItem" class="dropdown-item pb-2 pt-2">Hotel</span>
-            <span id="normalItem" class="dropdown-item pb-2 pt-2">Car</span>
-            <span id="lastItem" class="dropdown-item pt-2">Cruises</span>
+            <span id="normalItem" class="dropdown-item pb-2">Trong nước</span>
+            <span id="normalItem" class="dropdown-item pb-2 pt-2">Nước ngoài</span>
+            <span id="normalItem" class="dropdown-item pb-2 pt-2">Vụ trụ</span>
+            <span id="lastItem" class="dropdown-item pt-2">Đại dương</span>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link">Blog</a></li>
-        <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li>
+        <!-- <li class="nav-item"><a class="nav-link">Blog</a></li> -->
+        <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Liên Lạc</a></li>
       </ul>
     </div>
   </div>
