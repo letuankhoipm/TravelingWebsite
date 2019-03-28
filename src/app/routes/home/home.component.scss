@@ -253,25 +253,40 @@ button.owl-dot.active {
   padding: 50px 0;
 
   .partners-item{
-    a {
+    >a {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
 
-      transition: all 4s;
       .original {
-        margin: 20px 0;
+        display: block;
+        max-width: 100%;
+        width: 100%;
+        opacity: 1;
+        transition: all 0.6s;
       }
 
       .hover {
-        display: none;
-        margin: 20px 0;
+        display: block;
+        position: absolute;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.6s;
       }
 
       &:hover {
         .original {
-          display: none;
+          opacity: 0;
         }
 
         .hover {
-          display: block;
+          opacity: 1;
         }
       }
 
