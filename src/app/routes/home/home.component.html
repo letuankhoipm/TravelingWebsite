@@ -1,17 +1,15 @@
-
 <div class="container-background" style="width: 100%;">
 </div>
-<div class="app-search"><app-search></app-search></div>
+<div class="app-search">
+  <app-search></app-search>
+</div>
 
-<div style="height: auto; width: 100%; background: whitesmoke;">
+<div class="home-page">
   <div class="about-us">
     <div class="why">
       <div class="container">
-        <h2 class="title1 uppercase d-flex justify-content-center py-4">Tại sao chúng tôi là tốt nhất</h2>
-        <div class="content d-flex justify-content-center pb-5">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-          <br>
-          tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        <h2 class="tour-card-title mt-0 text-uppercase">dịch vụ tốt nhất</h2>
+        <div class="tour-card-des">{{contentTemp}}
         </div>
         <div class="row">
           <div class="col-sm-3">
@@ -21,8 +19,7 @@
               </div>
               <div class="title2">
                 <h3 class="txt1">Chuyến đi thú vị</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
+                <p class="txt2">{{contentTemp}}</p>
                 <a href="#" class="txt3">Xem thêm</a>
               </div>
             </div>
@@ -34,8 +31,7 @@
               </div>
               <div class="title2">
                 <h3 class="txt1">Khám phá</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
+                <p class="txt2">{{contentTemp}}</p>
                 <a href="#" class="txt3">Xem thêm</a>
               </div>
             </div>
@@ -47,8 +43,7 @@
               </div>
               <div class="title2">
                 <h3 class="txt1">Đặt vé</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
+                <p class="txt2">{{contentTemp}}</p>
                 <a href="#" class="txt3">Xem thêm</a>
               </div>
             </div>
@@ -60,8 +55,7 @@
               </div>
               <div class="title2">
                 <h3 class="txt1">Hỗ trợ tốt</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
+                <p class="txt2">{{contentTemp}}</p>
                 <a href="#" class="txt3">Xem thêm</a>
               </div>
             </div>
@@ -73,9 +67,8 @@
 </div>
 
 <div class="tour-card container">
-  <h2 class="tour-card-title">POPULAR CRUISES</h2>
-  <div class="tour-card-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-      tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+  <h2 class="tour-card-title text-uppercase">địa điểm nổi tiếng</h2>
+  <div class="tour-card-des">{{contentTemp}}</div>
   <owl-carousel #owlElement [options]="customOptions">
     <tour-card *ngFor="let place of places" [place]="place"></tour-card>
   </owl-carousel>
