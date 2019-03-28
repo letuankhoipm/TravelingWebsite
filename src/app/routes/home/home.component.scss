@@ -1,38 +1,45 @@
-.about-us{
-    .title1{
-        font-size: 42px;
+.main {
+  .why {
+    .title1 {
+      font-size: 42px;
     }
-    .content{
-        font-size: 18px;
-        color: rgba(149, 149, 149, 1);
+    .content {
+      font-size: 18px;
+      color: rgba(149, 149, 149, 1);
     }
-    .caption{
-        padding-bottom: 15px;
-        color: rgba(0, 0, 0, 1);
-        .icon{
-            font-size: 50px;
-            display: flex;
-            justify-content: center;
+    .caption {
+      padding-bottom: 15px;
+      color: rgba(0, 0, 0, 1);
+      .icon {
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+      }
+      .title2 {
+        text-align: center;
+        padding-top: 15px;
+        .txt1 {
+          font-size: 21px;
         }
-        .title2{
-            text-align: center;
-            padding-top: 15px;
-            .txt1{
-                font-size: 21px;
-            }
-            .txt2{
-                color: rgba(149, 149, 149, 1);
-            }
-            .txt3{
-                color: rgba(57, 92, 156, 1);
-            }
+        .txt2 {
+          color: rgba(149, 149, 149, 1);
         }
-        &:hover{
-            cursor: pointer;
-            .icon , .txt1{
-                color: rgba(57, 92, 156, 1);
-            }
+        .txt3 {
+          color: rgba(57, 92, 156, 1);
         }
-     }
-     
+      }
+      &:hover {
+        cursor: pointer;
+        .icon,
+        .txt1 {
+          color: rgba(57, 92, 156, 1);
+        }
+      }
+    }
+  }
+  .parallax{
+      .bg-parallax{
+          background-image: url("https://demo.gridgum.com/templates/Travel-agency/images/parallax1.jpg")
+      }
+  }
 }
