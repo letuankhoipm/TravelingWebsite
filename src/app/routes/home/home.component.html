@@ -106,46 +106,11 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-sm-4 col-lg-2 col-6 partners-item">
+      <div class="col-sm-4 col-lg-2 col-6 partners-item" *ngFor="let url of partnerImagesUrl">
         <a href="#">
-            <img src="assets/images/partners/partner1.jpg" alt="" class="original">
-            <img src="assets/images/partners/partner1_hover.jpg" alt="" class="hover">
+          <img [src]="url.origin" alt="" class="original">
+          <img [src]="url.hover" alt="" class="hover">
         </a>
-      </div>
-
-      <div class="col-sm-4 col-lg-2 col-6 partners-item">
-          <a href="#">
-              <img src="assets/images/partners/partner2.jpg" alt="" class="original">
-              <img src="assets/images/partners/partner2_hover.jpg" alt="" class="hover">
-          </a>
-      </div>
-
-      <div class="col-sm-4 col-lg-2 col-6 partners-item">
-          <a href="#">
-              <img src="assets/images/partners/partner3.jpg" alt="" class="original">
-              <img src="assets/images/partners/partner3_hover.jpg" alt="" class="hover">
-          </a>
-      </div>
-
-      <div class="col-sm-4 col-lg-2 col-6 partners-item">
-          <a href="#">
-              <img src="assets/images/partners/partner4.jpg" alt="" class="original">
-              <img src="assets/images/partners/partner4_hover.jpg" alt="" class="hover">
-          </a>
-      </div>
-
-      <div class="col-sm-4 col-lg-2 col-6 partners-item">
-          <a href="#">
-              <img src="assets/images/partners/partner5.jpg" alt="" class="original">
-              <img src="assets/images/partners/partner5_hover.jpg" alt="" class="hover">
-          </a>
-      </div>
-
-      <div class="col-sm-4 col-lg-2 col-6 partners-item">
-          <a href="#">
-              <img src="assets/images/partners/partner6.jpg" alt="" class="original">
-              <img src="assets/images/partners/partner6_hover.jpg" alt="" class="hover">
-          </a>
       </div>
 
     </div>
