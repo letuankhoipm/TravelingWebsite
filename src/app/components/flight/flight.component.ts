@@ -46,11 +46,11 @@ export class FlightComponent implements OnInit {
 
 
   list_menu = [
-    { link: '#', name: 'Star Raiting' },
-    { link: '#', name: 'Price Range' },
-    { link: '#', name: 'Departure Ports' },
-    { link: '#', name: 'Trip Duration' },
-    { link: '#', name: 'Ships' }
+    { link: '#', name: 'Đánh giá' },
+    { link: '#', name: 'Mức giá' },
+    { link: '#', name: 'Điểm đến' },
+    { link: '#', name: 'Hành trình' },
+    { link: '#', name: 'Tàu thủy' }
   ]
 
   list_star = [
@@ -62,11 +62,11 @@ export class FlightComponent implements OnInit {
   ]
 
   list_review = [
-    { name: 'Đức Duy', des: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam1.' },
-    { name: 'Minh An', des: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam2.' },
-    { name: 'Thái Việt', des: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam3.' },
-    { name: 'Minh Đức', des: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam4.' },
-    { name: 'Hồng Phượng', des: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam5.' },
+    { name: 'Đức Duy', des: 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.' },
+    { name: 'Minh An', des: 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.' },
+    { name: 'Thái Việt', des: 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.' },
+    { name: 'Minh Đức', des: 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.' },
+    { name: 'Hồng Phượng', des: 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.' },
   ]
 
   list_data = [

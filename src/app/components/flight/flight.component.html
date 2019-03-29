@@ -1,4 +1,4 @@
-<div class="row filter m-0">
+<!-- <div class="row filter m-0">
   <div class="col-sm-4 col-md-2">
     <label class="lable">Bay từ:</label>
     <div (click)="city_select()" class="select">{{vl_city_from}} <i class="far fa-chevron-down"></i></div>
@@ -13,7 +13,7 @@
       <li *ngFor="let city of list_city; let i = index" (click)="change_city_to(i)" class="item">{{city.name}}</li>
     </ul>
   </div>
-</div>
+</div> -->
 
 <div class="main row p-0">
   <div class="col-12 col-sm-4 col-md-3 p-0">
@@ -24,7 +24,7 @@
     </ul>
 
     <div class="star">
-      <div class="star-title">Star Raiting <i class="fas fa-chevron-circle-down"></i></div>
+      <div class="star-title">Xếp hạng <i class="fas fa-chevron-circle-down"></i></div>
       <ul class="star-list">
         <li *ngFor="let star of list_star" class="star-list-item">
           <input class="star-check" type="checkbox" name="star" value="{{star.star}}">

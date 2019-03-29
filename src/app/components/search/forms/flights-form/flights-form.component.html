@@ -7,14 +7,14 @@
   </div>
   <div class="col-12 col-md-4 col-lg-2">
     <div class="goup-wrapper">
-      <label class="label">Đến</label>
+      <label class="label">Đến:</label>
       <div class="fomarter"><app-ngx-select [dataList]="listCity"></app-ngx-select></div>
     </div>
   </div>
   <div class="col-12 col-md-4 col-lg-2">
       <label class="label">Từ ngày:</label>
     <div class="input-group data-picker-group formater">
-        <input class="form-control formater" placeholder="yyyy-mm-dd" name="dpFrom" [(ngModel)]="dpFrom" ngbDatepicker
+        <input class="form-control formater" placeholder="yyyy-mm-dd" name="dpFrom"  ngbDatepicker
           #from="ngbDatepicker" (click)="from.toggle()">
         <i class="icon-custom far fa-calendar-day"></i>
     </div>
@@ -23,7 +23,7 @@
       <div class="group-wrapper">
         <label class="label">Đến:</label>
         <div class="input-group data-picker-group formater">
-            <input class="form-control formater" placeholder="yyyy-mm-dd" name="dpTo" [(ngModel)]="dpTo" ngbDatepicker
+            <input class="form-control formater" placeholder="yyyy-mm-dd" name="dpTo" ngbDatepicker
               #to="ngbDatepicker" (click)="to.toggle()">
             <i class="icon-custom far fa-calendar-day"></i>
         </div>
@@ -31,7 +31,7 @@
   </div>
   <div class="col-12 col-md-4 col-lg-1">
       <div class="group-wrapper">
-          <label class="label">Người Lớn</label>
+          <label class="label">Người Lớn:</label>
           <app-ngx-select [dataList]="numberList"></app-ngx-select>
       </div>
     </div>
@@ -43,7 +43,7 @@
     </div>
     <div class="col-12 col-md-4 col-lg-2 align-self-end">
       <div class="group-wrapper">
-        <button type="submit" class="btn btn-default btn-submit">Search</button>
+        <button type="submit" class="btn btn-default btn-submit">Tìm kiếm</button>
       </div>
     </div>
 </div>

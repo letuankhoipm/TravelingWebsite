@@ -1,10 +1,8 @@
+<div class="map-wrapper">
+  <app-map></app-map>
+</div>
 <div class="container-booking">
-  <div class="tab">
-    <ul class="tab-list">
-      <li (click)="change_tab(i)" *ngFor="let tab of tab_check; let i = index" [ngClass]="{'active': tab.active}"
-        class="tab-item"><i class="fas fa-{{tab.icon}}"></i> {{tab.name}}</li>
-    </ul>
-  </div>
+  <app-search></app-search>
   <app-flight></app-flight>
 </div>
 

@@ -1,40 +1,44 @@
-
 li.tab-item {
-    background: #819dcf;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    padding: 11px 30px 11px 20px;
-    border-right: 1px solid white;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
+  background: #819dcf;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 11px 30px 11px 20px;
+  border-right: 1px solid white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 li.active.tab-item {
-    background: #fafafa;
-    color: #819dcf;
+  background: #fafafa;
+  color: #819dcf;
 }
 
 .fa-plane-departure {
-    padding-right: 15px;
-    font-size: 1.3rem;
+  padding-right: 15px;
+  font-size: 1.3rem;
 }
 
 .fa-hotel {
-    padding-right: 15px;
-    font-size: 1.3rem;
+  padding-right: 15px;
+  font-size: 1.3rem;
 }
 
 .fa-car {
-    padding-right: 15px;
-    font-size: 1.3rem;
+  padding-right: 15px;
+  font-size: 1.3rem;
 }
 
 .fa-ship {
-    padding-right: 15px;
-    font-size: 1.3rem;
+  padding-right: 15px;
+  font-size: 1.3rem;
 }
 
-
+.map-wrapper {
+  padding-top: 3px;
+  border-top: 1px solid #9cc8c5;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #9cc8c5
+}

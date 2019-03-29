@@ -1,110 +1,139 @@
-
 <div class="container-background" style="width: 100%;">
 </div>
-<div class="app-search"><app-search></app-search></div>
-
-<div style="height: auto; width: 100%; background: whitesmoke;">
-  <div class="about-us">
-    <div class="why">
-      <div class="container">
-        <h2 class="title1 uppercase d-flex justify-content-center py-4">Tại sao chúng tôi là tốt nhất</h2>
-        <div class="content d-flex justify-content-center pb-5">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-          <br>
-          tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="caption">
-              <div class="icon">
-                <i class="fal fa-plane-departure"></i>
-              </div>
-              <div class="title2">
-                <h3 class="txt1">Chuyến đi thú vị</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
-                <a href="#" class="txt3">Xem thêm</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="caption">
-              <div class="icon">
-                <i class="fas fa-paper-plane"></i>
-              </div>
-              <div class="title2">
-                <h3 class="txt1">Khám phá</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
-                <a href="#" class="txt3">Xem thêm</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="caption">
-              <div class="icon">
-                <i class="fal fa-flag-checkered"></i>
-              </div>
-              <div class="title2">
-                <h3 class="txt1">Đặt vé</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
-                <a href="#" class="txt3">Xem thêm</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="caption">
-              <div class="icon">
-                <i class="fal fa-comments"></i>
-              </div>
-              <div class="title2">
-                <h3 class="txt1">Hỗ trợ tốt</h3>
-                <p class="txt2">Nam liber tempor cum soluta nobis eleifend option congue nihil
-                  imperdiet doming id quod mazim.</p>
-                <a href="#" class="txt3">Xem thêm</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="app-search">
+    <app-search></app-search>
 </div>
-
-<div #duy class="tour-card container">
-  <h2 class="tour-card-title">POPULAR CRUISES</h2>
-  <div class="tour-card-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-      tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
-  <owl-carousel #owlElement [options]="customOptions">
-    <tour-card *ngFor="let place of places" [place]="place"></tour-card>
-  </owl-carousel>
-</div>
-
-<div class="happy">
-  <div class="container">
-    <div class="row happy_content">
-      <div class="col-lg-6 col-sm-12 happy_left">
-        <img src="../../../assets/images/travel.png" alt="">
-      </div>
-
-      <div class="col-lg-6 col-sm-12 happy_right">
-        <h1 class="pb-4">XÁCH BA LÔ LÊN VÀ ĐI</h1>
-        <p class="text-justify describe">{{ happyDescribe }}</p>
-        <div class="distance" *ngFor="let palce of happyPlace">
-          <div class="txt">
-            {{ palce.name }}
-          </div>
-          <div class="distance_percent">
-            <div class="percent" [ngStyle]="{
-              'width' : palce.percent + '%'
-            }">
-              <span>{{ palce.percent }}</span>
+<div class="home-page">
+    <div class="about-us">
+        <div class="why">
+            <div class="container">
+                <h2 class="tour-card-title mt-0 text-uppercase">dịch vụ tốt nhất</h2>
+                <div class="tour-card-des">{{contentTemp}}
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="caption">
+                            <div class="icon">
+                                <i class="fal fa-plane-departure"></i>
+                            </div>
+                            <div class="title2">
+                                <h3 class="txt1">Chuyến đi thú vị</h3>
+                                <p class="txt2">{{contentTemp}}</p>
+                                <a href="#" class="txt3">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="caption">
+                            <div class="icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <div class="title2">
+                                <h3 class="txt1">Khám phá</h3>
+                                <p class="txt2">{{contentTemp}}</p>
+                                <a href="#" class="txt3">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="caption">
+                            <div class="icon">
+                                <i class="fal fa-flag-checkered"></i>
+                            </div>
+                            <div class="title2">
+                                <h3 class="txt1">Đặt vé</h3>
+                                <p class="txt2">{{contentTemp}}</p>
+                                <a href="#" class="txt3">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="caption">
+                            <div class="icon">
+                                <i class="fal fa-comments"></i>
+                            </div>
+                            <div class="title2">
+                                <h3 class="txt1">Hỗ trợ tốt</h3>
+                                <p class="txt2">{{contentTemp}}</p>
+                                <a href="#" class="txt3">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+
         </div>
-      </div>
+    </div>
+
+    <div class="parallax">
+        <div class="bg-parallax"></div>
+        <div class="parallax-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 class="txt1">Gói kì nghỉ Vũng Tàu</h3>
+                        <p class="txt2">Là thị trấn nằm ở tỉnh Bà Rịa - Vũng Tàu, cách thành phố Vũng Tàu 12km, Long Hải
+                            được thiên nhiên ưu ái ban tặng nhiều cảnh đẹp thơ mộng của núi, của biển và của rừng hoa
+                            anh đào sắp trổ bông. Và để có một ngày nghỉ đầy thư giãn thì du khách hãy nhanh tay mua
+                            ngay tour du lịch Long Hải để được hòa mình cùng với biển cả, để ngắm nhìn bình minh dần
+                            hiện lên trên biển hay hoàng hôn khuất dần trầm mình xuống mặt biển mênh mông.</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="#" class="btn-detail">Chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tour-card container">
+        <h2 class="tour-card-title text-uppercase">địa điểm nổi tiếng</h2>
+        <div class="tour-card-des">{{contentTemp}}</div>
+        <owl-carousel #owlElement [options]="customOptions">
+            <tour-card *ngFor="let place of places" [place]="place"></tour-card>
+        </owl-carousel>
+    </div>
+
+    <div class="happy">
+        <div class="container">
+            <div class="row happy_content">
+                <div class="col-lg-6 col-sm-12 happy_left">
+                    <img src="../../../assets/images/travel.png" alt="">
+                </div>
+
+                <div class="col-lg-6 col-sm-12 happy_right">
+                    <h1 class="pb-4">XÁCH BA LÔ LÊN VÀ ĐI</h1>
+                    <p class="text-justify describe">{{ happyDescribe }}</p>
+                    <div class="distance" *ngFor="let palce of happyPlace">
+                        <div class="txt">
+                            {{ palce.name }}
+                        </div>
+                        <div class="distance_percent">
+                            <div class="percent" [ngStyle]="{
+      'width' : palce.percent + '%'
+    }">
+                                <span>{{ palce.percent }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-  </div>
+
+    <div class="partners">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-4 col-lg-2 col-6 partners-item" *ngFor="let url of partnerImagesUrl">
+                    <a href="#">
+                        <img [src]="url.origin" alt="" class="original">
+                        <img [src]="url.hover" alt="" class="hover">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
