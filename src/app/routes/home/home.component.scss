@@ -97,13 +97,12 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  background-image: url("http://fantasea.vn/wp-content/uploads/2019/02/malaysia.jpg");
+  background-image: url("/assets/images/background-malasia.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: repeat-y;
   transform: translateZ(-1px) scale(1.1);
   transition-duration: 0.7s;
-
   .parallax-content {
     padding-left: 20px;
     padding-right: 20px;
