@@ -3,15 +3,14 @@
   font-size: 14px;
 }
 
-ul{
+ul {
   list-style: none;
   padding: 0;
 }
 
 // TOP
 
-.top{
-
+.top {
   background-color: rgb(37, 37, 37);
   color: rgb(149, 149, 149);
   padding-top: 35px;
@@ -34,22 +33,21 @@ ul{
     padding-right: 13px;
 
     &:hover {
-      color: rgba(57, 92, 156, 1);
+      color: rgba(57, 92, 156, 1) !important;
       &::after {
         border-left: 5px solid rgba(57, 92, 156, 1);
       }
     }
-
   }
 
-  &__title{
+  &__title {
     padding-top: 40px;
     padding-bottom: 20px;
     font-size: 24px;
     font-weight: 700;
   }
 
-  & li a{
+  & li a {
     cursor: pointer;
     display: block;
     border-bottom: 1px solid rgb(54, 54, 54);
@@ -58,64 +56,92 @@ ul{
     text-decoration: none;
     color: rgb(149, 149, 149);
 
-    &:hover{
+    &:hover {
       color: rgba(57, 92, 156, 1);
-      &::after{
+      &::after {
         border-left: 5px solid rgba(57, 92, 156, 1);
       }
     }
   }
 
-  &__social{
+  &__social {
 
-    &__item{
+    &__item {
+      position: relative;
       display: inline-block;
+      cursor: pointer;
+      overflow: hidden;
+      width: 39px;
+      height: 39px;
+      margin: 3px;
 
-      a{
-        cursor: pointer;
-        display: inline-block;
-        width: 39px;
-        height: 39px;
-        margin-right: 3px;
-        transition: all 0.4s;
+      .icon {
+        position: absolute;
+        font-size: 1.6rem;
+        color: #fff;
+      }
 
-        &:hover{
-          background-position: bottom !important;
+      .wrap {
+        width: 100%;
+        height: 100%;
+
+        a {
+          width: 39px;
+          height: 39px;
         }
 
-        &.--fb{
-          background: url('../../../assets/icon/social/social_ic1.png') no-repeat top;
+        .icon--facebook {
+          bottom: 2%;
+          left: 45%;
         }
 
-        &.--gg{
-          background: url('../../../assets/icon/social/social_ic2.png') no-repeat top;
+        .icon--google, .icon--youtube {
+          top: 15%;
+          left: 10%;
+        }
+      }
+
+      .origin {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #353535;
+        transition: all 0.5s;
+
+      }
+
+      .hover {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: all 0.5s;
+      }
+
+      .hover--facebook {
+        background-color: #4267B2;
+      }
+
+      .hover--google, .hover--youtube {
+        background-color: #FC000D;
+      }
+
+      &:hover {
+        .origin {
+          bottom: 100%;
         }
 
-        &.--in{
-          background: url('../../../assets/icon/social/social_ic3.png') no-repeat top;
-        }
-
-        &.--aa{
-          background: url('../../../assets/icon/social/social_ic4.png') no-repeat top;
-        }
-
-        &.--tw{
-          background: url('../../../assets/icon/social/social_ic5.png') no-repeat top;
-        }
-
-        &.--ytb{
-          background: url('../../../assets/icon/social/social_ic6.png') no-repeat top;
+        .hover {
+          top: 0;
         }
       }
     }
   }
 
   &__twiter {
-
     &__item {
       padding: 8px 0;
 
-      a{
+      a {
         cursor: pointer;
         color: rgba(57, 92, 156, 1);
         text-decoration: none;
@@ -149,7 +175,6 @@ ul{
     &:focus {
       outline: unset;
     }
-
   }
 
   &__btn-submit {
@@ -166,10 +191,9 @@ ul{
       background-color: rgba(57, 92, 156, 1);
       text-decoration: none;
     }
-
   }
 
-  &__phone{
+  &__phone {
     font-size: 30px;
     color: rgba(57, 92, 156, 1);
     padding-top: 5px;
@@ -179,24 +203,22 @@ ul{
     color: rgb(85, 85, 85);
     text-decoration: underline;
 
-    &:hover{
+    &:hover {
       text-decoration: none;
     }
-
   }
 
   ::selection {
     background: rgba(57, 92, 156, 1);
     color: rgb(255, 255, 255);
   }
-
 }
 
 .-triangle {
   cursor: pointer;
   position: relative;
 
-  &::after{
+  &::after {
     position: absolute;
     content: "";
     top: 40%;
@@ -240,7 +262,6 @@ ul{
         font-weight: bold;
         border-left: unset;
       }
-
     }
   }
 
@@ -253,7 +274,5 @@ ul{
       font-weight: bold;
       color: #fff;
     }
-
   }
-
 }
