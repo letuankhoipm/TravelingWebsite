@@ -308,6 +308,10 @@ readers do not read off random characters that represent icons */
 
 /* 400b */
 
+.fa-zalo:before {
+  content: "\d001";
+}
+
 .fa-facebook-f:before {
   content: "\f39e";
 }

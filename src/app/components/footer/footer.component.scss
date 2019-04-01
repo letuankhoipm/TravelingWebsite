@@ -43,6 +43,7 @@ ul {
 
     &:hover {
       color: color(phuongbinh) !important;
+
       &::after {
         border-left: 5px solid color(phuongbinh);
       }
@@ -67,6 +68,7 @@ ul {
 
     &:hover {
       color: color(phuongbinh);
+
       &::after {
         border-left: 5px solid color(phuongbinh);
       }
@@ -104,7 +106,13 @@ ul {
           left: 45%;
         }
 
-        .icon--google, .icon--youtube {
+        .icon--zalo {
+          top: 25%;
+          left: 15%;
+        }
+
+        .icon--google,
+        .icon--youtube {
           top: 15%;
           left: 10%;
         }
@@ -130,7 +138,12 @@ ul {
         background-color: #4267B2;
       }
 
-      .hover--google, .hover--youtube {
+      .hover--zalo {
+        background-color: rgb(15, 168, 225);
+      }
+
+      .hover--google,
+      .hover--youtube {
         background-color: #FC000D;
       }
 
@@ -244,6 +257,7 @@ ul {
 .bottom {
   background-color: color(phuongbinh);
   padding: 29px 0;
+
   &__content {
     display: flex;
     justify-content: space-between;
