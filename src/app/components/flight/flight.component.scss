@@ -1,9 +1,14 @@
 // filter
+$colors: (phuongbinh: #395c9c);
+
+@function color($type) {
+  @return map-get($colors, $type);
+}
 
 .filter {
   background: #fafafa;
   padding: 20px 10px 15px;
-  border-bottom: 4px solid #819dcf;
+  border-bottom: 4px solid color(phuongbinh);
 }
 
 .select {
@@ -25,7 +30,7 @@
 }
 
 ul.list {
-  background: #819dcf;
+  background: color(phuongbinh);
   border-left: 1px solid #c2c2c2;
   border-right: 1px solid #c2c2c2;
   position: absolute;
@@ -39,12 +44,12 @@ ul.list {
 li.item {
   color: white;
   padding: 5px 15px;
-  border-bottom: 1px solid #768aaf;
+  border-bottom: 1px solid color(phuongbinh);
   cursor: pointer;
 }
 
 li.item:hover {
-  color: #768aaf;
+  color: color(phuongbinh);
   background: white;
 }
 
@@ -61,17 +66,17 @@ label.lable {
 
 .list::-webkit-scrollbar {
   width: 8px;
-  background-color: #7386a9;
+  background-color: color(phuongbinh);
 }
 
 .list::-webkit-scrollbar-thumb {
   border-radius: 1px;
-  background-color: #466294;
+  background-color: color(phuongbinh);
 }
 
 .list::-webkit-scrollbar-track {
   border-radius: 1px;
-  background-color: #7386a9;
+  background-color: color(phuongbinh);
 }
 
 // main
@@ -102,10 +107,10 @@ label.lable {
 }
 
 .main-menu-item:hover {
-  color: #819dcf;
+  color: color(phuongbinh);
 
   .fa-chevron-circle-right {
-    color: #819dcf;
+    color: color(phuongbinh);
   }
 }
 
@@ -116,7 +121,7 @@ label.lable {
 }
 
 .star-title {
-  background: #819dcf;
+  background: color(phuongbinh);
   position: relative;
   font-weight: 600;
   color: #fff;
@@ -164,8 +169,8 @@ ul.star-list {
 
 .review {
   padding: 25px 20px 20px;
-  background: #819dcf;
-  border-top: 5px solid #426094;
+  background: color(phuongbinh);
+  border-top: 5px solid color(phuongbinh);
   margin: 30px 0px;
 }
 
@@ -208,17 +213,18 @@ ul.star-list {
 // pagination
 
 li.current {
-  background: #819dcf !important;
-  border: 1px solid #819dcf;
+  background: color(phuongbinh) !important;
+  border: 1px solid color(phuongbinh);
   margin: 0px 1px;
 }
 
-.ngx-pagination > li > a {
+.ngx-pagination>li>a {
   border: 1px solid #e6e6e6;
   margin: 0px 1px;
 }
 
-li.pagination-previous.disabled, li.pagination-next.disabled {
+li.pagination-previous.disabled,
+li.pagination-next.disabled {
   border: 1px solid #e6e6e6;
   margin: 0px 1px;
 }

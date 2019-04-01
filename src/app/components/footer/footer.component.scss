@@ -1,3 +1,11 @@
+$colors: (phuongbinh: #395c9c);
+
+@function color($type) {
+  @return map-get($colors, $type);
+}
+
+
+
 * {
   box-sizing: border-box;
   font-size: 14px;
@@ -15,7 +23,7 @@ ul {
   color: rgb(149, 149, 149);
   padding-top: 35px;
   padding-bottom: 45px;
-  border-top: 5px solid rgba(57, 92, 156, 1);
+  border-top: 5px solid color(phuongbinh);
 
   &__logo {
     max-width: 100%;
@@ -34,9 +42,9 @@ ul {
     padding-right: 13px;
 
     &:hover {
-      color: rgba(57, 92, 156, 1) !important;
+      color: color(phuongbinh) !important;
       &::after {
-        border-left: 5px solid rgba(57, 92, 156, 1);
+        border-left: 5px solid color(phuongbinh);
       }
     }
   }
@@ -58,9 +66,9 @@ ul {
     color: rgb(149, 149, 149);
 
     &:hover {
-      color: rgba(57, 92, 156, 1);
+      color: color(phuongbinh);
       &::after {
-        border-left: 5px solid rgba(57, 92, 156, 1);
+        border-left: 5px solid color(phuongbinh);
       }
     }
   }
@@ -144,7 +152,7 @@ ul {
 
       a {
         cursor: pointer;
-        color: rgba(57, 92, 156, 1);
+        color: color(phuongbinh);
         text-decoration: none;
         margin-right: 3px;
       }
@@ -189,14 +197,14 @@ ul {
     font-weight: 700;
 
     &:hover {
-      background-color: rgba(57, 92, 156, 1);
+      background-color: color(phuongbinh);
       text-decoration: none;
     }
   }
 
   &__phone {
     font-size: 30px;
-    color: rgba(57, 92, 156, 1);
+    color: color(phuongbinh);
     padding-top: 5px;
   }
 
@@ -210,7 +218,7 @@ ul {
   }
 
   ::selection {
-    background: rgba(57, 92, 156, 1);
+    background: color(phuongbinh);
     color: rgb(255, 255, 255);
   }
 }
@@ -234,7 +242,7 @@ ul {
 // bottom
 
 .bottom {
-  background-color: rgba(57, 92, 156, 1);
+  background-color: color(phuongbinh);
   padding: 29px 0;
   &__content {
     display: flex;
