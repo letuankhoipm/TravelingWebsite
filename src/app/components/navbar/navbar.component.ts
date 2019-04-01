@@ -21,10 +21,10 @@ export class NavbarComponent implements OnInit {
           this.scrolled = window.scrollY > 60;
           this.awake = window.scrollY > 100;
           if (window.scrollY > 100) {
-              this.logo = '/assets/images/logo.png';
+              this.logo = '/assets/images/logo_final.png';
               this.display = true;
           } else {
-              this.logo = '/assets/images/logo.png';
+              this.logo = '/assets/images/logo_final.png';
               this.display = false;
           }
       }
