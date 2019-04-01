@@ -5,6 +5,11 @@
 @import 'assets/scss/function.scss';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+$colors: (phuongbinh: #395c9c);
+
+@function color($type) {
+  @return map-get($colors, $type);
+}
 
 body {
   font-size: 16px;

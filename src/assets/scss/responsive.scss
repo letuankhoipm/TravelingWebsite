@@ -1,6 +1,5 @@
 @import "./_breakpoints.scss";
 
-
 //Navbar
 
 .pbt-navbar-light {
@@ -9,7 +8,6 @@
   left: 0;
   right: 0;
   z-index: 3;
-
 
   @include md {
     // background: $black !important;
@@ -22,19 +20,19 @@
   }
 
   .navbar-nav {
-    >.nav-item {
-      >.nav-link {
+    > .nav-item {
+      > .nav-link {
         cursor: pointer;
         font-size: 16px;
         font-weight: 500;
-        padding-top: .9rem !important;
-        padding-bottom: .9rem !important;
+        padding-top: 0.9rem !important;
+        padding-bottom: 0.9rem !important;
         padding-left: 20px;
         padding-right: 20px;
         color: rgba(140, 140, 140, 1);
 
         &:hover {
-          transition-duration: .7s;
+          transition-duration: 0.7s;
           color: rgba(57, 92, 156, 1) !important;
         }
 
@@ -71,7 +69,7 @@
           bottom: 10px;
           left: 0;
           width: 2px;
-          background: rgba($white, .05);
+          background: rgba($white, 0.05);
 
           @include md {
             display: none;
@@ -80,7 +78,7 @@
       }
 
       &.cta {
-        >a {
+        > a {
           padding-left: 0;
           color: $white;
 
@@ -100,8 +98,8 @@
       }
 
       &.active {
-        >a {
-          color: rgba(255, 255, 255, .5);
+        > a {
+          color: rgba(255, 255, 255, 0.5);
         }
       }
     }
@@ -109,12 +107,12 @@
 
   .navbar-toggler {
     border: none;
-    color: rgba(255, 255, 255, .5) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
     cursor: pointer;
     padding-right: 0;
     text-transform: uppercase;
     font-size: 16px;
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
   }
 
   &.scrolled {
@@ -124,11 +122,11 @@
     top: 0;
     margin-top: -130px;
     background: $white !important;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
     .nav-item {
       &.active {
-        >a {
+        > a {
           color: $primary !important;
         }
       }
@@ -153,19 +151,18 @@
 
     .navbar-toggler {
       border: none;
-      color: rgba(0, 0, 0, .5) !important;
-      border-color: rgba(0, 0, 0, .5) !important;
+      color: rgba(0, 0, 0, 0.5) !important;
+      border-color: rgba(0, 0, 0, 0.5) !important;
       cursor: pointer;
       padding-right: 0;
       text-transform: uppercase;
       font-size: 16px;
-      letter-spacing: .1em;
-
+      letter-spacing: 0.1em;
     }
 
     .nav-link {
-      padding-top: .9rem !important;
-      padding-bottom: .9rem !important;
+      padding-top: 0.9rem !important;
+      padding-bottom: 0.9rem !important;
       color: $black !important;
 
       &.active {
@@ -175,11 +172,11 @@
 
     &.awake {
       margin-top: 0px;
-      transition: .3s all ease-out;
+      transition: 0.3s all ease-out;
     }
 
     &.sleep {
-      transition: .3s all ease-out;
+      transition: 0.3s all ease-out;
     }
 
     .navbar-brand {
@@ -196,8 +193,6 @@
 }
 
 // Carousel Place in home
-
-
 
 .container-booking {
   padding: 0px;
@@ -232,16 +227,47 @@ ul.ngx-pagination {
 // Happy in home
 
 .happy {
-
   .happy_content {
     @include lg {
       flex-direction: unset !important;
     }
 
-    @include min-and-max(320, 991){
+    @include min-and-max(320, 991) {
       flex-direction: column-reverse;
     }
-
   }
+}
 
+//About us in home
+
+.about-us {
+  .tour-card-des {
+    @include min-and-max(320, 768) {
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+  }
+  .caption{
+    @include min-and-max(320, 575){
+      margin-bottom: 40px !important;
+    }
+    .txt2 {
+      @include min-and-max(375, 575) {
+        padding-left: 75px;
+        padding-right: 75px;
+  
+      }
+    }
+  }
+}
+
+//tour-card
+
+.tour-card {
+  .tour-card-des {
+    @include min-and-max(320, 768) {
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+  }
 }

@@ -9,7 +9,7 @@ nav:not(.scrolled) {
     &.active,
     &:hover {
       a {
-        color: rgba(57, 92, 156, 1) !important;
+        color: color(phuongbinh) !important;
       }
     }
 
@@ -23,7 +23,7 @@ nav:not(.scrolled) {
       color: #8c8c8c;
 
       &:hover {
-        color: rgba(57, 92, 156, 1) !important;
+        color: color(phuongbinh) !important;
         background: transparent !important;
       }
     }
@@ -38,7 +38,7 @@ nav:not(.scrolled) {
   padding-right: 0;
 
   &:hover {
-    color: rgba(57, 92, 156, 1) !important;
+    color: color(phuongbinh) !important;
     background: transparent !important;
   }
 }
@@ -49,7 +49,7 @@ nav:not(.scrolled) {
 
 @media screen and (max-width: 576px) {
   .logo {
-    width: 200px !important;
+    width: 60px !important;
   }
 }
 
@@ -89,7 +89,7 @@ nav:not(.scrolled) {
 }
 
 .scrolled.navbar-dark .navbar-toggler .icon-bar {
-  background: rgba(57, 92, 156, 1) !important;
+  background: color(phuongbinh) !important;
 }
 
 .navbar-toggler .icon-bar:nth-of-type(1) {
