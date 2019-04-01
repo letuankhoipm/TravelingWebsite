@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'home',
@@ -7,18 +7,18 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListen
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-  
+
   public happyDescribe = `Bạn biết đấy, tuổi trẻ và sự tự do không thể kéo dài mãi mãi, chính vì thế, độ tuổi 20 chính là thời điểm lý tưởng để dấn thân vào những cuộc phiêu lưu và những chuyến đi tới các vùng đất xa xôi. Bạn sẽ đúc kết được vô số kinh nghiệm và những trải nghiệm đáng nhớ tại nhiều nơi hoang dã mà suốt đời bạn sẽ không thể quên. Hãy xem những gợi ý điểm đến trước khi tuổi 30 tới nhé!`;
   public contentTemp = 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.';
 
 
   public partnerImagesUrl = [
-    {origin: 'assets/images/partners/partner1.jpg', hover: 'assets/images/partners/partner1_hover.jpg'},
-    {origin: 'assets/images/partners/partner2.jpg', hover: 'assets/images/partners/partner2_hover.jpg'},
-    {origin: 'assets/images/partners/partner3.jpg', hover: 'assets/images/partners/partner3_hover.jpg'},
-    {origin: 'assets/images/partners/partner4.jpg', hover: 'assets/images/partners/partner4_hover.jpg'},
-    {origin: 'assets/images/partners/partner5.jpg', hover: 'assets/images/partners/partner5_hover.jpg'},
-    {origin: 'assets/images/partners/partner6.jpg', hover: 'assets/images/partners/partner6_hover.jpg'}
+    { origin: 'assets/images/partners/partner1.jpg', hover: 'assets/images/partners/partner1_hover.jpg' },
+    { origin: 'assets/images/partners/partner2.jpg', hover: 'assets/images/partners/partner2_hover.jpg' },
+    { origin: 'assets/images/partners/partner3.jpg', hover: 'assets/images/partners/partner3_hover.jpg' },
+    { origin: 'assets/images/partners/partner4.jpg', hover: 'assets/images/partners/partner4_hover.jpg' },
+    { origin: 'assets/images/partners/partner5.jpg', hover: 'assets/images/partners/partner5_hover.jpg' },
+    { origin: 'assets/images/partners/partner6.jpg', hover: 'assets/images/partners/partner6_hover.jpg' }
   ];
 
   public happyPlace = [
@@ -74,6 +74,6 @@ export class HomeComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 }

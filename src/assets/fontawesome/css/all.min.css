@@ -234,68 +234,76 @@ readers do not read off random characters that represent icons */
 
 /* 300 */
 
-.fa-chevron-left:before {
-  content: "\f053";
+.fa-arrow-circle-left:before {
+  content: "\f0a8";
 }
-
-.fa-chevron-right:before {
-  content: "\f054";
-}
-
-.fa-redo:before {
-  content: "\f01e";
-}
-
-.fa-search:before {
-  content: "\f002";
-}
-
-.fa-sign-in:before {
-  content: "\f090";
-}
-
-.fa-user-plus:before {
-  content: "\f234";
-}
-
-.fa-volume-mute:before {
-  content: "\f6a9";
-}
-
-.fa-volume-up:before {
-  content: "\f028";
-}
-
-/* 400r */
-
-.fa-clock:before {
-  content: "\f017";
-}
-
-.fa-plus:before {
-  content: "\f067";
-}
-
-/* 900 */
 
 .fa-arrow-circle-right:before {
   content: "\f0a9";
 }
 
-.fa-chart-bar:before {
-  content: "\f080";
+.fa-plane-departure:before {
+  content: "\f5b0";
 }
 
-.fa-heart:before {
-  content: "\f004";
+.fa-flag-checkered:before {
+  content: "\f11e";
 }
 
-.fa-play:before {
-  content: "\f04b";
+.fa-comments:before {
+  content: "\f086";
 }
 
-.fa-trophy-alt:before {
-  content: "\f2eb";
+/* 400r */
+
+.fa-arrow-up:before {
+  content: "\f062";
+}
+
+.fa-calendar-day:before {
+  content: "\f783";
+}
+
+.fa-chevron-down:before {
+  content: "\f078";
+}
+
+/* 900 */
+
+.fa-chevron-circle-right:before {
+  content: "\f138";
+}
+
+.fa-chevron-circle-down:before {
+  content: "\f13a";
+}
+
+.fa-star:before {
+  content: "\f005";
+}
+
+.fa-quote-left:before {
+  content: "\f10d";
+}
+
+.fa-plane:before {
+  content: "\f072";
+}
+
+.fa-hotel:before {
+  content: "\f594";
+}
+
+.fa-car:before {
+  content: "\f1b9";
+}
+
+.fa-ship:before {
+  content: "\f21a";
+}
+
+.fa-paper-plane:before {
+  content: "\f1d8";
 }
 
 /* 400b */
@@ -306,22 +314,6 @@ readers do not read off random characters that represent icons */
 
 .fa-google-plus-g:before {
   content: "\f0d5";
-}
-
-.fa-hotjar:before {
-  content: "\f3b1";
-}
-
-.fa-imdb:before {
-  content: "\f2d8";
-}
-
-.fa-instagram:before {
-  content: "\f16d";
-}
-
-.fa-twitter:before {
-  content: "\f099";
 }
 
 .fa-youtube:before {

@@ -3,6 +3,7 @@
 <div class="app-search">
     <app-search></app-search>
 </div>
+<!-- <div class="dk" style="height: 500px"></div> -->
 <div class="home-page">
     <div class="about-us">
         <div class="why">
@@ -11,7 +12,7 @@
                 <div class="tour-card-des">{{contentTemp}}
                 </div>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="caption">
                             <div class="icon">
                                 <i class="fal fa-plane-departure"></i>
@@ -23,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="caption">
                             <div class="icon">
                                 <i class="fas fa-paper-plane"></i>
@@ -35,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="caption">
                             <div class="icon">
                                 <i class="fal fa-flag-checkered"></i>
@@ -47,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-lg-3 col-sm-6 col-12">
                         <div class="caption">
                             <div class="icon">
                                 <i class="fal fa-comments"></i>
@@ -67,7 +68,7 @@
     </div>
 
     <div class="parallax">
-        <div class="bg-parallax"></div>
+        <div class="bg-parallax" [ngStyle]="{'background-position-y.px': parallax}"></div>
         <div class="parallax-content">
             <div class="container">
                 <div class="row">
@@ -79,7 +80,7 @@
                             ngay tour du lịch Long Hải để được hòa mình cùng với biển cả, để ngắm nhìn bình minh dần
                             hiện lên trên biển hay hoàng hôn khuất dần trầm mình xuống mặt biển mênh mông.</p>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 parallax-button">
                         <a href="#" class="btn-detail">Chi tiết</a>
                     </div>
                 </div>
