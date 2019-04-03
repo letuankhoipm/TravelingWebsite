@@ -17,7 +17,7 @@
   }
 
   @include lg {
-    height: 100vh;
+    height: calc(100vh - 88px);
   }
 }
 
@@ -27,7 +27,7 @@
   }
 
   @include lg {
-    margin-top: -300px;
+    margin-top: -170px;
   }
 }
 
@@ -92,6 +92,7 @@
     }
   }
 }
+
 .parallax {
   padding: 80px 0px;
   height: 100%;
@@ -100,6 +101,8 @@
   .bg-parallax {
     height: 100%;
     width: 100%;
+    height: 100%;
+    left: 0;
     top: 0;
     position: absolute;
     background-image: url("/assets/images/background-malasia.jpg");
@@ -107,6 +110,7 @@
     background-attachment: fixed;
     background-size: cover;
   }
+
   .parallax-content {
     color: rgba(255, 255, 255, 1);
     .btn {
@@ -132,6 +136,7 @@
         }
       }
     }
+
     h3.txt1 {
       font-size: 40px;
       font-weight: 800;
@@ -146,7 +151,7 @@
   color: #959595;
   padding-bottom: 15px;
   padding: 0px 100px 0px;
-  margin-bottom: 30px;
+  margin-bottom: 130px;
 }
 
 .tour-card-title {
@@ -203,15 +208,15 @@ button.owl-dot.active {
   }
 
   .happy_right {
-    > h1 {
+    >h1 {
       font-size: 42px;
     }
 
-    > .describe {
+    >.describe {
       font-size: 18px;
     }
 
-    > .distance {
+    >.distance {
       padding-bottom: 20px;
 
       > .txt {
@@ -219,11 +224,11 @@ button.owl-dot.active {
         padding-bottom: 4px;
       }
 
-      > .distance_percent {
+      >.distance_percent {
         height: 15px;
         background-color: #fff;
 
-        > .percent {
+        >.percent {
           position: relative;
           height: 100%;
           background-color: #910000;
