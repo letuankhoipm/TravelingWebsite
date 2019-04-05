@@ -1,0 +1,61 @@
+.tour-header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 50px;
+}
+.tour-content {
+  .tour-name {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    color: rgba(255, 153, 0, 1);
+    font-weight: bold;
+  }
+  .tour-ticket {
+    .tour-ticket-title {
+      text-align: center;
+      .unit {
+        font-size: 28px;
+        font-weight: bold;
+        color: rgba(255, 0, 0, 1);
+      }
+      .ticket-content {
+        font-size: 20px;
+        font-weight: bold;
+        color: rgba(0, 0, 255, 1);
+      }
+    }
+    .tour-ticket-content {
+      .ticket-content {
+        padding-left: 60px;
+        .ticket-content-detail {
+          margin-bottom: 0;
+        }
+      }
+      .ticket-title{
+        font-size: 20px;
+        font-weight: bold;
+        color: rgba(255, 0, 0, 1);
+      }
+      .title {
+        display: flex;
+        justify-content: center;
+        margin: 0 240px;
+      }
+    }
+  }
+  .tour-schedule {
+    .tour-schedule-day {
+      font-size: 20px;
+      font-weight: bold;
+      color: rgba(0, 0, 255, 1);
+    }
+    .tour-schedule-activate {
+      .content {
+        color: rgba(255, 204, 0, 1);
+        padding-right: 10px;
+      }
+    }
+  }
+}

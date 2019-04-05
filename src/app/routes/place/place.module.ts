@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { PlaceComponent } from './place.component';
 import { PlaceRoutingComponent } from './place.routing';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { GalleryComponent } from './place-detail/gallery/gallery.component';
 
 @NgModule({
   declarations: [
     PlaceComponent,
-    PlaceDetailComponent],
+    PlaceDetailComponent,
+    GalleryComponent],
   imports: [
     CommonModule,
     PlaceRoutingComponent

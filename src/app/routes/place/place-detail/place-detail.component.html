@@ -1,3 +1,118 @@
-<p>
-  place-detail works!
-</p>
+<div class="container">
+  <div class="tour-header mb-5">Tour du lịch</div>
+  <div class="tour-content">
+    <div class="tour-name mb-4">
+      {{tourName}}
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-sm-10 col-12">
+        <div class="tour-time">
+          Thời Gian : 02 ngày 01 đêm
+        </div>
+        <div class="tour-transport">
+          Phương Tiện : Tàu cao tốc và Xe Ô tô
+        </div>
+        <div class="tour-schedule">
+          <div class="tour-schedule-detail py-4" *ngFor="let schedule of tourSchedule">
+            <h2 class="tour-schedule-day">Ngày {{schedule.day}}: {{schedule.content}}</h2>
+            <div class="tour-schedule-activate">
+              <div *ngIf="schedule.morning" class="morning">
+                <span class="content font-weight-bold">Buổi sáng: </span>
+                {{schedule.morning}}
+              </div>
+              <div *ngIf="schedule.noon" class="noon">
+                <span class="content font-weight-bold">Buổi trưa: </span>
+                {{schedule.noon}}
+              </div>
+              <div *ngIf="schedule.afternoon" class="afternoon">
+                <span class="content font-weight-bold">Buổi chiều: </span>
+                {{schedule.afternoon}}
+              </div>
+              <div *ngIf="schedule.night" class="night">
+                <span class="content font-weight-bold">Buổi tối: </span>
+                {{schedule.night}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tour-ticket">
+          <div class="tour-ticket-title">
+            <h1 class="unit">Giá trọn gói: VND/Khách</h1>
+            <p class="ticket-content">(Dành cho đoàn 15 khách)</p>
+          </div>
+          <div class="tour-ticket-content">
+            <p class="title border border-primary">Giá trên bao gồm</p>
+            <div class="ticket-transport">
+              <h2 class="ticket-title">Vận chuyển: </h2>
+              <div class="ticket-content">
+              </div>
+            </div>
+            <div class="ticket-hotel">
+              <h2 class="ticket-title">Khách sạn: </h2>
+              <div class="ticket-content">
+              </div>
+            </div>
+            <div class="ticket-eating">
+              <h2 class="ticket-title">Ăn uống: </h2>
+              <div class="ticket-content">
+              </div>
+            </div>
+            <div class="ticket-tour-guide">
+              <h2 class="ticket-title">Hướng dẫn tham quan: </h2>
+              <div class="ticket-content">
+              </div>
+            </div>
+            <div class="ticket-tour-insurrance">
+              <h2 class="ticket-title">Bảo hiểm: </h2>
+              <div class="ticket-content">
+              </div>
+            </div>
+            <div class="ticket-tour-gift">
+              <h2 class="ticket-title">Quà tặng: </h2>
+              <div class="ticket-content">
+              </div>
+            </div>
+            <p class="title border border-primary">Giá trên không bao gồm</p>
+            <p>Tắm nước ngọt, ăn uống ngoài chương trình, điên thoại, giặt ủi và các chi phí cá nhân khác.</p>
+            <div class="children-ticket">
+              <h2 class="ticket-title">Giá vé cho trẻ em: </h2>
+            </div>
+          </div>
+        </div>
+        <div class="list-place">
+          <h1>Danh sách điểm đến</h1>
+          <ul>
+            <li *ngFor="let place of listPlace">{{place.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-2 col-12">
+        <div class="lis-tour">
+          <h4>Danh sách tour</h4>
+          <ul class="category-list">
+            <li>
+              <a>Du lịch Mỹ Tho - Cần Thơ - Cà Mau - Bạc Liêu - Sóc Trăng
+              </a>
+            </li>
+            <li>
+              <a>Du lịch Phan Thiết - Mũi né IKO
+              </a>
+            </li>
+            <li>
+              <a>Du lịch Đà Nẵng - Hội An - Cù Lao Chàm - Bà Nà</a>
+            </li>
+          </ul>
+        </div>
+        <div class="contact">
+          <h4>Liên hệ</h4>
+          <div class="phone">
+            0909372319-0907591142
+          </div>
+          <div class="email">
+            Phuongbinhtouris@gmail.com
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
