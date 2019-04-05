@@ -21,7 +21,7 @@ const routes: Routes = [
             },
             {
                 path: 'place',
-                loadChildren: "../../routes/place/place.module#Place"
+                loadChildren: "../../routes/place/place.module#PlaceModule"
             }
         ]
     }
