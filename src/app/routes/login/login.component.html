@@ -1,0 +1,22 @@
+<div class="background">
+  <div class="area-login">
+    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Đăng nhập thất bại!</strong><br>Vui lòng đăng nhập lại.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form autocomplete="off" class="" (ngSubmit)="emailLogin()">
+      <div class="input-area row">
+        <i class="fal fa-user icon px-0"></i>
+        <input autocomplete="off" type="text" class="input-login" [(ngModel)]="email" placeholder="Email" name="email"
+          (change)="validateEmail($event.target.value)">
+      </div>
+      <div class="input-area row">
+        <i class="fal fa-key icon px-0"></i>
+        <input type="password" [(ngModel)]="password" placeholder="Mật Khẩu" class="input-login" name="password">
+      </div>
+      <button type="submit" class="login-button" (click)="emailLogin()">Đăng Nhập</button>
+    </form>
+  </div>
+</div>
