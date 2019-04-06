@@ -21,38 +21,17 @@ const mailTransport = nodemailer.createTransport({
 
 
 const sendNotification = functions.firestore
-  .document('/user/{value}').onCreate(event => {
-    console.log('ok');
-    const data = event.data.data();
-    let email = data.email;
-    let name = data.name;
-    if (email && name) {
-      sendEmail(email, name);
-    }
+  .document('/contact/{value}').onCreate((snap, context) => {
+    // const data = event.data;
+    console.log(snap.data());
+    // let email = data.email;;
+    // let name = data.name;
+    // if (email && name) {
+    //   sendEmail('pirates582@gmail.com', 'Haha');
+    // }
+    sendEmail('pirates582@gmail.com', 'Haha');
 
-    const payload = {
-      notification: {
-        title: 'New Message',
-        body: 'body',
-        icon: "https://financial-manage.firebaseapp.com/assets/images/home.jpg",
-        click_action: "https://financial-manage.firebaseapp.com/admin/"
-      }
-    };
-    var fcmTokens = admin.firestore().collection('fcmTokens');
-    return fcmTokens.get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          admin.messaging().sendToDevice(doc.data().token, payload).then(response => {
-            // console.log("Send success")
-          }).catch(function (error) {
-            console.log("Error sending message:", error);
-          });
-        });
-        return true;
-      })
-      .catch(err => {
-        console.log('Error getting documents', err);
-      });
+   
   });
 
 const APP_NAME = 'Cloud Storage for Firebase quickstart';
@@ -70,7 +49,7 @@ const sendWelcomeEmail = functions.auth.user().onCreate((user) => {
 function sendEmail(email, displayName) {
   const mailOptions = {
     from: 'dotafreelancer@gmail.com',
-    to: email,
+    to: 'pirates582@gmail.com',
   };
 
   // The user subscribed to the newsletter.
@@ -80,21 +59,6 @@ function sendEmail(email, displayName) {
     return console.log('New welcome email sent to:', email);
   });
 }
-
-const deleteUser = functions.firestore
-  .document('/manager/{value}').onUpdate((snap, context) => {
-    const data = snap.data.data();
-    if(data.deleted) {
-        let uid = data.uid;
-        admin.auth().deleteUser(uid)
-          .then(function () {
-            console.log("Successfully deleted user");
-          })
-          .catch(function (error) {
-            console.log("Error deleting user:", error);
-          });
-    }
-  });
 
 module.exports = {
   sendNotification

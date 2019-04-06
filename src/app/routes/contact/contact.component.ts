@@ -31,6 +31,7 @@ export class ContactComponent implements OnInit {
       'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)])],
       'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
       'arrival': '',
+      'phone': '',
       'destination': '',
       'message': ''
     });
@@ -87,7 +88,8 @@ export class ContactComponent implements OnInit {
         'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
         'arrival': '',
         'destination': '',
-        'message': ''
+        'message': '',
+        'phone': '',
       });
       this.contactService.create(value);
     }
