@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "phuongbinh-2019"
+    "staging": "phuongbinh-2019",
+    "default": "phuongbinh-2019"
   }
 }

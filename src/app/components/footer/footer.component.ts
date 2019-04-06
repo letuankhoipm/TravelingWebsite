@@ -10,7 +10,7 @@ export class FooterComponent implements OnInit {
   public logo = '/assets/images/logo.png';
 
   public phuongbinh = {
-    infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist',
+    infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
     address: '112/52/9, Hoàng Quốc VIệt, phường An BÌnh, quận Ninh Kiều, thành phố Cần Thơ.',
     office: 'Khuôn viên Bình Phó A, phường Long Tuyền, quận Bình Thuỷ, thành phố Cần Thơ.',
     phone: '0909 372 319'
