@@ -27,11 +27,7 @@
     "bootstrap": "^4.3.1",
     "angularfire2": "5.0.0-rc.9",
     "core-js": "^2.5.4",
-<<<<<<< HEAD
     "firebase": "^5.9.3",
-=======
-    "firebase": "^5.9.2",
->>>>>>> 154da33682a9f7fa684ffa3577eab658cd94ed46
     "jquery": "^3.3.1",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-pagination": "^3.2.1",
