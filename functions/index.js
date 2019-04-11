@@ -22,14 +22,13 @@ const mailTransport = nodemailer.createTransport({
 
 const sendNotification = functions.firestore
   .document('/contact/{value}').onCreate((snap, context) => {
-    // const data = event.data;
-    console.log(snap.data());
+    const data = snap.data();
     // let email = data.email;;
     // let name = data.name;
     // if (email && name) {
     //   sendEmail('pirates582@gmail.com', 'Haha');
     // }
-    sendEmail('pirates582@gmail.com', 'Haha');
+    sendEmail(data);
 
    
   });
@@ -43,20 +42,20 @@ const sendWelcomeEmail = functions.auth.user().onCreate((user) => {
   const displayName = user.displayName; // The display name of the user.
   // [END eventAttributes]
 
-  return sendEmail(email, 'displayName');
+  return sendEmail(data);
 });
 
-function sendEmail(email, displayName) {
+function sendEmail(data) {
   const mailOptions = {
     from: 'dotafreelancer@gmail.com',
     to: 'pirates582@gmail.com',
   };
 
   // The user subscribed to the newsletter.
-  mailOptions.subject = `Welcome to ${APP_NAME}!`;
-  mailOptions.text = `Hey ${displayName || ''}! Welcome to ${APP_NAME}. I hope you will enjoy our service.`;
+  mailOptions.subject = `Thông tin khách hàng ${data.email}`;
+  mailOptions.text = `Thông tin khách hàng: ${data.name}, Email: ${data.email}, Số điện thoại: ${data.phone}, Điểm khơi hành: ${data.arrival}, Điểm đến: ${data.destination}, Thông điệp: ${data.message}`;
   return mailTransport.sendMail(mailOptions).then(() => {
-    return console.log('New welcome email sent to:', email);
+    return console.log('New welcome email sent to:', 'pirates582@gmail.com');
   });
 }
 
