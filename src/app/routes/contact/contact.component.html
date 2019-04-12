@@ -29,27 +29,50 @@
       <div class="col-lg-6">
         <div class="title">
           <h3 class="text-uppercase">gửi phản hồi</h3>
-          <form action="" class="submit-form text-white" #formSubmit="ngForm">
+          <form [formGroup]="myform" (ngSubmit)="sendMessage(myform.value)" class="submit-form text-white">
             <div class="form-group  mb-4">
-              <input type="text" class="form-control pl-2 pr-2" id="fullname" placeholder="Họ và Tên"
-                [(ngModel)]="feedback.fullname" required #fullnameText="ngModel" name="fullname">
-              <p class="form-validation m-0 pl-2"
-                *ngIf="fullnameText?.invalid && (fullnameText?.dirty || fullnameText?.touched)">Vui lòng nhập đầy đủ họ tên!</p>
+              <input type="text" class="form-control pl-2 pr-2" placeholder="Họ và Tên" formControlName="name">
+              <p class="form-validation m-0 pl-2" *ngIf="name?.invalid && (name?.dirty || name?.touched)">Vui lòng nhập
+                đầy đủ họ
+                tên!</p>
             </div>
             <div class="form-group mb-4">
-              <input type="text" class="form-control pl-2 pr-2" id="email" placeholder="Địa chỉ email" [(ngModel)]="feedback.email"
-                required #emailText="ngModel" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+              <input type="text" class="form-control pl-2 pr-2" placeholder="Địa chỉ email" required
+                formControlName="email">
               <p class="form-validation m-0 pl-2"
-                *ngIf="emailText?.errors && emailText?.errors?.required && (emailText?.dirty || emailText?.touched)">Vui lòng nhập địa chỉ email!</p>
-              <p class="form-validation m-0 pl-2" *ngIf="emailText?.errors && emailText?.errors?.pattern">Email is
-                invalid</p>
+                *ngIf="email?.errors && email?.errors?.required && (email?.dirty || email?.touched)">Vui
+                lòng nhập địa chỉ email!</p>
+              <p class="form-validation m-0 pl-2" *ngIf="email.invalid && email.touched">Email không hợp lệ!</p>
             </div>
             <div class="form-group mb-4">
-              <textarea class="form-control pl-2 pr-2" id="exampleFormControlTextarea1" placeholder="Thông điệp" rows="3"
-                [(ngModel)]="feedback.message" #messageText="ngModel" name="message" appForbiddenName="fuck"></textarea>
-              <p class="form-validation m-0 pl-2" *ngIf="messageText?.errors?.forbiddenName">Văn bản không hợp lệ!</p>
+              <input type="text" class="form-control pl-2 pr-2" placeholder="Số điện thoại" required
+                formControlName="phone">
+              <p class="form-validation m-0 pl-2" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">Vui
+                lòng nhập số điện thoại!</p>
             </div>
-            <button type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold">Gửi phản hồi!</button>
+
+            <div class="form-group mb-4">
+              <input type="text" class="form-control pl-2 pr-2" placeholder="Điểm khởi hành" required
+                formControlName="arrival">
+              <p class="form-validation m-0 pl-2" *ngIf="arrival?.invalid && (arrival?.dirty || arrival?.touched)">
+                Vui lòng nhập điểm khởi hành!</p>
+            </div>
+
+            <input type="text" class="form-control pl-2 pr-2" placeholder="Điểm đến" required
+              formControlName="destination">
+            <div class="form-group mb-4">
+              <p class="form-validation m-0 pl-2"
+                *ngIf="destination?.invalid && (destination?.dirty || destination?.touched)">
+                Vui lòng nhập điểm đến!</p>
+            </div>
+            <div class="form-group mb-4">
+              <textarea class="form-control pl-2 pr-2" placeholder="Thông điệp" rows="3"
+                formControlName="message"></textarea>
+
+              <p class="form-validation m-0 pl-2" *ngIf="message?.invalid && (message?.dirty || message?.touched)">
+                Nội dung không được phép để trống</p>
+            </div>
+            <button type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold" [disabled]="!myform.valid">Gửi phản hồi!</button>
           </form>
         </div>
       </div>

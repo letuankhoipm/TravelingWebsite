@@ -1,0 +1,19 @@
+{
+  "universal": {
+    "project": "phuongbinhtourist",
+    "skipInstall": false,
+    "directory": ".",
+    "http": true
+  },
+  "serverless": {
+    "provider": "firebase",
+    "firebaseProject": "phuongbinh-2019",
+    "project": "phuongbinhtourist",
+    "skipInstall": false,
+    "directory": ".",
+    "serverless": {
+      "aws": {},
+      "gcloud": {}
+    }
+  }
+}
