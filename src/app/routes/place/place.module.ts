@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 import { PlaceComponent } from './place.component';
 import { PlaceRoutingComponent } from './place.routing';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import {TimeAgoPipe} from 'time-ago-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     PlaceComponent,
-    PlaceDetailComponent],
+    PlaceDetailComponent,
+    TimeAgoPipe],
   imports: [
     CommonModule,
-    PlaceRoutingComponent
+    PlaceRoutingComponent,
+    NgxPaginationModule
   ],
   exports: [
     PlaceComponent,
