@@ -17,8 +17,8 @@ const http = functions.https.onRequest((request, response) => {
 const mailTransport = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'dotafreelancer@gmail.com',
-    pass: 'XXxx11@@',
+    user: functions.config().mailservice.username,
+    pass: functions.config().mailservice.password,
   }
 });
 
@@ -50,7 +50,7 @@ const sendWelcomeEmail = functions.auth.user().onCreate((user) => {
 
 function sendEmail(data) {
   const mailOptions = {
-    from: 'dotafreelancer@gmail.com',
+    from: functions.config().mailservice.username,
     to: 'pirates582@gmail.com',
   };
 
