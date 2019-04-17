@@ -255,7 +255,7 @@ ul.ngx-pagination {
       @include min-and-max(375, 575) {
         padding-left: 75px;
         padding-right: 75px;
-  
+
       }
     }
   }
@@ -271,3 +271,23 @@ ul.ngx-pagination {
     }
   }
 }
+
+// place  travel-pack
+
+.travel-pack-content {
+
+  .travel-pack-content-left {
+    @include min-and-max(320, 767) {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+  }
+
+  .travel-pack-content-right {
+    @include min-and-max(320, 767) {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+  }
+}
+

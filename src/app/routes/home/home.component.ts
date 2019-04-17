@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
+import { SeoService } from '@services/seo.service';
+import { HomeService } from '@services/home.service';
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [SeoService, HomeService],
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
@@ -20,6 +23,8 @@ export class HomeComponent implements OnInit {
     { origin: 'assets/images/partners/partner5.jpg', hover: 'assets/images/partners/partner5_hover.jpg' },
     { origin: 'assets/images/partners/partner6.jpg', hover: 'assets/images/partners/partner6_hover.jpg' }
   ];
+
+  homes = [];
 
   public happyPlace = [
     { name: 'Paris', percent: 93 },
@@ -71,9 +76,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor() {
+  constructor(private seoService: SeoService, private homeService: HomeService) {
   }
 
   ngOnInit(): void {
+    this.seoService.generateTags({
+      title: 'Tour du lịch',
+      description: 'Tour du lịch dài và ngắn hạn',
+      slug: 'home',
+      keywords: 'du lich mien tay'
+    });
+
+    this.homeService.getAlls().subscribe(homes => {
+      this.homes = homes;
+    })
   }
 }

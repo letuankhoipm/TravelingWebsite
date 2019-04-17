@@ -12,28 +12,121 @@
     color: rgba(255, 153, 0, 1);
     font-weight: bold;
   }
+  .tour-schedule {
+    .tour-schedule-detail {
+      img.slide-image {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .day {
+        background: rgba(236, 141, 84, 0);
+        display: inline;
+        padding: 5px 10px;
+        position: absolute;
+        top: 0;
+        color: rgba(255, 255, 255, 1);
+        font-weight: 600;
+      }
+
+      .name {
+        background: rgba(236, 141, 84, 1);
+        display: inline;
+        padding: 5px 10px;
+        position: absolute;
+        bottom: 0;
+        color: rgba(255, 255, 255, 1);
+        font-weight: 500;
+        font-size: 1.3rem;
+      }
+
+      .line {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .period {
+        text-align: center;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 10;
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .content-text {
+        padding: 20px 0px;
+        text-align: justify;
+      }
+
+      .period-blue {
+        border: 2px solid rgba(0, 123, 255, 1) !important;
+        background: rgba(0, 123, 255, 1) !important;
+      }
+
+      .period-green {
+        border: 2px solid rgba(0, 153, 51, 1) !important;
+        background: rgba(0, 153, 51, 1) !important;
+      }
+
+      .period-orange {
+        border: 2px solid rgba(236, 141, 84, 1) !important;
+        background: rgba(236, 141, 84, 1) !important;
+      }
+
+      .period-purple {
+        border: 2px solid rgba(102, 0, 102, 1) !important;
+        background: rgba(102, 0, 102, 1) !important;
+      }
+
+      .line-blue {
+        background: rgba(0, 123, 255, 1);
+      }
+
+      .line-orange {
+        background: rgba(236, 141, 84, 1);
+      }
+
+      .line-green {
+        background: rgba(0, 153, 51, 1);
+      }
+
+      .line-purple {
+        background: rgba(102, 0, 102, 1);
+      }
+    }
+  }
   .tour-ticket {
+    margin-top: 70px;
+    width: 100%;
     .tour-ticket-title {
       text-align: center;
-      .unit {
-        font-size: 28px;
-        font-weight: bold;
-        color: rgba(255, 0, 0, 1);
-      }
-      .ticket-content {
-        font-size: 20px;
-        font-weight: bold;
-        color: rgba(0, 0, 255, 1);
+      width: 100%;
+      height: 100%;
+      .title {
+        font-size: 35px;
       }
     }
     .tour-ticket-content {
+      position: relative;
       .ticket-content {
         padding-left: 60px;
         .ticket-content-detail {
           margin-bottom: 0;
         }
       }
-      .ticket-title{
+      .ticket-title {
         font-size: 20px;
         font-weight: bold;
         color: rgba(255, 0, 0, 1);
@@ -43,94 +136,60 @@
         justify-content: center;
         margin: 0 240px;
       }
+      .icon {
+        position: absolute;
+        z-index: 10;
+        width: 42px;
+        height: 42px;
+        background: rgba(57, 92, 156, 1);
+        border-radius: 50%;
+      }
+      .service-title {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .button {
+        .btn-primary {
+          background-color: rgba(57, 92, 156, 0.8);
+          &:hover {
+            background-color: rgba(57, 92, 156, 1);
+          }
+          &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(57, 92, 156, 0.5);
+          }
+        }
+      }
     }
   }
-  .tour-schedule {
-    .tour-schedule-day {
-      font-size: 20px;
-      font-weight: bold;
-      color: rgba(0, 0, 255, 1);
-    }
-    .tour-schedule-activate {
-      .content {
-        color: rgba(255, 204, 0, 1);
-        padding-right: 10px;
+  .list-tour {
+    .category-list {
+      .list-item {
+        padding-bottom: 10px;
+        .item {
+          color: rgba(57, 92, 156, 1) !important ;
+          &:hover {
+            color: rgba(129, 157, 207, 1) !important;
+          }
+        }
       }
     }
   }
 }
-
-
-img.slide-image {
-  height: 250px;
-  object-fit: cover;
-  width: 100%;
-}
-
-.day {
-  background: rgb(236, 141, 84);
-  display: inline;
-  padding: 5px 10px;
-  position: absolute;
-  top: 0;
-  color: rgb(255, 255, 255);
-  font-weight: 600;
-}
-
-.name {
-  background: rgba(236, 141, 84, 0);
-  display: inline;
-  padding: 5px 10px;
-  position: absolute;
-  bottom: 0;
-  color: rgb(255, 255, 255);
-  font-weight: 500;
-  font-size: 1.3rem;
-}
-
-.period {
-    text-align: center;
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .line-dash {
     position: absolute;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 1);
     top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  }
+  .text {
     z-index: 10;
-    color: rgb(255, 255, 255);
-}
-
-.line{
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.content-text {
-  padding: 20px 0px;
-  text-align: justify;
-}
-
-.period-blue {
-  border: 2px solid rgb(0, 123, 255) !important;
-  background: rgb(0, 123, 255) !important;
-}
-
-.period-orange {
-  border: 2px solid rgb(236, 141, 84) !important;
-  background: rgb(236, 141, 84) !important;
-}
-
-.line-blue {
-  background: rgb(0, 123, 255);
-}
-
-.line-orange {
-  background: rgb(236, 141, 84);
+    background: rgba(255, 255, 255, 1);
+    padding: 10px;
+  }
 }

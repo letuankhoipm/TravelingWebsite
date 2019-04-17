@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { SeoService } from "@services/seo.service";
 
 interface User {
   uid: string;
@@ -14,7 +15,8 @@ interface User {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [SeoService]
 })
 
 
@@ -28,7 +30,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private afAuth: AngularFireAuth,
-    public router: Router
+    public router: Router,
+    private seoService: SeoService
   ) { }
 
   validateEmail(email) {
@@ -53,6 +56,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.seoService.generateTags({
+        title: 'Quản trị admin',
+        description: 'Đăng nhập để quản trị',
+        slug: 'login',
+        keywords: 'admin page'
+      });
+    }, 2000)
   }
 
 }
