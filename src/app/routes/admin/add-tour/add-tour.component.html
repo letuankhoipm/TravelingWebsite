@@ -1,0 +1,157 @@
+<div class="control">
+  <div (click)="save()" class="create">Lưu</div>
+  <div class="reset">Làm Mới</div>
+</div>
+
+
+<div class="container pt-3 main">
+  <div class="main-flex">
+    <div class="left">
+      <div class="group-wrapper">
+        <label class="label">Tên Tour:</label>
+        <input class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
+      </div>
+      <div class="group-wrapper">
+        <label class="label">Phương Tiện:</label>
+        <input class="input" type="text" name="transport" [(ngModel)]="vehicle" placeholder="Phương Tiện">
+      </div>
+      <div class="group-wrapper">
+        <label class="label">Thời Gian:</label>
+        <div class="row">
+          <div class="col-6">
+            <app-ngx-select (data)="onData($event)" [dataList]="listDayTime"></app-ngx-select>
+          </div>
+          <div class="col-6">
+            <app-ngx-select (data)="onDataNight($event)" [dataList]="listNight"></app-ngx-select>
+          </div>
+        </div>
+      </div>
+      <div class="day" *ngFor="let item of valueDayTime; let index = index">
+        <div class="group-wrapper">
+          <label class="label">Ngày {{item.id}}:</label>
+          <input class="input" type="text" name="ngay{{index + 1}}" [(ngModel)]="item.name" placeholder="Tên Địa Điểm Thăm Quan">
+          <div class="day-grid">
+
+            <div [ngClass]="{'day-last': listDay.last}" class="day-flex" *ngFor="let listDay of listDays">
+              <div class="day-line"></div>
+              <div class="flex-line-hori">
+                <div [ngClass]="{'add-mb20': listDay.last}" class="line-horizontal"></div>
+              </div>
+              <div class="content-text">
+                <textarea [ngClass]="{'add-mb20': listDay.last}" class="textarea" [name]="listDay.name+(index+1)"
+                [(ngModel)]="item.time[listDay.id]" [placeholder]="listDay.placeholder"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="box-image">
+            <app-upload-image [totalTour]="totalTour" [value]="item.id" class="row mx-0"></app-upload-image>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="group-wrapper">
+        <label class="label">Giá Trọn Gói:</label>
+        <input class="input" type="text" name="price" [(ngModel)]="price" placeholder="Giá Trọn Gói">
+      </div>
+      <div class="group-wrapper">
+        <label class="label">Số Người:</label>
+        <input class="input" type="text" name="people" [(ngModel)]="people" placeholder="Số Người Trong Một Đoàn">
+      </div>
+      <div class="title">- Dịch Vụ Của Tour -</div>
+
+      <div *ngFor="let listService of listServices; let index = indexS" class="group-wrapper">
+        <div class="service-title">
+          <div class="service-icon"><i class="fal {{listService.icon}}"></i></div>
+          <div class="service-name">{{listService.name}}</div>
+        </div>
+        <div *ngFor="let itemService of listService.listS; let last = last; let index = index" class="list-service">
+          <div class="line-vertical-service"></div>
+          <div class="line-horizontal-service">
+            <div class="line-horizontal"></div>
+          </div>
+          <div class="input-service">
+            <textarea class="textarea height-textarea" name="{{listService.id}}{{index}}"
+            [(ngModel)]="listService.dataArr[index]" placeholder="Mô Tả"></textarea>
+          </div>
+          <div class="delete-service">
+            <div (click)="deleteListService(index, listService.listS, indexS, listService.dataArr)" class="delete-service-icon"><i
+                class="fal fa-minus"></i></div>
+          </div>
+        </div>
+        <div class="list-service">
+          <div class="line-space"></div>
+        </div>
+        <div class="list-service">
+          <div class="service-add">
+            <div (click)="addListService(listService.listS, indexS, listService.dataArr)" class="icon-add-service"><i
+                class="fal fa-plus"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="title">- Dịch Vụ Trả Phí Riêng -</div>
+      <div *ngFor="let listService of listPay; let index = indexS" class="group-wrapper">
+        <div [ngClass]="{'clear-line-pay': first}"
+          *ngFor="let itemService of listService.listS; let first = first; let index = index" class="list-service">
+          <div class="line-vertical-service"></div>
+          <div class="line-horizontal-service">
+            <div class="line-horizontal"></div>
+          </div>
+          <div class="input-service">
+            <textarea class="textarea height-textarea" name="{{listService.id}}{{index}}"
+            [(ngModel)]="listService.dataArr[index]" placeholder="Mô Tả"></textarea>
+          </div>
+          <div class="delete-service">
+            <div (click)="deleteListServiceL(index, listService.listS, 1, listService.dataArr)" class="delete-service-icon"><i
+                class="fal fa-minus"></i></div>
+          </div>
+        </div>
+        <div class="list-service">
+          <div class="line-space"></div>
+        </div>
+        <div class="list-service">
+          <div class="service-add">
+            <div (click)="addListServiceL(listService.listS, 1, listService.dataArr)" class="icon-add-service"><i
+                class="fal fa-plus"></i></div>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngFor="let listService of listChild; let index = indexS" class="group-wrapper">
+        <div class="service-title">
+          <div class="service-icon"><i class="fal {{listService.icon}}"></i></div>
+          <div class="service-name">{{listService.name}}</div>
+        </div>
+        <div *ngFor="let itemService of listService.listS; let last = last; let index = index" class="list-service">
+          <div class="line-vertical-service"></div>
+          <div class="line-horizontal-service">
+            <div class="line-horizontal"></div>
+          </div>
+          <div class="input-service">
+            <textarea class="textarea height-textarea" name="{{listService.id}}{{index}}"
+            [(ngModel)]="listService.dataArr[index]" placeholder="Mô Tả"></textarea>
+          </div>
+          <div class="delete-service">
+            <div (click)="deleteListServiceL(index, listService.listS, 0, listService.dataArr)" class="delete-service-icon"><i
+                class="fal fa-minus"></i></div>
+          </div>
+        </div>
+        <div class="list-service">
+          <div class="line-space"></div>
+        </div>
+        <div class="list-service">
+          <div class="service-add">
+            <div (click)="addListServiceL(listService.listS, 0, listService.dataArr)" class="icon-add-service"><i
+                class="fal fa-plus"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="group-wrapper">
+        <label class="label">Lưu ý:</label>
+        <textarea class="textarea clear-mt" name="note" [(ngModel)]="note"
+              placeholder="Các Lưu Ý Khác Về Tour"></textarea>
+      </div>
+    </div>
+  </div>
+</div>

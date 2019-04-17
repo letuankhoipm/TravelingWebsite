@@ -1,0 +1,41 @@
+.image-preview {
+    width: 100%;
+    margin: 10px 0px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 100px;
+}
+
+.delete {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: rgb(45, 78, 140);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgb(191, 186, 186);
+}
+
+.loadding {
+    width: calc(((100vw - 240px - 52px) / 100 * 60 - 60px) / 3);
+    border: 1px dashed rgb(194, 194, 194);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(194, 194, 194);
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin: 10px 5px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+    padding: 0px 26px;
+}
+
+.pct {
+    margin-left: 10px;
+}

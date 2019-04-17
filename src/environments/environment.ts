@@ -6,12 +6,12 @@ export const environment = {
   production: false,
 
   firebaseConfig: {
-    apiKey: "AIzaSyCXcxgVirXcJ2UTFESX0F1Te3bZmfhf4Wk",
-    authDomain: "phuongbinh-2019.firebaseapp.com",
-    databaseURL: "https://phuongbinh-2019.firebaseio.com",
-    projectId: "phuongbinh-2019",
-    storageBucket: "phuongbinh-2019.appspot.com",
-    messagingSenderId: "982569276887"
+    apiKey: "AIzaSyAOVW-JGinaLjJ7e54ktk-p7b5Oj7WllMA",
+    authDomain: "phuongbinhtour.firebaseapp.com",
+    databaseURL: "https://phuongbinhtour.firebaseio.com",
+    projectId: "phuongbinhtour",
+    storageBucket: "phuongbinhtour.appspot.com",
+    messagingSenderId: "19928407095"
 },
 };
 

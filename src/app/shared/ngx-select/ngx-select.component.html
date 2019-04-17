@@ -1,6 +1,6 @@
-<div>
+<div class="selectbox">
   <div #selectBox (click)="showSelectBox()" class="select">{{currentOption}} <i class="far fa-chevron-down"></i></div>
   <ul [ngStyle]="{'display':isSelecting ? 'block' : 'none'}" class="list">
-    <li *ngFor="let city of dataList; let i = index" (click)="changeOptionTo(i)" class="item">{{city.name}}</li>
+    <li *ngFor="let city of dataList; let i = index" (click)="changeOptionTo(i); getData(city.number)" class="item">{{city.name}}</li>
   </ul>
 </div>

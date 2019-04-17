@@ -1,3 +1,8 @@
-<p>
-    Đăng nhập thành công vào Dashboard!
-</p>
+<div class="container-fluid">
+  <div class="row row-container">
+    <app-sidebar class="sidebar"></app-sidebar>
+    <main class="main">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
+  </div>
+</div>

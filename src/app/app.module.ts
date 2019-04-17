@@ -15,25 +15,26 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from 'environments/environment';
 import { AuthGuard } from './core/auth.guard';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports:[
- CommonModule,
-NgtUniversalModule,
- 
- TransferHttpCacheModule,
-HttpClientModule,
- 
-    
+  imports: [
+    BrowserModule,
+    CommonModule,
+    NgtUniversalModule,
+
+    TransferHttpCacheModule,
+    HttpClientModule,
+
+
     AppRoutingModule,
     OwlModule,
     NgxPaginationModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
   ],
   providers: [AngularFireDatabase, AngularFireAuth, AuthGuard],
 })

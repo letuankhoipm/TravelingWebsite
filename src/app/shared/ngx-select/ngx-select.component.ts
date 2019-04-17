@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-ngx-select',
@@ -11,6 +11,7 @@ export class NgxSelectComponent implements OnInit {
   @Input() dataList: any[];
   @Input() defaultOption: string | number;
   @Output() selectedValue: any;
+  @Output() data = new EventEmitter<number>();
 
   @ViewChild('selectBox')  selectBox: ElementRef;
 
@@ -21,6 +22,10 @@ export class NgxSelectComponent implements OnInit {
       this.isSelecting = false;
 
     }
+  }
+
+  getData(vl) {
+    this.data.emit(vl);
   }
 
 
@@ -54,5 +59,9 @@ export class NgxSelectComponent implements OnInit {
     this.currentOption = this.dataList[i].name;
     this.isSelecting = !this.isSelecting;
   }
+
+  // getData(vl) {
+  //   alert(vl);
+  // }
 
 }
