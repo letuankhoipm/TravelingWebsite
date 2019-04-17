@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/phuongbinhtourist/",
+    "public": "functions/dist/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "http"
       }
     ]
   }

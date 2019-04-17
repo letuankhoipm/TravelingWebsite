@@ -7,8 +7,8 @@ const routes: Routes = [
         path: '',
         component: ClientsComponent,
         children: [
-            { 
-                path: '', 
+            {
+                path: '',
                 loadChildren: "../../routes/home/home.module#HomeModule"
             },
             {

@@ -1,0 +1,89 @@
+.travel-pack {
+  background-color: #395c9c;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 50px 0;
+}
+
+.travel-pack-content {
+  margin-top: 50px;
+  .travel-pack-content-wrap {
+    .travel-pack-content-left {
+      .travel-pack-content-interactive {
+        background-color: #819dcf;
+        color: #fff;
+        .travel-pack-day-post {
+          padding: 23px 27px;
+        }
+        .travel-pack-interactive {
+          background-color: #395c9c;
+          .travel-pack-icon {
+            transition: all 0.3s;
+            &:hover {
+              color: #819dcf;
+            }
+          }
+        }
+      }
+    }
+
+    .travel-pack-content-right {
+      .travel-pack-image {
+        img {
+          width: 100%;
+        }
+      }
+      .travel-pack-title {
+        font-size: 2rem;
+        padding: 12px 0;
+        a {
+          color: #395c9c;
+          transition: all 0.3s;
+          &:hover {
+            color: #819dcf;
+          }
+        }
+      }
+
+      .travel-pack-describe {
+        font-size: 1rem;
+        color: #474747;
+      }
+
+      .btn--detail {
+        display: inline-block;
+        color: #395c9c;
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 12px 0;
+        transition: all 0.3s;
+        &:hover {
+          color: #819dcf;
+        }
+      }
+    }
+  }
+
+  .travel-pack-kind-list {
+    padding: 0 40px;
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    ul {
+      li {
+        font-size: 1.2rem;
+        a {
+          color: #395c9c;
+          font-weight: 800;
+          transition: all 0.3s;
+          &:hover {
+            color: #819dcf;
+          }
+        }
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@ export const environment = {
     projectId: "phuongbinh-2019",
     storageBucket: "phuongbinh-2019.appspot.com",
     messagingSenderId: "982569276887"
-  },
+},
 };
 
 /*

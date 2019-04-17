@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PlaceComponent } from './place.component';
 import { PlaceRoutingComponent } from './place.routing';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { GalleryComponent } from './place-detail/gallery/gallery.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { GalleryComponent } from './place-detail/gallery/gallery.component';
     GalleryComponent],
   imports: [
     CommonModule,
-    PlaceRoutingComponent
+    PlaceRoutingComponent,
+    NgxPaginationModule
   ],
   exports: [
     PlaceComponent,
