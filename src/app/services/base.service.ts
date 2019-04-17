@@ -5,7 +5,6 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-@Injectable()
 export class BaseService {
     protected basePath = '';
     constructor(protected angularFireDatabase: AngularFireDatabase, protected angularFirestore: AngularFirestore, path: string) {
