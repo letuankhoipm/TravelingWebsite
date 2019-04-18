@@ -1,0 +1,94 @@
+.file {
+    // background: #226fc1;
+    // color: white;
+    // padding: 2px 10px;
+    // border-radius: 5px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+span.file-icon {
+    padding: 0px 5px;
+}
+
+i.fal.fa-images {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+span.file-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 39px 0px;
+}
+
+.dropzone .file-label {
+    font-size: 0.8rem;
+}
+
+// drop
+
+.dropzone { 
+    border: 1px dashed rgb(194, 194, 194);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(194, 194, 194);
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin: 10px 0px;
+    height: 100px;
+  
+    &.hovering {
+        border: 2px solid #0e79ea;
+        color: #dadada !important;
+    }
+  }
+  
+  progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+  }
+
+.image-view {
+    border: 1px dashed rgb(194, 194, 194);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(194, 194, 194);
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin: 10px 0px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+}
+
+.px-10 {
+    padding: 0px 5px !important;
+}
+
+.image-preview {
+    width: 100%;
+    margin: 10px 0px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 100px;
+}
+
+.delete {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: rgb(45, 78, 140);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgb(191, 186, 186);
+}

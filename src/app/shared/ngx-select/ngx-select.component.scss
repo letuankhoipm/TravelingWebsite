@@ -1,8 +1,12 @@
 @import "../../../assets/scss/breakpoints";
 
+.selectbox {
+  position: relative;
+}
+
 .select {
   border: 1px solid #c2c2c2;
-  color: #c2c2c2;
+  color: rgb(39, 37, 37);
   background: white;
   font-size: 0.8rem;
   line-height: 20px;
@@ -27,7 +31,9 @@ ul.list {
   border-left: 1px solid #c2c2c2;
   border-right: 1px solid #c2c2c2;
   position: absolute;
-  width: calc(100% - 30px);
+  // position: relative;
+  width: 100%;
+  // width: 100%;
   display: none;
   height: 250px;
   overflow: auto;

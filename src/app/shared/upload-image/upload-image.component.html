@@ -1,0 +1,25 @@
+<div *ngFor="let item of dataImage" class="col-4 px-10">
+  <div class="image-view">
+    <img class="image-preview" [src]="item.link">
+    <div class="delete" (click)="deleteImage(item.part)"><i class="fal fa-times"></i></div>
+  </div>
+</div>
+
+<div *ngFor="let file of files">
+  <app-upload-task [totalTour]="totalTour" [value]="value" [file]="file"></app-upload-task>
+</div>
+
+
+<div class="col-4 px-10">
+  <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+    [class.hovering]="isHovering">
+    <div class="file">
+      <label class="file-label">
+        <input style="display:none" class="file-input" type="file" (change)="onDrop($event.target.files)" multiple>
+        <span class="file-cta">
+          <i class="fal fa-images"></i> Thêm Hình Ảnh
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
