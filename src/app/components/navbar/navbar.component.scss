@@ -1,13 +1,27 @@
+$colors: (phuongbinh: #395c9c);
+
+@function color($type) {
+  @return map-get($colors, $type);
+}
+
+
 nav {
   z-index: 1000;
 }
+
 nav:not(.scrolled) {
+  .nav-link {
+    &:focus {
+      color: color(phuongbinh) !important;
+    }
+  }
+
   .nav-item {
     border: 1px solid transparent;
     margin-right: 10px;
 
     &.active,
-    &:hover {
+    &:focus &:hover {
       a {
         color: color(phuongbinh) !important;
       }
