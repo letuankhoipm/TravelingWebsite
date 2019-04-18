@@ -25,15 +25,14 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     BrowserModule,
     CommonModule,
     NgtUniversalModule,
-
     TransferHttpCacheModule,
     HttpClientModule,
-
-
     AppRoutingModule,
     OwlModule,
     NgxPaginationModule,
+    AngularFireStorageModule,
     AppRoutingModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [AngularFireDatabase, AngularFireAuth, AuthGuard],
