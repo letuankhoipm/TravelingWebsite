@@ -54,6 +54,15 @@ MIT
 @angular/core
 MIT
 
+@angular/fire
+MIT
+
+@angular/fire/firestore
+MIT
+
+@angular/fire/storage
+MIT
+
 @angular/forms
 MIT
 
@@ -284,6 +293,9 @@ Apache-2.0
 @firebase/polyfill
 Apache-2.0
 
+@firebase/storage
+Apache-2.0
+
 @firebase/util
 Apache-2.0
 
@@ -383,6 +395,10 @@ THE SOFTWARE.
 
 
 firebase/app
+
+firebase/firestore
+
+firebase/storage
 
 ngx-owl-carousel
 MIT
