@@ -106,6 +106,15 @@ darker: darken($colorBlueBase, 10%)
 // ~ tab list
 
 
-// form
-
-// ~form
+// Content Container
+.container-content {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: palette(thisBlue, 'dark') solid 0.5rem;
+  div.wrapper-content {
+    .title {
+      margin-bottom: 2rem;
+    }
+  }
+}
+// Content Container
