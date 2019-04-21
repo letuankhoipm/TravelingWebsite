@@ -1,15 +1,14 @@
-
 <div class="container">
-  <div class="tour-header mb-5">Tour du lịch</div>
+  <div class="tour-header">Tour du lịch</div>
   <div class="tour-content">
     <div class="tour-name mb-4">
-      {{tourName}}
+      {{tour.name}}
     </div>
     <div class="row">
       <div class="col-lg-9 col-sm-9 col-12">
         <div class="tour-schedule">
-          <div class="tour-schedule-detail" *ngFor="let schedule of tourSchedule">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div class="tour-schedule-detail" *ngFor="let schedule of tour.schedule; let i = index">
+            <div id="carouselExampleIndicators{{i}}" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <img
@@ -27,16 +26,17 @@
                     class="d-block w-100" alt="..." class="slide-image">
                 </div>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#carouselExampleIndicators{{i}}" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#carouselExampleIndicators{{i}}" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
-              <div class="day">Ngày {{schedule.day}}</div>
-              <div class="name">{{schedule.content}}</div>
+              <div class="day">Ngày {{i+1}}</div>
+              <div class="name">{{schedule.name}}</div>
+
             </div>
             <div class="row">
               <div class="col-3 time-line" *ngIf="schedule.morning">
@@ -51,21 +51,21 @@
                 <div class="period period-green">Trưa</div>
               </div>
               <div class="col-9 pl-0" *ngIf="schedule.noon">
-                <div class="content-text">{{tourSchedule[0].noon}}</div>
+                <div class="content-text">{{schedule.noon}}</div>
               </div>
               <div class="col-3 time-line" *ngIf="schedule.afternoon">
                 <div class="line line-blue"></div>
                 <div class="period period-blue">Chiều</div>
               </div>
               <div class="col-9 pl-0" *ngIf="schedule.afternoon">
-                <div class="content-text">{{tourSchedule[0].afternoon}}</div>
+                <div class="content-text">{{schedule.afternoon}}</div>
               </div>
               <div class="col-3 time-line" *ngIf="schedule.night">
                 <div class="line line-purple"></div>
                 <div class="period period-purple">Tối</div>
               </div>
               <div class="col-9 pl-0" *ngIf="schedule.night">
-                <div class="content-text">{{tourSchedule[0].night}}</div>
+                <div class="content-text">{{schedule.night}}</div>
               </div>
             </div>
           </div>
@@ -76,8 +76,8 @@
             <div class="content">
               <div class="line-dash"></div>
               <div class="text">
-                <p class="my-0">Dành cho đoàn 15 người</p>
-                <p class="my-0" style="font-size: 2rem"><strong>12.500.000 VNĐ</strong></p>
+                <p class="my-0">Dành cho đoàn {{tour.people}} người</p>
+                <p class="my-0" style="font-size: 2rem"><strong>{{tour.price}} VNĐ</strong></p>
                 <p class="my-0">Bao gồm</p>
               </div>
             </div>
@@ -239,7 +239,8 @@
                 </div>
               </div>
               <div class="notice" style="display: block">
-                <p><span style="text-decoration: underline; display: inline-block">Lưu ý:</span> Tiêu chuẩn 50% vé: được 01 xuất ăn + 01 ghế ngồi và ngủ ghép chung với gia đình</p>
+                <p><span style="text-decoration: underline; display: inline-block">Lưu ý:</span> Tiêu chuẩn 50% vé: được
+                  01 xuất ăn + 01 ghế ngồi và ngủ ghép chung với gia đình</p>
               </div>
             </div>
             <div class="button py-4" style="text-align:center">
