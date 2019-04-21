@@ -19,6 +19,7 @@ import { GalleryComponent } from './place-detail/gallery/gallery.component';
   exports: [
     PlaceComponent,
     PlaceDetailComponent
-  ]
+  ],
 })
 export class PlaceModule { }
+    

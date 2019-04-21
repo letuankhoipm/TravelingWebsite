@@ -1,11 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { FakeTourService } from '@services/tour.fake.service';
+import { map } from 'rxjs/operators';
+import { SeoService } from '@services/seo.service';
 
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
-  styleUrls: ['./place-detail.component.scss']
+  styleUrls: ['./place-detail.component.scss'],
+  providers: [FakeTourService, SeoService]
 })
 export class PlaceDetailComponent implements OnInit {
+  placeFakeData: any;
+  tour = [];
 
   tourName = "KHÁM PHÁ QUẦN ĐẢO NAM DU";
   tourSchedule = [
@@ -36,9 +43,39 @@ export class PlaceDetailComponent implements OnInit {
       name: "Cần Thơ"
     }
   ]
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private fakeTourService: FakeTourService,
+    private seoService: SeoService) {
+    this.placeFakeData = this.fakeTourService.getAlls();
+
+  }
 
   ngOnInit() {
+    // get id
+    this.activatedRoute.params.subscribe((params) => {
+      this.fakeTourService.getById(params['id'])
+        .pipe(
+          map((data) => this.change_alias(data.name))
+        )
+        .subscribe((x) => console.log(x));
+    });
   }
+
+  private change_alias(alias) {
+    var str = alias;
+    str = str.toLowerCase();
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
+    str = str.replace(/ + /g, " ");
+    str = str.trim();
+    return str;
+  }
+
 
 }
