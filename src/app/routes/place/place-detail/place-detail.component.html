@@ -95,9 +95,7 @@
                       <p>Vận chuyển: </p>
                     </div>
                     <div class="service-content">
-                      <p>Xe du lịch đời mới, máy lạnh, phục vụ theo chương trình.</p>
-                      <p>Tàu cao tốc Rạch Giá - Nam Du - Rạch Giá.</p>
-                      <p>Tàu câu tại Nam Du.</p>
+                      <p *ngFor="let transport of tour.transport">{{transport}}</p>
                     </div>
                   </div>
                 </div>
@@ -131,12 +129,7 @@
                       <p>Ăn uống: </p>
                     </div>
                     <div class="service-content">
-                      <p>Khách được lo ăn uống theo chương trình.</p>
-                      <p>Bữa điểm tâm sáng: hủ tiếu, bánh mì ốp la, bánh canh … + cà phê, đá chanh, trà đường …</p>
-                      <p>Bữa ăn chính cơm phần 5 món, với các món ăn đặc sản vùng biển, uống trà đá, trái cây
-                        tráng miệng.
-                      </p>
-                      <p>Tiệc liên hoan với các món ăn đặc sản như: mực, ghẹ, tôm.</p>
+                      <p *ngFor="let eat of tour.eat">{{eat}}</p>
                     </div>
                   </div>
                 </div>
@@ -154,7 +147,7 @@
                       <p>Bảo hiểm: </p>
                     </div>
                     <div class="service-content">
-                      <p>Được bảo hiểm du lịch suốt tuyến tham quan.</p>
+                      <p *ngFor="let protect of tour.protect">{{protect}}</p>
                     </div>
                   </div>
                 </div>
@@ -170,9 +163,7 @@
                       <p>Khách sạn: </p>
                     </div>
                     <div class="service-content">
-                      <p>Tiêu chuẩn nhà nghỉ.</p>
-                      <p>Phòng 2, 3, 4 khách: phòng có máy lạnh…</p>
-                      <p>Phòng có vệ sinh riêng.</p>
+                      <p *ngFor="let hotel of tour.hotel">{{hotel}}</p>
                     </div>
                   </div>
                 </div>
@@ -190,9 +181,7 @@
                       <p>Hướng dẫn viên: </p>
                     </div>
                     <div class="service-content">
-                      <p>Đoàn có hướng dẫn tham quan suốt chuyến du lịch.</p>
-                      <p>Khách được bao vé vào cửa các thắng cảnh theo chương trình.</p>
-                      <p>Hướng dẫn viên vui vẻ, nhiệt tình, năng động, có kiến thức sâu rộng về tuyển điểm.</p>
+                      <p *ngFor="let guide of tour.guide">{{guide}}</p>
                     </div>
                   </div>
                 </div>
@@ -208,7 +197,7 @@
                       <p>Quà tặng: </p>
                     </div>
                     <div class="service-content">
-                      <p>Mỗi vị khách được phục vụ khăn lạnh, nón du lịch, nước suối.</p>
+                      <p *ngFor="let gift of tour.gift">{{gift}}</p>
                     </div>
                   </div>
                 </div>
@@ -232,9 +221,7 @@
                     <p>Giá vé trẻ em: </p>
                   </div>
                   <div class="service-content">
-                    <p>Trẻ em từ 11 tuổi trở lên phải mua 01 vé.</p>
-                    <p>Trẻ em từ 06-11 tuổi mua 50% vé.</p>
-                    <p>Trẻ em dưới 06 tuổi miễn vé (gia đình lo ăn uống, ngủ ghép với gia đình).</p>
+                    <p *ngFor="let child of tour.child">{{child}}</p>
                   </div>
                 </div>
               </div>
