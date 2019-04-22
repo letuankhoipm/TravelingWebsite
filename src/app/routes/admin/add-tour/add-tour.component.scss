@@ -105,6 +105,11 @@
     position: relative;
 }
 
+.last-daytime {
+    height: 20px;
+    display: flex;
+}
+
 .main {
     overflow-y: scroll;
     height: calc(100vh - 70px);

@@ -34,6 +34,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     OwlModule,
     NgxPaginationModule,
     AppRoutingModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [AngularFireDatabase, AngularFireAuth, AuthGuard],

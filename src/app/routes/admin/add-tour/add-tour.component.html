@@ -29,22 +29,30 @@
       <div class="day" *ngFor="let item of valueDayTime; let index = index">
         <div class="group-wrapper">
           <label class="label">Ngày {{item.id}}:</label>
-          <input class="input" type="text" name="ngay{{index + 1}}" [(ngModel)]="item.name" placeholder="Tên Địa Điểm Thăm Quan">
+          <input class="input" type="text" name="ngay{{index + 1}}" [(ngModel)]="item.name"
+            placeholder="Tên Địa Điểm Thăm Quan">
           <div class="day-grid">
 
-            <div [ngClass]="{'day-last': listDay.last}" class="day-flex" *ngFor="let listDay of listDays">
+            <div class="day-flex" *ngFor="let listDay of listDays">
               <div class="day-line"></div>
               <div class="flex-line-hori">
-                <div [ngClass]="{'add-mb20': listDay.last}" class="line-horizontal"></div>
+                <div class="line-horizontal"></div>
               </div>
               <div class="content-text">
-                <textarea [ngClass]="{'add-mb20': listDay.last}" class="textarea" [name]="listDay.name+(index+1)"
-                [(ngModel)]="item.time[listDay.id]" [placeholder]="listDay.placeholder"></textarea>
+                <app-ngx-editor (dataOutput)="changeTextSchedule($event, index, listDay.id)"
+                  [data]="item.time[listDay.id]" [minHeight]="minHeightTextSchedule"
+                  [placeholderInput]="listDay.placeholder">
+                </app-ngx-editor>
               </div>
+            </div>
+            <div class="last-daytime">
+              <div class="day-line"></div>
+              <div class="last-daytime-content"></div>
             </div>
           </div>
           <div class="box-image">
-            <app-upload-image [totalTour]="totalTour" [value]="item.id" class="row mx-0"></app-upload-image>
+            <app-upload-image [valueOld]="valueOld" [totalTour]="totalTour" [value]="item.id" class="row mx-0">
+            </app-upload-image>
           </div>
         </div>
       </div>
@@ -60,7 +68,7 @@
       </div>
       <div class="title">- Dịch Vụ Của Tour -</div>
 
-      <div *ngFor="let listService of listServices; let index = indexS" class="group-wrapper">
+      <div *ngFor="let listService of listServices; let indexS = index" class="group-wrapper">
         <div class="service-title">
           <div class="service-icon"><i class="fal {{listService.icon}}"></i></div>
           <div class="service-name">{{listService.name}}</div>
@@ -71,12 +79,13 @@
             <div class="line-horizontal"></div>
           </div>
           <div class="input-service">
-            <textarea class="textarea height-textarea" name="{{listService.id}}{{index}}"
-            [(ngModel)]="listService.dataArr[index]" placeholder="Mô Tả"></textarea>
+            <app-ngx-editor (dataOutput)="changeTextServices($event, indexS, index)" [data]="listService.dataArr[index]"
+              [minHeight]="minHeightTextService" [placeholderInput]="placeholderService">
+            </app-ngx-editor>
           </div>
           <div class="delete-service">
-            <div (click)="deleteListService(index, listService.listS, indexS, listService.dataArr)" class="delete-service-icon"><i
-                class="fal fa-minus"></i></div>
+            <div (click)="deleteListService(index, listService.listS, indexS, listService.dataArr)"
+              class="delete-service-icon"><i class="fal fa-minus"></i></div>
           </div>
         </div>
         <div class="list-service">
@@ -91,7 +100,7 @@
       </div>
 
       <div class="title">- Dịch Vụ Trả Phí Riêng -</div>
-      <div *ngFor="let listService of listPay; let index = indexS" class="group-wrapper">
+      <div *ngFor="let listService of listPay; let indexS = index" class="group-wrapper">
         <div [ngClass]="{'clear-line-pay': first}"
           *ngFor="let itemService of listService.listS; let first = first; let index = index" class="list-service">
           <div class="line-vertical-service"></div>
@@ -99,12 +108,13 @@
             <div class="line-horizontal"></div>
           </div>
           <div class="input-service">
-            <textarea class="textarea height-textarea" name="{{listService.id}}{{index}}"
-            [(ngModel)]="listService.dataArr[index]" placeholder="Mô Tả"></textarea>
+            <app-ngx-editor (dataOutput)="changeTextPay($event, indexS, index)" [data]="listService.dataArr[index]"
+              [minHeight]="minHeightTextService" [placeholderInput]="placeholderService">
+            </app-ngx-editor>
           </div>
           <div class="delete-service">
-            <div (click)="deleteListServiceL(index, listService.listS, 1, listService.dataArr)" class="delete-service-icon"><i
-                class="fal fa-minus"></i></div>
+            <div (click)="deleteListServiceL(index, listService.listS, 1, listService.dataArr)"
+              class="delete-service-icon"><i class="fal fa-minus"></i></div>
           </div>
         </div>
         <div class="list-service">
@@ -117,8 +127,8 @@
           </div>
         </div>
       </div>
-      
-      <div *ngFor="let listService of listChild; let index = indexS" class="group-wrapper">
+
+      <div *ngFor="let listService of listChild; let indexS = index" class="group-wrapper">
         <div class="service-title">
           <div class="service-icon"><i class="fal {{listService.icon}}"></i></div>
           <div class="service-name">{{listService.name}}</div>
@@ -129,12 +139,13 @@
             <div class="line-horizontal"></div>
           </div>
           <div class="input-service">
-            <textarea class="textarea height-textarea" name="{{listService.id}}{{index}}"
-            [(ngModel)]="listService.dataArr[index]" placeholder="Mô Tả"></textarea>
+            <app-ngx-editor (dataOutput)="changeTextChild($event, indexS, index)" [data]="listService.dataArr[index]"
+              [minHeight]="minHeightTextService" [placeholderInput]="placeholderService">
+            </app-ngx-editor>
           </div>
           <div class="delete-service">
-            <div (click)="deleteListServiceL(index, listService.listS, 0, listService.dataArr)" class="delete-service-icon"><i
-                class="fal fa-minus"></i></div>
+            <div (click)="deleteListServiceL(index, listService.listS, 0, listService.dataArr)"
+              class="delete-service-icon"><i class="fal fa-minus"></i></div>
           </div>
         </div>
         <div class="list-service">
@@ -149,8 +160,11 @@
       </div>
       <div class="group-wrapper">
         <label class="label">Lưu ý:</label>
-        <textarea class="textarea clear-mt" name="note" [(ngModel)]="note"
-              placeholder="Các Lưu Ý Khác Về Tour"></textarea>
+        <app-ngx-editor (dataOutput)="changeTextNote($event)" [data]="note"
+          [minHeight]="minHeightTextSchedule" [placeholderInput]="'Các Lưu Ý Khác Về Tour'">
+        </app-ngx-editor>
+        <!-- <textarea class="textarea clear-mt" name="note" [(ngModel)]="note"
+          placeholder="Các Lưu Ý Khác Về Tour"></textarea> -->
       </div>
     </div>
   </div>

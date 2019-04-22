@@ -21,6 +21,8 @@ export class UploadTaskComponent implements OnInit {
   @Input() file: File;
   @Input() value: number;
   @Input() totalTour: number;
+  @Input() valueOld: number;
+  @Input() list_link: Array<any>;
 
   listLink: any;
   // id = 1;
@@ -36,32 +38,11 @@ export class UploadTaskComponent implements OnInit {
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.getAll().subscribe(lists => {
-      console.log(lists);
-      if(lists[this.totalTour]){
-        this.listLink = lists[this.totalTour];
-      }else{
-        this.listLink = {};
-      }
-      if (this.listLink[1] == undefined) {
-        console.log('Null');
-        this.listLink[1] = [];
-        this.listLink[2] = [];
-        this.listLink[3] = [];
-        this.listLink[4] = [];
-      }
-      // console.log(this.listOld[0].data);
-      // localStorage.setItem('data', JSON.stringify(this.listOld[0].data));
-      // this.totalFilm = lists[0].list.total;
-      // this.getDataLocal = JSON.parse(localStorage.data);
-      console.log(this.listLink);
-    });
     this.startUpload();
-    // this.deleteImage();
   }
 
   deleteImage(path) {
-    var desertRef = this.storage.ref(path);
+    let desertRef = this.storage.ref(path);
     desertRef.delete();
   }
 
@@ -78,7 +59,7 @@ export class UploadTaskComponent implements OnInit {
   startUpload() {
 
     // The storage path
-    const path = `images/${this.totalTour}/${Date.now()}_${this.file.name}`;
+    const path = `images/1/${Date.now()}_${this.file.name}`;
     this.pathImage = path;
 
     // Reference to storage bucket
@@ -91,20 +72,13 @@ export class UploadTaskComponent implements OnInit {
     this.percentage = this.task.percentageChanges();
 
     this.snapshot = this.task.snapshotChanges().pipe(
-      tap(console.log),
+      tap(),
       // The file's download URL
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
-        let creLink = { link: this.downloadURL, part: path };
-        this.listLink[this.value].push(creLink);
-        console.log(this.listLink);
-
-        // let userDoc = this.db.doc(`images/${this.id}`);
-        this.db.doc(`images/${this.totalTour}`).set(this.listLink);
+        this.list_link.push({ link: this.downloadURL, part: path });
       }),
     );
-
-    // this.pushUpload(path, this.file);
   }
 
   isActive(snapshot) {

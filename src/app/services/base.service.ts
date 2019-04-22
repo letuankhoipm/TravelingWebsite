@@ -51,6 +51,11 @@ export class BaseService {
         return this.angularFirestore.doc<any>(itemPath).valueChanges();
     }
 
+    public getByIdPath(id, path) {
+        let itemPath = `${path}/${id}`;
+        return this.angularFirestore.doc<any>(itemPath).valueChanges();
+    }
+
     public deleteById(id) {
         let itemPath = `${this.basePath}/${id}`;
         this.checkLog(this.basePath, 'delete');

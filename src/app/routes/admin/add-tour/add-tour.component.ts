@@ -1,8 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+
+export interface TourL {
+  child?: [];
+  daytime?: number;
+  eat?: [];
+  gift?: [];
+  guide?: [];
+  hotel?: [];
+  name?: string;
+  night?: number;
+  note?: string;
+  pay?: [];
+  people?: number;
+  price?: number;
+  protect?: [];
+  schedule?: [
+    {
+      afternoon?: string;
+      morning?: string,
+      name?: string,
+      night?: string,
+      noon?: string
+    }
+  ];
+  transport?: [];
+  vehicle?: string;
+}
 
 @Component({
   selector: 'app-add-tour',
@@ -11,12 +38,18 @@ import { map } from 'rxjs/operators';
 })
 export class AddTourComponent implements OnInit {
 
+  userDoc: AngularFirestoreDocument<TourL>;
+
   valueDayTime = [{ id: 1, name: '', time: [] }];
   valueOld = 1;
   valueOldNight = 1;
   datas: Observable<any[]>;
   data: any;
   totalTour: number;
+  okData: any = {};
+  minHeightTextSchedule = 70;
+  minHeightTextService = 40;
+  placeholderService = 'Mô tả';
 
   public listDayTime = [
     { name: '1 Ngày', number: 1 },
@@ -45,10 +78,10 @@ export class AddTourComponent implements OnInit {
   ];
 
   public listDays = [
-    { name: 'sang', placeholder: 'Mô tả các hoạt động buổi sáng', last: false, id: 0 },
-    { name: 'trua', placeholder: 'Mô tả các hoạt động buổi trưa', last: false, id: 1 },
-    { name: 'chieu', placeholder: 'Mô tả các hoạt động buổi chiều', last: false, id: 2 },
-    { name: 'toi', placeholder: 'Mô tả các hoạt động buổi tối', last: true, id: 3 },
+    { name: 'sang', placeholder: 'Mô tả các hoạt động buổi sáng', id: 0 },
+    { name: 'trua', placeholder: 'Mô tả các hoạt động buổi trưa', id: 1 },
+    { name: 'chieu', placeholder: 'Mô tả các hoạt động buổi chiều', id: 2 },
+    { name: 'toi', placeholder: 'Mô tả các hoạt động buổi tối', id: 3 },
   ];
 
   public listChilds = [1];
@@ -101,7 +134,7 @@ export class AddTourComponent implements OnInit {
   note = '';
   arrNgay1 = [];
 
-  public dataTour = {
+  dataTour: any = {
     child: [],
     daytime: 2,
     eat: [],
@@ -136,44 +169,10 @@ export class AddTourComponent implements OnInit {
     this.dataTour.note = this.note;
     this.dataTour.people = this.people;
     this.dataTour.price = this.price;
-    
+
     for (let i = 0; i < this.valueOld; i++) {
-      
       this.dataTour.schedule[i].name = this.valueDayTime[i].name;
-      this.dataTour.schedule[i].morning = this.valueDayTime[i].time[0];
-      this.dataTour.schedule[i].noon = this.valueDayTime[i].time[1];
-      this.dataTour.schedule[i].afternoon = this.valueDayTime[i].time[2];
-      this.dataTour.schedule[i].night = this.valueDayTime[i].time[3];
-
-      console.log(this.dataTour.schedule[i].name);
-      
-
-
-      // console.log(this.dataTour.schedule[0].name);
-      // console.log('------');
-      // console.log(this.valueDayTime[0].name);
-      // if(i >= 1){
-      //   console.log(this.dataTour.schedule[1].name);
-      //   console.log('------');
-      //   console.log(this.valueDayTime[1].name);
-      // }
-      // if(i >= 2){
-      //   console.log(this.dataTour.schedule[2].name);
-      //   console.log('------');
-      //   console.log(this.valueDayTime[2].name);
-      // }
-      // if(i >= 3){
-      //   console.log(this.dataTour.schedule[3].name);
-      //   console.log('------');
-      //   console.log(this.valueDayTime[3].name);
-      // }
-      // console.log('===================');
-      
     }
-    console.log(this.dataTour.schedule);
-    // console.log(this.dataTour.schedule[0].name);
-    // console.log(this.dataTour.schedule[1].name);
-    // console.log(this.dataTour.schedule[2].name);
 
     for (let i = 0; i < 6; i++) {
       switch (i) {
@@ -200,10 +199,16 @@ export class AddTourComponent implements OnInit {
     }
     this.dataTour.pay = this.listPay[0].dataArr;
     this.dataTour.child = this.listChild[0].dataArr;
+
+    this.okData = this.dataTour;
     console.log(this.dataTour);
-    console.log(this.valueOld);
-    
-    // console.log(this.listServices[0].dataArr);
+    // console.log(Object.assign({}, this.dataTour));
+
+    // console.log(this.valueOld);
+
+    // this.userDoc = this.db.doc(`tour/${this.totalTour}`);
+    // this.userDoc.set(this.dataTour);
+    // this.db.doc(`tour/${this.totalTour}`).set(JSON.parse(JSON.stringify(this.dataTour)));
 
   }
 
@@ -266,6 +271,40 @@ export class AddTourComponent implements OnInit {
 
     });
     // console.log(this.data);
+  }
+
+  changeTextSchedule(stringOutput, ngay, buoi) {
+    switch (buoi) {
+      case 0:
+        this.dataTour.schedule[ngay].morning = stringOutput;
+        break;
+      case 1:
+        this.dataTour.schedule[ngay].noon = stringOutput;
+        break;
+      case 2:
+        this.dataTour.schedule[ngay].afternoon = stringOutput;
+        break;
+      case 3:
+        this.dataTour.schedule[ngay].night = stringOutput;
+        break;
+      default:
+    }
+  }
+
+  changeTextServices(stringOutput, service, idArr) {
+    this.listServices[service].dataArr[idArr] = stringOutput;
+  }
+
+  changeTextPay(stringOutput, service, idArr) {
+    this.listPay[service].dataArr[idArr] = stringOutput;
+  }
+
+  changeTextChild(stringOutput, service, idArr) {
+    this.listChild[service].dataArr[idArr] = stringOutput;
+  }
+
+  changeTextNote(stringOutput) {
+    this.note = stringOutput;
   }
 
   addListServiceL(arr, name, arrData) {
