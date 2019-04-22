@@ -7,7 +7,7 @@
   },
   "serverless": {
     "provider": "firebase",
-    "firebaseProject": "phuongbinh-2019",
+    "firebaseProject": "phuongbinhtour",
     "project": "phuongbinhtourist",
     "skipInstall": false,
     "directory": ".",

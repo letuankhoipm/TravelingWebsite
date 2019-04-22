@@ -4,7 +4,7 @@
       <ul class="tab-navs w-100">
         <li [class.active]="navTabs.flights" (click)="toggleTab('flights')" class="tab flights d-md-inline-block">
           <i class="fas fa-plane"></i>
-          <a class="">Chuyến bay</a>
+          <a class="">Địa điểm</a>
 
         </li>
         <li [class.active]="navTabs.hotels" (click)="toggleTab('hotels')" class="tab hotels d-md-inline-block">
@@ -16,14 +16,23 @@
           <a class="">Phương tiện</a>
 
         </li>
-        <li [class.active]="navTabs.cruises" (click)="toggleTab('cruises')" class="tab cruises d-md-inline-block">
-          <i class="fas fa-ship"></i>
-          <a class="">Du thuyền</a>
-        </li>
       </ul>
     </div>
+    <div class="container container-content">
 
-    <app-flights-form></app-flights-form>
+      <div class="wrapper-content" *ngIf="navTabs.flights">
+        <h2 class="title">Địa điểm</h2>
+        <p class="detail">Địa điểm du lịch hấp dẫn mà giá cả phải chăng.</p>
+      </div>
+      <div class="wrapper-content" *ngIf="navTabs.hotels">
+          <h2 class="title">Khách Sạn</h2>
+          <p class="detail">Khách sạn gần gũi với thiên nhiên, được các nhà phê bình đánh giá cao.</p>
+      </div>
+      <div class="wrapper-content" *ngIf="navTabs.cars">
+          <h2 class="title">Phương tiện</h2>
+          <p class="detail">Di chuyển đến những địa điểm yêu thích cùng với sự tiện nghi 5⭐</p>
+      </div>
 
+    </div>
   </div>
 </div>

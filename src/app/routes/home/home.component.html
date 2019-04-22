@@ -1,4 +1,4 @@
-<div class="container-background" style="width: 100%;">
+<div #background class="container-background" style="width: 100%;">
 </div>
 <div class="app-search">
     <app-search></app-search>
@@ -9,7 +9,7 @@
         <div class="why">
             <div class="container">
                 <h2 class="tour-card-title mt-0 text-uppercase">dịch vụ tốt nhất</h2>
-                <div class="tour-card-des">{{contentTemp}}
+                <div class="tour-card-des">{{tip}}
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-sm-6 col-12">
@@ -19,8 +19,7 @@
                             </div>
                             <div class="title2">
                                 <h3 class="txt1">Chuyến đi thú vị</h3>
-                                <p class="txt2">{{contentTemp}}</p>
-                                <a href="#" class="txt3">Xem thêm</a>
+                                <p class="txt2">{{tip1}}</p>
                             </div>
                         </div>
                     </div>
@@ -31,8 +30,7 @@
                             </div>
                             <div class="title2">
                                 <h3 class="txt1">Khám phá</h3>
-                                <p class="txt2">{{contentTemp}}</p>
-                                <a href="#" class="txt3">Xem thêm</a>
+                                <p class="txt2">{{tip2}}</p>
                             </div>
                         </div>
                     </div>
@@ -43,8 +41,7 @@
                             </div>
                             <div class="title2">
                                 <h3 class="txt1">Đặt vé</h3>
-                                <p class="txt2">{{contentTemp}}</p>
-                                <a href="#" class="txt3">Xem thêm</a>
+                                <p class="txt2">{{tip3}}</p>
                             </div>
                         </div>
                     </div>
@@ -55,8 +52,7 @@
                             </div>
                             <div class="title2">
                                 <h3 class="txt1">Hỗ trợ tốt</h3>
-                                <p class="txt2">{{contentTemp}}</p>
-                                <a href="#" class="txt3">Xem thêm</a>
+                                <p class="txt2">{{tip4}}</p>
                             </div>
                         </div>
                     </div>
@@ -73,11 +69,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 class="txt1">Gói kì nghỉ Vũng Tàu</h3>
+                        <h3 class="txt1">Bãi biển Long Hải</h3>
                         <p class="txt2">{{parallaxContent}}</p>
                     </div>
                     <div class="col-sm-2 btn">
-                        <a href="#" class="btn-detail">Chi tiết</a>
+                        <a href="https://vi.wikipedia.org/wiki/Long_H%E1%BA%A3i_(th%E1%BB%8B_tr%E1%BA%A5n)" target="_blank" class="btn-detail">Chi tiết</a>
                     </div>
                 </div>
             </div>
@@ -85,8 +81,8 @@
     </div>
 
     <div class="tour-card container">
-        <h2 class="tour-card-title text-uppercase">địa điểm nổi tiếng</h2>
-        <div class="tour-card-des">{{contentTemp}}</div>
+        <h2 class="tour-card-title text-uppercase">các gói du lịch hấp dẫn</h2>
+        <div class="tour-card-des">{{contentTemp1}}</div>
         <owl-carousel #owlElement [options]="customOptions">
             <tour-card *ngFor="let place of places" [place]="place"></tour-card>
         </owl-carousel>

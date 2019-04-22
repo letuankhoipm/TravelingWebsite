@@ -26,7 +26,6 @@ export class SearchComponent implements OnInit {
         this.navTabs[tab] = false;
       }
     }
-
   }
 
 }

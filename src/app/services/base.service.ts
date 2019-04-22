@@ -13,7 +13,7 @@ export class BaseService {
     }
 
     public getAlls(): Observable<any> {
-        let alls = this.angularFirestore.collection<any>(this.basePath, ref => ref.orderBy('createdAt', 'desc')).snapshotChanges().pipe(
+        let alls = this.angularFirestore.collection<any>(this.basePath).snapshotChanges().pipe(
             map(actions => actions.map(a => {
                 const data = a.payload.doc.data();
                 const id = a.payload.doc.id;
