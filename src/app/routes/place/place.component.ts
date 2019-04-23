@@ -147,12 +147,12 @@ export class PlaceComponent implements OnInit {
   public page = 1;
 
   constructor(
-    private router: Router, 
-    private seoService: SeoService, 
-    private placeService: PlaceService, 
+    private router: Router,
+    private seoService: SeoService,
+    private placeService: PlaceService,
     private tourFakeService: FakeTourService,
     private sharedService: SharedService,
-    ) {
+  ) {
 
 
     this.placeData = this.placeService.getAlls();
@@ -168,53 +168,57 @@ export class PlaceComponent implements OnInit {
       this.placeData.subscribe(places => {
         this.places = places;
         let place = places[0];
-          this.seoService.generateTags({
-            title: place.title,
-            description: place.description,
-            slug: place.slug,
-            keywords: place.keywords
-          });
+        this.seoService.generateTags({
+          title: place.title,
+          description: place.description,
+          slug: place.slug,
+          keywords: place.keywords
+        });
       });
     }
-// lay cac thuoc tinhs cua database truyen vao list
+    // lay cac thuoc tinhs cua database truyen vao list
     if (this.tourList$) {
       this.tourList$
         .pipe(
           map((arrayData: any[]) => {
-            return arrayData.map((data)=> {
+            return arrayData.map((data) => {
               console.log(data);
-             return {
+              return {
                 id: data.id,
                 title: data.name,
-                description: data.protect[0]
+                description: data.describe,
+                image: data.images.thumbnail.link,
+                people: data.people,
+                price: data.price
               };
             });
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
+          console.log(this.packs);
         })
     }
 
-    
+
   }
 
   ngAfterViewInit() {
-  //   if(this.state) {
-  //     this.state = this.outlet.activatedRouteData['routing'];
-  // }
+    //   if(this.state) {
+    //     this.state = this.outlet.activatedRouteData['routing'];
+    // }
 
-  // this.router.events
-  //     .subscribe((event) => {
-  //         if (event instanceof NavigationStart) {
+    // this.router.events
+    //     .subscribe((event) => {
+    //         if (event instanceof NavigationStart) {
 
-  //         }
-  //         else if (
-  //             event instanceof NavigationEnd ||
-  //             event instanceof NavigationCancel
-  //         ) {
-  //             this.state = this.outlet.activatedRouteData['routing'];
-  //         }
-  //     });
+    //         }
+    //         else if (
+    //             event instanceof NavigationEnd ||
+    //             event instanceof NavigationCancel
+    //         ) {
+    //             this.state = this.outlet.activatedRouteData['routing'];
+    //         }
+    //     });
   }
 
 }
