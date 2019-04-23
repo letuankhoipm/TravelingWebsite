@@ -12,7 +12,7 @@ export class TourCardComponent implements OnInit {
   // public tourImg = 'assets/images/pp.jpg';
 
 // tslint:disable-next-line: no-input-rename
-  @Input('place') place: any;
+  @Input('tour') tour: any;
 
   constructor(config: NgbRatingConfig) {
     config.max = 5;

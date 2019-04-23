@@ -6,12 +6,13 @@ import { SharedService } from '@services/shared.service';
 import { FakeTourService } from '@services/tour.fake.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TourService } from '@services/tour.service';
 
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.scss'],
-  providers: [SeoService, PlaceService, FakeTourService]
+  providers: [SeoService, PlaceService, FakeTourService, TourService]
 
 })
 export class PlaceComponent implements OnInit {
@@ -22,122 +23,11 @@ export class PlaceComponent implements OnInit {
   state;
   places = [];
   tourList$: Observable<any>;
+  tours = [];
 
   @ViewChild('appOutlet') outlet: RouterOutlet;
 
   public packs: any[];
-
-  // public packs = [
-  //   {
-  //     id: 1,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   },
-  //   {
-  //     id: 5,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   }, {
-  //     id: 6,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   }, {
-  //     id: 7,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   }, {
-  //     id: 8,
-  //     title: 'Gói Du Lịch Vịnh Hạ Long',
-  //     descrile: 'Ghé thăm các gói kỳ nghỉ giá rẻ, tour du lịch',
-  //     dayPost: {
-  //       day: '14',
-  //       month: '4',
-  //       year: '2019'
-  //     }
-  //     ,
-  //     like: 0,
-  //     comment: 0,
-  //     image: 'https://exclusivesmedia.webjet.com.au/uploads/2017/10/9day-vietnam-5-min.jpg'
-  //   },
-  // ];
 
   public listKind = [
     'Dài ngày',
@@ -152,6 +42,7 @@ export class PlaceComponent implements OnInit {
     private placeService: PlaceService,
     private tourFakeService: FakeTourService,
     private sharedService: SharedService,
+    private tourService: TourService
   ) {
 
 
@@ -182,7 +73,7 @@ export class PlaceComponent implements OnInit {
         .pipe(
           map((arrayData: any[]) => {
             return arrayData.map((data) => {
-              console.log(data);
+              // console.log(data);
               return {
                 id: data.id,
                 title: data.name,
@@ -195,11 +86,13 @@ export class PlaceComponent implements OnInit {
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
-          console.log(this.packs);
+          // console.log(this.packs);
         })
     }
 
-
+    this.tourService.getTour().subscribe(tours => {
+      this.tours = tours;
+    });
   }
 
   ngAfterViewInit() {

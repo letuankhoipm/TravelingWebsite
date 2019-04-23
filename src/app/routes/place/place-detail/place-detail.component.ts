@@ -29,7 +29,7 @@ export class PlaceDetailComponent implements OnInit {
 
         this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
           this.tour = tour;
-          console.log(this.tour);
+          // console.log(this.tour);
           this.seoService.generateTags({
             title: tour.name,
             description: tour.name,

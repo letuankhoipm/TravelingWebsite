@@ -1,19 +1,17 @@
 <div class="tour__card">
   <div class="card">
     <div class="tour__card__img">
-      <img class="w-100" src="{{place.image}}" alt="">
-      <div class="hover p-2">
-        <h4>{{place.destination}} <span>17 Office deal</span></h4>
-        <p class="m-0">{{place.infor}}</p>
+      <img class="w-100" [src]="tour.image" alt="">
+      <div class="hover pl-4 pb-2 pt-2">
+        <h4>{{tour.name}}</h4>
       </div>
     </div>
     <div class="tour__card__caption p-4">
-      <h5>{{place.destination}} <span>{{place.duration}}</span></h5>
-      <p>{{place.describe}}</p>
+      <h5>{{tour.name}}</h5>
+      <span class="mt-2">{{tour.daytime}} ngày</span>
+      <p style="-webkit-box-orient: vertical" class="mb-4 content-text content-text-line-clamp">{{tour.describe}}</p>
       <div class="tour__card__rating">
-        <ngb-rating [(rate)]="place.currentRate"></ngb-rating>
-        <span>-{{place.review}}</span>
-        <button class="btn float-right font-weight-bold pt-1 pb-1">Chi tiết</button>
+        <button class="btn float-right font-weight-bold pt-1 pb-1"><a style="color: white;" [routerLink]="['/place/' + tour.id]">Chi tiết</a></button>
       </div>
     </div>
   </div>

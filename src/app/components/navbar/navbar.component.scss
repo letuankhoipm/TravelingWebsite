@@ -1,9 +1,10 @@
-$colors: (phuongbinh: #395c9c);
+$colors: (
+  phuongbinh: #395c9c
+);
 
 @function color($type) {
   @return map-get($colors, $type);
 }
-
 
 nav {
   z-index: 1000;
@@ -11,6 +12,7 @@ nav {
 
 nav:not(.scrolled) {
   .nav-link {
+    font-weight: bold;
     &:focus {
       color: color(phuongbinh) !important;
     }
@@ -28,32 +30,9 @@ nav:not(.scrolled) {
     }
 
     a {
-      padding-top: .9rem !important;
-      padding-bottom: .9rem !important;
+      padding-top: 0.9rem !important;
+      padding-bottom: 0.9rem !important;
     }
-
-    .dropdown-item {
-      cursor: pointer;
-      color: #8c8c8c;
-
-      &:hover {
-        color: color(phuongbinh) !important;
-        background: transparent !important;
-      }
-    }
-  }
-}
-
-.dropdown-item {
-  width: unset;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-left: 0;
-  padding-right: 0;
-
-  &:hover {
-    color: color(phuongbinh) !important;
-    background: transparent !important;
   }
 }
 
@@ -70,17 +49,15 @@ nav:not(.scrolled) {
 .navbar-toggler {
   background: none;
   border: none;
-
-
 }
 
 .navbar-collapse {
-  transition: height .2s linear .2s;
+  transition: height 0.2s linear 0.2s;
 }
 
 .navbar-collapse:not(.collapse) {
   height: auto;
-  transition: height .2s linear 0s;
+  transition: height 0.2s linear 0s;
 }
 
 .navbar-toggler:active,
@@ -103,6 +80,10 @@ nav:not(.scrolled) {
 
 .scrolled.navbar-dark .navbar-toggler .icon-bar {
   background: color(phuongbinh) !important;
+}
+
+.scrolled .nav-link {
+  font-weight: bold;
 }
 
 .navbar-toggler .icon-bar:nth-of-type(1) {
@@ -132,7 +113,6 @@ nav:not(.scrolled) {
 .navbar-toggler.collapsed .icon-bar:nth-of-type(3) {
   transform: rotate(0);
 }
-
 
 #backToTopBtn {
   cursor: pointer;
