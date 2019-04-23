@@ -9,7 +9,6 @@
           </a>
         </div>
         <p class="pt-4">{{phuongbinh.infor}}</p>
-        <a class="top__btn -triangle">Xem thêm</a>
       </div>
 
       <div class="col-lg-3 col-sm-12">
@@ -18,10 +17,10 @@
         </h1>
         <ul>
           <li>
-            <a class="-triangle">Vé máy bay hạng nhất</a>
+            <a class="-triangle">Gói du lịch hạng nhất</a>
           </li>
           <li>
-            <a class="-triangle">Tour hiện có</a>
+            <a class="-triangle" [routerLink]="['/place']">Tour hiện có</a>
           </li>
         </ul>
         <div class="top__social">
@@ -35,10 +34,10 @@
           </div>
           <div class="top__social__item ">
             <div class="origin wrap">
-             <a><i class="fab fa-google-plus-g icon icon--google"></i></a>
+              <a><i class="fab fa-google-plus-g icon icon--google"></i></a>
             </div>
             <div class="hover hover--google wrap">
-             <a><i class="fab fa-google-plus-g icon icon--google"></i></a>
+              <a><i class="fab fa-google-plus-g icon icon--google"></i></a>
             </div>
           </div>
           <div class="top__social__item">
@@ -47,15 +46,6 @@
             </div>
             <div class="hover hover--youtube wrap">
               <a><i class="fab fa-youtube icon icon--youtube"></i></a>
-            </div>
-          </div>
-          
-          <div class="top__social__item">
-            <div class="origin wrap">
-              <a><i class="fab fa-zalo icon icon--zalo"></i></a>
-            </div>
-            <div class="hover hover--zalo wrap">
-              <a><i class="fab fa-zalo icon icon--zalo"></i></a>
             </div>
           </div>
         </div>
@@ -73,7 +63,8 @@
           </div>
           <div class="top__twiter__item twiter-2">
             <a>@aketa1458</a>
-            <span>Dịch vụ thật sự tốt, giá thành phù hợp với khách hàng trong nước. Tôi nghĩ đây là một sự lựa chọn không tồi khi sử dụng dịch vụ của Phương Bình</span>
+            <span>Dịch vụ thật sự tốt, giá thành phù hợp với khách hàng trong nước. Tôi nghĩ đây là một sự lựa chọn
+              không tồi khi sử dụng dịch vụ của Phương Bình</span>
             <div class="time">2 ngày trước</div>
           </div>
         </div>
@@ -92,7 +83,7 @@
         </div>
         <h1 class="top__phone">{{phuongbinh.phone}}</h1>
         <div class="support">
-          <a class="top__support">pkd.phuongbinhtouris@gmail.com</a>
+          <a class="top__support">phuongbinhtourist@gmail.com</a>
         </div>
       </div>
 
@@ -110,7 +101,7 @@
           Copyright © 2019
         </li>
         <li>
-          <a class="bold">GoCodee</a>
+          <a class="bold" href="https://gocodee.com/" target="_blank">GoCodee</a>
         </li>
         <li>
           <a>Chính sách bảo mật</a>
@@ -119,7 +110,7 @@
           <a>Chúng tôi</a>
         </li>
         <li>
-          <a>Liên lạc hổ trợ</a>
+          <a [routerLink]="['/contact']">Liên lạc hổ trợ</a>
         </li>
       </ul>
     </div>
