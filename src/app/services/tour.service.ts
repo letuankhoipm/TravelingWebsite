@@ -9,9 +9,17 @@ export class TourService {
     constructor(protected angularFireDatabase: AngularFireDatabase, protected angularFirestore: AngularFirestore) {
     }
     
-    getTour(value) {
-        return this.angularFirestore.doc<any>(`${value}`).valueChanges();
-    }
+    getTour() {
+        let dataTours: Observable<any[]>;
+        dataTours = this.angularFirestore.collection<any>('tour').snapshotChanges().pipe(map(changes => {
+          return changes.map(a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        }));
+        return dataTours;
+      }
     getTourbyID(value, id) {
         return this.angularFirestore.doc<any>(`${value}/${id}`).valueChanges();
     }

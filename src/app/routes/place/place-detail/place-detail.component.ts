@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FakeTourService } from '@services/tour.fake.service';
 import { map } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
@@ -9,56 +8,48 @@ import { TourService } from '@services/tour.service';
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
   styleUrls: ['./place-detail.component.scss'],
-  providers: [TourService, FakeTourService, SeoService]
+  providers: [TourService, SeoService]
 
 })
 export class PlaceDetailComponent implements OnInit {
-  placeFakeData: any;
-  // tour = [];
+  tours = [];
   tour: any;
   id: any;
   images: any;
 
   constructor(private tourService: TourService, private route: ActivatedRoute,
-    private fakeTourService: FakeTourService,
     private seoService: SeoService) {
-      this.placeFakeData = this.fakeTourService.getAlls();
   }
 
   ngOnInit() {
-    // get id
-    // this.activatedRoute.params.subscribe((params) => {
-    //   this.fakeTourService.getById(params['id'])
-    //     .pipe(
-    //       map((data) => this.change_alias(data.name))
-    //     )
-    //     .subscribe((x) => console.log(x));
-    // });
-    // duc viet
+
     this.route.params.subscribe(params => {
       if (params['id'] != 'create') {
-          this.id = params['id'];
-          // console.log(this.id);
-          
+        this.id = params['id'];
 
-          this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
-            this.tour = tour;
-            // console.log(this.tour);    
-            // console.log(this.change_alias(tour.name));      
-            this.seoService.generateTags({
-              title: tour.name,
-              description: tour.name,
-              slug: this.id,
-              keywords: this.change_alias(tour.name)
-            });
-          })
+        this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
+          this.tour = tour;
+          console.log(this.tour);
+          this.seoService.generateTags({
+            title: tour.name,
+            description: tour.name,
+            slug: this.id,
+            keywords: this.change_alias(tour.name)
+          });
+        })
 
-          this.tourService.getTourbyID("images", this.id).subscribe(images => {
-              this.images = images;
-              // console.log(this.images);
-          })
+
+
+        this.tourService.getTourbyID("images", this.id).subscribe(images => {
+          this.images = images;
+        })
+
       }
-  });
+    });
+
+    this.tourService.getTour().subscribe(tours => {
+      this.tours = tours;
+    });
   }
 
   private change_alias(alias) {
