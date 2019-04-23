@@ -14,8 +14,8 @@ import { TourService } from '@services/tour.service';
 })
 export class PlaceDetailComponent implements OnInit {
   placeFakeData: any;
-  tour = [];
-  // tour: any;
+  // tour = [];
+  tour: any;
   id: any;
   images: any;
 
@@ -42,7 +42,13 @@ export class PlaceDetailComponent implements OnInit {
 
           this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
             this.tour = tour;
-            console.log(this.tour);
+            console.log(this.tour);           
+            this.seoService.generateTags({
+              title: tour.name,
+              description: tour.gift,
+              slug: this.id,
+              keywords: tour.keywords
+            });
           })
 
           this.tourService.getTourbyID("images", this.id).subscribe(images => {
