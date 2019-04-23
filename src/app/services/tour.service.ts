@@ -11,7 +11,7 @@ export class TourService {
     
     getTour() {
         let dataTours: Observable<any[]>;
-        dataTours = this.angularFirestore.collection('tour').snapshotChanges().pipe(map(changes => {
+        dataTours = this.angularFirestore.collection<any>('tour').snapshotChanges().pipe(map(changes => {
           return changes.map(a => {
             const data = a.payload.doc.data() as any;
             data.id = a.payload.doc.id;
