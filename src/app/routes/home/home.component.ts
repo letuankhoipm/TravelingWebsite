@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit {
   public contentTemp = 'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản.';
   public contentTemp1 = 'Tiền nhiều để làm gì,hay đi du lịch ngay khi chúng ta còn có thể, thanh xuân là đi đây đi đó để không hối tiếc tuổi trẻ của mình.';
   public parallaxContent = 'Là thị trấn nằm ở tỉnh Bà Rịa - Vũng Tàu, cách thành phố Vũng Tàu 12km, Long Hải được thiên nhiên ưu ái ban tặng nhiều cảnh đẹp thơ mộng của núi, của biển và của rừng hoa anh đào sắp trổ bông. Và để có một ngày nghỉ đầy thư giãn thì du khách hãy nhanh tay mua ngay tour du lịch Long Hải để được hòa mình cùng với biển cả, để ngắm nhìn bình minh dần hiện lên trên biển hay hoàng hôn khuất dần trầm mình xuống mặt biển mênh mông.';
-  public tip = 'Một công ty muốn phát triển thì dịch vụ phải luôn đi đầu, vì vậy chúng tôi luôn luôn đề cao chất lượng phục vụ để mang tới quý khách hàng những trải nghiệm tốt nhất.'
-  public tip1 = 'Khao khát cháy bỏng được đi du lịch trong mùa hè này, nhưng không biết nên bắt đầu từ đâu hoặc làm thế nào để chuyến đi chơi thực sự thú vị và ấn tượng.'; 
-  public tip2 = 'Du lịch khám phá là khái niệm khá mới mẻ ở Việt Nam nhưng rất phổ biến trên toàn thế giới.'; 
-  public tip3 = 'Bạn chỉ việc gửi cho chúng tôi những gì bạn muốn, việc còn lại hãy để chúng tôi lo, liên hệ ngay để được tư vấn về những chuyến đi tuyệt vời.'; 
-  public tip4 = 'Hệ thống chăm sóc khách hàng luôn hoạt động 24/7 sẵn sàng phản hồi bất cứ khi nào quý khách có thắc mắc.'; 
-  
-  
+  public tip = 'Một công ty muốn phát triển thì dịch vụ phải luôn đi đầu, vì vậy chúng tôi luôn luôn đề cao chất lượng phục vụ để mang tới quý khách hàng những trải nghiệm tốt nhất.';
+  public tip1 = 'Khao khát cháy bỏng được đi du lịch trong mùa hè này, nhưng không biết nên bắt đầu từ đâu hoặc làm thế nào để chuyến đi chơi thực sự thú vị và ấn tượng.';
+  public tip2 = 'Du lịch khám phá là khái niệm khá mới mẻ ở Việt Nam nhưng rất phổ biến trên toàn thế giới.';
+  public tip3 = 'Bạn chỉ việc gửi cho chúng tôi những gì bạn muốn, việc còn lại hãy để chúng tôi lo, liên hệ ngay để được tư vấn về những chuyến đi tuyệt vời.';
+  public tip4 = 'Hệ thống chăm sóc khách hàng luôn hoạt động 24/7 sẵn sàng phản hồi bất cứ khi nào quý khách có thắc mắc.';
+
+
   @ViewChild('background') bgContainer: ElementRef;
 
   public partnerImagesUrl = [
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
       destination: 'Bahamas', duration: 'Tour 7 Ngày', review: '168 Lượt đánh giá', infor: 'Thiên đường Trung đông', image: 'assets/images/pp.jpg', currentRate: 3,
       describe: this.contentTemp
     },
-  ]
+  ];
 
   public customOptions: any = {
     margin: 20,
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
         items: 3
       },
     }
-  }
+  };
 
   constructor(private seoService: SeoService, private homeService: HomeService) {
     this.alls = this.homeService.getAlls();
@@ -94,8 +94,8 @@ export class HomeComponent implements OnInit {
     if (this.alls) {
       this.alls.subscribe(homes => {
         this.homes = homes;
-        let home = homes[0];
-          this.seoService.generateTags({
+        const home = homes[0];
+        this.seoService.generateTags({
             title: home.title,
             description: home.description,
             slug: home.slug,
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
     const bg = new Image();
     bg.src = '/assets/images/background-beach-2.png';
     bg.onload = () => {
-      this.bgContainer.nativeElement.setAttribute("style","background-image: url(" + bg.src +');');
-    }
+      this.bgContainer.nativeElement.setAttribute("style", "background-image: url(" + bg.src + ');');
+    };
   }
 }
