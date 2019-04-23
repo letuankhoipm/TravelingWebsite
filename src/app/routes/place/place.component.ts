@@ -22,6 +22,7 @@ export class PlaceComponent implements OnInit {
   state;
   places = [];
   tourList$: Observable<any>;
+  tours : any;
 
   @ViewChild('appOutlet') outlet: RouterOutlet;
 
@@ -86,7 +87,9 @@ export class PlaceComponent implements OnInit {
           console.log(this.packs);
         });
     }
-
+    this.tourService.getAlls().subscribe(tours => {
+      this.tours = tours;
+    });
 
   }
 

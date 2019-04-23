@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.tourService.getTour().subscribe(tours => {
+    this.tourService.getAlls().subscribe(tours => {
 
       const sluck = (data: any) => {
         const temp = {
