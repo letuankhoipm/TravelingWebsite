@@ -27,7 +27,7 @@ export class PlaceDetailComponent implements OnInit {
       if (params['id'] != 'create') {
         this.id = params['id'];
 
-        this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
+        this.tourService.getById(this.id).subscribe(tour => {
           this.tour = tour;
           console.log(this.tour);
           this.seoService.generateTags({
@@ -40,20 +40,21 @@ export class PlaceDetailComponent implements OnInit {
 
 
 
-        this.tourService.getTourbyID("images", this.id).subscribe(images => {
-          this.images = images;
-        })
+        // this.tourService.getById(this.id).subscribe(images => {
+        //   this.images = images;
+        // });
 
       }
     });
 
-    this.tourService.getTour().subscribe(tours => {
+    this.tourService.getAlls().subscribe(tours => {
+
       this.tours = tours;
     });
   }
 
   private change_alias(alias) {
-    var str = alias;
+    let str = alias;
     str = str.toLowerCase();
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");

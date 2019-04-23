@@ -196,7 +196,7 @@ export class PlaceComponent implements OnInit {
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
           console.log(this.packs);
-        })
+        });
     }
 
 
