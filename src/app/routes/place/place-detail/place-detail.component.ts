@@ -38,23 +38,24 @@ export class PlaceDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params['id'] != 'create') {
           this.id = params['id'];
-          console.log(this.id);
+          // console.log(this.id);
+          
 
           this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
             this.tour = tour;
-            console.log(this.tour);           
+            // console.log(this.tour);    
+            // console.log(this.change_alias(tour.name));      
             this.seoService.generateTags({
               title: tour.name,
-              description: tour.gift,
+              description: tour.name,
               slug: this.id,
-              keywords: tour.keywords
+              keywords: this.change_alias(tour.name)
             });
           })
 
           this.tourService.getTourbyID("images", this.id).subscribe(images => {
               this.images = images;
-              console.log(this.images);
-
+              // console.log(this.images);
           })
       }
   });
