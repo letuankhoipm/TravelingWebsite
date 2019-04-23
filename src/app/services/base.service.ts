@@ -9,11 +9,11 @@ export class BaseService {
     protected basePath = '';
     constructor(protected angularFireDatabase: AngularFireDatabase, protected angularFirestore: AngularFirestore, path: string) {
         this.basePath = path;
-        // angularFirestore.firestore.settings({});
+        angularFirestore.firestore.settings({timestampsInSnapshots: true});
     }
 
     public getAlls(): Observable<any> {
-        let alls = this.angularFirestore.collection<any>(this.basePath).snapshotChanges().pipe(
+        const alls = this.angularFirestore.collection<any>(this.basePath).snapshotChanges().pipe(
             map(actions => actions.map(a => {
                 const data = a.payload.doc.data();
                 const id = a.payload.doc.id;
