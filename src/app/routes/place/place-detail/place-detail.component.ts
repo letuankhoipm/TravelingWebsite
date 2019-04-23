@@ -17,7 +17,9 @@ export class PlaceDetailComponent implements OnInit {
   id: any;
   images: any;
 
-  constructor(private tourService: TourService, private route: ActivatedRoute,
+  constructor(
+    private tourService: TourService,
+    private route: ActivatedRoute,
     private seoService: SeoService) {
   }
 
@@ -36,7 +38,7 @@ export class PlaceDetailComponent implements OnInit {
             slug: this.id,
             keywords: this.change_alias(tour.name)
           });
-        })
+        });
 
 
 
