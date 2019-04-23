@@ -14,7 +14,7 @@
         background-color: #819dcf;
         color: #fff;
         .travel-pack-day-post {
-          padding: 23px 27px;
+          padding: 18px 20px;
         }
         .travel-pack-interactive {
           background-color: #395c9c;
@@ -65,22 +65,15 @@
     }
   }
 
-  .travel-pack-kind-list {
-    padding: 0 40px;
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    ul {
-      li {
-        font-size: 1.2rem;
-        a {
-          color: #395c9c;
-          font-weight: 800;
+  .list-tour {
+    .category-list {
+      .list-item {
+        padding-bottom: 10px;
+        .item {
+          color: rgba(57, 92, 156, 1) !important ;
           transition: all 0.3s;
           &:hover {
-            color: #819dcf;
+            color: rgba(129, 157, 207, 1) !important;
           }
         }
       }
