@@ -240,37 +240,9 @@
         <div class="list-tour">
           <h4>Danh sách tour</h4>
           <ul class="category-list">
-            <li class="list-item">
-              <a href="" class="item">Mỹ Tho - Cần Thơ
+            <li class="list-item" *ngFor="let list of tours">
+              <a [routerLink]="['/place/', list.id]" class="item">{{list.name}}
               </a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Phan Thiết - Mũi né IKO
-              </a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Đà Nẵng - Hội An</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Bangkok - Pattaya</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Tokyo - Núi Phú Sĩ</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Seoul - Everland</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Bến Tre - Tiền Giang</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Nha Trang - Đà Lạt</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Nha Trang - Vinpearland</a>
-            </li>
-            <li class="list-item">
-              <a href="" class="item">Miền Trung - Huế - Động Thiên Đường</a>
             </li>
           </ul>
         </div>

@@ -15,6 +15,7 @@ import { TourService } from '@services/tour.service';
 export class PlaceDetailComponent implements OnInit {
   placeFakeData: any;
   tour = [];
+  tours = [];
   // tour: any;
   id: any;
   images: any;
@@ -22,7 +23,7 @@ export class PlaceDetailComponent implements OnInit {
   constructor(private tourService: TourService, private route: ActivatedRoute,
     private fakeTourService: FakeTourService,
     private seoService: SeoService) {
-      this.placeFakeData = this.fakeTourService.getAlls();
+    this.placeFakeData = this.fakeTourService.getAlls();
   }
 
   ngOnInit() {
@@ -37,21 +38,19 @@ export class PlaceDetailComponent implements OnInit {
     // duc viet
     this.route.params.subscribe(params => {
       if (params['id'] != 'create') {
-          this.id = params['id'];
-          console.log(this.id);
+        this.id = params['id'];
+        console.log(this.id);
 
-          this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
-            this.tour = tour;
-            console.log(this.tour);
-          })
-
-          this.tourService.getTourbyID("images", this.id).subscribe(images => {
-              this.images = images;
-              console.log(this.images);
-
-          })
+        this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
+          this.tour = tour;
+          console.log(this.tour);
+        })
       }
-  });
+    });
+    this.tourService.getTour().subscribe(tours => {
+      this.tours = tours;
+      console.log(this.tours);
+    });
   }
 
   private change_alias(alias) {
