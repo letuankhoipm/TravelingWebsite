@@ -9,17 +9,17 @@
   &__img {
     &:hover {
       .hover {
-        transition-duration: .5s;
+        transition-duration: 0.5s;
         opacity: 1 !important;
       }
     }
   }
 
   &__caption {
-
     h5 {
       cursor: pointer;
-      font-size: 21px;
+      font-size: 20px;
+      font-weight: bold;
       color: #636363;
 
       &:hover {
@@ -47,22 +47,26 @@
 
     span {
       cursor: ss;
-      color: #959595
+      color: #959595;
     }
 
     button {
       color: white;
       background: rgba(57, 92, 156, 1);
-      border-radius: 0;
+      border-radius: 5px;
+
+      &:hover {
+        transition-duration: .4s;
+        background: rgba(48, 105, 212, 0.7);
+      }
     }
   }
 }
 
-
 .hover {
   position: absolute;
   bottom: 0px;
-  background: rgba(57, 92, 156, .7);
+  background: rgba(57, 92, 156, 0.7);
   width: 100%;
   opacity: 0;
 
@@ -85,4 +89,15 @@
 
 .tour__card__img {
   position: relative;
+}
+
+.content-text {
+  width: 100%;
+  overflow: hidden;
+}
+
+.content-text-line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
