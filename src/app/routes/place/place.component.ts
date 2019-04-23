@@ -3,15 +3,15 @@ import { Router, RouterOutlet, NavigationStart, NavigationCancel, NavigationEnd,
 import { SeoService } from '@services/seo.service';
 import { PlaceService } from "@services/place.service";
 import { SharedService } from '@services/shared.service';
-import { FakeTourService } from '@services/tour.fake.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TourService } from '@services/tour.service';
 
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.scss'],
-  providers: [SeoService, PlaceService, FakeTourService]
+  providers: [SeoService, PlaceService, TourService]
 
 })
 export class PlaceComponent implements OnInit {
@@ -147,20 +147,19 @@ export class PlaceComponent implements OnInit {
   public page = 1;
 
   constructor(
-    private router: Router,
     private seoService: SeoService,
+    private tourService: TourService,
     private placeService: PlaceService,
-    private tourFakeService: FakeTourService,
     private sharedService: SharedService,
   ) {
 
 
     this.placeData = this.placeService.getAlls();
-    sharedService.title.subscribe(title => {
+    this.sharedService.title.subscribe(title => {
       this.title = title;
     });
 
-    this.tourList$ = this.tourFakeService.getAlls();
+    this.tourList$ = this.tourService.getAlls();
   }
 
   ngOnInit() {

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, share, tap } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-place-detail',
@@ -13,6 +14,7 @@ import { TourService } from '@services/tour.service';
 })
 export class PlaceDetailComponent implements OnInit {
   tours = [];
+  tour$: Observable<any>;
   tour: any;
   id: any;
   images: any;
@@ -29,9 +31,18 @@ export class PlaceDetailComponent implements OnInit {
       if (params['id'] != 'create') {
         this.id = params['id'];
 
-        this.tourService.getById(this.id).subscribe(tour => {
+        this.tour$ = this.tourService.getById(this.id)
+          .pipe(
+            tap(x=> console.log(x))
+          );
+        this.tour$.subscribe((tour) => {
           this.tour = tour;
-          console.log(this.tour);
+          this.tour.images = this.objectToArray(tour.images);
+          console.log(this.tour.images);
+
+        });
+
+        this.tour$.subscribe(tour => {
           this.seoService.generateTags({
             title: tour.name,
             description: tour.name,
@@ -48,7 +59,6 @@ export class PlaceDetailComponent implements OnInit {
 
       }
     });
-
     this.tourService.getAlls().subscribe(tours => {
 
       this.tours = tours;
@@ -71,5 +81,15 @@ export class PlaceDetailComponent implements OnInit {
     return str;
   }
 
+  private objectToArray(obj) {
+    const arr = [];
+    for (const day in obj) {
+      if (day === 'thumbnail') {
+        continue;
+      }
+      arr.push(obj[day]);
+    }
+    return arr;
+  }
 
 }
