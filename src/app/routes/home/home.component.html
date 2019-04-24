@@ -73,7 +73,8 @@
                         <p class="txt2">{{parallaxContent}}</p>
                     </div>
                     <div class="col-sm-2 btn">
-                        <a href="https://vi.wikipedia.org/wiki/Long_H%E1%BA%A3i_(th%E1%BB%8B_tr%E1%BA%A5n)" target="_blank" class="btn-detail">Chi tiết</a>
+                        <a href="https://vi.wikipedia.org/wiki/Long_H%E1%BA%A3i_(th%E1%BB%8B_tr%E1%BA%A5n)"
+                            target="_blank" class="btn-detail">Chi tiết</a>
                     </div>
                 </div>
             </div>
@@ -83,9 +84,11 @@
     <div class="tour-card container">
         <h2 class="tour-card-title text-uppercase">các gói du lịch hấp dẫn</h2>
         <div class="tour-card-des">{{contentTemp1}}</div>
-        <owl-carousel #owlElement [options]="customOptions">
-            <tour-card *ngFor="let place of places" [place]="place"></tour-card>
-        </owl-carousel>
+        <ng-template [ngIf]="tours">
+            <owl-carousel #owlElement [options]="customOptions">
+                <tour-card *ngFor="let tour of tours" [tour]="tour"></tour-card>
+            </owl-carousel>
+        </ng-template>
     </div>
 
     <div class="happy">

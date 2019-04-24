@@ -1,17 +1,17 @@
 <div class="container">
   <div class="travel-pack text-center">
-    GÓI DU LỊCH
+   TOUR DU LỊCH
   </div>
 
   <div class="row travel-pack-content">
-    <div class="col-lg-9 col-sm-12">
+    <div class="col-lg-9 col-sm-9">
       <div *ngIf="packs">
-        <div class="row travel-pack-content-wrap"
+        <div class="row travel-pack-content-wrap mt-4"
         *ngFor="let pack of packs | paginate: { itemsPerPage: 7, currentPage: page }">
         <div class="col-lg-2 col-md-3 col-sm-12 pr-0 travel-pack-content-left">
           <div class="travel-pack-content-interactive text-center">
             <div class="travel-pack-day-post">
-              <!-- {{ pack.dayPost.day }} Tháng {{ pack.dayPost.month }} -->
+              Giá: {{ pack.price }}
             </div>
             <div class="travel-pack-interactive">
               <span class="mr-3">
@@ -30,35 +30,34 @@
             <img [src]="pack.image" alt="">
           </div>
           <h1 class="travel-pack-title">
-            <a href="">
+            <a [routerLink]="['/place/' + pack.id]">
               {{ pack.title }}
             </a>
           </h1>
           <div class="travel-pack-describe">
             {{ pack.description }}
           </div>
-          <a href="" class="btn--detail">XEM CHI TIẾT</a>
+          <a [routerLink]="['/place/' + pack.id]" class="btn--detail">XEM CHI TIẾT</a>
         </div>
 
       </div>
       </div>
-      
+
       <div class="row m-4">
         <div class="col-lg-12">
           <pagination-controls (pageChange)="page = $event"></pagination-controls>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-sm-12 travel-pack-kind-list">
-      <h1>Loại gói</h1>
-      <ul class="mt-4">
-        <li *ngFor="let kind of listKind" class="my-1">
-          <a href="">
-            {{ kind }}
-          </a>
-        </li>
-      </ul>
-    </div>
+    <div class="col-lg-3 col-sm-3 mt-4">
+      <div class="list-tour pl-3">
+        <h4>Danh sách tour</h4>
+        <ul class="category-list">
+          <li class="list-item" *ngFor="let list of tours">
+            <a [routerLink]="['/place/', list.id]" class="item">{{list.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
   </div>
-
 </div>

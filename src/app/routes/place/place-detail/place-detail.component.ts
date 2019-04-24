@@ -1,61 +1,72 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FakeTourService } from '@services/tour.fake.service';
-import { map } from 'rxjs/operators';
+import { map, share, tap } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
   styleUrls: ['./place-detail.component.scss'],
-  providers: [TourService, FakeTourService, SeoService]
+  providers: [TourService, SeoService]
 
 })
 export class PlaceDetailComponent implements OnInit {
-  placeFakeData: any;
-  tour = [];
-  // tour: any;
+  tours = [];
+  tour$: Observable<any>;
+  tour: any;
   id: any;
   images: any;
 
-  constructor(private tourService: TourService, private route: ActivatedRoute,
-    private fakeTourService: FakeTourService,
+  constructor(
+    private tourService: TourService,
+    private route: ActivatedRoute,
     private seoService: SeoService) {
-      this.placeFakeData = this.fakeTourService.getAlls();
   }
 
   ngOnInit() {
-    // get id
-    // this.activatedRoute.params.subscribe((params) => {
-    //   this.fakeTourService.getById(params['id'])
-    //     .pipe(
-    //       map((data) => this.change_alias(data.name))
-    //     )
-    //     .subscribe((x) => console.log(x));
-    // });
-    // duc viet
+
     this.route.params.subscribe(params => {
       if (params['id'] != 'create') {
-          this.id = params['id'];
-          console.log(this.id);
+        this.id = params['id'];
 
-          this.tourService.getTourbyID("tour", this.id).subscribe(tour => {
-            this.tour = tour;
-            console.log(this.tour);
-          })
+        this.tour$ = this.tourService.getById(this.id)
+          .pipe(
+            tap(x=> console.log(x))
+          );
+        this.tour$.subscribe((tour) => {
+          this.tour = tour;
+          this.tour.images = this.objectToArray(tour.images);
+          console.log(this.tour.images);
 
-          this.tourService.getTourbyID("images", this.id).subscribe(images => {
-              this.images = images;
-              console.log(this.images);
+        });
 
-          })
+        this.tour$.subscribe(tour => {
+          this.seoService.generateTags({
+            title: tour.name,
+            description: tour.name,
+            slug: this.id,
+            keywords: this.change_alias(tour.name)
+          });
+        });
+
+
+
+        // this.tourService.getById(this.id).subscribe(images => {
+        //   this.images = images;
+        // });
+
       }
-  });
+    });
+    this.tourService.getAlls().subscribe(tours => {
+
+      this.tours = tours;
+    });
   }
 
   private change_alias(alias) {
-    var str = alias;
+    let str = alias;
     str = str.toLowerCase();
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -70,5 +81,15 @@ export class PlaceDetailComponent implements OnInit {
     return str;
   }
 
+  private objectToArray(obj) {
+    const arr = [];
+    for (const day in obj) {
+      if (day === 'thumbnail') {
+        continue;
+      }
+      arr.push(obj[day]);
+    }
+    return arr;
+  }
 
 }

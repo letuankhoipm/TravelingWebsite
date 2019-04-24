@@ -108,7 +108,9 @@ darker: darken($colorBlueBase, 10%)
 
 // Content Container
 .container-content {
-  margin-top: 3rem;
+  background-color: #ffffff;
+  padding: 3rem 2rem 2rem 1.5rem;
+
   margin-bottom: 3rem;
   border-bottom: palette(thisBlue, 'dark') solid 0.5rem;
   div.wrapper-content {
