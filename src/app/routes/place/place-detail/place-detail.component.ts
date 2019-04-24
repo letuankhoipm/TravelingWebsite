@@ -33,12 +33,12 @@ export class PlaceDetailComponent implements OnInit {
 
         this.tour$ = this.tourService.getById(this.id)
           .pipe(
-            tap(x=> console.log(x))
+            tap()
           );
         this.tour$.subscribe((tour) => {
           this.tour = tour;
           this.tour.images = this.objectToArray(tour.images);
-          console.log(this.tour.images);
+          // console.log(this.tour.images);
 
         });
 
