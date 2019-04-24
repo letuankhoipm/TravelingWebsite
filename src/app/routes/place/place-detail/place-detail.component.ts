@@ -37,11 +37,6 @@ export class PlaceDetailComponent implements OnInit {
         this.tour$.subscribe((tour) => {
           this.tour = tour;
           this.tour.images = this.objectToArray(tour.images);
-<<<<<<< HEAD
-=======
-          // console.log(this.tour.images);
-
->>>>>>> 8beaa5f18bf0100915dfe8335be223e6d325fd4d
         });
 
         this.tour$.subscribe(tour => {
