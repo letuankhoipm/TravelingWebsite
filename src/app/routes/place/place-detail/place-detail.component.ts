@@ -26,7 +26,6 @@ export class PlaceDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       if (params['id'] != 'create') {
         this.id = params['id'];
@@ -38,8 +37,6 @@ export class PlaceDetailComponent implements OnInit {
         this.tour$.subscribe((tour) => {
           this.tour = tour;
           this.tour.images = this.objectToArray(tour.images);
-          console.log(this.tour.images);
-
         });
 
         this.tour$.subscribe(tour => {
@@ -50,12 +47,6 @@ export class PlaceDetailComponent implements OnInit {
             keywords: this.change_alias(tour.name)
           });
         });
-
-
-
-        // this.tourService.getById(this.id).subscribe(images => {
-        //   this.images = images;
-        // });
 
       }
     });
