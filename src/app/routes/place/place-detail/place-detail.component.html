@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="tour-header text-uppercase text-center">Tour du lịch</div>
+  <div class="tour-header text-uppercase text-center"> <i class="fas fa-lemon mr-2"></i>Tour du lịch</div>
   <div class="tour-content" *ngIf="tour">
     <div class="tour-name mb-4 mt-4">
       {{tour.name}}
@@ -9,7 +9,7 @@
         <div class="tour-schedule">
 
           <div *ngIf="tour">
-            <div class="tour-schedule-detail"  *ngFor="let schedule of tour.schedule; index as i">
+            <div class="tour-schedule-detail" *ngFor="let schedule of tour.schedule; index as i">
               <div id="carouselExampleIndicators{{i}}" class="carousel slide" data-ride="carousel">
                 <!-- <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -29,7 +29,7 @@
                   </div>
                 </div> -->
 
-                  <img [src]="tour.images[i][0].link" class="d-block w-100" alt="..." class="slide-image">
+                <img [src]="tour.images[i][0].link" class="d-block w-100" alt="..." class="slide-image">
                 <a class="carousel-control-prev" href="#carouselExampleIndicators{{i}}" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
