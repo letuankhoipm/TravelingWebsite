@@ -152,9 +152,7 @@
   text-align: center;
   font-size: 1.2rem;
   color: #959595;
-  padding-bottom: 15px;
-  padding: 0px 100px 0px;
-  margin-bottom: 100px;
+  padding-bottom: 30px;;
 }
 
 .tour-card-title {
@@ -292,4 +290,8 @@ button.owl-dot.active {
       }
     }
   }
+}
+
+.blur-bg {
+  background: rgba(0, 0, 0, 0.6);
 }

@@ -27,7 +27,7 @@
         </div>
         <div class="col-lg-10 col-md-9 col-sm-12 px-0 travel-pack-content-right">
           <div class="travel-pack-image">
-            <img [src]="pack.image" alt="">
+            <img style="cursor: pointer;" [routerLink]="['/place/' + pack.id]" [src]="pack.image" alt="">
           </div>
           <h1 class="travel-pack-title">
             <a [routerLink]="['/place/' + pack.id]">
