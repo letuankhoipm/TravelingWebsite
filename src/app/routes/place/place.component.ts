@@ -3,9 +3,10 @@ import { Router, RouterOutlet, NavigationStart, NavigationCancel, NavigationEnd,
 import { SeoService } from '@services/seo.service';
 import { PlaceService } from "@services/place.service";
 import { SharedService } from '@services/shared.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TourService } from '@services/tour.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-place',
@@ -16,17 +17,19 @@ import { TourService } from '@services/tour.service';
 })
 export class PlaceComponent implements OnInit {
 
-  placeData: any;
-  title;
-  detail;
-  state;
-  places = [];
-  tourList$: Observable<any>;
-  tours : any;
+  public searchTerms$ = new Subject<string>();
+  public placeData: any;
+  public title;
+  public detail;
+  public state;
+  public places = [];
+  public tourList$: Observable<any>;
+  public tours: any;
+  public packs: any[];
+  public originalPacks: any[];
 
   @ViewChild('appOutlet') outlet: RouterOutlet;
 
-  public packs: any[];
 
 
   public listKind = [
@@ -42,14 +45,14 @@ export class PlaceComponent implements OnInit {
     private placeService: PlaceService,
     private sharedService: SharedService,
   ) {
-
-
     this.placeData = this.placeService.getAlls();
     this.sharedService.title.subscribe(title => {
       this.title = title;
     });
 
     this.tourList$ = this.tourService.getAlls();
+
+    this.initRealTimeSearch();
   }
 
   ngOnInit() {
@@ -84,13 +87,27 @@ export class PlaceComponent implements OnInit {
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
-          // console.log(this.packs);
+          this.originalPacks = [...arrayData];
         });
     }
     this.tourService.getAlls().subscribe(tours => {
       this.tours = tours;
     });
 
+  }
+
+  private initRealTimeSearch() {
+    const searchFilter = (target: string) => (obj: { title: string }) => {
+      if (obj.title.toLowerCase().includes(target.toLowerCase())) {
+        return true;
+      }
+      return false;
+    };
+    this.searchTerms$.subscribe((value: string) => {
+      if (this.packs) {
+        this.packs = this.originalPacks.filter(searchFilter(value));
+      }
+    });
   }
 
   ngAfterViewInit() {

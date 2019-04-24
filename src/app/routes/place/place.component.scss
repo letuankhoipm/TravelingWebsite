@@ -1,3 +1,5 @@
+@import "../../../assets/scss//function.scss";
+
 .travel-pack {
   background-color: #395c9c;
   color: #fff;
@@ -7,20 +9,47 @@
   border-radius: 5px;
 }
 
+.search-container {
+  margin-top: 70px;
+  input.search-bar {
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    transition: outline-color  1.2s ease-in 1.2s;
+    &:focus {
+      border-color: transparent;
+      outline: 2px solid palette(thisBlue, 'lighter');
+    }
+  }
+
+  i.fa-search {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+  }
+
+}
+
 .travel-pack-content {
   margin-top: 50px;
+
   .travel-pack-content-wrap {
     .travel-pack-content-left {
       .travel-pack-content-interactive {
         background-color: #819dcf;
         color: #fff;
+
         .travel-pack-day-post {
           padding: 18px 20px;
         }
+
         .travel-pack-interactive {
           background-color: #395c9c;
+
           .travel-pack-icon {
             transition: all 0.3s;
+
             &:hover {
               color: #819dcf;
             }
@@ -35,12 +64,15 @@
           width: 100%;
         }
       }
+
       .travel-pack-title {
         font-size: 2rem;
         padding: 12px 0;
+
         a {
           color: #395c9c;
           transition: all 0.3s;
+
           &:hover {
             color: #819dcf;
           }
@@ -59,6 +91,7 @@
         font-weight: 500;
         margin: 12px 0;
         transition: all 0.3s;
+
         &:hover {
           color: #819dcf;
         }
@@ -70,9 +103,11 @@
     .category-list {
       .list-item {
         padding-bottom: 10px;
+
         .item {
-          color: rgba(57, 92, 156, 1) !important ;
+          color: rgba(57, 92, 156, 1) !important;
           transition: all 0.3s;
+
           &:hover {
             color: rgba(129, 157, 207, 1) !important;
           }

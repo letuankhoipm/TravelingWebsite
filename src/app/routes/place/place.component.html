@@ -4,6 +4,18 @@
      TOUR DU LỊCH
   </div>
 
+  <div class="search-container row justify-content-around">
+    <div class="search-bar col-10 col-md-8  m-0 p-0">
+      <div class="wrapper position-relative">
+        <input (keyup)="searchTerms$.next($event.target.value)"
+               type="text"
+               placeholder="Tìm kiếm..."
+               class="search-bar w-100 p-2">
+        <i class="far fa-search"></i>
+      </div>
+    </div>
+  </div>
+
   <div class="row travel-pack-content">
     <div class="col-lg-9 col-sm-9">
       <div *ngIf="packs">
