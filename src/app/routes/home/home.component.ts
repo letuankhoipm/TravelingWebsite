@@ -108,11 +108,11 @@ export class HomeComponent implements OnInit {
 
 
 
-    const bg = new Image();
-    bg.src = '/assets/images/background-beach-2.png';
-    bg.onload = () => {
-      this.bgContainer.nativeElement.setAttribute("style", "background-image: url(" + bg.src + ');');
-    };
+    // const bg = new Image();
+    // bg.src = '/assets/images/background-beach-2.png';
+    // bg.onload = () => {
+    //   this.bgContainer.nativeElement.setAttribute("style", "background-image: url(" + bg.src + ');');
+    // };
   }
 }
 

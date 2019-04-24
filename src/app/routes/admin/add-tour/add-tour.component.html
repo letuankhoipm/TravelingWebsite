@@ -1,5 +1,9 @@
 <div class="control">
-  <div data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create">Lưu</div>
+  <p class="icon m-0 w-75">
+    <img [src]="logo" alt="">
+  </p>
+
+  <div data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create ">Lưu</div>
   <a href="/admin/add-tour" class="reset">Làm Mới</a>
 </div>
 
@@ -29,13 +33,15 @@
       <div class="group-wrapper">
         <label class="label">Ảnh Đại Diện:</label>
         <div class="box-image min-height-100">
-          <div *ngIf="checkExistNameUploadThumbnail" class="alert-m alert alert-danger alert-dismissible fade show" role="alert">
+          <div *ngIf="checkExistNameUploadThumbnail" class="alert-m alert alert-danger alert-dismissible fade show"
+            role="alert">
             <strong>Chưa nhập tên Tour!</strong> Vui lòng nhập tên trước khi upload.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <app-upload-image-thumb (checkNameUpload)="checkNameUploadThumbnail($event)" [valueOld]="valueOld" [nameTour]="changeAlias(name)" [nameTour]="nameTour">
+          <app-upload-image-thumb (checkNameUpload)="checkNameUploadThumbnail($event)" [valueOld]="valueOld"
+            [nameTour]="changeAlias(name)" [nameTour]="nameTour">
           </app-upload-image-thumb>
         </div>
       </div>

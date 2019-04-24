@@ -243,8 +243,7 @@ ul.ngx-pagination {
 .about-us {
   .tour-card-des {
     @include min-and-max(320, 768) {
-      padding-left: 35px;
-      padding-right: 35px;
+      text-align: justify;
     }
   }
   .caption{
@@ -253,8 +252,7 @@ ul.ngx-pagination {
     }
     .txt2 {
       @include min-and-max(375, 575) {
-        padding-left: 75px;
-        padding-right: 75px;
+        text-align: justify;
 
       }
     }
@@ -266,8 +264,6 @@ ul.ngx-pagination {
 .tour-card {
   .tour-card-des {
     @include min-and-max(320, 768) {
-      padding-left: 35px;
-      padding-right: 35px;
     }
   }
 }

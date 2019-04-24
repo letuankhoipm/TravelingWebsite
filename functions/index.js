@@ -26,11 +26,6 @@ const mailTransport = nodemailer.createTransport({
 const sendNotification = functions.firestore
   .document('/contact/{value}').onCreate((snap, context) => {
     const data = snap.data();
-    // let email = data.email;;
-    // let name = data.name;
-    // if (email && name) {
-    //   sendEmail('pirates582@gmail.com', 'Haha');
-    // }
     sendEmail(data);
 
 

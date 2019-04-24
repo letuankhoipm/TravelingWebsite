@@ -9,7 +9,9 @@
 }
 
 .area-login {
-  width: 300px;
+  width: 430px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
 }
 
 .input-login {
@@ -50,7 +52,7 @@
     width: 100%;
     color: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 .icon {
@@ -63,16 +65,17 @@
 
 .login-button {
     border: 0px;
-    background: rgba(1, 85, 96, 0.5);
+    background: #395c9c;
     color: rgb(255, 255, 255);
     padding: 8px 10px;
     width: 100%;
     margin: 10px 0px;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 .login-button:hover {
-    background: rgba(1, 85, 96, 1);
+  transition-duration: .6s;
+    background: #376ed4;
 }
 
 button.close {
@@ -83,13 +86,11 @@ button.close {
 input:-webkit-autofill {
     -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
     -webkit-text-fill-color: #333;
-    border-radius: 0px 19px 19px 0px;
     padding-left: 10px !important;
 }
 
 input:-webkit-autofill:focus {
     -webkit-box-shadow: /*your box-shadow*/ 0 0 0 50px white inset;
     -webkit-text-fill-color: #333;
-    border-radius: 0px 19px 19px 0px;
     padding-left: 10px !important;
 }

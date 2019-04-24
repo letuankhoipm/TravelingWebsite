@@ -1,17 +1,18 @@
 <div class="tour__card">
   <div class="card">
     <div class="tour__card__img">
-      <img class="w-100" [src]="tour.image" alt="">
+      <img class="w-100" [src]="tour.image" [routerLink]="['/place/', tour.id]" alt="">
       <div class="hover pl-4 pb-2 pt-2">
-        <h4>{{tour.name}}</h4>
+        <h4 class="m-0">{{tour.name}}</h4>
       </div>
     </div>
     <div class="tour__card__caption p-4">
-      <h5>{{tour.name}}</h5>
+      <h5 class="m-0" [routerLink]="['/place/', tour.id]">{{tour.name}}</h5>
       <span class="mt-2">{{tour.daytime}} ngày</span>
       <p style="-webkit-box-orient: vertical" class="mb-4 content-text content-text-line-clamp">{{tour.describe}}</p>
       <div class="tour__card__rating">
-        <button class="btn float-right font-weight-bold pt-1 pb-1"><a style="color: white;" [routerLink]="['/place/', tour.id]">Chi tiết</a></button>
+        <button class="btn float-right font-weight-bold pt-1 pb-1"><a style="color: white;"
+            [routerLink]="['/place/', tour.id]">Chi tiết</a></button>
       </div>
     </div>
   </div>

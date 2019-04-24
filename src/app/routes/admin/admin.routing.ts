@@ -27,7 +27,7 @@ const routes: Routes = [
     {
         path: 'editor',
         component: EditorComponent
-    }
+    },
 ];
 
 @NgModule({

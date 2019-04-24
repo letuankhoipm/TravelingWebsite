@@ -64,8 +64,11 @@
     </div>
 
     <div class="parallax">
-        <div class="bg-parallax"></div>
+        <div class="bg-parallax">
+            <div class="blur-bg h-100"></div>
+        </div>
         <div class="parallax-content">
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10">
@@ -82,8 +85,8 @@
     </div>
 
     <div class="tour-card container">
-        <h2 class="tour-card-title text-uppercase">các gói du lịch hấp dẫn</h2>
-        <div class="tour-card-des">{{contentTemp1}}</div>
+        <h2 class="tour-card-title text-uppercase text-center">các gói du lịch hấp dẫn</h2>
+        <div class="tour-card-des text-center">{{contentTemp1}}</div>
         <ng-template [ngIf]="tours">
             <owl-carousel #owlElement [options]="customOptions">
                 <tour-card *ngFor="let tour of tours" [tour]="tour"></tour-card>
@@ -99,7 +102,7 @@
                 </div>
 
                 <div class="col-lg-6 col-sm-12 happy_right">
-                    <h1 class="pb-4">XÁCH BA LÔ LÊN VÀ ĐI</h1>
+                    <h1 class="pb-4 text-center">XÁCH BA LÔ LÊN VÀ ĐI</h1>
                     <p class="text-justify describe">{{ happyDescribe }}</p>
                     <div class="distance" *ngFor="let palce of happyPlace">
                         <div class="txt">
