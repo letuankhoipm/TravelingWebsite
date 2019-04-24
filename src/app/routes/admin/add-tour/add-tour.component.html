@@ -1,6 +1,6 @@
 <div class="control">
-  <div (click)="save()" class="create">Lưu</div>
-  <div class="reset">Làm Mới</div>
+  <div data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create">Lưu</div>
+  <a href="/admin/add-tour" class="reset">Làm Mới</a>
 </div>
 
 
@@ -8,12 +8,36 @@
   <div class="main-flex">
     <div class="left">
       <div class="group-wrapper">
+        <div *ngIf="checkName()" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Tên đã tồn tại!</strong> Vui lòng chọn tên khác.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <label class="label">Tên Tour:</label>
-        <input class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
+        <input (change)="checkName()" class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
+      </div>
+      <div class="group-wrapper">
+        <label class="label">Giới Thiệu:</label>
+        <textarea class="textarea clear-mt" name="describe" [(ngModel)]="describe"
+          placeholder="Giới Thiệu Về Tour"></textarea>
       </div>
       <div class="group-wrapper">
         <label class="label">Phương Tiện:</label>
         <input class="input" type="text" name="transport" [(ngModel)]="vehicle" placeholder="Phương Tiện">
+      </div>
+      <div class="group-wrapper">
+        <label class="label">Ảnh Đại Diện:</label>
+        <div class="box-image min-height-100">
+          <div *ngIf="checkExistNameUploadThumbnail" class="alert-m alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Chưa nhập tên Tour!</strong> Vui lòng nhập tên trước khi upload.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <app-upload-image-thumb (checkNameUpload)="checkNameUploadThumbnail($event)" [valueOld]="valueOld" [nameTour]="changeAlias(name)" [nameTour]="nameTour">
+          </app-upload-image-thumb>
+        </div>
       </div>
       <div class="group-wrapper">
         <label class="label">Thời Gian:</label>
@@ -51,7 +75,15 @@
             </div>
           </div>
           <div class="box-image">
-            <app-upload-image [valueOld]="valueOld" [totalTour]="totalTour" [value]="item.id" class="row mx-0">
+            <div *ngIf="checkExistNameUpload" class="alert-m alert alert-danger alert-dismissible fade show"
+              role="alert">
+              <strong>Chưa nhập tên Tour!</strong> Vui lòng nhập tên trước khi upload.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <app-upload-image (checkNameUpload)="checkNameUpload($event)" [valueOld]="valueOld"
+              [nameTour]="changeAlias(name)" [value]="item.id" class="row mx-0">
             </app-upload-image>
           </div>
         </div>
@@ -160,11 +192,37 @@
       </div>
       <div class="group-wrapper">
         <label class="label">Lưu ý:</label>
-        <app-ngx-editor (dataOutput)="changeTextNote($event)" [data]="note"
-          [minHeight]="minHeightTextSchedule" [placeholderInput]="'Các Lưu Ý Khác Về Tour'">
+        <app-ngx-editor (dataOutput)="changeTextNote($event)" [data]="note" [minHeight]="minHeightTextSchedule"
+          [placeholderInput]="'Các Lưu Ý Khác Về Tour'">
         </app-ngx-editor>
         <!-- <textarea class="textarea clear-mt" name="note" [(ngModel)]="note"
           placeholder="Các Lưu Ý Khác Về Tour"></textarea> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Đăng Bài Thành Công</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div [routerLink]="['../../place/', namePost]" data-dismiss="modal"
+            class="select-language col-6 d-flex align-items-center"><i class="far fa-eye"></i>Xem Bài Đăng</div>
+          <div [routerLink]="['../list-tour']" data-dismiss="modal"
+            class="select-language col-6 d-flex align-items-center"><i class="far fa-tools"></i>Menu Quản Lý</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn scroll button-scheme btn-home" data-dismiss="modal">Đóng</button>
       </div>
     </div>
   </div>

@@ -19,10 +19,10 @@ export interface Links {
 export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
-  @Input() value: number;
-  @Input() totalTour: number;
   @Input() valueOld: number;
   @Input() list_link: Array<any>;
+  @Input() nameTour: string;
+  @Input() checkFullWidthLoadding: string;
 
   listLink: any;
   // id = 1;
@@ -46,20 +46,10 @@ export class UploadTaskComponent implements OnInit {
     desertRef.delete();
   }
 
-  getAll() {
-    this.datas = this.db.collection('images').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as any;
-        return data;
-      });
-    }));
-    return this.datas;
-  }
-
   startUpload() {
 
     // The storage path
-    const path = `images/1/${Date.now()}_${this.file.name}`;
+    const path = `images/${this.nameTour}/${Date.now()}_${this.file.name}`;
     this.pathImage = path;
 
     // Reference to storage bucket
@@ -76,7 +66,7 @@ export class UploadTaskComponent implements OnInit {
       // The file's download URL
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
-        this.list_link.push({ link: this.downloadURL, part: path });
+        this.list_link.push({ link: this.downloadURL, path: path });
       }),
     );
   }

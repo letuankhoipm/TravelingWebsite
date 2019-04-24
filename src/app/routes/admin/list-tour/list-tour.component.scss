@@ -71,3 +71,8 @@ i.fal.fa-edit, i.fal.fa-trash-alt {
 .clear-border-bottom {
     border-bottom: none !important;
 }
+
+.main {
+    overflow-y: scroll;
+    height: calc(100vh);
+}

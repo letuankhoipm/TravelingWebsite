@@ -1,12 +1,12 @@
-<!-- <div *ngFor="let item of dataImage" class="col-4 px-10">
+<div *ngFor="let item of dataImage" class="col-4 px-10">
   <div class="image-view">
     <img class="image-preview" [src]="item.link">
-    <div class="delete" (click)="deleteImage(item.part)"><i class="fal fa-times"></i></div>
+    <div class="delete" (click)="deleteImage(item.path)"><i class="fal fa-times"></i></div>
   </div>
-</div> -->
+</div>
 
 <div *ngFor="let file of files">
-  <app-upload-task [list_link]="list_links" [valueOld]="valueOld" [totalTour]="totalTour" [value]="value" [file]="file"></app-upload-task>
+  <app-upload-task [checkFullWidthLoadding]="checkFalse" [list_link]="list_links" [valueOld]="valueOld" [file]="file" [nameTour]="nameTour"></app-upload-task>
 </div>
 
 
@@ -22,5 +22,4 @@
       </label>
     </div>
   </div>
-  <button (click)="hoho()">OK</button>
 </div>

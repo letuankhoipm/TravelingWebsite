@@ -10,6 +10,7 @@ import { ListTourComponent } from './list-tour/list-tour.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { EditorComponent } from './editor/editor.component';
 import { NgxEditorModule } from '@shared/ngx-editor/ngx-editor.module';
+import { UploadImageThumbModule } from '@shared/upload-image-thumb/upload-image-thumb.module';
 
 @NgModule({
   declarations: [DashboardComponent, AddTourComponent, ListTourComponent, EditorComponent],
@@ -20,7 +21,8 @@ import { NgxEditorModule } from '@shared/ngx-editor/ngx-editor.module';
     NgxSelectModule,
     UploadImageModule,
     AngularFirestoreModule,
-    NgxEditorModule
+    NgxEditorModule,
+    UploadImageThumbModule
   ]
 })
 export class AdminModule { }

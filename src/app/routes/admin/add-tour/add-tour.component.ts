@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { TourService } from '@services/tour.service';
+import { ImageService } from '@services/image.service';
 
 export interface TourL {
   child?: [];
@@ -34,7 +36,8 @@ export interface TourL {
 @Component({
   selector: 'app-add-tour',
   templateUrl: './add-tour.component.html',
-  styleUrls: ['./add-tour.component.scss']
+  styleUrls: ['./add-tour.component.scss'],
+  providers: [TourService, ImageService]
 })
 export class AddTourComponent implements OnInit {
 
@@ -50,6 +53,14 @@ export class AddTourComponent implements OnInit {
   minHeightTextSchedule = 70;
   minHeightTextService = 40;
   placeholderService = 'Mô tả';
+  listNameTour = [];
+  checkExistNameUpload: boolean = false;
+  checkExistNameUploadThumbnail: boolean = false;
+  listImagesUpload: any;
+  namePost: string = '';
+  arrPaths = [];
+  changeDom = 1;
+  loop = [{}];
 
   public listDayTime = [
     { name: '1 Ngày', number: 1 },
@@ -87,7 +98,7 @@ export class AddTourComponent implements OnInit {
   public listChilds = [1];
   // public listHotel = [1];
 
-  public listServices = [
+  listServices = [
     {
       name: 'Phương Tiện', icon: 'fa-bus', listS: [1], id: 'transport', dataArr: ['']
     }, {
@@ -132,21 +143,22 @@ export class AddTourComponent implements OnInit {
   people = null;
   price = null;
   note = '';
-  arrNgay1 = [];
+  describe = '';
 
   dataTour: any = {
     child: [],
-    daytime: 2,
+    daytime: null,
+    describe: '',
     eat: [],
     gift: [],
     guide: [],
     hotel: [],
     name: '',
-    night: 2,
+    night: null,
     note: '',
     pay: [],
-    people: 15,
-    price: 12500000,
+    people: null,
+    price: null,
     protect: [],
     schedule: [
       {
@@ -158,8 +170,70 @@ export class AddTourComponent implements OnInit {
       }
     ],
     transport: [],
-    vehicle: ''
+    vehicle: '',
+    images: {},
   };
+  TourService: any;
+
+  constructor(
+    private tourService: TourService,
+    private imageService: ImageService,
+    private storage: AngularFireStorage,
+    private db: AngularFirestore
+  ) {
+  }
+
+  ngOnInit() {
+    this.tourService.getAlls().subscribe(lists => {
+      console.log(lists);
+      this.listNameTour = lists.map(obj => {
+        return obj.id;
+      });
+    });
+
+    this.imageService.getById('temp').subscribe(lists => {
+      this.listImagesUpload = lists;
+      console.log(this.listImagesUpload);
+      this.arrPaths = [];
+
+      for (const paths in this.listImagesUpload) {
+        if (paths === 'thumbnail') { continue; }
+        console.log(paths);
+        const p = this.listImagesUpload[paths].map(x => x.path);
+        this.arrPaths = [...this.arrPaths, ...p];
+        this.arrPaths.push(this.listImagesUpload.thumbnail.path);
+      }
+    });
+  }
+
+  deleteImage(arr) {
+    for (const value of arr) {
+      var desertRef = this.storage.ref(value);
+      desertRef.delete();
+    }
+    let arrSpace = {};
+    this.db.doc(`images/temp`).set(arrSpace);
+  }
+
+  checkName() {
+    const name = this.changeAlias(this.name);
+    const found = this.listNameTour.find(function (element: string) {
+      return element === name;
+    });
+    if (!found) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  checkNameUpload(vl) {
+    this.checkExistNameUpload = vl;
+  }
+
+  checkNameUploadThumbnail(vl) {
+    this.checkExistNameUploadThumbnail = vl;
+  }
 
   save() {
     this.dataTour.name = this.name;
@@ -169,6 +243,8 @@ export class AddTourComponent implements OnInit {
     this.dataTour.note = this.note;
     this.dataTour.people = this.people;
     this.dataTour.price = this.price;
+    this.dataTour.images = this.listImagesUpload;
+    this.dataTour.describe = this.describe;
 
     for (let i = 0; i < this.valueOld; i++) {
       this.dataTour.schedule[i].name = this.valueDayTime[i].name;
@@ -202,14 +278,15 @@ export class AddTourComponent implements OnInit {
 
     this.okData = this.dataTour;
     console.log(this.dataTour);
-    // console.log(Object.assign({}, this.dataTour));
 
-    // console.log(this.valueOld);
-
-    // this.userDoc = this.db.doc(`tour/${this.totalTour}`);
-    // this.userDoc.set(this.dataTour);
-    // this.db.doc(`tour/${this.totalTour}`).set(JSON.parse(JSON.stringify(this.dataTour)));
-
+    this.tourService.setData(this.changeAlias(this.name), this.dataTour);
+    this.namePost = this.changeAlias(this.name);
+    let arrSpace = {};
+    this.db.doc(`images/temp`).set(arrSpace);
+    // this.deleteImage(this.arrPaths);
+    this.valueOld = 1;
+    this.changeDom = 2;
+    this.name = '';
   }
 
   onData(vl) {
@@ -234,43 +311,11 @@ export class AddTourComponent implements OnInit {
         this.dataTour.schedule.splice(i - 1, 1);
       }
     }
-    // console.log(this.dataTour);
     this.valueOld = vl;
   }
 
   onDataNight(vl) {
     this.valueOldNight = vl;
-  }
-
-
-  getAll() {
-    this.datas = this.db.collection('tour').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as any;
-        return data;
-      });
-    }));
-    return this.datas;
-  }
-
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) {
-
-  }
-
-  ngOnInit() {
-    this.getAll().subscribe(lists => {
-      // console.log(lists[0][1]);
-      // this.data = lists;
-      // if (lists[0]) {
-      //   this.data = lists;
-      // }
-      this.totalTour = ++lists.length;
-      console.log(lists);
-      console.log(lists.length);
-      console.log(this.totalTour);
-
-    });
-    // console.log(this.data);
   }
 
   changeTextSchedule(stringOutput, ngay, buoi) {
@@ -401,6 +446,23 @@ export class AddTourComponent implements OnInit {
 
     console.log(this.listServices[0].dataArr);
 
+  }
+
+  changeAlias(alias): string {
+    let str = alias;
+    str = str.toLowerCase();
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+    str = str.replace(/ù|ú|ụ|ủ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+    str = str.replace(/đ/g, 'd');
+    str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, ' ');
+    str = str.replace(/ + /g, ' ');
+    str = str.trim();
+    str = str.replace(/ /g, '-');
+    return str;
   }
 
 }

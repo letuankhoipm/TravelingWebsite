@@ -1,11 +1,9 @@
 <div *ngIf="(snapshot | async) as snap">
   <div *ngIf="downloadURL; else elseBlock">
-    <!-- <img class="image-preview" [src]="downloadURL">
-    <div class="delete" (click)="deleteImage(pathImage)"><i class="fal fa-times"></i></div> -->
   </div>
 </div>
 <ng-template #elseBlock>
-  <div class="loadding" *ngIf="percentage | async as pct">
+  <div [ngClass]="{'full-width': checkFullWidthLoadding}" class="loadding" *ngIf="percentage | async as pct">
     <progress class="progress is-info" [value]="pct" max="100">
     </progress>
     <div class="pct">{{ pct | number }}%</div>

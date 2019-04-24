@@ -3,11 +3,13 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TourService } from '@services/tour.service';
 
 @Component({
   selector: 'app-list-tour',
   templateUrl: './list-tour.component.html',
-  styleUrls: ['./list-tour.component.scss']
+  styleUrls: ['./list-tour.component.scss'],
+  providers: [TourService]
 })
 export class ListTourComponent implements OnInit {
 
@@ -16,75 +18,65 @@ export class ListTourComponent implements OnInit {
   pathImage: any;
   hihi = '<b><strike>Xin chào</strike>, đây là đoạn <font color="#cc0000">text</font></b>';
 
-  getTour() {
-    let dataTours: Observable<any[]>;
-    dataTours = this.db.collection('tour').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as any;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    }));
-    return dataTours;
-  }
 
-  getImage() {
-    let dataImages: Observable<any[]>;
-    dataImages = this.db.collection('images').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as any;
-        return data;
-      });
-    }));
-    return dataImages;
-  }
-
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+  constructor(
+    private storage: AngularFireStorage,
+    private db: AngularFirestore,
+    private tourService: TourService
+  ) { }
 
   ngOnInit() {
-    this.getImage().subscribe(lists => {
-      this.pathImage = lists;
-      console.log(this.pathImage);
-      for (const value of lists) {
-        this.thumbImages.push(value.thumb.link);
-      }
-      console.log(this.thumbImages);
-    });
-    this.getTour().subscribe(lists => {
-      for (const value of lists) {
-        this.dataTours.push({ name: value.name, price: value.price, people: value.people, id: value.id });
-      }
-      console.log(this.dataTours);
+    this.tourService.getAlls().subscribe(lists => {
+      console.log(lists);
+      this.dataTours = lists;
     });
   }
 
   deleteImage(path) {
     var desertRef = this.storage.ref(path);
     desertRef.delete();
-    // this.db.doc(`images/${this.totalTour}`).set(this.dataTests);
   }
 
   deleteTour(id) {
-    console.log(this.pathImage);
-    for (const value of this.pathImage) {
-      let arrTemp: any;
-      if (value['id-tour'] == id) {
-        arrTemp = value;
+    console.log(id);
+    for (let value of this.dataTours) {
+      if (id == value.id) {
         let arrPaths = [];
-        for (const paths in value) {
-          if (paths === 'thumb' || paths === 'id-tour') {continue;}
-          const p = value[paths].map(x => x.part);
+
+        for (const paths in value.images) {
+          if (paths === 'thumbnail') { continue; }
+          const p = value.images[paths].map(x => x.path);
           arrPaths = [...arrPaths, ...p];
+          arrPaths.push(value.images.thumbnail.path);
         }
-        for (const listPaths of arrPaths) {
-          this.deleteImage(listPaths);
+        for (let value of arrPaths) {
+          this.deleteImage(value);
         }
-        this.deleteImage(arrTemp.thumb.path);
+        this.tourService.deleteById(id);
+        console.log(arrPaths);
         break;
       }
-      this.db.doc<any>(`images/${id}`).delete();
-      this.db.doc<any>(`tour/${id}`).delete();
     }
+    // console.log(this.pathImage);
+    // for (const value of this.pathImage) {
+    //   let arrTemp: any;
+    //   if (value['id-tour'] == id) {
+    //     arrTemp = value;
+    //     let arrPaths = [];
+    //     for (const paths in value) {
+    //       if (paths === 'thumb' || paths === 'id-tour') {continue;}
+    //       const p = value[paths].map(x => x.part);
+    //       arrPaths = [...arrPaths, ...p];
+    //     }
+    //     for (const listPaths of arrPaths) {
+    //       this.deleteImage(listPaths);
+    //     }
+    //     this.deleteImage(arrTemp.thumb.path);
+    //     break;
+    //   }
+    //   this.db.doc<any>(`images/${id}`).delete();
+    //   this.db.doc<any>(`tour/${id}`).delete();
+    // }
     // const ara = Array.of(this.pathImage[id]);
     // console.log(ara);
     // this.pathImage[id].splice(this.pathImage[id].length, 1);
