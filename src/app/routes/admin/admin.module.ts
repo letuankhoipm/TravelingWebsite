@@ -6,15 +6,23 @@ import { FormsModule } from '@angular/forms';
 import { AddTourComponent } from './add-tour/add-tour.component';
 import { NgxSelectModule } from '@shared/ngx-select/ngx-select.module';
 import { UploadImageModule } from '@shared/upload-image/upload-image.module';
+import { ListTourComponent } from './list-tour/list-tour.component';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { EditorComponent } from './editor/editor.component';
+import { NgxEditorModule } from '@shared/ngx-editor/ngx-editor.module';
+import { UploadImageThumbModule } from '@shared/upload-image-thumb/upload-image-thumb.module';
 
 @NgModule({
-  declarations: [DashboardComponent, AddTourComponent],
+  declarations: [DashboardComponent, AddTourComponent, ListTourComponent, EditorComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     NgxSelectModule,
-    UploadImageModule
+    UploadImageModule,
+    AngularFirestoreModule,
+    NgxEditorModule,
+    UploadImageThumbModule
   ]
 })
 export class AdminModule { }

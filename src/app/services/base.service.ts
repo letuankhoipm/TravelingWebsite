@@ -9,7 +9,7 @@ export class BaseService {
     protected basePath = '';
     constructor(protected angularFireDatabase: AngularFireDatabase, protected angularFirestore: AngularFirestore, path: string) {
         this.basePath = path;
-        angularFirestore.firestore.settings({timestampsInSnapshots: true});
+        // angularFirestore.firestore.settings({ timestampsInSnapshots: true });
     }
 
     public getAlls(): Observable<any> {
@@ -82,6 +82,11 @@ export class BaseService {
         return this.angularFirestore.collection(this.basePath).doc(data.id).set({
             ...data, createdAt: timestamp
         });
+    }
+
+    public setData(id, value) {
+        const userDoc = this.angularFirestore.collection(this.basePath).doc(id);
+        userDoc.set(value);
     }
 
     public updateElement(id, value) {

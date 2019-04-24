@@ -105,6 +105,11 @@
     position: relative;
 }
 
+.last-daytime {
+    height: 20px;
+    display: flex;
+}
+
 .main {
     overflow-y: scroll;
     height: calc(100vh - 70px);
@@ -321,4 +326,40 @@ i.fal.fa-images {
     display: inline-block;
     margin: 0px 33px 0px 10px;
     cursor: pointer;
+}
+
+.alert-m {
+    margin: 10px 5px 0px !important;
+}
+
+.btn.button-scheme {
+    background-color: #819dcf;
+    border: 1px solid #819dcf;
+    color: #fff;
+}
+
+.btn-home {
+    border-radius: 38px;
+    padding: 8px 30px;
+    margin: 0 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+i.far.fa-eye {
+    padding: 10px;
+    color: #414f68;
+}
+
+i.far.fa-tools {
+    padding: 10px;
+    color: #414f68;
+}
+
+.select-language {
+    cursor: pointer;
+}
+
+.min-height-100 {
+    min-height: 200px;
 }

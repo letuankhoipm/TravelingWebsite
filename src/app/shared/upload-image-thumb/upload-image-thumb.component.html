@@ -1,0 +1,28 @@
+<div *ngIf="checkExistThumbnail">
+  <div *ngFor="let item of dataImage" class="col-12 px-10">
+    <div class="image-view2">
+      <img class="image-preview2" [src]="item.link">
+      <div class="delete" (click)="deleteImage(item.path)"><i class="fal fa-times"></i></div>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let file of files">
+  <app-upload-task [checkFullWidthLoadding]="checkTrue" [list_link]="list_links" [valueOld]="valueOld" [file]="file"
+    [nameTour]="nameTour"></app-upload-task>
+</div>
+
+
+<div *ngIf="!checkExistThumbnail && !checkUploaddingThumbnail" class="col-12 px-10">
+  <div class="dropzone2" dropzone2 (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+    [class.hovering]="isHovering">
+    <div class="file">
+      <label class="file-label">
+        <input style="display:none" class="file-input" type="file" (change)="onDrop($event.target.files)">
+        <span class="file-cta">
+          <i class="fal fa-images"></i> Thêm Hình Ảnh
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
