@@ -1,68 +1,83 @@
-<div class="container">
+<div class="container mb-5">
   <div class="travel-pack text-center">
     <i class="far fa-tree-palm"></i>
-     TOUR DU LỊCH
+    TOUR DU LỊCH
   </div>
 
   <div class="search-container row justify-content-around">
     <div class="search-bar col-10 col-md-8  m-0 p-0">
       <div class="wrapper position-relative">
-        <input (keyup)="searchTerms$.next($event.target.value)"
-               type="text"
-               placeholder="Tìm kiếm..."
-               class="search-bar w-100 p-2">
+        <input (keyup)="searchTerms$.next($event.target.value)" type="text" placeholder="Tìm kiếm..."
+          class="search-bar w-100 p-2">
         <i class="far fa-search"></i>
       </div>
     </div>
   </div>
 
   <div class="row travel-pack-content">
-    <div class="col-lg-9 col-sm-9">
-      <div *ngIf="packs">
-        <div class="row travel-pack-content-wrap mt-4"
-          *ngFor="let pack of packs | paginate: { itemsPerPage: 7, currentPage: page }">
-          <div class="col-lg-2 col-md-3 col-sm-12 pr-0 travel-pack-content-left">
-            <div class="travel-pack-content-interactive text-center">
-              <div class="travel-pack-day-post">
-                Giá: {{ pack.price }}
-              </div>
-              <div class="travel-pack-interactive">
-                <span class="mr-3">
-                  <i class="fas fa-heart travel-pack-icon"></i>
-                  <!-- {{ pack.like }} -->
-                </span>
-                <span>
-                  <i class="fas fa-comment travel-pack-icon"></i>
-                  <!-- {{ pack.comment }} -->
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-10 col-md-9 col-sm-12 px-0 travel-pack-content-right">
-            <div class="travel-pack-image">
-              <img style="cursor: pointer;" [routerLink]="['/place/' + pack.id]" [src]="pack.image" alt="">
-            </div>
-            <h1 class="travel-pack-title">
-              <a [routerLink]="['/place/' + pack.id]">
-                {{ pack.title }}
-              </a>
-            </h1>
-            <div class="travel-pack-describe">
-              {{ pack.description }}
-            </div>
-            <a [routerLink]="['/place/' + pack.id]" class="btn--detail">XEM CHI TIẾT</a>
-          </div>
 
+    <div class="col-lg-9 col-md-9 row list-pack">
+      <div class="col-12 row option">
+        <div class="col-6">
+          <select class="option-sort" (change)="sortByPrice(select.value)" #select>
+            <option value="asc">
+              Giá tăng dần
+            </option>
+            <option value="desc">
+              Giá giảm dần
+            </option>
+          </select>
+        </div>
+        <div class="col-6 text-right">
+          <button class="btn" (click)=displayViewList()>
+            <i class="fa fa-list"></i>
+          </button>
+          <button class="btn" (click)="displayViewGrid()">
+            <i class="fa fa-th"></i>
+          </button>
         </div>
       </div>
 
-      <div class="row m-4">
-        <div class="col-lg-12">
-          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <div class="list-view-pack" *ngIf="viewType === 'list'">
+        <div class="col-12 pack" *ngFor="let pack of packs; index as i">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 pr-0">
+              <img [src]="pack.image" alt="">
+            </div>
+            <div class="col-lg-6 col-md-12 pack-content">
+              <h1 class="pack-name">
+                {{ pack.title }}
+              </h1>
+              <p class="pack-description">
+                {{ pack.description }}
+              </p>
+              <div class="pack-price">
+               <span class="mr-2">Giá:</span> {{ pack.price }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-view-pack row" *ngIf="viewType === 'grid'">
+        <div class="col-lg-6 col-md-12 pack" *ngFor="let pack of packs">
+          <div class="pack-image">
+            <img [src]="pack.image" alt="">
+          </div>
+          <div class="pack-content">
+              <h1 class="pack-name">
+                  {{ pack.title }}
+                </h1>
+                <div class="pack-price">
+                  <span class="mr-2">Giá:</span> {{ pack.price }}
+                </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-sm-3 mt-4">
+
+    <div class="col-lg-3 col-sm-3">
       <div class="list-tour pl-3">
         <h4>Danh sách tour</h4>
         <ul class="category-list font-weight-bold">
@@ -74,3 +89,4 @@
       </div>
     </div>
   </div>
+</div>

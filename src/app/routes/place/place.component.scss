@@ -15,10 +15,10 @@
     margin-left: auto;
     margin-right: auto;
     height: 50px;
-    transition: outline-color  1.2s ease-in 1.2s;
+    transition: outline-color 1.2s ease-in 1.2s;
     &:focus {
       border-color: transparent;
-      outline: 2px solid palette(thisBlue, 'lighter');
+      outline: 2px solid palette(thisBlue, "lighter");
     }
   }
 
@@ -28,74 +28,71 @@
     right: 10px;
     font-size: 25px;
   }
-
 }
 
 .travel-pack-content {
   margin-top: 50px;
+  .list-pack {
+    .option {
+      background-color: #eeeeee;
+      margin: 0 15px;
+      padding: 4px;
+      align-items: center;
+      .option-sort {
+        padding: 7px 5px 3px 10px;
+        border: 0;
+        border-radius: 0;
+        height: 31px;
+        cursor: pointer;
+        color: rgb(105, 104, 104);
+      }
+    }
 
-  .travel-pack-content-wrap {
-    .travel-pack-content-left {
-      .travel-pack-content-interactive {
-        background-color: #819dcf;
-        color: #fff;
-
-        .travel-pack-day-post {
-          padding: 18px 20px;
+    .pack {
+      margin-top: 2em;
+      box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+      img {
+        width: 100%;
+      }
+      .pack-content {
+        padding: 7px 10px;
+        .pack-name {
+          font-size: 24px;
+          font-weight: bold;
+          color: #395c9c;
         }
 
-        .travel-pack-interactive {
-          background-color: #395c9c;
+        .pack-description {
+          position: relative;
+          height: 120px;
+          overflow: hidden;
+          text-align: justify;
+          padding-right: 1em;
+          &::after {
+            content: "....";
+            position: absolute;
+            right: 0;
+            bottom: 2%;
+          }
+        }
 
-          .travel-pack-icon {
-            transition: all 0.3s;
-
-            &:hover {
-              color: #819dcf;
-            }
+        .pack-price {
+          > span {
+            font-weight: 700;
           }
         }
       }
     }
 
-    .travel-pack-content-right {
-      .travel-pack-image {
-        img {
-          width: 100%;
-        }
+    .list-view-pack {
+      .pack {
+        padding-left: 0 !important;
+        margin-left: 15px;
       }
+    }
 
-      .travel-pack-title {
-        font-size: 2rem;
-        padding: 12px 0;
-
-        a {
-          color: #395c9c;
-          transition: all 0.3s;
-
-          &:hover {
-            color: #819dcf;
-          }
-        }
-      }
-
-      .travel-pack-describe {
-        font-size: 1rem;
-        color: #474747;
-      }
-
-      .btn--detail {
-        display: inline-block;
-        color: #395c9c;
-        font-size: 1rem;
-        font-weight: 500;
-        margin: 12px 0;
-        transition: all 0.3s;
-
-        &:hover {
-          color: #819dcf;
-        }
-      }
+    .grid-view-pack {
+      margin-left: 15px;
     }
   }
 

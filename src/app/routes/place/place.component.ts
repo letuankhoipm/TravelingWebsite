@@ -27,6 +27,7 @@ export class PlaceComponent implements OnInit {
   public tours: any;
   public packs: any[];
   public originalPacks: any[];
+  public viewType: string;
 
   @ViewChild('appOutlet') outlet: RouterOutlet;
 
@@ -56,6 +57,8 @@ export class PlaceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.viewType = 'list';
+
     if (this.placeData) {
       this.placeData.subscribe(places => {
         this.places = places;
@@ -87,11 +90,13 @@ export class PlaceComponent implements OnInit {
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
+          console.log(this.packs);
           this.originalPacks = [...arrayData];
         });
     }
     this.tourService.getAlls().subscribe(tours => {
       this.tours = tours;
+      console.log(this.tours);
     });
 
   }
@@ -127,6 +132,28 @@ export class PlaceComponent implements OnInit {
     //             this.state = this.outlet.activatedRouteData['routing'];
     //         }
     //     });
+  }
+
+  public displayViewList(): void {
+    this.viewType = 'list';
+  }
+
+  public displayViewGrid(): void {
+    this.viewType = 'grid';
+  }
+
+  public sortByPrice(select: string): void {
+    if (select === 'asc') {
+      this.packs.sort((pack1, pack2) => {
+        return pack1.price - pack2.price;
+      });
+      return;
+    }
+
+    this.packs.sort((pack1, pack2) => {
+      return pack2.price - pack1.price;
+    });
+
   }
 
 }
