@@ -1,16 +1,16 @@
 .tour-header {
-    background-color: #395c9c;
-    color: #fff;
-    font-size: 2.4rem;
-    font-weight: 600;
-    padding: 50px 0;
-    border-radius: 5px;
+  background-color: #395c9c;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 50px 0;
+  border-radius: 5px;
 }
 .tour-content {
   .tour-name {
     display: flex;
     justify-content: center;
-    font-size: 32px;
+    font-size: 50px;
     color: rgba(57, 92, 156, 1);
     font-weight: bold;
   }
@@ -26,14 +26,14 @@
         background: rgba(236, 141, 84, 0);
         display: inline;
         padding: 5px 10px;
-        position: absolute;
+        position: relative;
         top: 0;
-        color: rgba(255, 255, 255, 1);
+        color: red;
         font-weight: 600;
       }
 
       .name {
-        background: rgba(236, 141, 84, 1);
+        background: rgba(57, 92, 156, 1);
         display: block;
         padding: 5px 10px;
         position: relative;
@@ -110,7 +110,6 @@
     }
   }
   .tour-ticket {
-    margin-top: 70px;
     width: 100%;
     .tour-ticket-title {
       text-align: center;
@@ -166,10 +165,11 @@
   .list-tour {
     .category-list {
       .list-item {
-        padding-bottom: 10px;
+        padding-bottom: 20px;
+        list-style-type: circle;
         .item {
           color: rgba(57, 92, 156, 1) !important ;
-          transition: all 0.3s;
+          transition: all 0.3s;;
           &:hover {
             color: rgba(129, 157, 207, 1) !important;
           }
@@ -194,5 +194,19 @@
     z-index: 10;
     background: rgba(255, 255, 255, 1);
     padding: 10px;
+  }
+}
+
+.parallax2 {
+  .bg-parallax {
+    width: 100%;
+    height: 250px;
+    left: 0;
+    top: 0;
+    position: relative;
+    background-image: url("/assets/images/parallax2.jpg");
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    background-size: cover;
   }
 }

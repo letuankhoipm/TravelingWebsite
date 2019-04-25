@@ -1,8 +1,27 @@
+<div class="parallax2">
+  <div class="bg-parallax">
+    <div class="h-100"></div>
+  </div>
+</div>
+
 <div class="container">
-  <div class="tour-header text-uppercase text-center"> <i class="fas fa-lemon mr-2"></i>Tour du lịch</div>
+
+  <!-- <div class="tour-header text-uppercase text-center"> <i class="fas fa-lemon mr-2"></i>Tour du lịch</div> -->
   <div class="tour-content" *ngIf="tour">
     <div class="tour-name mb-4 mt-4">
       {{tour.name}}
+    </div>
+    <div class="tour-ticket">
+      <div class="tour-ticket-title">
+        <div class="title text-uppercase font-weight-bold">Giá tour trọn gói</div>
+        <div class="content">
+          <div class="line-dash"></div>
+          <div class="text">
+            <p class="my-0">Dành cho đoàn {{tour.people}} người</p>
+            <p class="my-0" style="font-size: 2rem"><strong>{{tour.price}} VNĐ</strong></p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-lg-9 col-sm-9 col-12">
@@ -11,24 +30,6 @@
           <div *ngIf="tour">
             <div class="tour-schedule-detail" *ngFor="let schedule of tour.schedule; index as i">
               <div id="carouselExampleIndicators{{i}}" class="carousel slide" data-ride="carousel">
-                <!-- <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="https://www.bing.com/th?id=OHR.QingmingBridge_ROW1049513023_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"
-                      class="d-block w-100" alt="..." class="slide-image">
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="https://www.bing.com/th?id=OHR.YukonEmerald_ROW0574979181_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"
-                      class="d-block w-100" alt="..." class="slide-image">
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="https://www.bing.com/th?id=OHR.BistiBadlands_ROW0664350396_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"
-                      class="d-block w-100" alt="..." class="slide-image">
-                  </div>
-                </div> -->
-
                 <img [src]="tour.images[i][0].link" class="d-block w-100" alt="..." class="slide-image">
                 <a class="carousel-control-prev" href="#carouselExampleIndicators{{i}}" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,177 +77,144 @@
 
           </div>
         </div>
-        <div class="tour-ticket">
-          <div class="tour-ticket-title">
-            <div class="title text-uppercase font-weight-bold">Giá tour trọn gói</div>
-            <div class="content">
-              <div class="line-dash"></div>
-              <div class="text">
-                <p class="my-0">Dành cho đoàn {{tour.people}} người</p>
-                <p class="my-0" style="font-size: 2rem"><strong>{{tour.price}} VNĐ</strong></p>
-                <p class="my-0">Bao gồm</p>
-              </div>
-            </div>
-          </div>
-          <div class="tour-ticket-content mt-5">
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="row">
-                  <div class="col-2" style="position: relative">
-                    <!-- <div class="line"></div> -->
-                    <div class="icon"></div>
-                  </div>
-                  <div class="col-10">
-                    <div class="service-title" style="padding-top: 8px">
-                      <p>Vận chuyển: </p>
-                    </div>
-                    <div class="service-content">
-
-                      <p *ngFor="let transport of tour.transport">{{transport}}</p>
-
-                    </div>
-                  </div>
-                </div>
-                <!-- <div class="detail">
-                  <div class="item">
-                    <div class="vertical-line"></div>
-                    <div class="line-text"></div>
-                    <div class="detail-content">
-                      <p class="mb-0">Xe du lịch đời mới, máy lạnh, phục vụ theo chương trình.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="vertical-line"></div>
-                    <div class="line-text"></div>
-                    <div class="detail-content">
-                      <p class="mb-0">Xe du lịch đời mới, máy lạnh, phục vụ theo chương trình.</p>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="row">
-                  <div class="col-2" style="position: relative">
-                    <!-- <div class="line"></div> -->
-                    <div class="icon"></div>
-                  </div>
-                  <div class="col-10">
-                    <div class="service-title" style="padding-top: 8px">
-                      <p>Ăn uống: </p>
-                    </div>
-                    <div class="service-content">
-                      <p *ngFor="let eat of tour.eat">{{eat}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="row">
-                  <div class="col-2" style="position: relative">
-                    <!-- <div class="line"></div> -->
-                    <div class="icon"></div>
-                  </div>
-                  <div class="col-10">
-                    <div class="service-title" style="padding-top: 8px">
-                      <p>Bảo hiểm: </p>
-                    </div>
-                    <div class="service-content">
-                      <p *ngFor="let protect of tour.protect">{{protect}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="row">
-                  <div class="col-2" style="position: relative">
-                    <!-- <div class="line"></div> -->
-                    <div class="icon"></div>
-                  </div>
-                  <div class="col-10">
-                    <div class="service-title" style="padding-top: 8px">
-                      <p>Khách sạn: </p>
-                    </div>
-                    <div class="service-content">
-                      <p *ngFor="let hotel of tour.hotel">{{hotel}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="row">
-                  <div class="col-2" style="position: relative">
-                    <!-- <div class="line"></div> -->
-                    <div class="icon"></div>
-                  </div>
-                  <div class="col-10">
-                    <div class="service-title" style="padding-top: 8px">
-                      <p>Hướng dẫn viên: </p>
-                    </div>
-                    <div class="service-content">
-                      <p *ngFor="let guide of tour.guide">{{guide}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="row">
-                  <div class="col-2" style="position: relative">
-                    <!-- <div class="line"></div> -->
-                    <div class="icon"></div>
-                  </div>
-                  <div class="col-10">
-                    <div class="service-title" style="padding-top: 8px">
-                      <p>Quà tặng: </p>
-                    </div>
-                    <div class="service-content">
-                      <p *ngFor="let gift of tour.gift">{{gift}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="ticket-not-included">
-              <div class="content">
-                <div class="line-dash"></div>
-                <div class="text">
-                  <p class="my-0">Không bao gồm</p>
-                </div>
-              </div>
-              <p>- Tắm nước ngọt - Ăn uống ngoài chương trình - Điện thoại - Giặt ủi - Các chi phí khác</p>
+        <div class="tour-ticket-content mt-5">
+          <div class="row">
+            <div class="col-12 col-md-6">
               <div class="row">
-                <div class="col-2 d-flex justify-content-center" style="position: relative">
+                <div class="col-2" style="position: relative">
                   <!-- <div class="line"></div> -->
                   <div class="icon"></div>
                 </div>
                 <div class="col-10">
-                  <div class="service-title " style="padding-top: 8px">
-                    <p>Giá vé trẻ em: </p>
+                  <div class="service-title" style="padding-top: 8px">
+                    <p>Vận chuyển: </p>
                   </div>
                   <div class="service-content">
-                    <p *ngFor="let child of tour.child">{{child}}</p>
+
+                    <p *ngFor="let transport of tour.transport">{{transport}}</p>
+
                   </div>
                 </div>
               </div>
-              <div class="notice" style="display: block">
-                <p><span style="text-decoration: underline; display: inline-block">Lưu ý:</span> Tiêu chuẩn 50% vé: được
-                  01 xuất ăn + 01 ghế ngồi và ngủ ghép chung với gia đình</p>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-2" style="position: relative">
+                  <!-- <div class="line"></div> -->
+                  <div class="icon"></div>
+                </div>
+                <div class="col-10">
+                  <div class="service-title" style="padding-top: 8px">
+                    <p>Ăn uống: </p>
+                  </div>
+                  <div class="service-content">
+                    <p *ngFor="let eat of tour.eat">{{eat}}</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="button py-4" style="text-align:center">
-              <a class="btn btn-primary" style="display:inline-block" [routerLink]="['/contact']">Liên hệ trực tiếp</a>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-2" style="position: relative">
+                  <div class="icon"></div>
+                </div>
+                <div class="col-10">
+                  <div class="service-title" style="padding-top: 8px">
+                    <p>Bảo hiểm: </p>
+                  </div>
+                  <div class="service-content">
+                    <p *ngFor="let protect of tour.protect">{{protect}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-2" style="position: relative">
+                  <div class="icon"></div>
+                </div>
+                <div class="col-10">
+                  <div class="service-title" style="padding-top: 8px">
+                    <p>Khách sạn: </p>
+                  </div>
+                  <div class="service-content">
+                    <p *ngFor="let hotel of tour.hotel">{{hotel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-2" style="position: relative">
+                  <!-- <div class="line"></div> -->
+                  <div class="icon"></div>
+                </div>
+                <div class="col-10">
+                  <div class="service-title" style="padding-top: 8px">
+                    <p>Hướng dẫn viên: </p>
+                  </div>
+                  <div class="service-content">
+                    <p *ngFor="let guide of tour.guide">{{guide}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-2" style="position: relative">
+                  <!-- <div class="line"></div> -->
+                  <div class="icon"></div>
+                </div>
+                <div class="col-10">
+                  <div class="service-title" style="padding-top: 8px">
+                    <p>Quà tặng: </p>
+                  </div>
+                  <div class="service-content">
+                    <p *ngFor="let gift of tour.gift">{{gift}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ticket-not-included">
+            <div class="content">
+              <div class="line-dash"></div>
+              <div class="text">
+                <p class="my-0">Không hổ trợ</p>
+              </div>
+            </div>
+            <p>- Tắm nước ngọt - Ăn uống ngoài chương trình - Điện thoại - Giặt ủi - Các chi phí khác</p>
+            <div class="row">
+              <div class="col-2 d-flex justify-content-center" style="position: relative">
+                <!-- <div class="line"></div> -->
+                <div class="icon"></div>
+              </div>
+              <div class="col-10">
+                <div class="service-title " style="padding-top: 8px">
+                  <p>Giá vé trẻ em: </p>
+                </div>
+                <div class="service-content">
+                  <p *ngFor="let child of tour.child">{{child}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="notice" style="display: block">
+              <p><span style="text-decoration: underline; display: inline-block">Lưu ý:</span> Tiêu chuẩn 50% vé: được
+                01 xuất ăn + 01 ghế ngồi và ngủ ghép chung với gia đình</p>
+            </div>
+          </div>
+          <div class="button py-4" style="text-align:center">
+            <a class="btn btn-primary" style="display:inline-block" [routerLink]="['/contact']">Liên hệ trực tiếp</a>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-sm-3 col-12">
         <div class="list-tour">
-          <h4>Danh sách tour</h4>
+          <h4 class="mb-4">Danh sách tour</h4>
           <ul class="category-list font-weight-bold">
             <li class="list-item" *ngFor="let list of tours">
               <a [routerLink]="['/place/', list.id]" class="item">{{list.name}}
