@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
 
   public happyDescribe = `Bạn biết đấy, tuổi trẻ và sự tự do không thể kéo dài mãi mãi, chính vì thế, độ tuổi 20 chính là thời điểm lý tưởng để dấn thân vào những cuộc phiêu lưu và những chuyến đi tới các vùng đất xa xôi. Bạn sẽ đúc kết được vô số kinh nghiệm và những trải nghiệm đáng nhớ tại nhiều nơi hoang dã mà suốt đời bạn sẽ không thể quên. Hãy xem những gợi ý điểm đến trước khi tuổi 30 tới nhé!`;
   public contentTemp1 = 'Tiền nhiều để làm gì,hay đi du lịch ngay khi chúng ta còn có thể, thanh xuân là đi đây đi đó để không hối tiếc tuổi trẻ của mình.';
-  public parallaxContent = 'Là thị trấn nằm ở tỉnh Bà Rịa - Vũng Tàu, cách thành phố Vũng Tàu 12km, Long Hải được thiên nhiên ưu ái ban tặng nhiều cảnh đẹp thơ mộng của núi, của biển và của rừng hoa anh đào sắp trổ bông. Và để có một ngày nghỉ đầy thư giãn thì du khách hãy nhanh tay mua ngay tour du lịch Long Hải để được hòa mình cùng với biển cả, để ngắm nhìn bình minh dần hiện lên trên biển hay hoàng hôn khuất dần trầm mình xuống mặt biển mênh mông.';
   public tip = 'Một công ty muốn phát triển thì dịch vụ phải luôn đi đầu, vì vậy chúng tôi luôn luôn đề cao chất lượng phục vụ để mang tới quý khách hàng những trải nghiệm tốt nhất.';
   public tip1 = 'Khao khát cháy bỏng được đi du lịch trong mùa hè này, nhưng không biết nên bắt đầu từ đâu hoặc làm thế nào để chuyến đi chơi thực sự thú vị và ấn tượng.';
   public tip2 = 'Du lịch khám phá là khái niệm khá mới mẻ ở Việt Nam nhưng rất phổ biến trên toàn thế giới.';
@@ -39,6 +38,11 @@ export class HomeComponent implements OnInit {
 
   alls: any;
   homes = [];
+  tourDemo = {
+    name: 'Bờ Biển Long Hải',
+    describe: 'Là thị trấn nằm ở tỉnh Bà Rịa - Vũng Tàu, cách thành phố Vũng Tàu 12km, Long Hải được thiên nhiên ưu ái ban tặng nhiều cảnh đẹp thơ mộng của núi, của biển và của rừng hoa anh đào sắp trổ bông. Và để có một ngày nghỉ đầy thư giãn thì du khách hãy nhanh tay mua ngay tour du lịch Long Hải để được hòa mình cùng với biển cả, để ngắm nhìn bình minh dần hiện lên trên biển hay hoàng hôn khuất dần trầm mình xuống mặt biển mênh mông.',
+    id: ''
+  }
 
   public happyPlace = [
     { name: 'Phú Quốc', percent: 93 },
@@ -90,6 +94,7 @@ export class HomeComponent implements OnInit {
         return temp;
       }
       this.tours = tours.map(sluck);
+      this.tourDemo = this.tours[0];
     });
 
     if (this.alls) {
