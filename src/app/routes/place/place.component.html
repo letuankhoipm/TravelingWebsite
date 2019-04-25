@@ -16,62 +16,82 @@
 
   <div class="row travel-pack-content">
 
-    <div class="col-lg-9 col-md-9 row list-pack">
-      <div class="col-12 row option">
-        <div class="col-6">
-          <select class="option-sort" (change)="sortByPrice(select.value)" #select>
-            <option value="asc">
-              Giá tăng dần
-            </option>
-            <option value="desc">
-              Giá giảm dần
-            </option>
-          </select>
-        </div>
-        <div class="col-6 text-right">
-          <button class="btn" (click)=displayViewList()>
-            <i class="fa fa-list"></i>
-          </button>
-          <button class="btn" (click)="displayViewGrid()">
-            <i class="fa fa-th"></i>
-          </button>
+    <div class="col-lg-9 col-md-9">
+
+      <div class="option">
+        <div class="row align-items-center">
+          <div class="col-6">
+            <select class="option-sort" (change)="sortByPrice(select.value)" #select>
+              <option value="asc">
+                Giá tăng dần
+              </option>
+              <option value="desc">
+                Giá giảm dần
+              </option>
+            </select>
+          </div>
+          <div class="col-6">
+            <div class="option-view text-right">
+              <button class="btn" (click)=displayViewList()>
+                <i class="fa fa-list"></i>
+              </button>
+              <button class="btn" (click)="displayViewGrid()">
+                <i class="fa fa-th"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="list-view-pack" *ngIf="viewType === 'list'">
-        <div class="col-12 pack" *ngFor="let pack of packs; index as i">
+        <div class="pack mt-4" *ngFor="let pack of packs">
           <div class="row">
-            <div class="col-lg-6 col-md-12 pr-0">
-              <img [src]="pack.image" alt="">
-            </div>
-            <div class="col-lg-6 col-md-12 pack-content">
-              <h1 class="pack-name">
-                {{ pack.title }}
-              </h1>
-              <p class="pack-description">
-                {{ pack.description }}
-              </p>
-              <div class="pack-price">
-               <span class="mr-2">Giá:</span> {{ pack.price }}
+            <div class="col-lg-6">
+              <div class="pack-image">
+                <a>
+                  <img [src]="pack.image" alt="">
+                </a>
               </div>
             </div>
-
+            <div class="col-lg-6">
+              <div class="pack-info">
+                <h1 class="pack-name mb-3">
+                  <a [routerLink]="['/place/' + pack.id]">
+                    {{ pack.title }}
+                  </a>
+                </h1>
+                <p class="pack-description pr-4">
+                  {{ pack.description }}
+                </p>
+                <div class="pack-price">
+                  <span class="mr-2">Giá:</span> {{ pack.price }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="grid-view-pack row" *ngIf="viewType === 'grid'">
-        <div class="col-lg-6 col-md-12 pack" *ngFor="let pack of packs">
-          <div class="pack-image">
-            <img [src]="pack.image" alt="">
-          </div>
-          <div class="pack-content">
-              <h1 class="pack-name">
-                  {{ pack.title }}
+      <div class="grid-view-pack" *ngIf="viewType === 'grid'">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mt-4" *ngFor="let pack of packs">
+            <div class="pack">
+              <div class="pack-image">
+                <a href="">
+                  <img [src]="pack.image" alt="">
+                </a>
+              </div>
+              <div class="pack-info pt-2">
+                <h1 class="pack-name">
+                  <a href="">
+                    {{ pack.title }}
+                  </a>
                 </h1>
                 <div class="pack-price">
-                  <span class="mr-2">Giá:</span> {{ pack.price }}
+                  <span class="mr-2">Giá:</span>{{ pack.price }}
                 </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
