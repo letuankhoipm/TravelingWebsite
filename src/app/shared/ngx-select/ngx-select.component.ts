@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, Output, HostListener, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener, ViewChild, ElementRef, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-ngx-select',
   templateUrl: './ngx-select.component.html',
   styleUrls: ['./ngx-select.component.scss']
 })
-export class NgxSelectComponent implements OnInit {
+export class NgxSelectComponent implements OnInit, OnChanges {
   public currentOption = 'Thành Phố';
   public isSelecting = false;
   @Input() dataList: any[];
   @Input() defaultOption: string | number;
+  @Input() valueOption: number;
   @Output() selectedValue: any;
   @Output() data = new EventEmitter<number>();
 
@@ -37,6 +38,10 @@ export class NgxSelectComponent implements OnInit {
 
   ngOnInit() {
     this.addDefaultOption();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.currentOption = this.dataList[this.valueOption - 1].name;
   }
 
   // private methods

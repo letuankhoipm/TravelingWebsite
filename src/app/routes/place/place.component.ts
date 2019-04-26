@@ -82,7 +82,7 @@ export class PlaceComponent implements OnInit {
                 image: data.images.thumbnail.link,
                 people: data.people,
                 price: data.price,
-                key: data.id.replace('-', ' '),
+                key: data.id.split('-').join(' '),
               };
             });
           })
@@ -100,7 +100,7 @@ export class PlaceComponent implements OnInit {
   }
 
   public updateTerm(value: string) {
-    this.searchTerm = value;
+    this.searchTerm = value.trim().replace(/\s\s+/g, ' ');
   }
 
   private initRealTimeSearch() {
