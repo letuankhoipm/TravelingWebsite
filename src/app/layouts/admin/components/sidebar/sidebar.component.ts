@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
       list_subs: [
         { title: 'Thêm Tour', color: '#47e5d7', id: '3a', part: '/admin/add-tour' },
         { title: 'Danh Sách Tour', color: '#febe29', id: '3b', part: '/admin/list-tour' },
-        { title: 'Test Editor', color: '#0ebe29', id: '3c', part: '/admin/editor' }
+        // { title: 'Test Editor', color: '#0ebe29', id: '3c', part: '/admin/editor' }
       ]
     },
     // {

@@ -96,7 +96,6 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.myform.patchValue({
       destination: des ? des : ''
     });
-    console.log('created1: ', this.myform);
 
   }
 
