@@ -99,7 +99,7 @@
 
     <div class="col-lg-3 col-sm-3">
       <div class="list-tour pl-3">
-        <h4>Danh sách tour</h4>
+        <h4 class="mb-4">Danh sách tour</h4>
         <ul class="category-list font-weight-bold">
           <li class="list-item" *ngFor="let list of tours">
             <a [routerLink]="['/place/', list.id]" class="item">{{list.name}}
