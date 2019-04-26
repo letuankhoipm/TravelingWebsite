@@ -167,47 +167,6 @@ export class EditTourComponent implements OnInit {
           if(lists != undefined) {
             this.nameFix = lists.name;
           }
-        // console.log(lists.name);
-        
-
-        // this.dataSchedule = [...lists.schedule];
-        // this.name = this.dataTour.name;
-        // this.nameFix = lists.name;
-        // this.vehicle = this.dataTour.vehicle;
-        // this.valueOld = this.dataTour.daytime;
-        // this.valueOldNight = this.dataTour.night;
-        // this.people = this.dataTour.people;
-        // this.price = this.dataTour.price;
-        // this.note = this.dataTour.note;
-        // this.describe = this.dataTour.describe;
-        // this.onData(this.valueOld);
-        // for (let i = 0; i < this.dataTour.schedule.length; i++) {
-        //   this.valueDayTime[i].name = this.dataTour.schedule[i].name;
-        // }
-        // for (const value of this.listServices) {
-        //   value.listS = [1];
-        //   value.dataArr = [''];
-        // }
-        // this.listPay[0].listS = [1];
-        // this.listPay[0].dataArr = [''];
-        // this.listChild[0].listS = [1];
-        // this.listChild[0].dataArr = [''];
-        // for (let i = 0; i < this.listServices.length; i++) {
-        //   this.addTextareaService(this.dataTour[this.listServices[i].id], i);
-        // }
-        // for (let i = 1; i < this.dataTour.pay.length; i++) {
-        //   this.addListServiceL(this.listPay[0].listS, 1, this.listPay[0].dataArr);
-        // }
-        // for (let i = 0; i < this.dataTour.pay.length; i++) {
-        //   this.listPay[0].dataArr[i] = this.dataTour.pay[i];
-        // }
-        // for (let i = 1; i < this.dataTour.child.length; i++) {
-        //   this.addListServiceL(this.listChild[0].listS, 0, this.listChild[0].dataArr);
-        // }
-        // for (let i = 0; i < this.dataTour.child.length; i++) {
-        //   this.listChild[0].dataArr[i] = this.dataTour.child[i];
-        // }
-
       });
 
 
