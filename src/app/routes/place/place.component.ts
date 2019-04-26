@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterOutlet, NavigationStart, NavigationCancel, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { SeoService } from '@services/seo.service';
 import { PlaceService } from "@services/place.service";
 import { SharedService } from '@services/shared.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TourService } from '@services/tour.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-place',
@@ -82,7 +81,8 @@ export class PlaceComponent implements OnInit {
                 description: data.describe,
                 image: data.images.thumbnail.link,
                 people: data.people,
-                price: data.price
+                price: data.price,
+                key: data.id.replace('-', ' '),
               };
             });
           })

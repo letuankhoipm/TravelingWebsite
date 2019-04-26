@@ -8,21 +8,19 @@
     <div class="search-bar col-10 col-md-8  m-0 p-0">
       <div class="wrapper position-relative">
         <!-- <input (keyup)="searchTerms$.next($event.target.value)" -->
-        <input (keyup)="updateTerm($event.target.value)"
-               type="text"
-               placeholder="Tìm kiếm..."
-               class="search-bar w-100 p-2">
+        <input (keyup)="updateTerm($event.target.value)" type="text" placeholder="Tìm kiếm..."
+          class="search-bar w-100 p-2">
         <i class="far fa-search"></i>
       </div>
     </div>
   </div>
-  <div class="container not-found-container" *ngIf="packs?.length === 0">
-    <div class="row justify-content-center" >
-      <h2 class="col-8  text-center">
-        Không Tìm thấy sản phẩm nào
-      </h2>
+  <div class="container not-found-container">
+      <div class="row justify-content-center">
+        <h2 class="col-8  text-center">
+          Không Tìm thấy sản phẩm nào
+        </h2>
+      </div>
     </div>
-  </div>
 
   <div class="row travel-pack-content">
 
@@ -53,8 +51,11 @@
         </div>
       </div>
 
+
       <div class="list-view-pack" *ngIf="viewType === 'list'">
-        <div class="pack mt-4" *ngFor="let pack of packs">
+
+        <div class="pack mt-4" *ngFor="let pack of ( packs | filter:searchTerm) as temp">
+          </div>
           <div class="row">
             <div class="col-lg-5">
               <div class="pack-image">
@@ -84,7 +85,7 @@
 
       <div class="grid-view-pack" *ngIf="viewType === 'grid'">
         <div class="row">
-          <div class="col-lg-6 col-md-12 mt-4" *ngFor="let pack of packs">
+          <div class="col-lg-6 col-md-12 mt-4" *ngFor="let pack of packs | filter:searchTerm">
             <div class="pack">
               <div class="pack-image">
                 <a [routerLink]="['/place/' + pack.id]">
