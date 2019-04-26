@@ -53,6 +53,13 @@
       cursor: pointer;
       color: rgb(105, 104, 104);
     }
+    .option-view {
+      .btn-view {
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
   }
 
   .list-view-pack {

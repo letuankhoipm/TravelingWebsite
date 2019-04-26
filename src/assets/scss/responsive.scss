@@ -278,6 +278,16 @@ ul.ngx-pagination {
 
 .travel-pack-content {
 
+  .option {
+    .option-view {
+      .btn-grid-list {
+        @include min-and-max(320, 768) {
+          display: none;
+        }
+      }
+    }
+  }
+
   .list-view-pack {
     .pack-info {
       @include min-and-max(320, 768) {
