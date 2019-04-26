@@ -16,7 +16,7 @@ import { FormControl } from '@angular/forms';
 
 })
 export class PlaceComponent implements OnInit {
-
+  public searchTerm = '';
   public searchTerms$ = new Subject<string>();
   public placeData: any;
   public title;
@@ -49,17 +49,15 @@ export class PlaceComponent implements OnInit {
     this.sharedService.title.subscribe(title => {
       this.title = title;
     });
-
     this.tourList$ = this.tourService.getAlls();
-
     this.initRealTimeSearch();
   }
 
   ngOnInit() {
     if (this.placeData) {
       this.placeData.subscribe(places => {
-        this.places = places;
-        let place = places[0];
+        // this.places = places;
+        const place = places[0];
         this.seoService.generateTags({
           title: place.title,
           description: place.description,
@@ -96,6 +94,10 @@ export class PlaceComponent implements OnInit {
 
   }
 
+  public updateTerm(value: string) {
+    this.searchTerm = value;
+  }
+
   private initRealTimeSearch() {
     const searchFilter = (target: string) => (obj: { title: string }) => {
       if (obj.title.toLowerCase().includes(target.toLowerCase())) {
@@ -108,25 +110,6 @@ export class PlaceComponent implements OnInit {
         this.packs = this.originalPacks.filter(searchFilter(value));
       }
     });
-  }
-
-  ngAfterViewInit() {
-    //   if(this.state) {
-    //     this.state = this.outlet.activatedRouteData['routing'];
-    // }
-
-    // this.router.events
-    //     .subscribe((event) => {
-    //         if (event instanceof NavigationStart) {
-
-    //         }
-    //         else if (
-    //             event instanceof NavigationEnd ||
-    //             event instanceof NavigationCancel
-    //         ) {
-    //             this.state = this.outlet.activatedRouteData['routing'];
-    //         }
-    //     });
   }
 
 }

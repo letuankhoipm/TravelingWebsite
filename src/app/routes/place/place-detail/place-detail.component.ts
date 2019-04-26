@@ -30,10 +30,7 @@ export class PlaceDetailComponent implements OnInit {
       if (params['id'] != 'create') {
         this.id = params['id'];
 
-        this.tour$ = this.tourService.getById(this.id)
-          .pipe(
-            tap()
-          );
+        this.tour$ = this.tourService.getById(this.id).pipe(share());
         this.tour$.subscribe((tour) => {
           this.tour = tour;
           this.tour.images = this.objectToArray(tour.images);
@@ -51,12 +48,11 @@ export class PlaceDetailComponent implements OnInit {
       }
     });
     this.tourService.getAlls().subscribe(tours => {
-
       this.tours = tours;
     });
   }
 
-  private change_alias(alias) {
+  private change_alias(alias: string) {
     let str = alias;
     str = str.toLowerCase();
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");

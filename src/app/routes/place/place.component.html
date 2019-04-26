@@ -7,7 +7,8 @@
   <div class="search-container row justify-content-around">
     <div class="search-bar col-10 col-md-8  m-0 p-0">
       <div class="wrapper position-relative">
-        <input (keyup)="searchTerms$.next($event.target.value)"
+        <!-- <input (keyup)="searchTerms$.next($event.target.value)" -->
+        <input (keyup)="updateTerm($event.target.value)"
                type="text"
                placeholder="Tìm kiếm..."
                class="search-bar w-100 p-2">
@@ -15,10 +16,17 @@
       </div>
     </div>
   </div>
+  <div class="container not-found-container" *ngIf="packs?.length === 0">
+    <div class="row justify-content-center" >
+      <h2 class="col-8  text-center">
+        Không Tìm thấy sản phẩm nào
+      </h2>
+    </div>
+  </div>
 
   <div class="row travel-pack-content">
     <div class="col-lg-9 col-sm-9">
-      <div *ngIf="packs">
+      <div *ngIf="packs?.length > 0">
         <div class="row travel-pack-content-wrap mt-4"
           *ngFor="let pack of packs | paginate: { itemsPerPage: 7, currentPage: page }">
           <div class="col-lg-2 col-md-3 col-sm-12 pr-0 travel-pack-content-left">
@@ -40,27 +48,27 @@
           </div>
           <div class="col-lg-10 col-md-9 col-sm-12 px-0 travel-pack-content-right">
             <div class="travel-pack-image">
-              <img style="cursor: pointer;" [routerLink]="['/place/' + pack.id]" [src]="pack.image" alt="">
+              <img style="cursor: pointer;" [routerLink]="['/place/', pack.id]" [src]="pack.image" alt="">
             </div>
             <h1 class="travel-pack-title">
-              <a [routerLink]="['/place/' + pack.id]">
+              <a [routerLink]="['/place/', pack.id]">
                 {{ pack.title }}
               </a>
             </h1>
             <div class="travel-pack-describe">
               {{ pack.description }}
             </div>
-            <a [routerLink]="['/place/' + pack.id]" class="btn--detail">XEM CHI TIẾT</a>
+            <a [routerLink]="['/place/', pack.id]" class="btn--detail">XEM CHI TIẾT</a>
           </div>
 
         </div>
-      </div>
-
-      <div class="row m-4">
-        <div class="col-lg-12">
-          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        <div class="row m-4">
+          <div class="col-lg-12">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="col-lg-3 col-sm-3 mt-4">
       <div class="list-tour pl-3">
