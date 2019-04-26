@@ -191,9 +191,12 @@
   }
 }
 .icon-circle {
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 5px;
   width: 44px;
   height: 44px;
-  background: rgba(57, 92, 156, 1);
+  border: rgba(57, 92, 156, 1) solid;
   border-radius: 50%;
 }
 .day-flex {
