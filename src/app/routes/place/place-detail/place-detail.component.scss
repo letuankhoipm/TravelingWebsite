@@ -136,14 +136,6 @@
         justify-content: center;
         margin: 0 240px;
       }
-      .icon {
-        position: absolute;
-        z-index: 10;
-        width: 42px;
-        height: 42px;
-        background: rgba(57, 92, 156, 1);
-        border-radius: 50%;
-      }
       .service-title {
         font-weight: bold;
         font-size: 20px;
@@ -181,6 +173,7 @@
     z-index: 10;
     background: rgba(255, 255, 255, 1);
     padding: 10px;
+    font-weight: bold;
   }
 }
 
@@ -196,6 +189,65 @@
     background-attachment: fixed;
     background-size: cover;
   }
+}
+.icon-circle {
+  width: 44px;
+  height: 44px;
+  background: rgba(57, 92, 156, 1);
+  border-radius: 50%;
+}
+.day-flex {
+  display: flex;
+}
+
+.day-line {
+  border-right: 1px solid rgb(194, 194, 194);
+  flex: 0 20px;
+}
+
+.flex-line-hori {
+  flex: 0 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.line-horizontal {
+  height: 1px;
+  background: rgb(194, 194, 194);
+  width: 100%;
+}
+
+.content-text {
+  flex: 1;
+  .text{
+    padding: 9px 15px;
+  }
+  p{
+    margin-bottom: 0;
+  }
+}
+
+.last-item {
+  position: relative;
+}
+
+.cleal-line {
+  bottom: 0;
+  left: 9px;
+  position: absolute;
+  width: 20px;
+  height: calc(50% - 0.5px);
+  background: rgba(255, 255, 255, 1);
+}
+
+.title-text{
+  padding: 7px 0px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(57, 92, 156, 1);
+}
+.service-item{
+  margin: 10px 0px;
 }
 
 .btn-live {

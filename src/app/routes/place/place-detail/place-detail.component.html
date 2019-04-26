@@ -5,8 +5,6 @@
 </div>
 
 <div class="container">
-
-  <!-- <div class="tour-header text-uppercase text-center"> <i class="fas fa-lemon mr-2"></i>Tour du lịch</div> -->
   <div class="tour-content" *ngIf="tour">
     <div class="tour-name mb-4 mt-4 text-center">
       {{tour.name}}
@@ -51,28 +49,28 @@
                   <div class="period period-orange">Sáng</div>
                 </div>
                 <div class="col-9 pl-0" *ngIf="schedule.morning">
-                  <div class="content-text">{{schedule.morning}}</div>
+                  <div class="content-text" [innerHTML]="schedule.morning"></div>
                 </div>
                 <div class="col-3 time-line" *ngIf="schedule.noon">
                   <div class="line line-green"></div>
                   <div class="period period-green">Trưa</div>
                 </div>
                 <div class="col-9 pl-0" *ngIf="schedule.noon">
-                  <div class="content-text">{{schedule.noon}}</div>
+                  <div class="content-text" [innerHTML]="schedule.noon"></div>
                 </div>
                 <div class="col-3 time-line" *ngIf="schedule.afternoon">
                   <div class="line line-blue"></div>
                   <div class="period period-blue">Chiều</div>
                 </div>
                 <div class="col-9 pl-0" *ngIf="schedule.afternoon">
-                  <div class="content-text">{{schedule.afternoon}}</div>
+                  <div class="content-text" [innerHTML]="schedule.afternoon"></div>
                 </div>
                 <div class="col-3 time-line" *ngIf="schedule.night">
                   <div class="line line-purple"></div>
                   <div class="period period-purple">Tối</div>
                 </div>
                 <div class="col-9 pl-0" *ngIf="schedule.night">
-                  <div class="content-text">{{schedule.night}}</div>
+                  <div class="content-text" [innerHTML]="schedule.night"></div>
                 </div>
               </div>
             </div>
@@ -80,138 +78,232 @@
           </div>
         </div>
         <div class="tour-ticket-content mt-5">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="row">
-                <div class="col-2" style="position: relative">
-                  <!-- <div class="line"></div> -->
-                  <div class="icon"></div>
-                </div>
-                <div class="col-10">
-                  <div class="service-title" style="padding-top: 8px">
-                    <p>Vận chuyển: </p>
-                  </div>
-                  <div class="service-content">
-
-                    <p *ngFor="let transport of tour.transport">{{transport}}</p>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="row">
-                <div class="col-2" style="position: relative">
-                  <!-- <div class="line"></div> -->
-                  <div class="icon"></div>
-                </div>
-                <div class="col-10">
-                  <div class="service-title" style="padding-top: 8px">
-                    <p>Ăn uống: </p>
-                  </div>
-                  <div class="service-content">
-                    <p *ngFor="let eat of tour.eat">{{eat}}</p>
-                  </div>
-                </div>
-              </div>
+          <div class="content">
+            <div class="line-dash"></div>
+            <div class="text">
+              <p class="my-0">Dịch vụ</p>
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="row">
-                <div class="col-2" style="position: relative">
-                  <div class="icon"></div>
-                </div>
-                <div class="col-10">
-                  <div class="service-title" style="padding-top: 8px">
-                    <p>Bảo hiểm: </p>
+            <div class="col-12 col-md-6 service-item">
+              <div class="service-title">
+                <div class="row">
+                  <div class="col-2" style="padding-left: 12px">
+                    <div class="icon-circle"></div>
                   </div>
-                  <div class="service-content">
-                    <p *ngFor="let protect of tour.protect">{{protect}}</p>
+                  <div class="col-10">
+                    <div class="title-text">
+                      Vận chuyển
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="row">
-                <div class="col-2" style="position: relative">
-                  <div class="icon"></div>
+              <div class="service-content">
+                <div class="day-flex" *ngFor="let transport of tour.transport; let last = last"
+                  [ngClass]="{'last-item': last}">
+                  <div class="day-line"></div>
+                  <div class="flex-line-hori">
+                    <div class="line-horizontal"></div>
+                  </div>
+                  <div class="content-text">
+                    <div class="text">
+                      <p [innerHTML]="transport"></p>
+                    </div>
+                  </div>
+                  <div *ngIf="last" class="cleal-line"></div>
                 </div>
-                <div class="col-10">
-                  <div class="service-title" style="padding-top: 8px">
-                    <p>Khách sạn: </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 service-item">
+              <div class="service-title">
+                <div class="row">
+                  <div class="col-2" style="padding-left: 12px">
+                    <div class="icon-circle"></div>
                   </div>
-                  <div class="service-content">
-                    <p *ngFor="let hotel of tour.hotel">{{hotel}}</p>
+                  <div class="col-10">
+                    <div class="title-text">
+                      Ăn uống
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <div class="day-flex" *ngFor="let eat of tour.eat; let last = last" [ngClass]="{'last-item': last}">
+                  <div class="day-line"></div>
+                  <div class="flex-line-hori">
+                    <div class="line-horizontal"></div>
+                  </div>
+                  <div class="content-text">
+                    <div class="text">
+                      <p [innerHTML]="eat"></p>
+                    </div>
+                  </div>
+                  <div *ngIf="last" class="cleal-line"></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 service-item">
+              <div class="service-title">
+                <div class="row">
+                  <div class="col-2" style="padding-left: 12px">
+                    <div class="icon-circle"></div>
+                  </div>
+                  <div class="col-10">
+                    <div class="title-text">
+                      Bảo hiểm
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <div class="day-flex" *ngFor="let protect of tour.protect; let last = last"
+                  [ngClass]="{'last-item': last}">
+                  <div class="day-line"></div>
+                  <div class="flex-line-hori">
+                    <div class="line-horizontal"></div>
+                  </div>
+                  <div class="content-text">
+                    <div class="text">
+                      <p [innerHTML]="protect"></p>
+                    </div>
+                  </div>
+                  <div *ngIf="last" class="cleal-line"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 service-item">
+              <div class="service-title">
+                <div class="row">
+                  <div class="col-2" style="padding-left: 12px">
+                    <div class="icon-circle"></div>
+                  </div>
+                  <div class="col-10">
+                    <div class="title-text">
+                      Khách sạn
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <div class="day-flex" *ngFor="let hotel of tour.hotel; let last = last" [ngClass]="{'last-item': last}">
+                  <div class="day-line"></div>
+                  <div class="flex-line-hori">
+                    <div class="line-horizontal"></div>
+                  </div>
+                  <div class="content-text">
+                    <div class="text">
+                      <p [innerHTML]="hotel"></p>
+                    </div>
+                  </div>
+                  <div *ngIf="last" class="cleal-line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6 service-item">
+              <div class="service-title">
+                <div class="row">
+                  <div class="col-2" style="padding-left: 12px">
+                    <div class="icon-circle"></div>
+                  </div>
+                  <div class="col-10">
+                    <div class="title-text">
+                      Hướng dẫn viên
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <div class="day-flex" *ngFor="let guide of tour.guide; let last = last" [ngClass]="{'last-item': last}">
+                  <div class="day-line"></div>
+                  <div class="flex-line-hori">
+                    <div class="line-horizontal"></div>
+                  </div>
+                  <div class="content-text">
+                    <div class="text">
+                      <p [innerHTML]="guide"></p>
+                    </div>
+                  </div>
+                  <div *ngIf="last" class="cleal-line"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 service-item">
+              <div class="service-title">
+                <div class="row">
+                  <div class="col-2" style="padding-left: 12px">
+                    <div class="icon-circle"></div>
+                  </div>
+                  <div class="col-10">
+                    <div class="title-text">
+                      Quà tặng
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <div class="day-flex" *ngFor="let gift of tour.gift; let last = last" [ngClass]="{'last-item': last}">
+                  <div class="day-line"></div>
+                  <div class="flex-line-hori">
+                    <div class="line-horizontal"></div>
+                  </div>
+                  <div class="content-text">
+                    <div class="text">
+                      <p [innerHTML]="gift"></p>
+                    </div>
+                  </div>
+                  <div *ngIf="last" class="cleal-line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-not-included">
+          <div class="content">
+            <div class="line-dash"></div>
+            <div class="text">
+              <p class="my-0">Không hổ trợ</p>
+            </div>
+          </div>
+          <p>- Tắm nước ngọt - Ăn uống ngoài chương trình - Điện thoại - Giặt ủi - Các chi phí khác</p>
+          <div class="service-item">
+            <div class="service-title">
               <div class="row">
-                <div class="col-2" style="position: relative">
-                  <!-- <div class="line"></div> -->
-                  <div class="icon"></div>
+                <div class="col-2" style="padding-left: 12px">
+                  <div class="icon-circle"></div>
                 </div>
                 <div class="col-10">
-                  <div class="service-title" style="padding-top: 8px">
-                    <p>Hướng dẫn viên: </p>
-                  </div>
-                  <div class="service-content">
-                    <p *ngFor="let guide of tour.guide">{{guide}}</p>
+                  <div class="title-text">
+                    Giá vé trẻ em
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-6">
-              <div class="row">
-                <div class="col-2" style="position: relative">
-                  <!-- <div class="line"></div> -->
-                  <div class="icon"></div>
+            <div class="service-content">
+              <div class="day-flex" *ngFor="let child of tour.child; let last = last" [ngClass]="{'last-item': last}">
+                <div class="day-line"></div>
+                <div class="flex-line-hori">
+                  <div class="line-horizontal"></div>
                 </div>
-                <div class="col-10">
-                  <div class="service-title" style="padding-top: 8px">
-                    <p>Quà tặng: </p>
-                  </div>
-                  <div class="service-content">
-                    <p *ngFor="let gift of tour.gift">{{gift}}</p>
+                <div class="content-text">
+                  <div class="text">
+                    <p [innerHTML]="child"></p>
                   </div>
                 </div>
+                <div *ngIf="last" class="cleal-line"></div>
               </div>
             </div>
           </div>
-          <div class="ticket-not-included">
-            <div class="content">
-              <div class="line-dash"></div>
-              <div class="text">
-                <p class="my-0">Không hổ trợ</p>
-              </div>
-            </div>
-            <p>- Tắm nước ngọt - Ăn uống ngoài chương trình - Điện thoại - Giặt ủi - Các chi phí khác</p>
-            <div class="row">
-              <div class="col-2 d-flex justify-content-center" style="position: relative">
-                <!-- <div class="line"></div> -->
-                <div class="icon"></div>
-              </div>
-              <div class="col-10">
-                <div class="service-title " style="padding-top: 8px">
-                  <p>Giá vé trẻ em: </p>
-                </div>
-                <div class="service-content">
-                  <p *ngFor="let child of tour.child">{{child}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="notice" style="display: block">
-              <p><span style="text-decoration: underline; display: inline-block">Lưu ý:</span> Tiêu chuẩn 50% vé: được
-                01 xuất ăn + 01 ghế ngồi và ngủ ghép chung với gia đình</p>
-            </div>
+          <div class="notice">
+            <label style="text-decoration: underline">Lưu ý: </label>
+            <p style="display: inline; padding-left: 10px" [innerHTML]="tour.note"></p>
           </div>
-          <div class="button py-4" style="text-align:center">
-            <a class="btn btn-live" style="display:inline-block" [routerLink]="['/contact']">Liên hệ trực tiếp</a>
-          </div>
+        </div>
+        <div class="button py-4" style="text-align:center">
+          <a class="btn btn-primary" style="display:inline-block" [routerLink]="['/contact']">Liên hệ trực tiếp</a>
         </div>
       </div>
       <div class="col-lg-3 col-sm-3 col-12">
@@ -233,3 +325,4 @@
       </div>
     </div>
   </div>
+</div>
