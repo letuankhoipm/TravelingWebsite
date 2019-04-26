@@ -11,5 +11,5 @@
     <i onmousedown="event.preventDefault()" (click)="exec('bold')" class="tools tool-b far fa-bold"></i>
   </div>
   <i onmousedown="event.preventDefault()" (click)="openTool()" class="tool fal fa-code"></i>
-  <div [attr.placeholder]="placeholderInput" mdInput [ngStyle]="{'min-height.px': minHeight}" #myDiv (mouseup)="checkSelectText()" (mouseout)="getData()" class="editor" contenteditable='true'></div>
+  <div [innerHTML]="dataCopy" [attr.placeholder]="placeholderInput" mdInput [ngStyle]="{'min-height.px': minHeight}" #myDiv (mouseup)="checkSelectText()" (mouseout)="getData()" class="editor" contenteditable='true'></div>
 </div>

@@ -1,4 +1,5 @@
 <div class="control">
+  <button (click)="logAnh()">Log</button>
   <div data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create">Lưu</div>
   <a href="/admin/add-tour" class="reset">Làm Mới</a>
 </div>
@@ -29,13 +30,16 @@
       <div class="group-wrapper">
         <label class="label">Ảnh Đại Diện:</label>
         <div class="box-image min-height-100">
-          <div *ngIf="checkExistNameUploadThumbnail" class="alert-m alert alert-danger alert-dismissible fade show" role="alert">
+          <div *ngIf="checkExistNameUploadThumbnail" class="alert-m alert alert-danger alert-dismissible fade show"
+            role="alert">
             <strong>Chưa nhập tên Tour!</strong> Vui lòng nhập tên trước khi upload.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <app-upload-image-thumb (checkNameUpload)="checkNameUploadThumbnail($event)" [dataImagesCheck]="checkEditUpload" [valueOld]="valueOld" [nameTour]="changeAlias(name)">
+          <app-upload-image-thumb (getArrClearThumb)="getArrClearThumb($event)"
+            (checkNameUpload)="checkNameUploadThumbnail($event)" [dataImagesCheck]="dataTour?.images"
+            [valueOld]="valueOld" [nameTour]="idTour">
           </app-upload-image-thumb>
         </div>
       </div>
@@ -46,7 +50,8 @@
             <app-ngx-select (data)="onData($event)" [valueOption]="valueOld" [dataList]="listDayTime"></app-ngx-select>
           </div>
           <div class="col-6">
-            <app-ngx-select (data)="onDataNight($event)" [valueOption]="valueOldNight" [dataList]="listNight"></app-ngx-select>
+            <app-ngx-select (data)="onDataNight($event)" [valueOption]="valueOldNight" [dataList]="listNight">
+            </app-ngx-select>
           </div>
         </div>
       </div>
@@ -64,7 +69,7 @@
               </div>
               <div class="content-text">
                 <app-ngx-editor (dataOutput)="changeTextSchedule($event, index, listDay.id)"
-                  [data]="item.time[listDay.id]" [minHeight]="minHeightTextSchedule"
+                  [data]="dataSchedule[index][listDay.name_en]" [minHeight]="minHeightTextSchedule"
                   [placeholderInput]="listDay.placeholder">
                 </app-ngx-editor>
               </div>
@@ -82,8 +87,9 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <app-upload-image (checkNameUpload)="checkNameUpload($event)" [dataImagesCheck]="checkEditUpload" [valueOld]="valueOld"
-              [nameTour]="changeAlias(name)" [value]="item.id" class="row mx-0">
+            <app-upload-image (getArrClear)="getArrClear($event, index)" (checkNameUpload)="checkNameUpload($event)"
+              [dataImagesCheck]="dataTour?.images" [valueOld]="valueOld" [nameTour]="changeAlias(name)" [value]="item.id"
+              class="row mx-0">
             </app-upload-image>
           </div>
         </div>

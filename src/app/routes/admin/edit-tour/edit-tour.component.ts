@@ -1,47 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { TourService } from '@services/tour.service';
+import { Observable } from 'rxjs';
 import { ImageService } from '@services/image.service';
 
-export interface TourL {
-  child?: [];
-  daytime?: number;
-  eat?: [];
-  gift?: [];
-  guide?: [];
-  hotel?: [];
-  name?: string;
-  night?: number;
-  note?: string;
-  pay?: [];
-  people?: number;
-  price?: number;
-  protect?: [];
-  schedule?: [
-    {
-      afternoon?: string;
-      morning?: string,
-      name?: string,
-      night?: string,
-      noon?: string
-    }
-  ];
-  transport?: [];
-  vehicle?: string;
-}
-
 @Component({
-  selector: 'app-add-tour',
-  templateUrl: './add-tour.component.html',
-  styleUrls: ['./add-tour.component.scss'],
+  selector: 'app-edit-tour',
+  templateUrl: './edit-tour.component.html',
+  styleUrls: ['./edit-tour.component.scss'],
   providers: [TourService, ImageService]
 })
-export class AddTourComponent implements OnInit {
+export class EditTourComponent implements OnInit {
 
-  userDoc: AngularFirestoreDocument<TourL>;
+  dataTour: any = {
+    child: [],
+    daytime: null,
+    describe: '',
+    eat: [],
+    gift: [],
+    guide: [],
+    hotel: [],
+    name: '',
+    night: null,
+    note: '',
+    pay: [],
+    people: null,
+    price: null,
+    protect: [],
+    schedule: [
+      {
+        afternoon: '',
+        morning: '',
+        name: '',
+        night: '',
+        noon: ''
+      }
+    ],
+    transport: [],
+    vehicle: '',
+    images: {},
+  };
 
   valueDayTime = [{ id: 1, name: '', time: [] }];
   valueOld = 1;
@@ -60,7 +60,19 @@ export class AddTourComponent implements OnInit {
   namePost: string = '';
   arrPaths = [];
   changeDom = 1;
-  checkEditUpload = {};
+  dataSchedule = [{
+    afternoon: '',
+    morning: '',
+    name: '',
+    night: '',
+    noon: ''
+  }];
+  idTour: string;
+  listImages = {};
+  arrClearThumb = [];
+  arrClear = [];
+  idDocumentTour = '';
+
 
   public listDayTime = [
     { name: '1 Ngày', number: 1 },
@@ -88,11 +100,21 @@ export class AddTourComponent implements OnInit {
     { name: '10 Đêm', number: 10 }
   ];
 
+  name = '';
+  nameFix: any;
+  vehicle = '';
+  daytime = null;
+  night = null;
+  people = null;
+  price = null;
+  note = '';
+  describe = '';
+
   public listDays = [
-    { name: 'sang', placeholder: 'Mô tả các hoạt động buổi sáng', id: 0 },
-    { name: 'trua', placeholder: 'Mô tả các hoạt động buổi trưa', id: 1 },
-    { name: 'chieu', placeholder: 'Mô tả các hoạt động buổi chiều', id: 2 },
-    { name: 'toi', placeholder: 'Mô tả các hoạt động buổi tối', id: 3 },
+    { name: 'sang', placeholder: 'Mô tả các hoạt động buổi sáng', id: 0, name_en: 'morning' },
+    { name: 'trua', placeholder: 'Mô tả các hoạt động buổi trưa', id: 1, name_en: 'noon' },
+    { name: 'chieu', placeholder: 'Mô tả các hoạt động buổi chiều', id: 2, name_en: 'afternoon' },
+    { name: 'toi', placeholder: 'Mô tả các hoạt động buổi tối', id: 3, name_en: 'night' },
   ];
 
   public listChilds = [1];
@@ -126,106 +148,138 @@ export class AddTourComponent implements OnInit {
     }
   ];
 
-  name = '';
-  vehicle = '';
-  daytime = null;
-  night = null;
-  people = null;
-  price = null;
-  note = '';
-  describe = '';
-
-  dataTour: any = {
-    child: [],
-    daytime: null,
-    describe: '',
-    eat: [],
-    gift: [],
-    guide: [],
-    hotel: [],
-    name: '',
-    night: null,
-    note: '',
-    pay: [],
-    people: null,
-    price: null,
-    protect: [],
-    schedule: [
-      {
-        afternoon: '',
-        morning: '',
-        name: '',
-        night: '',
-        noon: ''
-      }
-    ],
-    transport: [],
-    vehicle: '',
-    images: {},
-  };
-  TourService: any;
-
   constructor(
+    private router: Router,
+    private storage: AngularFireStorage,
+    private db: AngularFirestore,
     private tourService: TourService,
     private imageService: ImageService,
-    private storage: AngularFireStorage,
-    private db: AngularFirestore
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
+
+    this.activatedRoute.params.subscribe(paramsId => {
+      this.idDocumentTour = paramsId.id
+      this.tourService.getById(this.idDocumentTour).subscribe(lists => {
+        this.dataTour = lists;
+          if(lists != undefined) {
+            this.nameFix = lists.name;
+          }
+        // console.log(lists.name);
+        
+
+        // this.dataSchedule = [...lists.schedule];
+        // this.name = this.dataTour.name;
+        // this.nameFix = lists.name;
+        // this.vehicle = this.dataTour.vehicle;
+        // this.valueOld = this.dataTour.daytime;
+        // this.valueOldNight = this.dataTour.night;
+        // this.people = this.dataTour.people;
+        // this.price = this.dataTour.price;
+        // this.note = this.dataTour.note;
+        // this.describe = this.dataTour.describe;
+        // this.onData(this.valueOld);
+        // for (let i = 0; i < this.dataTour.schedule.length; i++) {
+        //   this.valueDayTime[i].name = this.dataTour.schedule[i].name;
+        // }
+        // for (const value of this.listServices) {
+        //   value.listS = [1];
+        //   value.dataArr = [''];
+        // }
+        // this.listPay[0].listS = [1];
+        // this.listPay[0].dataArr = [''];
+        // this.listChild[0].listS = [1];
+        // this.listChild[0].dataArr = [''];
+        // for (let i = 0; i < this.listServices.length; i++) {
+        //   this.addTextareaService(this.dataTour[this.listServices[i].id], i);
+        // }
+        // for (let i = 1; i < this.dataTour.pay.length; i++) {
+        //   this.addListServiceL(this.listPay[0].listS, 1, this.listPay[0].dataArr);
+        // }
+        // for (let i = 0; i < this.dataTour.pay.length; i++) {
+        //   this.listPay[0].dataArr[i] = this.dataTour.pay[i];
+        // }
+        // for (let i = 1; i < this.dataTour.child.length; i++) {
+        //   this.addListServiceL(this.listChild[0].listS, 0, this.listChild[0].dataArr);
+        // }
+        // for (let i = 0; i < this.dataTour.child.length; i++) {
+        //   this.listChild[0].dataArr[i] = this.dataTour.child[i];
+        // }
+
+      });
+
+
+      this.tourService.getAlls().subscribe(lists => {
+        this.listNameTour = lists.map(obj => {
+          return obj.id;
+        });
+      });
+    });
+
+    this.idTour = this.idDocumentTour;
+    this.tourService.getById(this.idDocumentTour).subscribe(lists => {
+      this.dataTour = lists;
+      console.log(this.dataTour);
+
+      if (this.dataTour != undefined) {
+        this.dataSchedule = [...this.dataTour.schedule];
+        this.name = this.dataTour.name;
+        this.nameFix = lists.name;
+        this.vehicle = this.dataTour.vehicle;
+        this.valueOld = this.dataTour.daytime;
+        this.valueOldNight = this.dataTour.night;
+        this.people = this.dataTour.people;
+        this.price = this.dataTour.price;
+        this.note = this.dataTour.note;
+        this.describe = this.dataTour.describe;
+
+        this.onData(this.valueOld);
+        for (let i = 0; i < this.dataTour.schedule.length; i++) {
+          this.valueDayTime[i].name = this.dataTour.schedule[i].name;
+        }
+        for (const value of this.listServices) {
+          value.listS = [1];
+          value.dataArr = [''];
+        }
+        this.listPay[0].listS = [1];
+        this.listPay[0].dataArr = [''];
+        this.listChild[0].listS = [1];
+        this.listChild[0].dataArr = [''];
+        for (let i = 0; i < this.listServices.length; i++) {
+          this.addTextareaService(this.dataTour[this.listServices[i].id], i);
+        }
+        for (let i = 1; i < this.dataTour.pay.length; i++) {
+          this.addListServiceL(this.listPay[0].listS, 1, this.listPay[0].dataArr);
+        }
+        for (let i = 0; i < this.dataTour.pay.length; i++) {
+          this.listPay[0].dataArr[i] = this.dataTour.pay[i];
+        }
+        for (let i = 1; i < this.dataTour.child.length; i++) {
+          this.addListServiceL(this.listChild[0].listS, 0, this.listChild[0].dataArr);
+        }
+        for (let i = 0; i < this.dataTour.child.length; i++) {
+          this.listChild[0].dataArr[i] = this.dataTour.child[i];
+        }
+      }
+
+    });
+
+
     this.tourService.getAlls().subscribe(lists => {
-      console.log(lists);
       this.listNameTour = lists.map(obj => {
         return obj.id;
       });
     });
 
-    this.imageService.getById('temp').subscribe(lists => {
-      this.listImagesUpload = lists;
-      console.log(this.listImagesUpload);
-      this.arrPaths = [];
-
-      for (const paths in this.listImagesUpload) {
-        if (paths === 'thumbnail') { continue; }
-        console.log(paths);
-        const p = this.listImagesUpload[paths].map(x => x.path);
-        this.arrPaths = [...this.arrPaths, ...p];
-        this.arrPaths.push(this.listImagesUpload.thumbnail.path);
-      }
-    });
-  }
-
-  deleteImage(arr) {
-    for (const value of arr) {
-      var desertRef = this.storage.ref(value);
-      desertRef.delete();
-    }
-    let arrSpace = {};
-    this.db.doc(`images/temp`).set(arrSpace);
-  }
-
-  checkName() {
-    const name = this.changeAlias(this.name);
-    const found = this.listNameTour.find(function (element: string) {
-      return element === name;
-    });
-    if (!found) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  checkNameUpload(vl) {
-    this.checkExistNameUpload = vl;
-  }
-
-  checkNameUploadThumbnail(vl) {
-    this.checkExistNameUploadThumbnail = vl;
   }
 
   save() {
+    this.imageService.getById('tempedit').subscribe(lists => {
+      this.listImages = lists;
+      this.dataTour.images = this.listImages;
+    });
     this.dataTour.name = this.name;
     this.dataTour.vehicle = this.vehicle;
     this.dataTour.daytime = this.valueOld;
@@ -233,7 +287,6 @@ export class AddTourComponent implements OnInit {
     this.dataTour.note = this.note;
     this.dataTour.people = this.people;
     this.dataTour.price = this.price;
-    this.dataTour.images = this.listImagesUpload;
     this.dataTour.describe = this.describe;
 
     for (let i = 0; i < this.valueOld; i++) {
@@ -267,16 +320,42 @@ export class AddTourComponent implements OnInit {
     this.dataTour.child = this.listChild[0].dataArr;
 
     this.okData = this.dataTour;
-    console.log(this.dataTour);
+    setTimeout(() => {
+      this.tourService.setData(this.changeAlias(this.name), this.dataTour);
+      if (this.changeAlias(this.name) != this.changeAlias(this.nameFix)) {
+        this.router.navigate([`/admin/edit-tour/${this.changeAlias(this.name)}`]);
+        this.tourService.deleteById(this.changeAlias(this.nameFix));
+      }
+    }, 1000);
+    for (let value of this.arrClear) {
+    }
 
-    this.tourService.setData(this.changeAlias(this.name), this.dataTour);
-    this.namePost = this.changeAlias(this.name);
-    let arrSpace = {thumbnail: {}};
-    this.db.doc(`images/temp`).set(arrSpace);
-    // this.deleteImage(this.arrPaths);
-    this.valueOld = 1;
-    this.changeDom = 2;
-    this.name = '';
+    this.deleteImage(this.arrClearThumb);
+    for (let value of this.arrClear) {
+      this.deleteImage(value);
+    }
+
+  }
+
+  logAnh() {
+    console.log(this.dataTour.images);
+  }
+
+  getArrClearThumb(vl) {
+    this.arrClearThumb = vl;
+  }
+
+  getArrClear(vl, i) {
+    this.arrClear[i] = vl;
+  }
+
+  addTextareaService(arr, id) {
+    for (let i = 1; i < arr.length; i++) {
+      this.addListService(this.listServices[id].listS, id, this.listServices[id].dataArr);
+    }
+    for (let i = 0; i < arr.length; i++) {
+      this.listServices[id].dataArr[i] = arr[i];
+    }
   }
 
   onData(vl) {
@@ -296,12 +375,45 @@ export class AddTourComponent implements OnInit {
           noon: ''
         });
       }
+      this.dataSchedule = [...this.dataTour.schedule];
     } else if (this.valueOld > vl) {
       for (let i = this.valueOld; i > vl; i--) {
         this.dataTour.schedule.splice(i - 1, 1);
       }
+      this.dataSchedule = [...this.dataTour.schedule];
     }
     this.valueOld = vl;
+
+  }
+
+  deleteImage(arr) {
+    for (const value of arr) {
+      var desertRef = this.storage.ref(value.path);
+      desertRef.delete();
+    }
+  }
+
+  checkName() {
+
+    const name = this.changeAlias(this.name);
+    const found = this.listNameTour.find(function (element: string) {
+      return element === name;
+    });
+
+    if (found && name != this.changeAlias(this.nameFix)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  checkNameUpload(vl) {
+    this.checkExistNameUpload = vl;
+  }
+
+  checkNameUploadThumbnail(vl) {
+    this.checkExistNameUploadThumbnail = vl;
   }
 
   onDataNight(vl) {
@@ -433,8 +545,6 @@ export class AddTourComponent implements OnInit {
         break;
       default:
     }
-
-    console.log(this.listServices[0].dataArr);
 
   }
 

@@ -27,7 +27,6 @@ export class ListTourComponent implements OnInit {
 
   ngOnInit() {
     this.tourService.getAlls().subscribe(lists => {
-      console.log(lists);
       this.dataTours = lists;
     });
   }
@@ -38,7 +37,6 @@ export class ListTourComponent implements OnInit {
   }
 
   deleteTour(id) {
-    console.log(id);
     for (let value of this.dataTours) {
       if (id == value.id) {
         let arrPaths = [];
@@ -53,40 +51,8 @@ export class ListTourComponent implements OnInit {
           this.deleteImage(value);
         }
         this.tourService.deleteById(id);
-        console.log(arrPaths);
         break;
       }
     }
-    // console.log(this.pathImage);
-    // for (const value of this.pathImage) {
-    //   let arrTemp: any;
-    //   if (value['id-tour'] == id) {
-    //     arrTemp = value;
-    //     let arrPaths = [];
-    //     for (const paths in value) {
-    //       if (paths === 'thumb' || paths === 'id-tour') {continue;}
-    //       const p = value[paths].map(x => x.part);
-    //       arrPaths = [...arrPaths, ...p];
-    //     }
-    //     for (const listPaths of arrPaths) {
-    //       this.deleteImage(listPaths);
-    //     }
-    //     this.deleteImage(arrTemp.thumb.path);
-    //     break;
-    //   }
-    //   this.db.doc<any>(`images/${id}`).delete();
-    //   this.db.doc<any>(`tour/${id}`).delete();
-    // }
-    // const ara = Array.of(this.pathImage[id]);
-    // console.log(ara);
-    // this.pathImage[id].splice(this.pathImage[id].length, 1);
-    // console.log(this.pathImage[id]);
-    // let arrPaths = [];
-    // for (let paths in this.pathImage[id - 1]) {
-    //   if(paths === 'thumb') continue;
-    //   const p =  this.pathImage[id - 1][paths].map(x => x.part);
-    //   arrPaths = [...arrPaths, ... p];
-    // }
-    // console.log(arrPaths);
   }
 }

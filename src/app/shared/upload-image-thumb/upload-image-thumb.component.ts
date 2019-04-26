@@ -12,13 +12,15 @@ import { ImageService } from '@services/image.service';
   encapsulation: ViewEncapsulation.None,
   providers: [ImageService]
 })
-export class UploadImageThumbComponent implements OnInit {
+export class UploadImageThumbComponent implements OnInit, OnChanges {
 
 
 
   @Input() valueOld: number;
   @Input() nameTour: any;
+  @Input() dataImagesCheck: any = { thumbnail: { link: '', path: '' } };
   @Output() checkNameUpload = new EventEmitter<boolean>();
+  @Output() getArrClearThumb = new EventEmitter<any>();
 
   isHovering: boolean;
   datas: Observable<any[]>;
@@ -32,35 +34,80 @@ export class UploadImageThumbComponent implements OnInit {
   checkTrue = true;
   checkExistThumbnail: boolean = false;
   checkUploaddingThumbnail: boolean = false;
+  changeLinkTemp = '';
+  dataImageClear = [];
+  change = false;
+  showContent: boolean = false;
 
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore, private imageService: ImageService) { }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log(this.dataImagesCheck);
+    if (this.dataImagesCheck == null) {
+      this.dataImagesCheck = {};
+      // console.log('NULL');
+    }
+
+    if (this.dataImagesCheck.thumbnail) {
+      this.changeLinkTemp = 'edit';
+      this.change = true;
+      this.db.doc(`images/temp${this.changeLinkTemp}`).set(this.dataImagesCheck);
+
+      this.imageService.getById('temp' + this.changeLinkTemp).subscribe(lists => {
+        this.listLink = lists;
+        let checkObjEmpty = Object.entries(this.listLink['thumbnail']).length === 0 && this.listLink['thumbnail'].constructor === Object;
+        if (checkObjEmpty) {
+          this.listLink['thumbnail'] = {};
+        }
+      });
+
+      this.imageService.getById('temp' + this.changeLinkTemp).subscribe(lists => {
+        let checkObjEmpty = Object.entries(lists['thumbnail']).length === 0 && lists['thumbnail'].constructor === Object;
+        if (!checkObjEmpty) {
+          this.dataImage = new Array<any>();
+          this.dataImage.push(lists['thumbnail']);
+          this.checkExistThumbnail = true;
+        } else {
+          this.checkExistThumbnail = false;
+          this.dataImage = [];
+        }
+      });
+    } else if (this.dataImagesCheck.thumbnail == undefined) {
+      this.change = true;
+    }
+
+  }
+
+
   ngOnInit() {
 
-    this.imageService.getById('temp').subscribe(lists => {
-      this.listLink = lists;
-      if (this.listLink['thumbnail'] == undefined) {
-        this.listLink['thumbnail'] = {};
-      }
-      console.log(this.listLink);
-    });
+    if (this.change) {
 
+      this.imageService.getById('temp' + this.changeLinkTemp).subscribe(lists => {
+        this.listLink = lists;
+        let checkObjEmpty = Object.entries(this.listLink['thumbnail']).length === 0 && this.listLink['thumbnail'].constructor === Object;
+        if (checkObjEmpty) {
+          this.listLink['thumbnail'] = {};
+        }
+      });
 
-    this.imageService.getById('temp').subscribe(lists => {
-      console.log(lists['thumbnail']);
-      if (lists['thumbnail']) {
-        this.dataImage = new Array<any>();
-        this.dataImage.push(lists['thumbnail']);
-        this.checkExistThumbnail = true;
-        console.log('pl');
-      } else {
-        this.checkExistThumbnail = false;
-        this.dataImage = new Array<any>();
-      }
-    });
+      setTimeout(() => {
+        this.imageService.getById('temp' + this.changeLinkTemp).subscribe(lists => {
+          let checkObjEmpty = Object.entries(lists['thumbnail']).length === 0 && lists['thumbnail'].constructor === Object;
+          if (!checkObjEmpty) {
 
-    console.log(this.dataImage);
+            this.dataImage = new Array<any>();
+            this.dataImage.push(lists['thumbnail']);
+            this.checkExistThumbnail = true;
+          } else {
+            this.checkExistThumbnail = false;
+            this.dataImage = [];
+          }
+        });
+      }, 100);
+    }
+
   }
 
   toggleHover(event: boolean) {
@@ -71,8 +118,6 @@ export class UploadImageThumbComponent implements OnInit {
     if (this.nameTour !== '') {
       this.checkNameUpload.emit(false);
       this.files.push(files.item(0));
-      console.log(this.files);
-      console.log('load');
       this.Filetotal += 1;
       this.CheckDone();
       this.checkUploaddingThumbnail = true;
@@ -84,26 +129,35 @@ export class UploadImageThumbComponent implements OnInit {
   CheckDone() {
     this.idInterval = setInterval(() => {
       if (this.list_links.length === this.Filetotal) {
-        console.log(this.list_links);
         for (const valueLink of this.list_links) {
           this.listLink['thumbnail'] = valueLink;
         }
         this.list_links = [];
         this.Filetotal = 0;
-        this.db.doc(`images/temp`).set(this.listLink);
+        this.db.doc(`images/temp${this.changeLinkTemp}`).set(this.listLink);
         clearInterval(this.idInterval);
       }
     }, 100);
   }
 
   deleteImage(path) {
+    const checkObjEmpty = Object.entries(this.dataImagesCheck).length === 0 && this.dataImagesCheck.constructor === Object;
+    if (!checkObjEmpty) {
+      this.dataImageClear.push(this.listLink['thumbnail']);
+      this.getArrClearThumb.emit(this.dataImageClear);
+    }
     this.listLink['thumbnail'] = {};
-    console.log(this.listLink);
     this.checkExistThumbnail = false;
     this.checkUploaddingThumbnail = false;
-    var desertRef = this.storage.ref(path);
-    desertRef.delete();
-    this.db.doc(`images/temp`).set(this.listLink);
+    if (checkObjEmpty) {
+      var desertRef = this.storage.ref(path);
+      desertRef.delete();
+      this.db.doc(`images/temp${this.changeLinkTemp}`).set(this.listLink);
+    }
+    this.dataImage = [];
+  }
+
+  gett() {
   }
 
 }
