@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, Form } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
+import { UpdateContactService } from '@services/update-contact.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +12,8 @@ import { ContactService } from '../../services/contact.service';
   providers: [ContactService]
 })
 export class ContactComponent implements OnInit {
+
+  @ViewChild('destInput') private destInputEle: any;
 
   public phuongbinh = {
     infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
@@ -26,21 +30,31 @@ export class ContactComponent implements OnInit {
   destination: FormControl;
   message: FormControl;
 
-  constructor(private fb: FormBuilder, private contactService: ContactService) {
-    this.myform = this.fb.group({
-      'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)])],
-      'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
-      'arrival': '',
-      'phone': '',
-      'destination': '', // TODO
-      'message': ''
-    });
 
-  }
+  constructor(
+    private fb: FormBuilder,
+    private contactService: ContactService,
+    private updateContactService: UpdateContactService) {
 
-  ngOnInit() {
-    this.createFormControls();
-    this.createForm();
+
+      // this.myform = this.fb.group({
+      //   'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)])],
+      //   'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
+      //   'arrival': ['', [Validators.required]],
+      //   'phone': ['', Validators.required],
+      //   'destination': ['', Validators.required],
+      //   'message': ['']
+      // });
+
+    }
+
+    ngOnInit() {
+      this.createFormControls();
+      this.createForm();
+       this.getDestFromService();
+
+      console.log(this.destInputEle);
+
   }
 
   createFormControls() {
@@ -79,6 +93,14 @@ export class ContactComponent implements OnInit {
       arrival: this.arrival,
       destination: this.destination
     });
+    setTimeout(() => {
+      this.myform.patchValue({
+        destination: 'ahhihi'
+      });
+    }, 4000);
+
+    console.log('created1: ', this.myform);
+
   }
 
   sendMessage(value) {
@@ -99,4 +121,20 @@ export class ContactComponent implements OnInit {
     // modalRef.componentInstance.question = 'Cám ơn bạn đã liên hệ với chúng tôi!';
   }
 
+  private getDestFromService() {
+    const that = this;
+    const obs = this.updateContactService.getDestination
+    .pipe(
+      tap((x) => console.log(x))
+    )
+    .subscribe((des: string) => {
+      console.log(des);
+      that.myform.patchValue({
+        destination: des
+      });
+      console.log('created2: ', this.myform);
+
+      obs.unsubscribe();
+    });
+  }
 }

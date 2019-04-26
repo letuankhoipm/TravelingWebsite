@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
       }
       this.tours = tours.map(sluck);
       this.tourDemo = this.tours[0];
-    });
+    }).unsubscribe();
 
     if (this.alls) {
       this.alls.subscribe(homes => {

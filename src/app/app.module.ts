@@ -16,7 +16,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from 'environments/environment';
 import { AuthGuard } from './core/auth.guard';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { FirestoreSettingsToken} from '@angular/fire/firestore';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
+import { UpdateContactService } from '@services/update-contact.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,15 @@ import { FirestoreSettingsToken} from '@angular/fire/firestore';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [AngularFireDatabase, AngularFireAuth, AuthGuard, { provide: FirestoreSettingsToken, useValue: {} }],
+  providers: [
+    AngularFireDatabase,
+    AngularFireAuth,
+    AuthGuard,
+    {
+      provide: FirestoreSettingsToken,
+      useValue: {}
+    },
+    UpdateContactService
+  ],
 })
 export class AppModule { }
