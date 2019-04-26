@@ -269,9 +269,22 @@ ul.ngx-pagination {
 }
 
 // place  travel-pack
+.travel-pack {
+  @include min-and-max(320, 768) {
+    font-size: 2rem !important;
+    padding: 150px 0 !important;
+  }
+}
 
 .travel-pack-content {
 
-  
+  .list-view-pack {
+    .pack-info {
+      @include min-and-max(320, 768) {
+        padding-left: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
 }
 
