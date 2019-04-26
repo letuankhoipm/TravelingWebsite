@@ -20,7 +20,6 @@
     <div class="col-lg-9 col-md-9" *ngIf="packs?.length">
       <ng-container *ngIf="(packs | filter:searchTerm) as packs">
 
-<<<<<<< HEAD
         <div class="option">
           <div class="row align-items-center">
             <div class="col-6">
@@ -42,28 +41,6 @@
                   <i class="fa fa-th"></i>
                 </button>
               </div>
-=======
-      <div class="option">
-        <div class="row align-items-center">
-          <div class="col-6">
-            <select class="option-sort" (change)="sortByPrice(select.value)" #select>
-              <option value="asc">
-                Giá tăng dần
-              </option>
-              <option value="desc">
-                Giá giảm dần
-              </option>
-            </select>
-          </div>
-          <div class="col-6">
-            <div class="option-view text-right">
-              <button class="btn btn-view btn-view-list" (click)=displayViewList()>
-                <i class="fa fa-list"></i>
-              </button>
-              <button class="btn btn-view btn-grid-list" (click)="displayViewGrid()">
-                <i class="fa fa-th"></i>
-              </button>
->>>>>>> 429cf86534b6caa643ac590c51bff6ccb816f7b2
             </div>
           </div>
         </div>
