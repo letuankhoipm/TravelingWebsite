@@ -246,14 +246,13 @@ ul.ngx-pagination {
       text-align: justify;
     }
   }
-  .caption{
-    @include min-and-max(320, 575){
+  .caption {
+    @include min-and-max(320, 575) {
       margin-bottom: 40px !important;
     }
     .txt2 {
       @include min-and-max(375, 575) {
         text-align: justify;
-
       }
     }
   }
@@ -277,7 +276,6 @@ ul.ngx-pagination {
 }
 
 .travel-pack-content {
-
   .list-view-pack {
     .pack-info {
       @include min-and-max(320, 768) {
@@ -288,3 +286,10 @@ ul.ngx-pagination {
   }
 }
 
+app-place-detail {
+  .tour-name {
+    @include sm {
+      font-size: 40px !important;
+    }
+  }
+}
