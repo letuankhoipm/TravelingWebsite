@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap.scss";
-@import 'assets/fontawesome/css/all.css';
-@import 'assets/scss/responsive.scss';
-@import 'assets/scss/function.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import "assets/fontawesome/css/all.css";
+@import "assets/scss/responsive.scss";
+@import "assets/scss/function.scss";
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-$colors: (phuongbinh: #395c9c);
+$colors: (
+  phuongbinh: #395c9c
+);
 
 @function color($type) {
   @return map-get($colors, $type);
@@ -13,14 +15,14 @@ $colors: (phuongbinh: #395c9c);
 
 body {
   font-size: 16px;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 li {
   list-style: none;
 }
 
-ul{
+ul {
   padding: 0;
   margin: 0;
 }
@@ -33,4 +35,3 @@ a {
 .text-primary {
   color: $primary !important;
 }
-

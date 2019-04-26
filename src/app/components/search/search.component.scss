@@ -64,26 +64,26 @@ $palettes: (
       }
     }
 
-    &.active {
-      color: palette(thisBlue);
-      background-color: #fafafa !important;
-    }
+    // &.active {
+    //   color: palette(thisBlue);
+    //   background-color: #fafafa !important;
+    // }
 
-    &.flights {
-      background-color: palette(thisBlue, "dark");
-    }
+    // &.flights {
+    //   background-color: palette(thisBlue, "dark");
+    // }
 
-    &.hotels {
-      background-color: palette(thisBlue);
-    }
+    // &.hotels {
+    //   background-color: palette(thisBlue);
+    // }
 
-    &.cars {
-      background-color: palette(thisBlue, "light");
-    }
+    // &.cars {
+    //   background-color: palette(thisBlue, "light");
+    // }
 
-    &.cruises {
-      background-color: palette(thisBlue, "lighter");
-    }
+    // &.cruises {
+    //   background-color: palette(thisBlue, "lighter");
+    // }
 
     // icons
     .fas {

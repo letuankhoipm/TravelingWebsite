@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="tour-content" *ngIf="tour">
-    <div class="tour-name mb-4 mt-4">
+    <div class="tour-name mb-4 mt-4 text-center">
       {{tour.name}}
     </div>
     <div class="tour-ticket">
@@ -16,7 +16,7 @@
           <div class="line-dash"></div>
           <div class="text">
             <p class="my-0">Dành cho đoàn {{tour.people}} người</p>
-            <p class="my-0" style="font-size: 2rem"><strong>{{tour.price}} VNĐ</strong></p>
+            <p class="my-0" style="font-size: 2rem"><strong>{{tour.price | number: '1.0-0' }} VNĐ</strong></p>
           </div>
         </div>
       </div>
@@ -37,8 +37,11 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
-                <div class="day">Ngày {{i+1}}</div>
-                <div class="name">{{schedule.name}}</div>
+
+                <div class="name">
+                  <div class="day pr-2">Ngày {{i+1}}</div>{{schedule.name}}
+                </div>
+
               </div>
               <div class="row">
                 <div class="col-3 time-line" *ngIf="schedule.morning">

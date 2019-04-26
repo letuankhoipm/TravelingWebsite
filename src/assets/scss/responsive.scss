@@ -246,14 +246,13 @@ ul.ngx-pagination {
       text-align: justify;
     }
   }
-  .caption{
-    @include min-and-max(320, 575){
+  .caption {
+    @include min-and-max(320, 575) {
       margin-bottom: 40px !important;
     }
     .txt2 {
       @include min-and-max(375, 575) {
         text-align: justify;
-
       }
     }
   }
@@ -269,9 +268,39 @@ ul.ngx-pagination {
 }
 
 // place  travel-pack
+.travel-pack {
+  @include min-and-max(320, 768) {
+    font-size: 2rem !important;
+    padding: 150px 0 !important;
+  }
+}
 
 .travel-pack-content {
 
-  
+  .option {
+    .option-view {
+      .btn-grid-list {
+        @include min-and-max(320, 768) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .list-view-pack {
+    .pack-info {
+      @include min-and-max(320, 768) {
+        padding-left: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
 }
 
+app-place-detail {
+  .tour-name {
+    @include sm {
+      font-size: 40px !important;
+    }
+  }
+}

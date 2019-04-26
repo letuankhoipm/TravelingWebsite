@@ -1,12 +1,13 @@
 @import "../../../assets/scss//function.scss";
 
 .travel-pack {
-  background-color: #395c9c;
+  // background-color: #395c9c;
+  background: url('assets/images/background-beach.jpg') no-repeat center center;
+  background-size: cover;
   color: #fff;
   font-size: 2.4rem;
-  font-weight: 600;
-  padding: 50px 0;
-  border-radius: 5px;
+  font-weight: 700;
+  padding: 200px 0;
 }
 
 .search-container {
@@ -14,20 +15,26 @@
   input.search-bar {
     margin-left: auto;
     margin-right: auto;
+    border: 3px solid #7e7c7c;
+    border-radius: 5px;
     height: 50px;
-    transition: outline-color 1.2s ease-in 1.2s;
+    transition: border-color  0.5s ease-out;
     &:focus {
-      border-color: transparent;
-      outline: 2px solid palette(thisBlue, "lighter");
+      border-color: palette(thisBlue, 'lighter');
+      outline: none;
     }
   }
 
   i.fa-search {
     position: absolute;
-    top: 10px;
+    top: 12.5px;
     right: 10px;
     font-size: 25px;
   }
+}
+
+.not-found-container {
+  margin-top: 70px;
 }
 
 .travel-pack-content {
@@ -45,11 +52,19 @@
       cursor: pointer;
       color: rgb(105, 104, 104);
     }
+    .option-view {
+      .btn-view {
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
   }
 
   .list-view-pack {
     .pack {
-      box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+      border-bottom: #3264c0 4px solid;
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
       .pack-image {
         overflow: hidden;
         img {
@@ -77,20 +92,21 @@
           }
         }
         .pack-description {
+          color: #959595;
+          font-size: 15px;
           position: relative;
-          height: 120px;
+
           overflow: hidden;
           text-align: justify;
-          // padding-right: 1em;
-          // &::after {
-          //   content: "....";
-          //   position: absolute;
-          //   right: 0;
-          //   bottom: 2%;
-          // }
+
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
         }
         .pack-price {
+          font-size: 1.2rem !important;
           > span {
+            color: red;
             font-weight: 700;
           }
         }
@@ -100,7 +116,8 @@
 
   .grid-view-pack {
     .pack {
-      box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      border-bottom: 4px solid #395c9c;
       .pack-image {
         overflow: hidden;
         img {
@@ -115,6 +132,7 @@
         }
       }
       .pack-info {
+        // padding: 20px 0 15px 15px;
         .pack-name {
           font-size: 1.5rem;
           a {
@@ -128,7 +146,9 @@
           }
         }
         .pack-price {
+          font-size: 1.2rem !important;
           > span {
+            color: red;
             font-weight: 700;
           }
         }
@@ -139,7 +159,7 @@
   .list-tour {
     .category-list {
       .list-item {
-        padding-bottom: 10px;
+        padding-bottom: 20px;
 
         .item {
           color: rgba(57, 92, 156, 1) !important;
@@ -153,3 +173,4 @@
     }
   }
 }
+
