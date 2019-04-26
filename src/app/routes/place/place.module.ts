@@ -6,6 +6,7 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { GalleryComponent } from './place-detail/gallery/gallery.component';
 import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { TourCardModule } from '@components/tour-card/tour-card.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
     CommonModule,
     PlaceRoutingComponent,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TourCardModule
   ],
   exports: [
     PlaceComponent,

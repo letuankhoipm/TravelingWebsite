@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, share } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
@@ -10,11 +10,13 @@ import { UpdateContactService } from '@services/update-contact.service';
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
   styleUrls: ['./place-detail.component.scss'],
-  providers: [TourService, SeoService]
+  providers: [TourService, SeoService],
+  encapsulation: ViewEncapsulation.None
 
 })
 export class PlaceDetailComponent implements OnInit {
   tours = [];
+  tourDemo: any;
   tour$: Observable<any>;
   tour: any;
   id: any;
@@ -51,9 +53,30 @@ export class PlaceDetailComponent implements OnInit {
 
       }
     });
+    // this.tourService.getAlls().subscribe(tours => {
+    //   this.tours = tours;
+    // });
     this.tourService.getAlls().subscribe(tours => {
-      this.tours = tours;
+
+      const sluck = (data: any) => {
+        const temp = {
+          id: data.id,
+          name: data.name,
+          describe: data.describe,
+          daytime: data.daytime,
+          image: data.images.thumbnail.link
+        }
+        return temp;
+      }
+      this.tours = tours.map(sluck);
+      this.tourDemo = this.tours[0];
+      this.tours = this.tours.slice(0, 5);
+      console.log(this.tours);
+      console.log(this.tourDemo);
+      
+      
     });
+
   }
 
   public sendDestination() {
