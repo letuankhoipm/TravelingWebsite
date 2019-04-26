@@ -59,7 +59,7 @@ export class PlaceDetailComponent implements OnInit {
     // });
     this.tourService.getAlls().subscribe(tours => {
 
-      const sluck = (data: any) => {
+      const pluck = (data: any) => {
         const temp = {
           id: data.id,
           name: data.name,
@@ -68,14 +68,11 @@ export class PlaceDetailComponent implements OnInit {
           image: data.images.thumbnail.link
         }
         return temp;
-      }
-      this.tours = tours.map(sluck);
+      };
+      this.tours = tours.map(pluck);
       this.tourDemo = this.tours[0];
       this.tours = this.tours.slice(0, 5);
-      console.log(this.tours);
-      console.log(this.tourDemo);
-      
-      
+
     });
 
   }
