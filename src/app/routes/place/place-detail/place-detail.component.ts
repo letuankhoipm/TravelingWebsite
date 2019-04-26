@@ -5,6 +5,7 @@ import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
 import { Observable } from 'rxjs';
 import { UpdateContactService } from '@services/update-contact.service';
+import { StorageService } from '@services/storage.service';
 
 @Component({
   selector: 'app-place-detail',
@@ -25,7 +26,7 @@ export class PlaceDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private seoService: SeoService,
-    private updateContactService: UpdateContactService) {
+    private storageService: StorageService) {
 
   }
 
@@ -57,8 +58,9 @@ export class PlaceDetailComponent implements OnInit {
   }
 
   public sendDestination() {
-    this.updateContactService.changeDestination(this.tour.name);
+
     this.router.navigate(['/contact/']);
+    this.storageService.setValue('tourName', this.tour.name);
   }
 
   private change_alias(alias: string) {

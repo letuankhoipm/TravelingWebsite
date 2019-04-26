@@ -17,7 +17,7 @@ import { environment } from 'environments/environment';
 import { AuthGuard } from './core/auth.guard';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FirestoreSettingsToken } from '@angular/fire/firestore';
-import { UpdateContactService } from '@services/update-contact.service';
+import { StorageService } from '@services/storage.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { UpdateContactService } from '@services/update-contact.service';
       provide: FirestoreSettingsToken,
       useValue: {}
     },
-    UpdateContactService
+    StorageService
   ],
 })
 export class AppModule { }
