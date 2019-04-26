@@ -49,7 +49,7 @@
 
   .list-view-pack {
     .pack {
-      box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
       .pack-image {
         overflow: hidden;
         img {
@@ -77,17 +77,16 @@
           }
         }
         .pack-description {
+          color: #959595;
+          font-size: 15px;
           position: relative;
-          height: 120px;
+
           overflow: hidden;
           text-align: justify;
-          // padding-right: 1em;
-          // &::after {
-          //   content: "....";
-          //   position: absolute;
-          //   right: 0;
-          //   bottom: 2%;
-          // }
+
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
         }
         .pack-price {
           > span {
@@ -100,7 +99,8 @@
 
   .grid-view-pack {
     .pack {
-      box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      border-bottom: 4px solid #395c9c;
       .pack-image {
         overflow: hidden;
         img {
@@ -115,6 +115,7 @@
         }
       }
       .pack-info {
+        padding: 7px 10px;
         .pack-name {
           font-size: 1.5rem;
           a {

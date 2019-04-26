@@ -46,25 +46,25 @@
       <div class="list-view-pack" *ngIf="viewType === 'list'">
         <div class="pack mt-4" *ngFor="let pack of packs">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
               <div class="pack-image">
-                <a>
+                <a [routerLink]="['/place/' + pack.id]">
                   <img [src]="pack.image" alt="">
                 </a>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-7">
               <div class="pack-info">
-                <h1 class="pack-name mb-3">
+                <h1 class="pack-name mb-3 pt-3">
                   <a [routerLink]="['/place/' + pack.id]">
                     {{ pack.title }}
                   </a>
                 </h1>
-                <p class="pack-description pr-4">
+                <p style="-webkit-box-orient: vertical" class="pack-description pr-4">
                   {{ pack.description }}
                 </p>
                 <div class="pack-price">
-                  <span class="mr-2">Giá:</span> {{ pack.price }}
+                  <span class="mr-2">Giá:</span> {{ pack.price | number: '1.0-0' }}
                 </div>
               </div>
             </div>
@@ -77,18 +77,18 @@
           <div class="col-lg-6 col-md-12 mt-4" *ngFor="let pack of packs">
             <div class="pack">
               <div class="pack-image">
-                <a href="">
+                <a [routerLink]="['/place/' + pack.id]">
                   <img [src]="pack.image" alt="">
                 </a>
               </div>
               <div class="pack-info pt-2">
                 <h1 class="pack-name">
-                  <a href="">
+                  <a [routerLink]="['/place/' + pack.id]">
                     {{ pack.title }}
                   </a>
                 </h1>
                 <div class="pack-price">
-                  <span class="mr-2">Giá:</span>{{ pack.price }}
+                  <span class="mr-2">Giá:</span>{{ pack.price | number: '1.0-0' }}
                 </div>
               </div>
             </div>
