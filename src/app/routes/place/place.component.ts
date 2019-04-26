@@ -38,6 +38,7 @@ export class PlaceComponent implements OnInit {
   ];
 
   public page = 1;
+  public errorr = 'assets/icon/404.png';
 
   constructor(
     private seoService: SeoService,

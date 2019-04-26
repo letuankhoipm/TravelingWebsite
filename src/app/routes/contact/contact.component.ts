@@ -6,35 +6,34 @@ import { tap } from 'rxjs/operators';
 import { StorageService } from '@services/storage.service';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./contact.component.scss'],
-  providers: [ContactService]
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./contact.component.scss'],
+    providers: [ContactService]
 })
 export class ContactComponent implements OnInit, OnDestroy {
 
-  public phuongbinh = {
-    infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
-    address: '112/52/9, Hoàng Quốc VIệt, phường An BÌnh, quận Ninh Kiều, thành phố Cần Thơ.',
-    office: 'Khuôn viên Bình Phó A, phường Long Tuyền, quận Bình Thuỷ, thành phố Cần Thơ.',
-    phone: '0909 372 319'
-  }
+    public phuongbinh = {
+        infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
+        address: '112/52/9, Hoàng Quốc VIệt, phường An BÌnh, quận Ninh Kiều, thành phố Cần Thơ.',
+        office: 'Khuôn viên Bình Phó A, phường Long Tuyền, quận Bình Thuỷ, thành phố Cần Thơ.',
+        phone: '0909 372 319'
+    }
 
-  myform: FormGroup;
-  name: FormControl;
-  email: FormControl;
-  phone: FormControl;
-  arrival: FormControl;
-  destination: FormControl;
-  message: FormControl;
+    myform: FormGroup;
+    name: FormControl;
+    email: FormControl;
+    phone: FormControl;
+    arrival: FormControl;
+    destination: FormControl;
+    message: FormControl;
 
 
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-    private storageService: StorageService,
-    private updateContactService: UpdateContactService) {
+    private storageService: StorageService) {
 
 
     // this.myform = this.fb.group({

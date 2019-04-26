@@ -46,14 +46,14 @@ const sendWelcomeEmail = functions.auth.user().onCreate((user) => {
 function sendEmail(data) {
   const mailOptions = {
     from: functions.config().mailservice.username,
-    to: 'pirates582@gmail.com',
+    to: 'phuongbinhtourist@gmail.com',
   };
 
   // The user subscribed to the newsletter.
   mailOptions.subject = `Thông tin khách hàng ${data.email}`;
-  mailOptions.text = `Thông tin khách hàng: ${data.name}, Email: ${data.email}, Số điện thoại: ${data.phone}, Điểm khơi hành: ${data.arrival}, Điểm đến: ${data.destination}, Thông điệp: ${data.message}`;
+  mailOptions.text = `Họ và tên khách hàng: ${data.name}, Email: ${data.email}, Số điện thoại: ${data.phone}, Điểm khởi hành: ${data.arrival}, Tour du lịch đến: ${data.destination}, Thông điệp: ${data.message}`;
   return mailTransport.sendMail(mailOptions).then(() => {
-    return console.log('New welcome email sent to:', 'pirates582@gmail.com');
+    return console.log('New welcome email sent to:', 'phuongbinhtourist@gmail.com');
   });
 }
 
