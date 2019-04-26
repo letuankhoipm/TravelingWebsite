@@ -58,6 +58,7 @@
 
   button {
     background: rgba(57, 92, 156, 1);
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2) inset;
 
     &:focus {
       color: white !important;

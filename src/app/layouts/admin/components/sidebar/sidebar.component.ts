@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   check_sub = false;
   lists: Array<Object> = [
     {
-      title: 'Tour', icon: 'fa-umbrella-beach', id: 0, check_click: false,
+      title: 'Quản lí tour', icon: 'fa-umbrella-beach', id: 0, check_click: false,
       list_subs: [
         { title: 'Thêm Tour', color: '#47e5d7', id: '3a', part: '/admin/add-tour' },
         { title: 'Danh Sách Tour', color: '#febe29', id: '3b', part: '/admin/list-tour' },

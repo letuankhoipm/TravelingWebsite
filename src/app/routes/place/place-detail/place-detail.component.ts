@@ -26,20 +26,14 @@ export class PlaceDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       if (params['id'] != 'create') {
         this.id = params['id'];
 
-        this.tour$ = this.tourService.getById(this.id)
-          .pipe(
-            tap(x=> console.log(x))
-          );
+        this.tour$ = this.tourService.getById(this.id).pipe(share());
         this.tour$.subscribe((tour) => {
           this.tour = tour;
           this.tour.images = this.objectToArray(tour.images);
-          console.log(this.tour.images);
-
         });
 
         this.tour$.subscribe(tour => {
@@ -51,21 +45,14 @@ export class PlaceDetailComponent implements OnInit {
           });
         });
 
-
-
-        // this.tourService.getById(this.id).subscribe(images => {
-        //   this.images = images;
-        // });
-
       }
     });
     this.tourService.getAlls().subscribe(tours => {
-
       this.tours = tours;
     });
   }
 
-  private change_alias(alias) {
+  private change_alias(alias: string) {
     let str = alias;
     str = str.toLowerCase();
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");

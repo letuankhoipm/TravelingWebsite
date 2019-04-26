@@ -6,7 +6,12 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <form autocomplete="off" class="" (ngSubmit)="emailLogin()">
+    <div class="pt-4">
+      <p class="text-center m-0">
+        <img style="cursor: pointer;" class="w-50" [src]="pbLogo" [routerLink]="['/']" alt="">
+      </p>
+    </div>
+    <form autocomplete="off" class="p-4" (ngSubmit)="emailLogin()">
       <div class="input-area row">
         <i class="fal fa-user icon px-0"></i>
         <input autocomplete="off" type="text" class="input-login" [(ngModel)]="email" placeholder="Email" name="email"

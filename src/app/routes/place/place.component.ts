@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterOutlet, NavigationStart, NavigationCancel, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { SeoService } from '@services/seo.service';
 import { PlaceService } from "@services/place.service";
 import { SharedService } from '@services/shared.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TourService } from '@services/tour.service';
 
@@ -15,17 +15,21 @@ import { TourService } from '@services/tour.service';
 
 })
 export class PlaceComponent implements OnInit {
-
-  placeData: any;
-  title;
-  detail;
-  state;
-  places = [];
-  tourList$: Observable<any>;
+  public searchTerm = '';
+  public searchTerms$ = new Subject<string>();
+  public placeData: any;
+  public title;
+  public detail;
+  public state;
+  public places = [];
+  public tourList$: Observable<any>;
+  public tours: any;
+  public packs: any[];
+  public originalPacks: any[];
+  public viewType: string;
 
   @ViewChild('appOutlet') outlet: RouterOutlet;
 
-  public packs: any[];
 
 
   public listKind = [
@@ -41,21 +45,21 @@ export class PlaceComponent implements OnInit {
     private placeService: PlaceService,
     private sharedService: SharedService,
   ) {
-
-
     this.placeData = this.placeService.getAlls();
     this.sharedService.title.subscribe(title => {
       this.title = title;
     });
-
     this.tourList$ = this.tourService.getAlls();
+    this.initRealTimeSearch();
   }
 
   ngOnInit() {
+    this.viewType = 'list';
+
     if (this.placeData) {
       this.placeData.subscribe(places => {
-        this.places = places;
-        let place = places[0];
+        // this.places = places;
+        const place = places[0];
         this.seoService.generateTags({
           title: place.title,
           description: place.description,
@@ -70,43 +74,68 @@ export class PlaceComponent implements OnInit {
         .pipe(
           map((arrayData: any[]) => {
             return arrayData.map((data) => {
-              console.log(data);
+              // console.log(data);
               return {
                 id: data.id,
                 title: data.name,
                 description: data.describe,
                 image: data.images.thumbnail.link,
                 people: data.people,
-                price: data.price
+                price: data.price,
+                key: data.id.split('-').join(' '),
               };
             });
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
           console.log(this.packs);
+          this.originalPacks = [...arrayData];
         });
     }
-
+    this.tourService.getAlls().subscribe(tours => {
+      this.tours = tours;
+      console.log(this.tours);
+    });
 
   }
 
-  ngAfterViewInit() {
-    //   if(this.state) {
-    //     this.state = this.outlet.activatedRouteData['routing'];
-    // }
-
-    // this.router.events
-    //     .subscribe((event) => {
-    //         if (event instanceof NavigationStart) {
-
-    //         }
-    //         else if (
-    //             event instanceof NavigationEnd ||
-    //             event instanceof NavigationCancel
-    //         ) {
-    //             this.state = this.outlet.activatedRouteData['routing'];
-    //         }
-    //     });
+  public updateTerm(value: string) {
+    this.searchTerm = value.trim().replace(/\s\s+/g, ' ');
   }
 
+  private initRealTimeSearch() {
+    const searchFilter = (target: string) => (obj: { title: string }) => {
+      if (obj.title.toLowerCase().includes(target.toLowerCase())) {
+        return true;
+      }
+      return false;
+    };
+    this.searchTerms$.subscribe((value: string) => {
+      if (this.packs) {
+        this.packs = this.originalPacks.filter(searchFilter(value));
+      }
+    });
+  }
+
+  public displayViewList(): void {
+    this.viewType = 'list';
+  }
+
+  public displayViewGrid(): void {
+    this.viewType = 'grid';
+  }
+
+  public sortByPrice(select: string): void {
+    if (select === 'asc') {
+      this.packs.sort((pack1, pack2) => {
+        return pack1.price - pack2.price;
+      });
+      return;
+    }
+
+    this.packs.sort((pack1, pack2) => {
+      return pack2.price - pack1.price;
+    });
+
+  }
 }

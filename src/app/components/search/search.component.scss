@@ -1,20 +1,20 @@
 @import "../../../assets/scss/breakpoints";
 
-
 $colorBlueBase: #395c9c;
 
-$palettes: (thisBlue: (base: $colorBlueBase,
-light: lighten($colorBlueBase, 5%),
-lighter: lighten($colorBlueBase, 8%),
-dark: darken($colorBlueBase, 5%),
-darker: darken($colorBlueBase, 10%)
-));
+$palettes: (
+  thisBlue: (
+    base: $colorBlueBase,
+    light: lighten($colorBlueBase, 5%),
+    lighter: lighten($colorBlueBase, 8%),
+    dark: darken($colorBlueBase, 5%),
+    darker: darken($colorBlueBase, 10%)
+  )
+);
 
-@function palette($palette, $tone: 'base') {
+@function palette($palette, $tone: "base") {
   @return map-get(map-get($palettes, $palette), $tone);
-};
-
-
+}
 
 // tab list
 .tab-list {
@@ -54,7 +54,7 @@ darker: darken($colorBlueBase, 10%)
     cursor: pointer;
 
     // siblings
-    &+.tab {
+    & + .tab {
       margin-left: 0px;
       margin-bottom: 1px;
 
@@ -64,26 +64,26 @@ darker: darken($colorBlueBase, 10%)
       }
     }
 
-    &.active {
-      color: palette(thisBlue);
-      background-color: #fafafa !important;
-    }
+    // &.active {
+    //   color: palette(thisBlue);
+    //   background-color: #fafafa !important;
+    // }
 
-    &.flights {
-      background-color: palette(thisBlue, 'dark');
-    }
+    // &.flights {
+    //   background-color: palette(thisBlue, "dark");
+    // }
 
-    &.hotels {
-      background-color: palette(thisBlue);
-    }
+    // &.hotels {
+    //   background-color: palette(thisBlue);
+    // }
 
-    &.cars {
-      background-color: palette(thisBlue, 'light');
-    }
+    // &.cars {
+    //   background-color: palette(thisBlue, "light");
+    // }
 
-    &.cruises {
-      background-color: palette(thisBlue, 'lighter');
-    }
+    // &.cruises {
+    //   background-color: palette(thisBlue, "lighter");
+    // }
 
     // icons
     .fas {
@@ -105,14 +105,11 @@ darker: darken($colorBlueBase, 10%)
 
 // ~ tab list
 
-
 // Content Container
 .container-content {
   background-color: #ffffff;
   padding: 3rem 2rem 2rem 1.5rem;
-
-  margin-bottom: 3rem;
-  border-bottom: palette(thisBlue, 'dark') solid 0.5rem;
+  border-bottom: palette(thisBlue, "dark") solid 0.5rem;
   div.wrapper-content {
     .title {
       margin-bottom: 2rem;
@@ -120,3 +117,52 @@ darker: darken($colorBlueBase, 10%)
   }
 }
 // Content Container
+
+/* Just for the Look  */
+.typewrite > .wrap {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 12px;
+    right: -5px;
+    width: 4px;
+    content: "";
+    background: #395c9c;
+  }
+}
+
+// Contact button
+.btn-contact {
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  animation: twinkle 3s ease-in 1s infinite;
+
+  &:hover {
+    background: #103881;
+    transition-duration: 0.4s;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    background: #446ab1;
+  }
+  50% {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #557cc4;
+  }
+  100% {
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    background: #5d8ce2;
+  }
+}

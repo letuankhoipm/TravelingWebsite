@@ -13,6 +13,7 @@ nav {
 nav:not(.scrolled) {
   .nav-link {
     font-weight: bold;
+    font-size: 14px;
     &:focus {
       color: color(phuongbinh) !important;
     }
@@ -84,6 +85,7 @@ nav:not(.scrolled) {
 
 .scrolled .nav-link {
   font-weight: bold;
+  font-size: 14px;
 }
 
 .navbar-toggler .icon-bar:nth-of-type(1) {

@@ -14,9 +14,9 @@
     <div class="row pt-4">
       <div class="col-lg-6">
         <div class="title">
-          <h3 class="text-uppercase">Thông tin liên lạc</h3>
+          <h3 class="text-uppercase text-center">Thông tin liên lạc</h3>
         </div>
-        <div class="infor">
+        <div class="infor text-justify">
           <p>{{phuongbinh.infor}}</p>
           <h4 class="text-uppercase">Địa chỉ</h4>
           <p>{{phuongbinh.address}}</p>
@@ -28,7 +28,7 @@
       </div>
       <div class="col-lg-6">
         <div class="title">
-          <h3 class="text-uppercase">yêu cầu và phản hồi</h3>
+          <h3 class="text-uppercase text-center">liên hệ đặt tour</h3>
           <form [formGroup]="myform" (ngSubmit)="sendMessage(myform.value)" class="submit-form text-white">
             <div class="form-group  mb-4">
               <input type="text" class="form-control pl-2 pr-2" placeholder="Họ và Tên" formControlName="name">
@@ -72,7 +72,7 @@
               <p class="form-validation m-0 pl-2" *ngIf="message?.invalid && (message?.dirty || message?.touched)">
                 Nội dung không được phép để trống</p>
             </div>
-            <button type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold" [disabled]="!myform.valid">Gửi phản hồi!</button>
+            <button style="border-radius: 5px" type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold" [disabled]="!myform.valid">Gửi phản hồi!</button>
           </form>
         </div>
       </div>

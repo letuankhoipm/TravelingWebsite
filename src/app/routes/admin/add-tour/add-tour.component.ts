@@ -41,6 +41,7 @@ export interface TourL {
 })
 export class AddTourComponent implements OnInit {
 
+  logo = 'assets/images/logo.png';
   userDoc: AngularFirestoreDocument<TourL>;
 
   valueDayTime = [{ id: 1, name: '', time: [] }];
