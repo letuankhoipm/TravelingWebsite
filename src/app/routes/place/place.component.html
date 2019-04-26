@@ -1,8 +1,9 @@
+<div class="travel-pack text-center">
+  <i class="far fa-tree-palm"></i>
+  TOUR DU LỊCH
+</div>
+
 <div class="container mb-5">
-  <div class="travel-pack text-center">
-    <i class="far fa-tree-palm"></i>
-    TOUR DU LỊCH
-  </div>
 
   <div class="search-container row justify-content-around">
     <div class="search-bar col-10 col-md-8  m-0 p-0">
@@ -16,7 +17,7 @@
 
   <div class="row travel-pack-content">
 
-    <div class="col-lg-9 col-md-9">
+    <div class="col-lg-9 col-md-9" *ngIf="packs.length">
 
       <div class="option">
         <div class="row align-items-center">
@@ -46,25 +47,25 @@
       <div class="list-view-pack" *ngIf="viewType === 'list'">
         <div class="pack mt-4" *ngFor="let pack of packs">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
               <div class="pack-image">
-                <a>
+                <a [routerLink]="['/place/', pack.id]">
                   <img [src]="pack.image" alt="">
                 </a>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-7">
               <div class="pack-info">
-                <h1 class="pack-name mb-3">
-                  <a [routerLink]="['/place/' + pack.id]">
+                <h1 class="pack-name mb-3 pt-3">
+                  <a [routerLink]="['/place/', pack.id]">
                     {{ pack.title }}
                   </a>
                 </h1>
-                <p class="pack-description pr-4">
+                <p style="-webkit-box-orient: vertical" class="pack-description pr-4">
                   {{ pack.description }}
                 </p>
                 <div class="pack-price">
-                  <span class="mr-2">Giá:</span> {{ pack.price }}
+                  <span class="mr-2">Giá:</span> {{ pack.price | number: '1.0-0' }} VND
                 </div>
               </div>
             </div>
@@ -77,18 +78,18 @@
           <div class="col-lg-6 col-md-12 mt-4" *ngFor="let pack of packs">
             <div class="pack">
               <div class="pack-image">
-                <a href="">
+                <a [routerLink]="['/place/', pack.id]">
                   <img [src]="pack.image" alt="">
                 </a>
               </div>
               <div class="pack-info pt-2">
                 <h1 class="pack-name">
-                  <a href="">
+                  <a [routerLink]="['/place/', pack.id]">
                     {{ pack.title }}
                   </a>
                 </h1>
                 <div class="pack-price">
-                  <span class="mr-2">Giá:</span>{{ pack.price }}
+                  <span class="mr-2">Giá:</span>{{ pack.price | number: '1.0-0' }} VNĐ
                 </div>
               </div>
             </div>
