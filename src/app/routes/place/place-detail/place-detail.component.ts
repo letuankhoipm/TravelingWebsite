@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, share } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
@@ -22,6 +22,7 @@ export class PlaceDetailComponent implements OnInit {
 
   constructor(
     private tourService: TourService,
+    private router: Router,
     private route: ActivatedRoute,
     private seoService: SeoService,
     private updateContactService: UpdateContactService) {
@@ -57,6 +58,7 @@ export class PlaceDetailComponent implements OnInit {
 
   public sendDestination() {
     this.updateContactService.changeDestination(this.tour.name);
+    this.router.navigate(['/contact/']);
   }
 
   private change_alias(alias: string) {
