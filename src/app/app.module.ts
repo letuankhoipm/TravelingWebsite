@@ -45,7 +45,6 @@ import { StorageService } from '@services/storage.service';
       provide: FirestoreSettingsToken,
       useValue: {}
     },
-    StorageService
   ],
 })
 export class AppModule { }

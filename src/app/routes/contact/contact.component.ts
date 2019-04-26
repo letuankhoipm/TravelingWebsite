@@ -1,59 +1,49 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, Form } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { UpdateContactService } from '@services/update-contact.service';
-import { tap } from 'rxjs/operators';
-import { StorageService } from '@services/storage.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-contact',
-    templateUrl: './contact.component.html',
-    encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./contact.component.scss'],
-    providers: [ContactService]
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./contact.component.scss'],
+  providers: [ContactService]
 })
 export class ContactComponent implements OnInit, OnDestroy {
 
-    public phuongbinh = {
-        infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
-        address: '112/52/9, Hoàng Quốc VIệt, phường An BÌnh, quận Ninh Kiều, thành phố Cần Thơ.',
-        office: 'Khuôn viên Bình Phó A, phường Long Tuyền, quận Bình Thuỷ, thành phố Cần Thơ.',
-        phone: '0909 372 319'
-    }
+  public phuongbinh = {
+    infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
+    address: '112/52/9, Hoàng Quốc VIệt, phường An BÌnh, quận Ninh Kiều, thành phố Cần Thơ.',
+    office: 'Khuôn viên Bình Phó A, phường Long Tuyền, quận Bình Thuỷ, thành phố Cần Thơ.',
+    phone: '0909 372 319'
+  }
 
-    myform: FormGroup;
-    name: FormControl;
-    email: FormControl;
-    phone: FormControl;
-    arrival: FormControl;
-    destination: FormControl;
-    message: FormControl;
+  myform: FormGroup;
+  name: FormControl;
+  email: FormControl;
+  phone: FormControl;
+  arrival: FormControl;
+  destination: FormControl;
+  message: FormControl;
+
+  private contactSubscription: Subscription;
 
 
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-    private storageService: StorageService) {
-
-
-    // this.myform = this.fb.group({
-    //   'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)])],
-    //   'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
-    //   'arrival': ['', [Validators.required]],
-    //   'phone': ['', Validators.required],
-    //   'destination': ['', Validators.required],
-    //   'message': ['']
-    // });
-
-  }
+    private updateContactService: UpdateContactService,
+  ) {}
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
-
+    this.getDestFromService();
   }
   ngOnDestroy() {
-    this.storageService.deleteValue('tourName');
+    this.contactSubscription.unsubscribe();
   }
 
   createFormControls() {
@@ -92,11 +82,6 @@ export class ContactComponent implements OnInit, OnDestroy {
       arrival: this.arrival,
       destination: this.destination
     });
-    const des = this.storageService.getValue('tourName');
-    this.myform.patchValue({
-      destination: des ? des : ''
-    });
-
   }
 
   sendMessage(value) {
@@ -117,17 +102,15 @@ export class ContactComponent implements OnInit, OnDestroy {
     // modalRef.componentInstance.question = 'Cám ơn bạn đã liên hệ với chúng tôi!';
   }
 
-  // private getDestFromService() {
-  //   const that = this;
-  //   const obs = this.updateContactService.getDestination
-  //     .subscribe((des: string) => {
-  //       console.log(des);
-  //       that.myform.patchValue({
-  //         destination: des
-  //       });
-  //       console.log('created2: ', this.myform);
+  private getDestFromService() {
+    this.contactSubscription = this.updateContactService.getDestination
+      .subscribe((des: string) => {
+        console.log(des);
+        this.myform.patchValue({
+          destination: des
+        });
+        console.log('created2: ', this.myform);
 
-  //       // obs.unsubscribe();
-  //     });
-  // }
+      });
+  }
 }
