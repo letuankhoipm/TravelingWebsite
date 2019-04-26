@@ -5,6 +5,7 @@ import { FlightsFormComponent } from './forms/flights-form/flights-form.componen
 import { FormsModule } from '@angular/forms';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSelectModule } from '@shared/ngx-select/ngx-select.module';
+import { ShareModule } from '@shared/share/share.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NgxSelectModule } from '@shared/ngx-select/ngx-select.module';
     CommonModule,
     FormsModule,
     NgbDatepickerModule,
-    NgxSelectModule
+    NgxSelectModule,
+    ShareModule
   ],
   exports: [
     SearchComponent

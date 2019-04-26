@@ -2,125 +2,60 @@
   <div class="container">
     <div class="tab-list">
       <ul class="tab-navs w-100">
-        <li [class.active]="navTabs.flights" (click)="toggleTab('flights')" class="tab flights d-md-inline-block">
-          <i class="fas fa-plane"></i>
-          <a class="">Địa điểm</a>
+        <li (click)="toggleTab('flights')" class="tab flights d-md-inline-block">
+          <i class="fas fa-luggage-cart"></i>
+          <a class="">Hãy đến với Phương Bình Tourist</a>
 
         </li>
-        <li [class.active]="navTabs.hotels" (click)="toggleTab('hotels')" class="tab hotels d-md-inline-block">
+        <!-- <li [class.active]="navTabs.hotels" (click)="toggleTab('hotels')" class="tab hotels d-md-inline-block">
           <i class="fas fa-hotel"></i>
           <a class="">Khách sạn</a>
         </li>
         <li [class.active]="navTabs.cars" (click)="toggleTab('cars')" class="tab cars d-md-inline-block">
           <i class="fas fa-car"></i>
           <a class="">Phương tiện</a>
-
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="container container-content">
 
       <div class="wrapper-content" *ngIf="navTabs.flights">
-        <h2 class="title d-block d-sm-none">Địa điểm</h2>
-        <p class="detail d-block d-sm-none">Địa điểm du lịch hấp dẫn mà giá cả phải chăng.</p>
-
-        <section id="about" class="small-2 large-12 d-none d-sm-block">
-          <div class="row">
-            <div id="aboutClouds">
-              <div id="cld-one" class="clouds"><img
-                  [src]="cloud1" alt="cloud 1"></div>
-              <div id="cld-two" class="clouds"><img
-                  [src]="cloud2" alt="cloud 2"></div>
-              <div id="cld-three" class="clouds"><img
-                  [src]="cloud3" alt="cloud 3"></div>
-              <div id="cld-four" class="clouds"><img
-                  [src]="cloud2" alt="cloud 4"></div>
-              <div id="cld-five" class="clouds"><img
-                  [src]="cloud1" alt="cloud 5"></div>
-              <div id="cld-six" class="clouds"><img
-                  [src]="cloud3" alt="cloud 6"></div>
-              <div id="cld-seven" class="clouds"><img
-                  [src]="cloud1" alt="cloud 6"></div>
-              <div id="cld-eight" class="clouds"><img
-                  [src]="cloud3" alt="cloud 6"></div>
-              <div id="cld-nine" class="clouds"><img
-                  [src]="cloud2" alt="cloud 6"></div>
-              <div id="cld-ten" class="clouds"><img
-                  [src]="cloud1" alt="cloud 6"></div>
-
-            </div>
-
-
-            <div id="aboutLake">
-
-              <div id="sailboat">
-                <img [src]="boat2" alt="Sail Boat">
-                <div class="water">
-                  <div class="drops clearfix drops-1">
-                    <span class="drop drop-a"></span>
-                    <span class="drop drop-b"></span>
-                    <span class="drop drop-c"></span>
-                    <span class="drop drop-d"></span>
-                    <span class="drop drop-e"></span>
-                    <span class="drop drop-f"></span>
-                    <span class="drop drop-g"></span>
-                    <span class="drop drop-h"></span>
-                  </div>
-                  <div class="drops clearfix drops-2">
-                    <span class="drop drop-a"></span>
-                    <span class="drop drop-b"></span>
-                    <span class="drop drop-c"></span>
-                    <span class="drop drop-d"></span>
-                    <span class="drop drop-e"></span>
-                    <span class="drop drop-f"></span>
-                    <span class="drop drop-g"></span>
-                    <span class="drop drop-h"></span>
-                  </div>
-                </div><!-- End water -->
-              </div>
-
-              <div id="tx-one" class="taxi">
-                <img [src]="taxi2" alt="Taxi">
-                <div class="water">
-                  <div class="drops clearfix drops-1">
-                    <span class="drop drop-a"></span>
-                    <span class="drop drop-b"></span>
-                    <span class="drop drop-c"></span>
-                    <span class="drop drop-d"></span>
-                    <span class="drop drop-e"></span>
-                    <span class="drop drop-f"></span>
-                    <span class="drop drop-g"></span>
-                    <span class="drop drop-h"></span>
-                  </div>
-                  <div class="drops clearfix drops-2">
-                    <span class="drop drop-a"></span>
-                    <span class="drop drop-b"></span>
-                    <span class="drop drop-c"></span>
-                    <span class="drop drop-d"></span>
-                    <span class="drop drop-e"></span>
-                    <span class="drop drop-f"></span>
-                    <span class="drop drop-g"></span>
-                    <span class="drop drop-h"></span>
-                  </div>
-                </div><!-- End water -->
-              </div><!-- End taxi -->
-            </div><!-- End aboutlake -->
+        <div class="row">
+          <div class="col-9">
+            <h1 class="mb-4">Tôi muốn
+              <strong class="typewrite" data-period="4000"
+                data-type='[ "Đi du lịch.", "Khám phá.", "Mở mang tầm mắt.", "Đến với thế giới." ]'>
+                <span class="wrap" style="border-right: splid 1px black !important;"></span>
+              </strong>
+            </h1>
           </div>
-
-        </section>
+          <div class="col-3">
+            <button class="btn btn-contact mt-2 text-uppercase font-weight-bold" [routerLink]="['/contact']"><i class="fas fa-hand-point-right mr-2"></i>Liên lạc ngay!</button>
+          </div>
+        </div>
       </div>
-      <div class="wrapper-content" *ngIf="navTabs.hotels">
+      <!-- <div class="wrapper-content" *ngIf="navTabs.hotels">
         <h2 class="title">Khách Sạn</h2>
         <p class="detail">Khách sạn gần gũi với thiên nhiên, được các nhà phê bình đánh giá cao.</p>
+        <h1 class="mb-4 text-center">Tôi muốn
+          <strong class="typewrite" data-period="4000"
+            data-type='[ "Đi du lịch.", "Khám phá.", "Mở mang tầm mắt.", "Đến với thế giới." ]'>
+            <span class="wrap" style="border-right: splid 1px black !important;"></span>
+          </strong>
+        </h1>
 
       </div>
 
       <div class="wrapper-content" *ngIf="navTabs.cars">
         <h2 class="title">Phương tiện</h2>
         <p class="detail">Di chuyển đến những địa điểm yêu thích cùng với sự tiện nghi 5⭐</p>
-
-
-      </div>
+        <h1 class="mb-4 text-center">Tôi muốn
+          <strong class="typewrite" data-period="4000"
+            data-type='[ "Đi du lịch.", "Khám phá.", "Mở mang tầm mắt.", "Đến với thế giới." ]'>
+            <span class="wrap" style="border-right: splid 1px black !important;"></span>
+          </strong>
+        </h1>
+      </div> -->
 
     </div>
   </div>

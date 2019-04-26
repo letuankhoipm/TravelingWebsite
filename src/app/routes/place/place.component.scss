@@ -30,7 +30,6 @@
     right: 10px;
     font-size: 25px;
   }
-
 }
 
 .not-found-container {
@@ -40,66 +39,105 @@
 .travel-pack-content {
   margin-top: 50px;
 
-  .travel-pack-content-wrap {
-    .travel-pack-content-left {
-      .travel-pack-content-interactive {
-        background-color: #819dcf;
-        color: #fff;
+  .option {
+    background-color: #eeeeee;
+    padding: 4px;
+    align-items: center;
+    .option-sort {
+      padding: 7px 5px 3px 10px;
+      border: 0;
+      border-radius: 0;
+      height: 31px;
+      cursor: pointer;
+      color: rgb(105, 104, 104);
+    }
+  }
 
-        .travel-pack-day-post {
-          padding: 18px 20px;
+  .list-view-pack {
+    .pack {
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      .pack-image {
+        overflow: hidden;
+        img {
+          width: 100%;
+          transform: scale(1.3, 1.3);
+          transition: all 0.7s;
         }
-
-        .travel-pack-interactive {
-          background-color: #395c9c;
-
-          .travel-pack-icon {
-            transition: all 0.3s;
-
+        &:hover {
+          img {
+            transform: unset;
+          }
+        }
+      }
+      .pack-info {
+        .pack-name {
+          font-size: 1.5rem;
+          a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #395c9c;
+            transition: all 0.6s;
             &:hover {
               color: #819dcf;
             }
           }
         }
-      }
-    }
+        .pack-description {
+          color: #959595;
+          font-size: 15px;
+          position: relative;
 
-    .travel-pack-content-right {
-      .travel-pack-image {
-        img {
-          width: 100%;
+          overflow: hidden;
+          text-align: justify;
+
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
         }
-      }
-
-      .travel-pack-title {
-        font-size: 2rem;
-        padding: 12px 0;
-
-        a {
-          color: #395c9c;
-          transition: all 0.3s;
-
-          &:hover {
-            color: #819dcf;
+        .pack-price {
+          > span {
+            font-weight: 700;
           }
         }
       }
+    }
+  }
 
-      .travel-pack-describe {
-        font-size: 1rem;
-        color: #474747;
-      }
-
-      .btn--detail {
-        display: inline-block;
-        color: #395c9c;
-        font-size: 1rem;
-        font-weight: 500;
-        margin: 12px 0;
-        transition: all 0.3s;
-
+  .grid-view-pack {
+    .pack {
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      border-bottom: 4px solid #395c9c;
+      .pack-image {
+        overflow: hidden;
+        img {
+          width: 100%;
+          transform: scale(1.3, 1.3);
+          transition: all 0.7s;
+        }
         &:hover {
-          color: #819dcf;
+          img {
+            transform: unset;
+          }
+        }
+      }
+      .pack-info {
+        padding: 7px 10px;
+        .pack-name {
+          font-size: 1.5rem;
+          a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #395c9c;
+            transition: all 0.6s;
+            &:hover {
+              color: #819dcf;
+            }
+          }
+        }
+        .pack-price {
+          > span {
+            font-weight: 700;
+          }
         }
       }
     }
