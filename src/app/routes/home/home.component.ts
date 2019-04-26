@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.tourService.getAlls().subscribe(tours => {
+    const obs = this.tourService.getAlls().subscribe(tours => {
 
       const sluck = (data: any) => {
         const temp = {
@@ -91,7 +91,8 @@ export class HomeComponent implements OnInit {
       }
       this.tours = tours.map(sluck);
       this.tourDemo = this.tours[0];
-    }).unsubscribe();
+      obs.unsubscribe();
+    });
 
     if (this.alls) {
       this.alls.subscribe(homes => {
