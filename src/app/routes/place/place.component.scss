@@ -1,11 +1,13 @@
 @import "../../../assets/scss//function.scss";
 
 .travel-pack {
-  background-color: #395c9c;
+  // background-color: #395c9c;
+  background: url('assets/images/gallery-tour.jpg') no-repeat center center;
+  background-size: cover;
   color: #fff;
   font-size: 2.4rem;
-  font-weight: 600;
-  padding: 50px 0;
+  font-weight: 700;
+  padding: 200px 0;
   border-radius: 5px;
 }
 
@@ -95,7 +97,9 @@
           -webkit-box-orient: vertical;
         }
         .pack-price {
+          font-size: 1.2rem !important;
           > span {
+            color: red;
             font-weight: 700;
           }
         }
@@ -121,7 +125,7 @@
         }
       }
       .pack-info {
-        padding: 7px 10px;
+        padding: 20px 0 15px 15px;
         .pack-name {
           font-size: 1.5rem;
           a {
@@ -135,7 +139,9 @@
           }
         }
         .pack-price {
+          font-size: 1.2rem !important;
           > span {
+            color: red;
             font-weight: 700;
           }
         }
