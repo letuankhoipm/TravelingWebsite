@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { map, share, tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, share } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
 import { Observable } from 'rxjs';
+import { UpdateContactService } from '@services/update-contact.service';
 
 @Component({
   selector: 'app-place-detail',
@@ -21,8 +22,11 @@ export class PlaceDetailComponent implements OnInit {
 
   constructor(
     private tourService: TourService,
+    private router: Router,
     private route: ActivatedRoute,
-    private seoService: SeoService) {
+    private seoService: SeoService,
+    private updateContactService: UpdateContactService) {
+
   }
 
   ngOnInit() {
@@ -50,6 +54,11 @@ export class PlaceDetailComponent implements OnInit {
     this.tourService.getAlls().subscribe(tours => {
       this.tours = tours;
     });
+  }
+
+  public sendDestination() {
+    this.updateContactService.changeDestination(this.tour.name);
+    this.router.navigate(['/contact/']);
   }
 
   private change_alias(alias: string) {

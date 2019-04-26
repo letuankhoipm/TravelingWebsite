@@ -17,7 +17,7 @@
   <div class="row travel-pack-content">
 
     <div class="col-lg-9 col-md-9" *ngIf="packs?.length">
-      <ng-container *ngIf="(packs | filter:searchTerm) as packs">
+      <ng-container *ngIf="( packs | filter:searchTerm) as packs">
 
         <div class="option">
           <div class="row align-items-center">
@@ -33,10 +33,10 @@
             </div>
             <div class="col-6">
               <div class="option-view text-right">
-                <button class="btn" (click)=displayViewList()>
+                <button class="btn btn-view btn-view-list" (click)=displayViewList()>
                   <i class="fa fa-list"></i>
                 </button>
-                <button class="btn" (click)="displayViewGrid()">
+                <button class="btn btn-view btn-view-grid" (click)="displayViewGrid()">
                   <i class="fa fa-th"></i>
                 </button>
               </div>

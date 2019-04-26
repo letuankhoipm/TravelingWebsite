@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-ngx-editor',
@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, Out
   styleUrls: ['./ngx-editor.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NgxEditorComponent implements OnInit {
+export class NgxEditorComponent implements OnInit, OnChanges {
 
   @ViewChild('myDiv') private myDiv: ElementRef;
   @Input() data: any;
@@ -17,6 +17,7 @@ export class NgxEditorComponent implements OnInit {
   color = '#ed0bcd';
   hex = 'hex';
   checkOpenTool: boolean = false;
+  dataCopy: any;
 
   constructor() {
   }
@@ -24,8 +25,11 @@ export class NgxEditorComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataCopy = this.data;
+  }
+
   getData() {
-    console.log(this.myDiv.nativeElement.innerHTML);
     this.dataOutput.emit(this.myDiv.nativeElement.innerHTML);
   }
 

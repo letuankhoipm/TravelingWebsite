@@ -89,13 +89,13 @@ export class PlaceComponent implements OnInit {
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
-          console.log(this.packs);
+          // console.log(this.packs);
           this.originalPacks = [...arrayData];
         });
     }
     this.tourService.getAlls().subscribe(tours => {
       this.tours = tours;
-      console.log(this.tours);
+      // console.log(this.tours);
     });
 
   }
