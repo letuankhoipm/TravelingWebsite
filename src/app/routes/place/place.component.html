@@ -8,12 +8,20 @@
   <div class="search-container row justify-content-around">
     <div class="search-bar col-10 col-md-8  m-0 p-0">
       <div class="wrapper position-relative">
-        <input (keyup)="searchTerms$.next($event.target.value)" type="text" placeholder="Tìm kiếm..."
+        <!-- <input (keyup)="searchTerms$.next($event.target.value)" -->
+        <input (keyup)="updateTerm($event.target.value)" type="text" placeholder="Tìm kiếm..."
           class="search-bar w-100 p-2">
         <i class="far fa-search"></i>
       </div>
     </div>
   </div>
+  <div class="container not-found-container">
+      <div class="row justify-content-center">
+        <h2 class="col-8  text-center">
+          Không Tìm thấy sản phẩm nào
+        </h2>
+      </div>
+    </div>
 
   <div class="row travel-pack-content">
 
@@ -33,10 +41,10 @@
           </div>
           <div class="col-6">
             <div class="option-view text-right">
-              <button class="btn" (click)=displayViewList()>
+              <button class="btn btn-view btn-view-list" (click)=displayViewList()>
                 <i class="fa fa-list"></i>
               </button>
-              <button class="btn" (click)="displayViewGrid()">
+              <button class="btn btn-view btn-grid-list" (click)="displayViewGrid()">
                 <i class="fa fa-th"></i>
               </button>
             </div>
@@ -96,6 +104,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <div class="col-lg-3 col-sm-3">

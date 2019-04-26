@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterOutlet, NavigationStart, NavigationCancel, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { SeoService } from '@services/seo.service';
 import { PlaceService } from "@services/place.service";
 import { SharedService } from '@services/shared.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TourService } from '@services/tour.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-place',
@@ -16,7 +15,7 @@ import { FormControl } from '@angular/forms';
 
 })
 export class PlaceComponent implements OnInit {
-
+  public searchTerm = '';
   public searchTerms$ = new Subject<string>();
   public placeData: any;
   public title;
@@ -50,9 +49,7 @@ export class PlaceComponent implements OnInit {
     this.sharedService.title.subscribe(title => {
       this.title = title;
     });
-
     this.tourList$ = this.tourService.getAlls();
-
     this.initRealTimeSearch();
   }
 
@@ -61,8 +58,8 @@ export class PlaceComponent implements OnInit {
 
     if (this.placeData) {
       this.placeData.subscribe(places => {
-        this.places = places;
-        let place = places[0];
+        // this.places = places;
+        const place = places[0];
         this.seoService.generateTags({
           title: place.title,
           description: place.description,
@@ -84,7 +81,8 @@ export class PlaceComponent implements OnInit {
                 description: data.describe,
                 image: data.images.thumbnail.link,
                 people: data.people,
-                price: data.price
+                price: data.price,
+                key: data.id.replace('-', ' '),
               };
             });
           })
@@ -101,6 +99,10 @@ export class PlaceComponent implements OnInit {
 
   }
 
+  public updateTerm(value: string) {
+    this.searchTerm = value;
+  }
+
   private initRealTimeSearch() {
     const searchFilter = (target: string) => (obj: { title: string }) => {
       if (obj.title.toLowerCase().includes(target.toLowerCase())) {
@@ -113,25 +115,6 @@ export class PlaceComponent implements OnInit {
         this.packs = this.originalPacks.filter(searchFilter(value));
       }
     });
-  }
-
-  ngAfterViewInit() {
-    //   if(this.state) {
-    //     this.state = this.outlet.activatedRouteData['routing'];
-    // }
-
-    // this.router.events
-    //     .subscribe((event) => {
-    //         if (event instanceof NavigationStart) {
-
-    //         }
-    //         else if (
-    //             event instanceof NavigationEnd ||
-    //             event instanceof NavigationCancel
-    //         ) {
-    //             this.state = this.outlet.activatedRouteData['routing'];
-    //         }
-    //     });
   }
 
   public displayViewList(): void {
@@ -155,5 +138,4 @@ export class PlaceComponent implements OnInit {
     });
 
   }
-
 }

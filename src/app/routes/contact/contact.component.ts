@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
       'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
       'arrival': '',
       'phone': '',
-      'destination': '',
+      'destination': '', // TODO
       'message': ''
     });
 

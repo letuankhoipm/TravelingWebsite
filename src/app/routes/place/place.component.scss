@@ -15,20 +15,26 @@
   input.search-bar {
     margin-left: auto;
     margin-right: auto;
+    border: 3px solid #7e7c7c;
+    border-radius: 5px;
     height: 50px;
-    transition: outline-color 1.2s ease-in 1.2s;
+    transition: border-color  0.5s ease-out;
     &:focus {
-      border-color: transparent;
-      outline: 2px solid palette(thisBlue, "lighter");
+      border-color: palette(thisBlue, 'lighter');
+      outline: none;
     }
   }
 
   i.fa-search {
     position: absolute;
-    top: 10px;
+    top: 12.5px;
     right: 10px;
     font-size: 25px;
   }
+}
+
+.not-found-container {
+  margin-top: 70px;
 }
 
 .travel-pack-content {
@@ -45,6 +51,13 @@
       height: 31px;
       cursor: pointer;
       color: rgb(105, 104, 104);
+    }
+    .option-view {
+      .btn-view {
+        &:focus {
+          box-shadow: none;
+        }
+      }
     }
   }
 
