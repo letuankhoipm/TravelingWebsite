@@ -72,11 +72,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h3 class="txt1">{{tourDemo.name}}</h3>
-                        <p class="txt2">{{tourDemo.describe}}</p>
+                        <h3 class="txt1">{{tourDemo?.name}}</h3>
+                        <p class="txt2">{{tourDemo?.describe}}</p>
                     </div>
                     <div class="col-sm-2 btn">
-                        <a [routerLink]="['/place/'+ tourDemo.id]" class="btn-detail">Tìm hiểu thêm!</a>
+                        <a [routerLink]="['/place/'+ tourDemo?.id]" class="btn-detail">Tìm hiểu thêm!</a>
                     </div>
                 </div>
             </div>

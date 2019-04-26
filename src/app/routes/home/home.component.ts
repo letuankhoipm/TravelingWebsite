@@ -38,11 +38,7 @@ export class HomeComponent implements OnInit {
 
   alls: any;
   homes = [];
-  tourDemo = {
-    name: 'Bờ Biển Long Hải',
-    describe: 'Là thị trấn nằm ở tỉnh Bà Rịa - Vũng Tàu, cách thành phố Vũng Tàu 12km, Long Hải được thiên nhiên ưu ái ban tặng nhiều cảnh đẹp thơ mộng của núi, của biển và của rừng hoa anh đào sắp trổ bông. Và để có một ngày nghỉ đầy thư giãn thì du khách hãy nhanh tay mua ngay tour du lịch Long Hải để được hòa mình cùng với biển cả, để ngắm nhìn bình minh dần hiện lên trên biển hay hoàng hôn khuất dần trầm mình xuống mặt biển mênh mông.',
-    id: ''
-  }
+  tourDemo: any;
 
   public happyPlace = [
     { name: 'Phú Quốc', percent: 93 },

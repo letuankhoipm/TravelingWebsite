@@ -2,13 +2,12 @@
 
 .travel-pack {
   // background-color: #395c9c;
-  background: url('assets/images/gallery-tour.jpg') no-repeat center center;
+  background: url('assets/images/background-beach.jpg') no-repeat center center;
   background-size: cover;
   color: #fff;
   font-size: 2.4rem;
   font-weight: 700;
   padding: 200px 0;
-  border-radius: 5px;
 }
 
 .search-container {
@@ -53,10 +52,18 @@
       cursor: pointer;
       color: rgb(105, 104, 104);
     }
+    .option-view {
+      .btn-view {
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
   }
 
   .list-view-pack {
     .pack {
+      border-bottom: #3264c0 4px solid;
       box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
       .pack-image {
         overflow: hidden;
@@ -152,7 +159,7 @@
   .list-tour {
     .category-list {
       .list-item {
-        padding-bottom: 10px;
+        padding-bottom: 20px;
 
         .item {
           color: rgba(57, 92, 156, 1) !important;
@@ -166,3 +173,4 @@
     }
   }
 }
+
