@@ -19,7 +19,7 @@
       </div>
       <div class="col-2 flex-button">
         <div class="centenr-button">
-          <div class="button"><i class="fal fa-edit"></i> Sửa</div>
+          <div [routerLink]="[ '../edit-tour/', dataTour.id ]" class="button"><i class="fal fa-edit"></i> Sửa</div>
           <div (click)="deleteTour(dataTour.id)" class="button"><i class="fal fa-trash-alt"></i> Xóa</div>
         </div>
       </div>

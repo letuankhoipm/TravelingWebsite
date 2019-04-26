@@ -38,6 +38,7 @@ export class PlaceComponent implements OnInit {
   ];
 
   public page = 1;
+  public errorr = 'assets/icon/404.png';
 
   constructor(
     private seoService: SeoService,
@@ -88,13 +89,13 @@ export class PlaceComponent implements OnInit {
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
-          console.log(this.packs);
+          // console.log(this.packs);
           this.originalPacks = [...arrayData];
         });
     }
     this.tourService.getAlls().subscribe(tours => {
       this.tours = tours;
-      console.log(this.tours);
+      // console.log(this.tours);
     });
 
   }

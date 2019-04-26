@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   password = '';
   error = false;
   loading;
-  pbLogo = 'assets/images/logo.png';
+  pbLogo = 'assets/images/logo-white.png';
 
   constructor(
     private afAuth: AngularFireAuth,
