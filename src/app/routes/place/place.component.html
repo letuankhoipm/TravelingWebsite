@@ -51,7 +51,7 @@
             </div>
           </div>
         <div class="list-view-pack" *ngIf="viewType === 'list'">
-          <div class="pack mt-4" *ngFor="let pack of packs">
+          <div class="pack mt-4" *ngFor="let pack of packs | paginate: { itemsPerPage: 7, currentPage: page }">
             <div class="row">
               <div class="col-lg-5">
                 <div class="pack-image">
@@ -76,6 +76,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="mt-4">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
           </div>
         </div>
 
