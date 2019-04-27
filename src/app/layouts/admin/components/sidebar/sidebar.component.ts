@@ -22,15 +22,6 @@ export class SidebarComponent implements OnInit {
         { title: 'Danh Sách Tour', color: '#febe29', id: '3b', part: '/admin/list-tour' }
       ]
     },
-    // {
-    //   title: 'Diễn Viên', icon: 'fa-portrait', id: 1, check_click: false,
-    //   list_subs: [
-    //     { title: 'Thêm Diễn Viên', color: '#47e5d7', id: '3a', part: '/admin/add-tour' },
-    //     { title: 'List Diễn Viên', color: '#febe29', id: '3b', part: '/admin/add-tour' }
-    //   ]
-    // },
-    // { title: 'User', icon: 'fa-users', id: 2},
-    // { title: 'Video Background', icon: 'fa-video', id: 3},
   ];
   constructor(
     private afAuth: AngularFireAuth,

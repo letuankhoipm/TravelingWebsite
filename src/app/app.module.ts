@@ -7,16 +7,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { OwlModule } from 'ngx-owl-carousel';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { environment } from 'environments/environment';
 import { AuthGuard } from './core/auth.guard';
+import { environment } from 'environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { FirestoreSettingsToken} from '@angular/fire/firestore';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -29,13 +27,19 @@ import { FirestoreSettingsToken} from '@angular/fire/firestore';
     TransferHttpCacheModule,
     HttpClientModule,
     AppRoutingModule,
-    OwlModule,
-    NgxPaginationModule,
     AngularFireStorageModule,
     AppRoutingModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [AngularFireDatabase, AngularFireAuth, AuthGuard, { provide: FirestoreSettingsToken, useValue: {} }],
+  providers: [
+    AngularFireDatabase,
+    AngularFireAuth,
+    AuthGuard,
+    {
+      provide: FirestoreSettingsToken,
+      useValue: {}
+    },
+  ],
 })
 export class AppModule { }

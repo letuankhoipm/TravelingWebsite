@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, Form } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
+import { UpdateContactService } from '@services/update-contact.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +11,7 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./contact.component.scss'],
   providers: [ContactService]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
 
   public phuongbinh = {
     infor: 'Mọi chi tiết vui lòng liên lạc với Công ty Trách nhiệm hữu hạn Thương Mại và Du Lịch & Vận Tải Phương Bình Tourist. Chúng tôi sẽ chủ động liên hệ với quý khách hàng.',
@@ -26,21 +28,22 @@ export class ContactComponent implements OnInit {
   destination: FormControl;
   message: FormControl;
 
-  constructor(private fb: FormBuilder, private contactService: ContactService) {
-    this.myform = this.fb.group({
-      'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)])],
-      'name': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
-      'arrival': '',
-      'phone': '',
-      'destination': '', // TODO
-      'message': ''
-    });
+  private contactSubscription: Subscription;
 
-  }
+
+  constructor(
+    private fb: FormBuilder,
+    private contactService: ContactService,
+    private updateContactService: UpdateContactService,
+  ) {}
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
+    this.getDestFromService();
+  }
+  ngOnDestroy() {
+    this.contactSubscription.unsubscribe();
   }
 
   createFormControls() {
@@ -99,4 +102,15 @@ export class ContactComponent implements OnInit {
     // modalRef.componentInstance.question = 'Cám ơn bạn đã liên hệ với chúng tôi!';
   }
 
+  private getDestFromService() {
+    this.contactSubscription = this.updateContactService.getDestination
+      .subscribe((des: string) => {
+        console.log(des);
+        this.myform.patchValue({
+          destination: des
+        });
+        console.log('created2: ', this.myform);
+
+      });
+  }
 }

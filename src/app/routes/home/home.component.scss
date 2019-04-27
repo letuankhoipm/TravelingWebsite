@@ -8,7 +8,8 @@
 
 .container-background {
   height: 300px;
-  background: no-repeat center url(/assets/images/background-beach-2.jpg);
+  background: no-repeat center url('/assets/images/background-beach-2.jpg');
+  // background-size: 30%;
   margin-bottom: 0px;
   background-size: cover;
 
@@ -18,6 +19,11 @@
 
   @include lg {
     height: calc(100vh - 88px);
+  }
+
+  @include min-and-max(0, 321) {
+    height: 220px;
+
   }
 }
 
@@ -97,7 +103,7 @@
 
 .parallax {
   padding: 80px 0px;
-  height: 320px;
+  height: auto;
   width: 100%;
   position: relative;
   .bg-parallax {
@@ -226,7 +232,7 @@ button.owl-dot.active {
       }
 
       >.distance_percent {
-        height: 15px;
+        height: 10px;
         border-radius: 3px;
         background-color: #fff;
 

@@ -197,6 +197,7 @@
   width: 44px;
   height: 44px;
   border: rgba(57, 92, 156, 1) solid;
+  color: rgba(57, 92, 156, 1);
   border-radius: 50%;
 }
 .day-flex {
@@ -222,10 +223,10 @@
 
 .content-text {
   flex: 1;
-  .text{
+  .text {
     padding: 9px 15px;
   }
-  p{
+  p {
     margin-bottom: 0;
   }
 }
@@ -243,28 +244,43 @@
   background: rgba(255, 255, 255, 1);
 }
 
-.title-text{
+.title-text {
   padding: 7px 0px;
   font-weight: bold;
   font-size: 20px;
   color: rgba(57, 92, 156, 1);
 }
-.service-item{
+.service-item {
   margin: 10px 0px;
 }
 
 .btn-live {
-  color: #fff;
+  cursor: pointer;
+  color: #fff !important;
   font-weight: bold;
   background: rgba(57, 92, 156, 1);
   box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2) inset;
 
   &:hover {
-    transition-duration: .4s;
+    transition-duration: 0.4s;
     background: rgb(90, 144, 245);
   }
-  
+
   &:focus {
     box-shadow: 0 0 0 0.2rem rgba(77, 128, 224, 0.5);
+  }
+}
+
+.list-item {
+  margin-bottom: 10px;
+}
+
+.list-tour-title {
+  text-align: center;
+}
+
+.content-text {
+  li {
+    list-style-type: disc;
   }
 }

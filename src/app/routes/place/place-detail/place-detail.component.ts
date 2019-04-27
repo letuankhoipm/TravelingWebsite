@@ -1,19 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { map, share, tap } from 'rxjs/operators';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, share } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
 import { Observable } from 'rxjs';
+import { StorageService } from '@services/storage.service';
+import { UpdateContactService } from '@services/update-contact.service';
 
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
   styleUrls: ['./place-detail.component.scss'],
-  providers: [TourService, SeoService]
+  providers: [TourService, SeoService],
+  encapsulation: ViewEncapsulation.None
 
 })
 export class PlaceDetailComponent implements OnInit {
   tours = [];
+  tourDemo: any;
   tour$: Observable<any>;
   tour: any;
   id: any;
@@ -21,8 +25,12 @@ export class PlaceDetailComponent implements OnInit {
 
   constructor(
     private tourService: TourService,
+    private router: Router,
     private route: ActivatedRoute,
-    private seoService: SeoService) {
+    private seoService: SeoService,
+    private updateContactService: UpdateContactService,
+    private storageService: StorageService) {
+
   }
 
   ngOnInit() {
@@ -47,9 +55,34 @@ export class PlaceDetailComponent implements OnInit {
 
       }
     });
+    // this.tourService.getAlls().subscribe(tours => {
+    //   this.tours = tours;
+    // });
     this.tourService.getAlls().subscribe(tours => {
-      this.tours = tours;
+
+      const pluck = (data: any) => {
+        const temp = {
+          id: data.id,
+          name: data.name,
+          describe: data.describe,
+          daytime: data.daytime,
+          image: data.images.thumbnail.link
+        }
+        return temp;
+      };
+      this.tours = tours.map(pluck);
+      this.tourDemo = this.tours[0];
+      this.tours = this.tours.slice(0, 5);
+
     });
+
+  }
+
+  public sendDestination() {
+
+    this.router.navigate(['/contact/']);
+    this.updateContactService.changeDestination(this.tour.name);
+    // this.storageService.setValue('tourName', this.tour.name);
   }
 
   private change_alias(alias: string) {
