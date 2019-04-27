@@ -8,13 +8,12 @@ import { NgxSelectModule } from '@shared/ngx-select/ngx-select.module';
 import { UploadImageModule } from '@shared/upload-image/upload-image.module';
 import { ListTourComponent } from './list-tour/list-tour.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { EditorComponent } from './editor/editor.component';
 import { NgxEditorModule } from '@shared/ngx-editor/ngx-editor.module';
 import { UploadImageThumbModule } from '@shared/upload-image-thumb/upload-image-thumb.module';
 import { EditTourComponent } from './edit-tour/edit-tour.component';
 
 @NgModule({
-  declarations: [DashboardComponent, AddTourComponent, ListTourComponent, EditorComponent, EditTourComponent],
+  declarations: [DashboardComponent, AddTourComponent, ListTourComponent, EditTourComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -20,8 +20,32 @@
       <div class="col-2 flex-button">
         <div class="centenr-button">
           <div [routerLink]="[ '../edit-tour/', dataTour.id ]" class="button"><i class="fal fa-edit"></i> Sửa</div>
-          <div (click)="deleteTour(dataTour.id)" class="button"><i class="fal fa-trash-alt"></i> Xóa</div>
+          <div (click)="getIdDeleteTour(dataTour.id)" data-toggle="modal" data-target="#exampleModalCenter" class="button"><i class="fal fa-trash-alt"></i> Xóa</div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Xác Nhận Xóa Tour</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div (click)="deleteTour(idDelete)" data-dismiss="modal"
+            class="select-language col-12 d-flex align-items-center"><i class="fal fa-trash-alt trash-alt"></i>Xóa Ngay</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn scroll button-scheme btn-home" data-dismiss="modal">Đóng</button>
       </div>
     </div>
   </div>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { TourService } from '@services/tour.service';
 import { ImageService } from '@services/image.service';
+import { Router } from '@angular/router';
 
 export interface TourL {
   child?: [];
@@ -37,7 +38,8 @@ export interface TourL {
   selector: 'app-add-tour',
   templateUrl: './add-tour.component.html',
   styleUrls: ['./add-tour.component.scss'],
-  providers: [TourService, ImageService]
+  providers: [TourService, ImageService],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddTourComponent implements OnInit {
 
@@ -62,6 +64,7 @@ export class AddTourComponent implements OnInit {
   arrPaths = [];
   changeDom = 1;
   checkEditUpload = {};
+  checkExistName: boolean = false;
 
   public listDayTime = [
     { name: '1 Ngày', number: 1 },
@@ -170,13 +173,17 @@ export class AddTourComponent implements OnInit {
     private tourService: TourService,
     private imageService: ImageService,
     private storage: AngularFireStorage,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private router: Router,
   ) {
+    const settings: firebase.firestore.Settings = {
+      timestampsInSnapshots: true,
+    };
+    this.db.firestore.settings(settings);
   }
 
   ngOnInit() {
     this.tourService.getAlls().subscribe(lists => {
-      console.log(lists);
       this.listNameTour = lists.map(obj => {
         return obj.id;
       });
@@ -184,12 +191,10 @@ export class AddTourComponent implements OnInit {
 
     this.imageService.getById('temp').subscribe(lists => {
       this.listImagesUpload = lists;
-      console.log(this.listImagesUpload);
       this.arrPaths = [];
 
       for (const paths in this.listImagesUpload) {
         if (paths === 'thumbnail') { continue; }
-        console.log(paths);
         const p = this.listImagesUpload[paths].map(x => x.path);
         this.arrPaths = [...this.arrPaths, ...p];
         this.arrPaths.push(this.listImagesUpload.thumbnail.path);
@@ -202,8 +207,21 @@ export class AddTourComponent implements OnInit {
       var desertRef = this.storage.ref(value);
       desertRef.delete();
     }
-    let arrSpace = {};
-    this.db.doc(`images/temp`).set(arrSpace);
+    // let arrSpace = {};
+    // this.db.doc(`images/temp`).set(arrSpace);
+    let arrSpace = { thumbnail: {} };
+    this.imageService.setData('temp', arrSpace);
+  }
+
+  checkNameSpace() {
+
+    if (this.name != '') {
+      if (!this.checkName()) {
+        this.checkExistName = true;
+      }
+    } else {
+      this.checkExistName = false;
+    }
   }
 
   checkName() {
@@ -214,6 +232,7 @@ export class AddTourComponent implements OnInit {
     if (!found) {
       return false;
     } else {
+      this.checkExistName = false;
       return true;
     }
   }
@@ -227,57 +246,57 @@ export class AddTourComponent implements OnInit {
   }
 
   save() {
-    this.dataTour.name = this.name;
-    this.dataTour.vehicle = this.vehicle;
-    this.dataTour.daytime = this.valueOld;
-    this.dataTour.night = this.valueOldNight;
-    this.dataTour.note = this.note;
-    this.dataTour.people = this.people;
-    this.dataTour.price = this.price;
-    this.dataTour.images = this.listImagesUpload;
-    this.dataTour.describe = this.describe;
+    if (this.checkExistName) {
+      this.dataTour.name = this.name;
+      this.dataTour.vehicle = this.vehicle;
+      this.dataTour.daytime = this.valueOld;
+      this.dataTour.night = this.valueOldNight;
+      this.dataTour.note = this.note;
+      this.dataTour.people = this.people;
+      this.dataTour.price = this.price;
+      this.dataTour.images = this.listImagesUpload;
+      this.dataTour.describe = this.describe;
 
-    for (let i = 0; i < this.valueOld; i++) {
-      this.dataTour.schedule[i].name = this.valueDayTime[i].name;
-    }
-
-    for (let i = 0; i < 6; i++) {
-      switch (i) {
-        case 0:
-          this.dataTour.transport = this.listServices[0].dataArr;
-          break;
-        case 1:
-          this.dataTour.hotel = this.listServices[1].dataArr;
-          break;
-        case 2:
-          this.dataTour.eat = this.listServices[2].dataArr;
-          break;
-        case 3:
-          this.dataTour.guide = this.listServices[3].dataArr;
-          break;
-        case 4:
-          this.dataTour.protect = this.listServices[4].dataArr;
-          break;
-        case 5:
-          this.dataTour.gift = this.listServices[5].dataArr;
-          break;
-        default:
+      for (let i = 0; i < this.valueOld; i++) {
+        this.dataTour.schedule[i].name = this.valueDayTime[i].name;
       }
+
+      for (let i = 0; i < 6; i++) {
+        switch (i) {
+          case 0:
+            this.dataTour.transport = this.listServices[0].dataArr;
+            break;
+          case 1:
+            this.dataTour.hotel = this.listServices[1].dataArr;
+            break;
+          case 2:
+            this.dataTour.eat = this.listServices[2].dataArr;
+            break;
+          case 3:
+            this.dataTour.guide = this.listServices[3].dataArr;
+            break;
+          case 4:
+            this.dataTour.protect = this.listServices[4].dataArr;
+            break;
+          case 5:
+            this.dataTour.gift = this.listServices[5].dataArr;
+            break;
+          default:
+        }
+      }
+      this.dataTour.pay = this.listPay[0].dataArr;
+      this.dataTour.child = this.listChild[0].dataArr;
+
+      this.okData = this.dataTour;
+      this.namePost = this.changeAlias(this.name);
+      this.tourService.setData(this.changeAlias(this.name), this.dataTour);
+      // let arrSpace = {thumbnail: {}};
+      // this.imageService.setData('temp', arrSpace);
+      this.deleteImage(this.arrPaths);
+      this.valueOld = 1;
+      this.changeDom = 2;
+      this.name = '';
     }
-    this.dataTour.pay = this.listPay[0].dataArr;
-    this.dataTour.child = this.listChild[0].dataArr;
-
-    this.okData = this.dataTour;
-    console.log(this.dataTour);
-
-    this.tourService.setData(this.changeAlias(this.name), this.dataTour);
-    this.namePost = this.changeAlias(this.name);
-    let arrSpace = {thumbnail: {}};
-    this.db.doc(`images/temp`).set(arrSpace);
-    // this.deleteImage(this.arrPaths);
-    this.valueOld = 1;
-    this.changeDom = 2;
-    this.name = '';
   }
 
   onData(vl) {
@@ -434,9 +453,6 @@ export class AddTourComponent implements OnInit {
         break;
       default:
     }
-
-    console.log(this.listServices[0].dataArr);
-
   }
 
   changeAlias(alias): string {

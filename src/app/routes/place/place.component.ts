@@ -74,7 +74,6 @@ export class PlaceComponent implements OnInit {
         .pipe(
           map((arrayData: any[]) => {
             return arrayData.map((data) => {
-              // console.log(data);
               return {
                 id: data.id,
                 title: data.name,
@@ -88,13 +87,11 @@ export class PlaceComponent implements OnInit {
           })
         ).subscribe((arrayData: any[]) => {
           this.packs = arrayData;
-          console.log(this.packs);
           this.originalPacks = [...arrayData];
         });
     }
     this.tourService.getAlls().subscribe(tours => {
       this.tours = tours;
-      console.log(this.tours);
     });
 
   }

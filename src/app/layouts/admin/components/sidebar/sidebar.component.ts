@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,8 +19,7 @@ export class SidebarComponent implements OnInit {
       title: 'Quản lí tour', icon: 'fa-umbrella-beach', id: 0, check_click: false,
       list_subs: [
         { title: 'Thêm Tour', color: '#47e5d7', id: '3a', part: '/admin/add-tour' },
-        { title: 'Danh Sách Tour', color: '#febe29', id: '3b', part: '/admin/list-tour' },
-        { title: 'Test Editor', color: '#0ebe29', id: '3c', part: '/admin/editor' }
+        { title: 'Danh Sách Tour', color: '#febe29', id: '3b', part: '/admin/list-tour' }
       ]
     },
     // {
@@ -31,7 +32,10 @@ export class SidebarComponent implements OnInit {
     // { title: 'User', icon: 'fa-users', id: 2},
     // { title: 'Video Background', icon: 'fa-video', id: 3},
   ];
-  constructor() {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router
+    ) {
     this.activateClass(0);
   }
 
@@ -63,6 +67,12 @@ export class SidebarComponent implements OnInit {
 
   ok() {
     this.kio = !this.kio;
+  }
+
+  public logout(): void {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/']);
+    });
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -10,9 +10,12 @@ import { ImageService } from '@services/image.service';
   selector: 'app-edit-tour',
   templateUrl: './edit-tour.component.html',
   styleUrls: ['./edit-tour.component.scss'],
-  providers: [TourService, ImageService]
+  providers: [TourService, ImageService],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditTourComponent implements OnInit {
+
+  logo = 'assets/images/logo.png';
 
   dataTour: any = {
     child: [],
@@ -70,8 +73,10 @@ export class EditTourComponent implements OnInit {
   idTour: string;
   listImages = {};
   arrClearThumb = [];
+
   arrClear = [];
   idDocumentTour = '';
+  checkExistName: boolean = false;
 
 
   public listDayTime = [
@@ -156,6 +161,10 @@ export class EditTourComponent implements OnInit {
     private imageService: ImageService,
     private activatedRoute: ActivatedRoute
   ) {
+    const settings: firebase.firestore.Settings = {
+      timestampsInSnapshots: true,
+    };
+    this.db.firestore.settings(settings);
   }
 
   ngOnInit() {
@@ -164,9 +173,9 @@ export class EditTourComponent implements OnInit {
       this.idDocumentTour = paramsId.id
       this.tourService.getById(this.idDocumentTour).subscribe(lists => {
         this.dataTour = lists;
-          if(lists != undefined) {
-            this.nameFix = lists.name;
-          }
+        if (lists != undefined) {
+          this.nameFix = lists.name;
+        }
       });
 
 
@@ -180,7 +189,6 @@ export class EditTourComponent implements OnInit {
     this.idTour = this.idDocumentTour;
     this.tourService.getById(this.idDocumentTour).subscribe(lists => {
       this.dataTour = lists;
-      console.log(this.dataTour);
 
       if (this.dataTour != undefined) {
         this.dataSchedule = [...this.dataTour.schedule];
@@ -235,69 +243,93 @@ export class EditTourComponent implements OnInit {
   }
 
   save() {
-    this.imageService.getById('tempedit').subscribe(lists => {
-      this.listImages = lists;
-      this.dataTour.images = this.listImages;
-    });
-    this.dataTour.name = this.name;
-    this.dataTour.vehicle = this.vehicle;
-    this.dataTour.daytime = this.valueOld;
-    this.dataTour.night = this.valueOldNight;
-    this.dataTour.note = this.note;
-    this.dataTour.people = this.people;
-    this.dataTour.price = this.price;
-    this.dataTour.describe = this.describe;
+    if (this.checkExistName) {
+      this.imageService.getById('tempedit').subscribe(lists => {
+        this.listImages = lists;
+        this.dataTour.images = this.listImages;
+      });
+      this.dataTour.name = this.name;
+      this.dataTour.vehicle = this.vehicle;
+      this.dataTour.daytime = this.valueOld;
+      this.dataTour.night = this.valueOldNight;
+      this.dataTour.note = this.note;
+      this.dataTour.people = this.people;
+      this.dataTour.price = this.price;
+      this.dataTour.describe = this.describe;
 
-    for (let i = 0; i < this.valueOld; i++) {
-      this.dataTour.schedule[i].name = this.valueDayTime[i].name;
-    }
-
-    for (let i = 0; i < 6; i++) {
-      switch (i) {
-        case 0:
-          this.dataTour.transport = this.listServices[0].dataArr;
-          break;
-        case 1:
-          this.dataTour.hotel = this.listServices[1].dataArr;
-          break;
-        case 2:
-          this.dataTour.eat = this.listServices[2].dataArr;
-          break;
-        case 3:
-          this.dataTour.guide = this.listServices[3].dataArr;
-          break;
-        case 4:
-          this.dataTour.protect = this.listServices[4].dataArr;
-          break;
-        case 5:
-          this.dataTour.gift = this.listServices[5].dataArr;
-          break;
-        default:
+      for (let i = 0; i < this.valueOld; i++) {
+        this.dataTour.schedule[i].name = this.valueDayTime[i].name;
       }
-    }
-    this.dataTour.pay = this.listPay[0].dataArr;
-    this.dataTour.child = this.listChild[0].dataArr;
 
-    this.okData = this.dataTour;
-    setTimeout(() => {
-      this.tourService.setData(this.changeAlias(this.name), this.dataTour);
-      if (this.changeAlias(this.name) != this.changeAlias(this.nameFix)) {
-        this.router.navigate([`/admin/edit-tour/${this.changeAlias(this.name)}`]);
-        this.tourService.deleteById(this.changeAlias(this.nameFix));
+      for (let i = 0; i < 6; i++) {
+        switch (i) {
+          case 0:
+            this.dataTour.transport = this.listServices[0].dataArr;
+            break;
+          case 1:
+            this.dataTour.hotel = this.listServices[1].dataArr;
+            break;
+          case 2:
+            this.dataTour.eat = this.listServices[2].dataArr;
+            break;
+          case 3:
+            this.dataTour.guide = this.listServices[3].dataArr;
+            break;
+          case 4:
+            this.dataTour.protect = this.listServices[4].dataArr;
+            break;
+          case 5:
+            this.dataTour.gift = this.listServices[5].dataArr;
+            break;
+          default:
+        }
       }
-    }, 1000);
-    for (let value of this.arrClear) {
-    }
+      this.dataTour.pay = this.listPay[0].dataArr;
+      this.dataTour.child = this.listChild[0].dataArr;
 
-    this.deleteImage(this.arrClearThumb);
-    for (let value of this.arrClear) {
-      this.deleteImage(value);
-    }
+      this.okData = this.dataTour;
+      setTimeout(() => {
+        this.tourService.setData(this.changeAlias(this.name), this.dataTour);
+        if (this.changeAlias(this.name) != this.changeAlias(this.nameFix)) {
 
+          this.router.navigate([`/admin/edit-tour/${this.changeAlias(this.name)}`]);
+          this.tourService.deleteById(this.changeAlias(this.nameFix));
+        }
+      }, 1000);
+
+      this.deleteImage(this.arrClearThumb);
+      for (let value of this.arrClear) {
+        if (typeof value !== 'undefined') {
+          this.deleteImage(value);
+        }
+      }
+      this.arrClearThumb = [];
+      this.arrClear = [];
+
+    }
   }
 
-  logAnh() {
-    console.log(this.dataTour.images);
+  deleteImagePath(path) {
+    var desertRef = this.storage.ref(path);
+    desertRef.delete();
+  }
+
+  deleteTour(id) {
+
+    let arrPaths = [];
+
+    for (const paths in this.dataTour.images) {
+      if (paths === 'thumbnail') { continue; }
+      const p = this.dataTour.images[paths].map(x => x.path);
+      arrPaths = [...arrPaths, ...p];
+      arrPaths.push(this.dataTour.images.thumbnail.path);
+    }
+    for (let value of arrPaths) {
+      this.deleteImage(value);
+    }
+    this.tourService.deleteById(id);
+    this.router.navigate([`/admin/list-tour`]);
+
   }
 
   getArrClearThumb(vl) {
@@ -352,6 +384,16 @@ export class EditTourComponent implements OnInit {
     }
   }
 
+  checkNameSpace() {
+    if (this.name != '' && this.name != this.nameFix) {
+      if (!this.checkName()) {
+        this.checkExistName = true;
+      }
+    } else {
+      this.checkExistName = false;
+    }
+  }
+
   checkName() {
 
     const name = this.changeAlias(this.name);
@@ -359,8 +401,10 @@ export class EditTourComponent implements OnInit {
       return element === name;
     });
 
+
     if (found && name != this.changeAlias(this.nameFix)) {
       return true;
+      this.checkExistName = false;
     } else {
       return false;
     }
