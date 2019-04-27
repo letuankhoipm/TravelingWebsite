@@ -1,16 +1,15 @@
-import { Injectable, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UpdateContactService {
-
-  @Output() getDestination: EventEmitter<string> = new EventEmitter();
+  public getDestination = new BehaviorSubject<string>('');
 
   constructor() { }
 
   public changeDestination(destination: string) {
-    this.getDestination.emit(destination);
+    this.getDestination.next(destination);
   }
 }

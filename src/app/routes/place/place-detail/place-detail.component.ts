@@ -4,8 +4,8 @@ import { map, share } from 'rxjs/operators';
 import { SeoService } from '@services/seo.service';
 import { TourService } from '@services/tour.service';
 import { Observable } from 'rxjs';
-import { UpdateContactService } from '@services/update-contact.service';
 import { StorageService } from '@services/storage.service';
+import { UpdateContactService } from '@services/update-contact.service';
 
 @Component({
   selector: 'app-place-detail',
@@ -28,6 +28,7 @@ export class PlaceDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private seoService: SeoService,
+    private updateContactService: UpdateContactService,
     private storageService: StorageService) {
 
   }
@@ -80,7 +81,8 @@ export class PlaceDetailComponent implements OnInit {
   public sendDestination() {
 
     this.router.navigate(['/contact/']);
-    this.storageService.setValue('tourName', this.tour.name);
+    this.updateContactService.changeDestination(this.tour.name);
+    // this.storageService.setValue('tourName', this.tour.name);
   }
 
   private change_alias(alias: string) {
