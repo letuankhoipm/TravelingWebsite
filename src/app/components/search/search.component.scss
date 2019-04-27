@@ -32,12 +32,16 @@ $palettes: (
     display: inline-block;
     vertical-align: top;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 20px;
     text-transform: none;
     border: none;
     border-radius: 0;
     background-color: $colorBlueBase;
+    @include min-and-max(0, 321) {
+      font-weight: 400;
+      font-size: 11px;
+    }
   }
 
   .tab {
