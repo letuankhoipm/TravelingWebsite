@@ -76,7 +76,7 @@ export class EditTourComponent implements OnInit {
 
   arrClear = [];
   idDocumentTour = '';
-  checkExistName: boolean = false;
+  checkExistName: boolean = true;
 
 
   public listDayTime = [
