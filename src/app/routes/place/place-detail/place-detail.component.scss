@@ -284,3 +284,18 @@
     list-style-type: disc;
   }
 }
+.pay {
+  .pay-item {
+    padding: 0px 10px 0px 10px;
+    position: relative;
+  }
+  .pay-item::before {
+    content: "";
+    width: 3px;
+    height: 2px;
+    background: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 50%;
+    left: 0;
+  }
+}

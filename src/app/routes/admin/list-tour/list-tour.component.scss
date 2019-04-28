@@ -1,80 +1,105 @@
 .image {
-    width: 100%;
-    object-fit: cover;
-    padding: 10px;
-    height: 130px;
+  width: 100%;
+  object-fit: cover;
+  padding: 10px;
+  height: 130px;
 }
 
 .tour {
-    padding: 10px 0px;
-    background: beige;
-    border-bottom: 1px solid #c2c2c2;
+  padding: 10px 0px;
+  background: beige;
+  border-bottom: 1px solid #c2c2c2;
 }
 
 .name {
-    padding: 10px 0px;
-    font-weight: 600;
+  padding: 10px 0px;
+  font-weight: 600;
 }
 
 .text {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .flex-center {
-    display: flex;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .box {
-    width: 100%;
+  width: 100%;
 }
 
-i.fal.fa-edit, i.fal.fa-trash-alt {
-    margin-top: -2px;
-    margin-right: 5px;
+i.fal.fa-edit,
+i.fal.fa-trash-alt {
+  margin-top: -2px;
+  margin-right: 5px;
 }
 
 .button {
-    padding: 10px;
-    margin: 10px 0px;
-    background: #7590b5;
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2) inset;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    width: 100px;
-    border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px;
+  background: #7590b5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 5px;
 }
 
 .button:hover {
-    transition-duration: .4s;
-    background: #3b4f6a;
+  transition-duration: .4s;
+  background: #3b4f6a;
 }
 
 .flex-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .list-tour {
-    margin: 20px;
-    border: 1px solid #c2c2c2;
+  margin: 20px;
+  border: 1px solid #c2c2c2;
 }
 
 .backr-w {
-    background: white !important;
+  background: white !important;
 }
 
 .clear-border-bottom {
-    border-bottom: none !important;
+  border-bottom: none !important;
 }
 
 .main {
-    overflow-y: scroll;
-    height: calc(100vh);
+  overflow-y: scroll;
+  height: calc(100vh);
+}
+
+// Modal
+
+.btn.button-scheme {
+  background-color: #819dcf;
+  border: 1px solid #819dcf;
+  color: #fff;
+}
+
+.btn-home {
+  border-radius: 38px;
+  padding: 8px 30px;
+  margin: 0 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.trash-alt {
+  padding: 10px;
+  color: #414f68;
+}
+
+.select-language {
+  cursor: pointer;
 }

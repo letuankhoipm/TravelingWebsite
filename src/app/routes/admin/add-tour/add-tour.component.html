@@ -1,10 +1,12 @@
 <div class="control">
-  <p class="icon m-0 w-75">
-    <img [src]="logo" alt="">
-  </p>
-
-  <div data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create ">Lưu</div>
-  <a href="/admin/add-tour" class="reset">Làm Mới</a>
+  <div class="control-left">
+    <img [src]="logo" class="control-logo" alt="Logo">
+  </div>
+  <div class="control-right">
+    <div *ngIf="checkExistName" data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create "><i
+        class="p-icon fal fa-save"></i> Lưu</div>
+    <a href="/admin/add-tour" class="reset"><i class="p-icon fal fa-sync"></i> Làm Mới</a>
+  </div>
 </div>
 
 
@@ -19,7 +21,7 @@
           </button>
         </div>
         <label class="label">Tên Tour:</label>
-        <input (change)="checkName()" class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
+        <input (change)="checkName()" (keyup)="checkNameSpace()" class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
       </div>
       <div class="group-wrapper">
         <label class="label">Giới Thiệu:</label>
@@ -40,7 +42,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <app-upload-image-thumb (checkNameUpload)="checkNameUploadThumbnail($event)" [dataImagesCheck]="checkEditUpload" [valueOld]="valueOld" [nameTour]="changeAlias(name)">
+          <app-upload-image-thumb (checkNameUpload)="checkNameUploadThumbnail($event)"
+            [dataImagesCheck]="checkEditUpload" [valueOld]="valueOld" [nameTour]="changeAlias(name)">
           </app-upload-image-thumb>
         </div>
       </div>
@@ -51,7 +54,8 @@
             <app-ngx-select (data)="onData($event)" [valueOption]="valueOld" [dataList]="listDayTime"></app-ngx-select>
           </div>
           <div class="col-6">
-            <app-ngx-select (data)="onDataNight($event)" [valueOption]="valueOldNight" [dataList]="listNight"></app-ngx-select>
+            <app-ngx-select (data)="onDataNight($event)" [valueOption]="valueOldNight" [dataList]="listNight">
+            </app-ngx-select>
           </div>
         </div>
       </div>
@@ -87,8 +91,8 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <app-upload-image (checkNameUpload)="checkNameUpload($event)" [dataImagesCheck]="checkEditUpload" [valueOld]="valueOld"
-              [nameTour]="changeAlias(name)" [value]="item.id" class="row mx-0">
+            <app-upload-image (checkNameUpload)="checkNameUpload($event)" [dataImagesCheck]="checkEditUpload"
+              [valueOld]="valueOld" [nameTour]="changeAlias(name)" [value]="item.id" class="row mx-0">
             </app-upload-image>
           </div>
         </div>

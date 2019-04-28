@@ -43,10 +43,8 @@ export class UploadImageThumbComponent implements OnInit, OnChanges {
   constructor(private storage: AngularFireStorage, private db: AngularFirestore, private imageService: ImageService) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    // console.log(this.dataImagesCheck);
     if (this.dataImagesCheck == null) {
       this.dataImagesCheck = {};
-      // console.log('NULL');
     }
 
     if (this.dataImagesCheck.thumbnail) {
@@ -145,6 +143,7 @@ export class UploadImageThumbComponent implements OnInit, OnChanges {
     if (!checkObjEmpty) {
       this.dataImageClear.push(this.listLink['thumbnail']);
       this.getArrClearThumb.emit(this.dataImageClear);
+      
     }
     this.listLink['thumbnail'] = {};
     this.checkExistThumbnail = false;

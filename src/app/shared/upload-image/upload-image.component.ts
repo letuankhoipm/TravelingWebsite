@@ -100,14 +100,9 @@ export class UploadImageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
-    console.log(this.dataImagesCheck);
     if (this.dataImagesCheck == null) {
       this.dataImagesCheck = {};
-      console.log('NULL');
     }
-
-    
     if (this.dataImagesCheck.thumbnail) {
       this.changeLinkTemp = 'edit';
     }

@@ -1,9 +1,12 @@
 <div class="control">
-  <button (click)="logAnh()">Log</button>
-  <div data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create">Lưu</div>
-  <a href="/admin/add-tour" class="reset">Làm Mới</a>
+  <div class="control-left">
+    <img [src]="logo" class="control-logo" alt="Logo">
+  </div>
+  <div class="control-right">
+    <div *ngIf="checkExistName" data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create">Lưu</div>
+    <div data-toggle="modal" data-target="#exampleModalCenter2" class="reset">Xóa</div>
+  </div>
 </div>
-
 
 <div class="container pt-3 main">
   <div class="main-flex">
@@ -16,7 +19,7 @@
           </button>
         </div>
         <label class="label">Tên Tour:</label>
-        <input (change)="checkName()" class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
+        <input (change)="checkName()" (keyup)="checkNameSpace()" class="input" type="text" name="name" [(ngModel)]="name" placeholder="Tên Tour">
       </div>
       <div class="group-wrapper">
         <label class="label">Giới Thiệu:</label>
@@ -88,8 +91,8 @@
               </button>
             </div>
             <app-upload-image (getArrClear)="getArrClear($event, index)" (checkNameUpload)="checkNameUpload($event)"
-              [dataImagesCheck]="dataTour?.images" [valueOld]="valueOld" [nameTour]="changeAlias(name)" [value]="item.id"
-              class="row mx-0">
+              [dataImagesCheck]="dataTour?.images" [valueOld]="valueOld" [nameTour]="changeAlias(name)"
+              [value]="item.id" class="row mx-0">
             </app-upload-image>
           </div>
         </div>
@@ -225,6 +228,31 @@
             class="select-language col-6 d-flex align-items-center"><i class="far fa-eye"></i>Xem Bài Đăng</div>
           <div [routerLink]="['../list-tour']" data-dismiss="modal"
             class="select-language col-6 d-flex align-items-center"><i class="far fa-tools"></i>Menu Quản Lý</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn scroll button-scheme btn-home" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Xác Nhận Xóa Tour</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div (click)="deleteTour(idDocumentTour)" data-dismiss="modal"
+            class="select-language col-12 d-flex align-items-center"><i class="fal fa-trash-alt trash-alt"></i>Xóa Ngay
+          </div>
         </div>
       </div>
       <div class="modal-footer">
