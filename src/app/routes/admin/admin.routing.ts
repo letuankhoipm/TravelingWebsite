@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddTourComponent } from './add-tour/add-tour.component';
 import { ListTourComponent } from './list-tour/list-tour.component';
-import { EditorComponent } from './editor/editor.component';
 import { EditTourComponent } from './edit-tour/edit-tour.component';
 
 
@@ -24,10 +23,6 @@ const routes: Routes = [
     {
         path: 'list-tour',
         component: ListTourComponent
-    },
-    {
-        path: 'editor',
-        component: EditorComponent
     },
     {
         path: 'edit-tour/:id',

@@ -28,7 +28,12 @@
           <div *ngIf="tour">
             <div class="tour-schedule-detail" *ngFor="let schedule of tour.schedule; index as i">
               <div id="carouselExampleIndicators{{i}}" class="carousel slide" data-ride="carousel">
-                <img [src]="tour.images[i][0].link" class="d-block w-100" alt="..." class="slide-image">
+                <div class="carousel-inner">
+                  <div class="carousel-item" *ngFor="let image of tour.images[i]; let first = first "
+                    [ngClass]="{'active': first}">
+                    <img [src]="image.link" class="d-block w-100" alt="..." class="slide-image">
+                  </div>
+                </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators{{i}}" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
@@ -280,7 +285,11 @@
               <p class="my-0">Không hổ trợ</p>
             </div>
           </div>
-          <p>- Tắm nước ngọt - Ăn uống ngoài chương trình - Điện thoại - Giặt ủi - Các chi phí khác</p>
+          <div class="pay mb-4" *ngIf="tour.pay!=''">
+            <div class="pay-item" style="display: inline-block" *ngFor="let pay of tour.pay">
+              <p [innerHTML]="pay" class="mb-0"></p>
+            </div>
+          </div>
           <div class="service-item">
             <div class="service-title">
               <div class="row">
