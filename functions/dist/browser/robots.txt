@@ -1,4 +1,3 @@
-https://phuongbinhtourist.com/assets/sitemap.xml
 User-agent: *
 Disallow: /login/
 Disallow: /admin/list-tour/
