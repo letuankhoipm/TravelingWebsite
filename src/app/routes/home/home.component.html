@@ -76,7 +76,7 @@
                         <p class="txt2">{{tourDemo?.describe}}</p>
                     </div>
                     <div class="col-sm-2 btn">
-                        <a [routerLink]="['/place/'+ tourDemo?.id]" class="btn-detail">Tìm hiểu thêm!</a>
+                        <a aria-label="Read more about Seminole tax hike" [routerLink]="['/place/'+ tourDemo?.id]" class="btn-detail">Tìm hiểu thêm!</a>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="row">
 
                 <div class="col-sm-4 col-lg-2 col-6 partners-item" *ngFor="let url of partnerImagesUrl">
-                    <a href="#">
+                    <a aria-label="Read more about Seminole tax hike" href="#">
                         <img [src]="url.origin" alt="" class="original">
                         <img [src]="url.hover" alt="" class="hover">
                     </a>

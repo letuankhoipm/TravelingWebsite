@@ -11,7 +11,7 @@
             *ngIf="list.list_subs" id="list{{i}}" [ngClass]="{'toopltip1' : !check_sub, 'toopltip2' : check_sub}">
             <li [routerLink]="list_sub.part" class="list-c2" *ngFor="let list_sub of list.list_subs; let isub = index" [ngClass]="{'active' : active == list_sub.id}"
               (click)="activateClass_c2(list_sub.id); $event.stopPropagation();">
-              <a class="item d-flex align-items-center">
+              <a aria-label="Read more about Seminole tax hike" class="item d-flex align-items-center">
                 <i class="fas fa-circle pr-2 circle" [ngStyle]="{'color':list_sub.color}"></i>
                 {{list_sub.title}}
               </a>
@@ -19,7 +19,7 @@
           </ul>
         </li>
         <li class="list-c1">
-          <a (click)="logout()" class="item"><i class="fal fa-sign-out-alt pr-2 icon"></i> Đăng Xuất</a>
+          <a aria-label="Read more about Seminole tax hike" (click)="logout()" class="item"><i class="fal fa-sign-out-alt pr-2 icon"></i> Đăng Xuất</a>
         </li>
       </ul>
     </div>

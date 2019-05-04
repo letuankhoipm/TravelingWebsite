@@ -2,8 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark pbt-navbar pbt-navbar-light pt-0 pb-0" id="pbt-navbar"
   [class.scrolled]="scrolled" [class.awake]="awake">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']" style="cursor: pointer"><img class="logo" [src]="logo" width="200px"></a>
-    <button class="navbar-toggler" [class.collapsed]="collapsed" type="button" data-toggle="collapse"
+    <a aria-label="Icon link" class="navbar-brand" [routerLink]="['/']" style="cursor: pointer"><img class="logo" [src]="logo" width="200px"></a>
+    <button role="button" class="navbar-toggler" [class.collapsed]="collapsed" type="button" data-toggle="collapse"
       data-target="#pbt-nav" aria-controls="pbt-nav" aria-expanded="false" aria-label="Toggle navigation"
       (click)="toggleCollapsed()">
       <span class="icon-bar"></span>
@@ -13,9 +13,9 @@
 
     <div class="navbar-collapse" id="pbt-nav" [class.collapse]="collapsed">
       <ul class="navbar-nav ml-auto text-uppercase">
-        <li class="nav-item"><a [routerLink]="['/']" class="nav-link"><i class="fas fa-cocktail mr-2"></i>Trang Chủ</a></li>
-        <li class="nav-item"><a [routerLink]="['/place']" class="nav-link"><i class="fas fa-umbrella-beach mr-2"></i>Tour du lịch</a></li>
-        <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link"><i class="fas fa-phone mr-2"></i>Liên Lạc</a></li>
+        <li class="nav-item"><a aria-label="Read more about Seminole tax hike" [routerLink]="['/']" class="nav-link"><i class="fas fa-cocktail mr-2"></i>Trang Chủ</a></li>
+        <li class="nav-item"><a aria-label="Read more about Seminole tax hike" [routerLink]="['/place']" class="nav-link"><i class="fas fa-umbrella-beach mr-2"></i>Tour du lịch</a></li>
+        <li class="nav-item"><a aria-label="Read more about Seminole tax hike" [routerLink]="['/contact']" class="nav-link"><i class="fas fa-phone mr-2"></i>Liên Lạc</a></li>
       </ul>
     </div>
   </div>
