@@ -33,10 +33,10 @@
             </div>
             <div class="col-6">
               <div class="option-view text-right">
-                <button class="btn btn-view btn-view-list" (click)=displayViewList()>
+                <button role="button" class="btn btn-view btn-view-list" (click)=displayViewList()>
                   <i class="fa fa-list"></i>
                 </button>
-                <button class="btn btn-view btn-view-grid" (click)="displayViewGrid()">
+                <button role="button" class="btn btn-view btn-view-grid" (click)="displayViewGrid()">
                   <i class="fa fa-th"></i>
                 </button>
               </div>
@@ -55,7 +55,7 @@
             <div class="row">
               <div class="col-lg-5">
                 <div class="pack-image">
-                  <a [routerLink]="['/place/', pack.id]">
+                  <a aria-label="Read more about Seminole tax hike" [routerLink]="['/place/', pack.id]">
                     <img [src]="pack.image" alt="">
                   </a>
                 </div>
@@ -63,7 +63,7 @@
               <div class="col-lg-7">
                 <div class="pack-info">
                   <h1 class="pack-name mb-3 pt-3">
-                    <a [routerLink]="['/place/', pack.id]">
+                    <a aria-label="Read more about Seminole tax hike" [routerLink]="['/place/', pack.id]">
                       {{ pack.title }}
                     </a>
                   </h1>
@@ -87,13 +87,13 @@
             <div class="col-lg-6 col-md-12 mt-4" *ngFor="let pack of packs">
               <div class="pack">
                 <div class="pack-image">
-                  <a [routerLink]="['/place/', pack.id]">
+                  <a  aria-label="Read more about Seminole tax hike" [routerLink]="['/place/', pack.id]">
                     <img [src]="pack.image" alt="">
                   </a>
                 </div>
                 <div class="pack-info p-3">
                   <h1 class="pack-name">
-                    <a [routerLink]="['/place/', pack.id]">
+                    <a aria-label="Read more about Seminole tax hike" [routerLink]="['/place/', pack.id]">
                       {{ pack.title }}
                     </a>
                   </h1>
@@ -116,7 +116,7 @@
         <h4 class="mb-4">Danh sách tour</h4>
         <ul class="category-list font-weight-bold">
           <li class="list-item" *ngFor="let list of tours">
-            <a [routerLink]="['/place/', list.id]" class="item">{{list.name}}
+            <a aria-label="Read more about Seminole tax hike" [routerLink]="['/place/', list.id]" class="item">{{list.name}}
             </a>
           </li>
         </ul>

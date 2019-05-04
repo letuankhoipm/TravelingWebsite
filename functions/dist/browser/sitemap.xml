@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
-  <loc>https://phuongbinhtour.firebaseapp.com/</loc>
-  <lastmod>2019-04-19T08:19:45+00:00</lastmod>
-  <priority>1.00</priority>
+  <loc>https://phuongbinhtourist.com/</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
 </url>
 <url>
-  <loc>https://phuongbinhtour.firebaseapp.com/booking</loc>
-  <lastmod>2019-04-19T08:19:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://phuongbinhtourist.com/place</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
 </url>
 <url>
-  <loc>https://phuongbinhtour.firebaseapp.com/contact</loc>
-  <lastmod>2019-04-19T08:19:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://phuongbinhtourist.com/contact</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
+</url>
+<url>
+  <loc>https://phuongbinhtourist.com/place/da-lat-mong-mo</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
+</url>
+<url>
+  <loc>https://phuongbinhtourist.com/place/dao-ngoc-phu-quoc</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
+</url>
+<url>
+  <loc>https://phuongbinhtourist.com/place/kham-pha-dat-tay-do</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
+</url>
+<url>
+  <loc>https://phuongbinhtourist.com/place/kham-pha-quan-dao-nam-du</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
+</url>
+<url>
+  <loc>https://phuongbinhtourist.com/place/vung-tau-bien-goi</loc>
+  <lastmod>2019-04-27T02:52:08+00:00</lastmod>
 </url>
 
 

@@ -57,6 +57,9 @@ MIT
 @angular/fire
 MIT
 
+@angular/fire/auth
+MIT
+
 @angular/fire/firestore
 MIT
 
@@ -395,6 +398,8 @@ THE SOFTWARE.
 
 
 firebase/app
+
+firebase/auth
 
 firebase/firestore
 

@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 admin.initializeApp(functions.config().firebase);
 
 const http = functions.https.onRequest((request, response) => {
+  
   if (!request.path) {
     request.url = "/" + request.url;
   }
