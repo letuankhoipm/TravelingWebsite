@@ -15,7 +15,6 @@ import { join } from 'path';
 (global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 enableProdMode();
-
 export const app = express();
 
 app.use(compression());

@@ -6,7 +6,7 @@
   <div class="container pt-4">
     <div class="row">
       <div class="col-12 breadcrumbs">
-        <a>Home</a>
+        <a aria-label="Read more about Seminole tax hike">Home</a>
         <span> /</span>
         Contact
       </div>
@@ -72,7 +72,7 @@
               <p class="form-validation m-0 pl-2" *ngIf="message?.invalid && (message?.dirty || message?.touched)">
                 Nội dung không được phép để trống</p>
             </div>
-            <button style="border-radius: 5px" type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold" [disabled]="!myform.valid">Gửi phản hồi!</button>
+            <button role="button" style="border-radius: 5px" type="submit" class="btn btn-primary title w-50 p-2 font-weight-bold" [disabled]="!myform.valid">Gửi phản hồi!</button>
           </form>
         </div>
       </div>

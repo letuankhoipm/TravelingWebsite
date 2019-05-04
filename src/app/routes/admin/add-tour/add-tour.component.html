@@ -5,7 +5,7 @@
   <div class="control-right">
     <div *ngIf="checkExistName" data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create "><i
         class="p-icon fal fa-save"></i> Lưu</div>
-    <a href="/admin/add-tour" class="reset"><i class="p-icon fal fa-sync"></i> Làm Mới</a>
+    <a aria-label="Read more about Seminole tax hike" href="/admin/add-tour" class="reset"><i class="p-icon fal fa-sync"></i> Làm Mới</a>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
       <div class="group-wrapper">
         <div *ngIf="checkName()" class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>Tên đã tồn tại!</strong> Vui lòng chọn tên khác.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <button role="button" type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -38,7 +38,7 @@
           <div *ngIf="checkExistNameUploadThumbnail" class="alert-m alert alert-danger alert-dismissible fade show"
             role="alert">
             <strong>Chưa nhập tên Tour!</strong> Vui lòng nhập tên trước khi upload.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button role="button" type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -87,7 +87,7 @@
             <div *ngIf="checkExistNameUpload" class="alert-m alert alert-danger alert-dismissible fade show"
               role="alert">
               <strong>Chưa nhập tên Tour!</strong> Vui lòng nhập tên trước khi upload.
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <button role="button" type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -218,7 +218,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Đăng Bài Thành Công</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button role="button" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -231,7 +231,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn scroll button-scheme btn-home" data-dismiss="modal">Đóng</button>
+        <button role="button" type="button" class="btn scroll button-scheme btn-home" data-dismiss="modal">Đóng</button>
       </div>
     </div>
   </div>

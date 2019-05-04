@@ -2,7 +2,7 @@
   <div class="main row container mx-0">
     <div class="col-12 col-sm-4 col-md-3 p-0">
       <ul class="main-menu">
-        <a *ngFor="let menu of list_menu" href="{{menu.link}}">
+        <a aria-label="Loop link menu" *ngFor="let menu of list_menu" href="{{menu.link}}">
           <li class="main-menu-item">{{menu.name}} <i class="fas fa-chevron-circle-right"></i></li>
         </a>
       </ul>
