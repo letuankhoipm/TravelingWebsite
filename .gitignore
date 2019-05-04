@@ -45,6 +45,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
+/functions/dist/
 /functions/node_modules/
 /functions/node_modules/
 /functions/node_modules/
