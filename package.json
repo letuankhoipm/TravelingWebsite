@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:server:prod": "ng run phuongbinhtourist:server && webpack --config webpack.server.config.js --progress --colors",
-    "build:browser:prod": "ng build --prod --build-optimizer",
+    "build:browser:prod": "ng build --configuration=production",
     "server": "node local.js",
     "build:prod:deploy": "npm run build:prod && npm run deploy",
     "build:browser:serverless": "ng build --prod --base-href /",

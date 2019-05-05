@@ -2,7 +2,7 @@
   <div class="list-tour">
     <div [ngClass]="{'backr-w': even, 'clear-border-bottom': last}" *ngFor="let dataTour of dataTours; let even = even; let last = last; let index = index" class="tour row mx-0">
       <div class="col-4">
-        <img class="image" [src]="dataTour.images.thumbnail.link">
+        <img loading="lazy" class="image" [src]="dataTour.images.thumbnail.link">
       </div>
       <div class="col-6">
         <div class="flex-center">

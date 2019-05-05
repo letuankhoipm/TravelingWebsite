@@ -1,6 +1,6 @@
 <div class="control">
   <div class="control-left">
-    <img [src]="logo" class="control-logo" alt="Logo">
+    <img loading="lazy" [src]="logo" class="control-logo" alt="Logo">
   </div>
   <div class="control-right">
     <div *ngIf="checkExistName" data-toggle="modal" data-target="#exampleModalCenter" (click)="save()" class="create "><i

@@ -97,7 +97,7 @@
         <div class="container">
             <div class="row happy_content">
                 <div class="col-lg-6 col-sm-12 happy_left">
-                    <img src="../../../assets/images/travel.png" alt="">
+                    <img loading="lazy" src="../../../assets/images/travel.png" alt="">
                 </div>
 
                 <div class="col-lg-6 col-sm-12 happy_right">
@@ -127,8 +127,8 @@
 
                 <div class="col-sm-4 col-lg-2 col-6 partners-item" *ngFor="let url of partnerImagesUrl">
                     <a aria-label="Read more about Seminole tax hike" href="#">
-                        <img [src]="url.origin" alt="" class="original">
-                        <img [src]="url.hover" alt="" class="hover">
+                        <img loading="lazy" [src]="url.origin" alt="" class="original">
+                        <img loading="lazy" [src]="url.hover" alt="" class="hover">
                     </a>
                 </div>
             </div>

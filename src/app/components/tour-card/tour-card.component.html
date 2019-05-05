@@ -1,7 +1,7 @@
 <div class="tour__card">
   <div class="card">
     <div class="tour__card__img">
-      <img class="w-100" [src]="tour.image" [routerLink]="['/place/', tour.id]" alt="">
+      <img loading="lazy" class="w-100" [src]="tour.image" [routerLink]="['/place/', tour.id]" alt="">
       <div class="hover pl-4 pb-2 pt-2">
         <h4 class="m-0">{{tour.name}}</h4>
       </div>
