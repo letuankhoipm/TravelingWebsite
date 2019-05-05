@@ -39,6 +39,7 @@
 
 .about-us {
   margin-bottom: 50px;
+
   .title1 {
     font-size: 42px;
   }
@@ -106,6 +107,7 @@
   height: auto;
   width: 100%;
   position: relative;
+
   .bg-parallax {
     height: 100%;
     width: 100%;
@@ -121,9 +123,11 @@
 
   .parallax-content {
     color: rgba(255, 255, 255, 1);
+
     .btn {
       display: flex;
       align-items: center;
+
       a.btn-detail {
         display: block;
         color: rgba(255, 255, 255, 1);
@@ -140,6 +144,7 @@
         position: relative;
         text-align: center;
         width: 100%;
+
         &:hover {
           background: rgba(129, 157, 207, 1);
         }
@@ -158,7 +163,8 @@
   text-align: center;
   font-size: 1.2rem;
   color: #959595;
-  padding-bottom: 30px;;
+  padding-bottom: 30px;
+  ;
 }
 
 .tour-card-title {
@@ -226,7 +232,7 @@ button.owl-dot.active {
     >.distance {
       padding-bottom: 20px;
 
-      > .txt {
+      >.txt {
         font-weight: bold;
         padding-bottom: 4px;
       }
@@ -241,7 +247,7 @@ button.owl-dot.active {
           height: 100%;
           border-radius: 2px;
           // background-color: rgba(57, 92, 156, 1);
-          background-image: linear-gradient(to right,rgb(12, 38, 85), rgba(57, 92, 156, 1));
+          background-image: linear-gradient(to right, rgb(12, 38, 85), rgba(57, 92, 156, 1));
 
           span {
             position: absolute;
@@ -261,7 +267,7 @@ button.owl-dot.active {
   padding: 50px 0;
 
   .partners-item {
-    > a {
+    >a {
       position: relative;
       display: block;
       width: 100%;
@@ -303,4 +309,12 @@ button.owl-dot.active {
 
 .blur-bg {
   background: rgba(0, 0, 0, 0.6);
+}
+
+
+
+button.owl-dot {
+  width: 30px;
+  margin: 15px;
+  height: 30px;
 }

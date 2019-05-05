@@ -48,8 +48,6 @@ export class SeoService {
     let link: HTMLLinkElement = this.doc.querySelector('link[rel="canonical"]');
     if (link) {
       link.setAttribute("href", url);
-      console.log(link);
-
       return;
     }
 
