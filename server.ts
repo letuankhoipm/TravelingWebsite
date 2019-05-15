@@ -54,4 +54,6 @@ app.get('/*', (req, res) => {
             res.send(err);
         }
     });
+    // res.sendFile(__dirname + "/dist/browser/index.html");
+
 });

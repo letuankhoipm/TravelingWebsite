@@ -63,14 +63,3 @@ $screen-xl-min: 1200px;
 }
 
 // Custom devices
-@mixin rwd($screen) {
-  @media (min-width: $screen+"px") {
-    @content;
-  }
-}
-
-@mixin min-and-max($min-width, $max-width) {
-  @media (min-width: $min-width + "px") and (max-width: $max-width + "px") {
-    @content;
-  }
-}
