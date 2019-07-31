@@ -3,13 +3,16 @@ import 'reflect-metadata';
 import { enableProdMode } from '@angular/core';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+const isBot = require('isbot');
+
+
 
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as compression from 'compression';
 
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 (global as any).WebSocket = require('ws');
 (global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
@@ -46,14 +49,15 @@ app.get('*.*', express.static('./dist/browser', {
 }));
 
 app.get('/*', (req, res) => {
-    res.render('index', { req, res }, (err, html) => {
-        if (html) {
-            res.send(html);
-        } else {
-            console.error(err);
-            res.send(err);
-        }
-    });
-    // res.sendFile(__dirname + "/dist/browser/index.html");
-
+    if (isBot(req.headers['user-agent'])) {
+        res.render('index', { req, res }, (err, html) => {
+            if (html) {
+                res.send(html);
+            } else {
+                console.error(err);
+                res.send(err);
+            }
+        });
+    } else
+        res.sendFile(resolve("./dist/browser/index.html"));
 });

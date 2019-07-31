@@ -4,19 +4,15 @@ const server = require('./dist/server');
 const functions = require('firebase-functions');
 const admin = require("firebase-admin");
 const nodemailer = require('nodemailer');
-const { Crawler } = require('es6-crawler-detect/src');
 admin.initializeApp(functions.config().firebase);
 
 const http = functions.https.onRequest((request, response) => {
-  var CrawlerDetector = new Crawler(request);
   if (!request.path) {
     request.url = "/" + request.url;
   }
 
-  if (CrawlerDetector.isCrawler()) {
     return server.app(request, response);
-  }
-  return response.sendFile('dist/browser/index.html');
+ 
 });
 
 // function for mail
