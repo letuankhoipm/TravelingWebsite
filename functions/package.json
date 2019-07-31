@@ -14,5 +14,8 @@
     "nodemailer": "^4.0.1",
     "express": "^4.16.4"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "8"
+  }
 }
